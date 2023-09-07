@@ -1,6 +1,6 @@
 import 'package:admin/providers.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

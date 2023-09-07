@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Base de projet</string>
+  <string name="app_name">Mobilité Moderne</string>
   <string name="facebook_app_id">755229309210601</string>
   <string name="fb_login_protocol_scheme">fb755229309210601</string>
 </resources>

@@ -1,9 +1,9 @@
-import 'package:base_de_projet/APPLICATION/auth/sign_in_form_notifier.dart';
-import 'package:base_de_projet/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/spacing.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/router.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/APPLICATION/auth/sign_in_form_notifier.dart';
+import 'package:mobilite_moderne/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

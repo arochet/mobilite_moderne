@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_bar.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/app_widget.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +17,7 @@ class BottomBarNavigation extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final env = ref.watch(environment.notifier).state.name;
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => buildAppBar(context, ref, 'Base de projet')!,
+      appBarBuilder: (_, tabsRouter) => buildAppBar(context, ref, 'Mobilité Moderne')!,
       backgroundColor: colorpanel(900),
       routes: listRoute,
       bottomNavigationBuilder: (_, tabsRouter) {

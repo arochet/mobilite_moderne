@@ -1,4 +1,4 @@
-name: base_de_projet
+name: mobilite_moderne
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -97,5 +97,4 @@ flutter:
   uses-material-design: true
   generate: true 
   assets:
-    - assets/logo_vide.png
     - config/

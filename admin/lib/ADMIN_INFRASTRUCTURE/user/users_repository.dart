@@ -1,5 +1,5 @@
-import 'package:base_de_projet/DOMAIN/auth/user_data.dart';
-import 'package:base_de_projet/INFRASTRUCTURE/auth/user_data_dtos.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/user_data_dtos.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/src/injectable_annotations.dart';

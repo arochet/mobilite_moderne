@@ -1,8 +1,8 @@
 //PASSWORD
 import 'dart:async';
 
-import 'package:base_de_projet/DOMAIN/auth/value_objects.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

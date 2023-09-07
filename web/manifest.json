@@ -1,6 +1,6 @@
 {
-    "name": "base_de_projet",
-    "short_name": "base_de_projet",
+    "name": "mobilite_moderne",
+    "short_name": "mobilite_moderne",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

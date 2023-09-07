@@ -1,4 +1,4 @@
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

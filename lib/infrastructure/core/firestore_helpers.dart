@@ -1,7 +1,7 @@
-import 'package:base_de_projet/DOMAIN/core/value_objects.dart';
-import 'package:base_de_projet/INFRASTRUCTURE/auth/auth_repository.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:base_de_projet/DOMAIN/core/errors.dart';
+import 'package:mobilite_moderne/DOMAIN/core/errors.dart';
 
 import '../../injection.dart';
 

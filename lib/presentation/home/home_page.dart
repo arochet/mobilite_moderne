@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_de_projet/DOMAIN/auth/user_data.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_async.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_environment_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/app_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,7 +23,7 @@ class HomePage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Base de projet",
+              Text("Mobilité Moderne",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(color: colorpanel(50))),
               ElevatedButton(
                 onPressed: () {

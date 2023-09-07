@@ -3,7 +3,7 @@
     "@language" : {
         "description": "The current Language"
     },
-    "nomprojet": "Base De Projet",
+    "nomprojet": "Mobilité Moderne",
     "helloworld": "Hello World",
     "seconnecter": "Log in",
     "sinscrire": "Register",

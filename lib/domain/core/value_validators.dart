@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:base_de_projet/DOMAIN/core/failures.dart';
+import 'package:mobilite_moderne/DOMAIN/core/failures.dart';
 
 Either<ValueFailure<String>, String> validateMaxStringLength(String input, int maxLength) {
   if (input.length <= maxLength) {

@@ -1,5 +1,5 @@
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_signin_button/button_list.dart';

@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.alban.base_de_projet">
+    package="com.alban.mobilite_moderne">
     <uses-permission
      android:name="android.permission.INTERNET" />
 
    <application
-        android:label="Base de projet"
+        android:label="Mobilité Moderne"
         android:icon="@mipmap/ic_launcher"
         android:name="androidx.multidex.MultiDexApplication">
         

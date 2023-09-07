@@ -1,7 +1,7 @@
-import 'package:base_de_projet/DOMAIN/auth/failure/reauthenticate_failure.dart';
-import 'package:base_de_projet/DOMAIN/auth/value_objects.dart';
-import 'package:base_de_projet/INFRASTRUCTURE/auth/auth_repository.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/reauthenticate_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

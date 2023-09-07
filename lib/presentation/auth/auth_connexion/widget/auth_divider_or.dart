@@ -1,4 +1,4 @@
-import 'package:base_de_projet/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:flutter/material.dart';
 
 class DividerOR extends StatelessWidget {

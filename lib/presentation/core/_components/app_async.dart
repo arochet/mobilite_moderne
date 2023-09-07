@@ -1,5 +1,5 @@
-import 'package:base_de_projet/PRESENTATION/core/_components/app_error.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_loading.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

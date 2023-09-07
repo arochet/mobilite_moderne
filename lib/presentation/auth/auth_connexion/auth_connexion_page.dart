@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_de_projet/PRESENTATION/auth/auth_connexion/widget/auth_connexion_form.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/main_scaffold.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/widget/auth_connexion_form.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:flutter/material.dart';
 import 'widget/auth_button_connexion.dart';
 import 'widget/auth_no_account_link.dart';

@@ -1,6 +1,6 @@
-import 'package:base_de_projet/DOMAIN/auth/value_objects.dart';
-import 'package:base_de_projet/INFRASTRUCTURE/auth/auth_repository.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //Ajouter freezed !

@@ -1,12 +1,12 @@
-import 'package:base_de_projet/firebase_options.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/firebase_options.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
-import 'package:base_de_projet/injection.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/injection.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 
 import 'PRESENTATION/core/_utils/dev_utils.dart';
 import 'config_reader.dart';

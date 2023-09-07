@@ -1,6 +1,6 @@
-import 'package:base_de_projet/PRESENTATION/account/account/account_page.dart';
-import 'package:base_de_projet/PRESENTATION/account/modify_account/modify_account_page.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/account/account_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/modify_account/modify_account_page.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:injectable/injectable.dart';

@@ -1,6 +1,6 @@
-import 'package:base_de_projet/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:base_de_projet/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 
 part 'user_data.freezed.dart';
 

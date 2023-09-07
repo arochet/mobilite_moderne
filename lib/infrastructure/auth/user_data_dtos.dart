@@ -1,6 +1,6 @@
-import 'package:base_de_projet/DOMAIN/auth/user_data.dart';
-import 'package:base_de_projet/DOMAIN/auth/value_objects.dart';
-import 'package:base_de_projet/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_data_dtos.freezed.dart';

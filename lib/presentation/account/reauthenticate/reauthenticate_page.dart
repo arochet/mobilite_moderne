@@ -1,11 +1,11 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:base_de_projet/APPLICATION/account/reauthenticate_form_notifier.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/contrained_box_max_width.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/main_scaffold.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifier.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/contrained_box_max_width.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

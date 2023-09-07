@@ -1,18 +1,18 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_de_projet/DOMAIN/auth/user_data.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_async.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_error.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/app_loading.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/contrained_box_max_width.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/is_connected_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_environment_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_loading.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/contrained_box_max_width.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 
-import 'package:base_de_projet/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:base_de_projet/providers.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/main_scaffold.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()

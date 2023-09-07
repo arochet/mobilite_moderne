@@ -1,4 +1,4 @@
-import 'package:base_de_projet/config_reader.dart';
+import 'package:mobilite_moderne/config_reader.dart';
 import 'package:encrypt/encrypt.dart';
 
 String crypt(String str) {

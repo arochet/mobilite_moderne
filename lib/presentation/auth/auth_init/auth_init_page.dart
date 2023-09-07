@@ -1,8 +1,8 @@
-import 'package:base_de_projet/PRESENTATION/auth/auth_connexion/auth_connexion_page.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/show_environment_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/app_widget.dart';
-import 'package:base_de_projet/PRESENTATION/core/_core/router.dart';
+import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/auto_route.dart';
@@ -55,10 +55,10 @@ class PanelInit extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Base de projet", style: Theme.of(context).textTheme.titleLarge),
+              Text("Mobilité Moderne", style: Theme.of(context).textTheme.titleLarge),
               SizedBox(height: 20),
               Image(
-                image: AssetImage("assets/logo_vide.png"),
+                image: AssetImage("assets/icon.png"),
                 height: 120,
               ),
             ],

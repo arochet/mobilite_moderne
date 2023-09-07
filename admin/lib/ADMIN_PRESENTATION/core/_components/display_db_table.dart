@@ -1,5 +1,5 @@
-import 'package:base_de_projet/PRESENTATION/core/_components/spacing.dart';
-import 'package:base_de_projet/PRESENTATION/core/_components/table_sticky_headers.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/table_sticky_headers.dart';
 import 'package:flutter/material.dart';
 
 class DisplayDBTable extends StatelessWidget {

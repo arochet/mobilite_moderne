@@ -9,11 +9,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:base_de_projet/INFRASTRUCTURE/auth/auth_fake_repository.dart'
-    as _i4;
-import 'package:base_de_projet/INFRASTRUCTURE/auth/auth_repository.dart' as _i3;
-import 'package:base_de_projet/INFRASTRUCTURE/core/firebase_injectable_module.dart'
-    as _i9;
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_fake_repository.dart' as _i4;
+import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart' as _i3;
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/firebase_injectable_module.dart' as _i9;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i6;
 import 'package:firebase_auth/firebase_auth.dart' as _i5;
 import 'package:firebase_storage/firebase_storage.dart' as _i7;
@@ -41,14 +39,10 @@ extension GetItInjectableX on _i1.GetIt {
       () => _i4.FakeAuthFacade(),
       registerFor: {_test},
     );
-    gh.lazySingleton<_i5.FirebaseAuth>(
-        () => firebaseInjectableModule.firebaseAuth);
-    gh.lazySingleton<_i6.FirebaseFirestore>(
-        () => firebaseInjectableModule.firestore);
-    gh.lazySingleton<_i7.FirebaseStorage>(
-        () => firebaseInjectableModule.storage);
-    gh.lazySingleton<_i8.GoogleSignIn>(
-        () => firebaseInjectableModule.googleSignIn);
+    gh.lazySingleton<_i5.FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
+    gh.lazySingleton<_i6.FirebaseFirestore>(() => firebaseInjectableModule.firestore);
+    gh.lazySingleton<_i7.FirebaseStorage>(() => firebaseInjectableModule.storage);
+    gh.lazySingleton<_i8.GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
     gh.lazySingleton<_i3.AuthRepository>(
       () => _i3.FirebaseAuthFacade(
         gh<_i5.FirebaseAuth>(),

@@ -1,5 +1,5 @@
 import 'package:admin/injection.dart';
-import 'package:base_de_projet/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';

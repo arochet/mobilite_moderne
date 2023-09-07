@@ -1,5 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:base_de_projet/DOMAIN/auth/failure/auth_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/auth_failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

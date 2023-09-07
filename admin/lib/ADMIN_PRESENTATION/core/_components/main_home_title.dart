@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainHomeTitle extends StatelessWidget {
   const MainHomeTitle({
@@ -11,7 +10,7 @@ class MainHomeTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(18),
       child: Center(
-        child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+        child: Text('Interface administrateur', style: Theme.of(context).textTheme.titleLarge),
       ),
     );
   }

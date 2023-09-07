@@ -1,5 +1,5 @@
 import 'package:flutter_driver/driver_extension.dart';
-import 'package:base_de_projet/main_test.dart' as app;
+import 'package:mobilite_moderne/main_test.dart' as app;
 
 void main() {
   // This line enables the extension.
