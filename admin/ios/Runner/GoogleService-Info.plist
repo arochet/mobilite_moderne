@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alban.basedeprojet</string>
+	<string>com.alban.mobilitemoderne</string>
 	<key>PROJECT_ID</key>
 	<string>base-de-projet</string>
 	<key>STORAGE_BUCKET</key>
