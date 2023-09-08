@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
@@ -18,6 +19,9 @@ abstract class News with _$News {
     required String image,
     required String subcontent,
     required List<String> keywords,
+
+    /// Image qui est charger avec le paramètre image
+    Future<Uint8List?>? imageBytes,
   }) = _News;
 
   factory News.empty() => News(

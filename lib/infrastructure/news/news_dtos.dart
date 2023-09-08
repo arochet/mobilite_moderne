@@ -3,6 +3,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/services.dart';
 part 'news_dtos.freezed.dart';
 part 'news_dtos.g.dart';
 
@@ -30,7 +31,7 @@ abstract class NewsDTO implements _$NewsDTO {
     );
   }
 
-  News toDomain() {
+  News toDomain({Future<Uint8List?>? imageBytes}) {
     return News(
       id: UniqueId.fromUniqueString(id!),
       title: Nom(title),
@@ -38,6 +39,7 @@ abstract class NewsDTO implements _$NewsDTO {
       image: image,
       subcontent: subcontent,
       keywords: keywords,
+      imageBytes: imageBytes,
     );
   }
 

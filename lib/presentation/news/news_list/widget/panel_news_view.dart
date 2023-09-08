@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:flutter/material.dart';
 
@@ -29,11 +30,39 @@ class PanelNewsView extends StatelessWidget {
               SpaceH10(),
 
               //IMAGE
-              Placeholder(
-                fallbackHeight: 200,
-                fallbackWidth: double.infinity,
-              ),
-              //Text("[IMAGE] ${news.image}", style: Theme.of(context).textTheme.bodyMedium),
+              FutureBuilder(
+                  future: news.imageBytes,
+                  builder: (context, AsyncSnapshot<Uint8List?> snapshotNews) {
+                    if (snapshotNews.connectionState == ConnectionState.waiting)
+                      return Container(
+                        height: 200,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    else if (snapshotNews.hasError)
+                      return Container(
+                        height: 200,
+                        child: Center(
+                          child: Text("Erreur"),
+                        ),
+                      );
+                    else {
+                      if (snapshotNews.data != null)
+                        return Container(
+                          height: 200,
+                          width: double.infinity,
+                          child: Image.memory(snapshotNews.data!),
+                        );
+                      else {
+                        return Container(
+                          height: 200,
+                          color: colorpanel(900),
+                        );
+                      }
+                    }
+                  }),
+
               SpaceH20(),
 
               //CONTENU

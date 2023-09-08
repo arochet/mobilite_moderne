@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
@@ -18,9 +20,11 @@ abstract class INewsRepository {
 @LazySingleton(as: INewsRepository)
 class NewsRepository implements INewsRepository {
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
 
   NewsRepository(
     this._firestore,
+    this._storage,
   );
 
   @override
@@ -88,9 +92,11 @@ class NewsRepository implements INewsRepository {
     }
   }
 
+  /// Retourne la liste des actualités
   @override
   Stream<Either<NewsFailure, List<News>>> watch() async* {
-    final collection = _firestore.newsCollection;
+    final collection = _firestore.newsCollection; //Firestore collection Actualités
+    final storageRef = FirebaseStorage.instance.ref(); //Storage REF
 
     yield* collection
         .snapshots()
@@ -98,7 +104,8 @@ class NewsRepository implements INewsRepository {
           (snapshot) => right<NewsFailure, List<News>>(
             snapshot.docs.map((doc) {
               try {
-                return NewsDTO.fromFirestore(doc).toDomain();
+                //Chargement de l'actualité + de l'image
+                return NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image']));
               } catch (e) {}
               return News.empty();
             }).toList(),
@@ -113,11 +120,29 @@ class NewsRepository implements INewsRepository {
     });
   }
 
+  /// Retourne l'actualité avec l'id
   @override
   Future<Either<NewsFailure, News>> watchWithId(UniqueId id) async {
     final collection = _firestore.newsCollection.doc(id.getOrCrash());
+    final storageRef = FirebaseStorage.instance.ref(); //Storage REF
 
-    return collection.get().then((doc) => right(NewsDTO.fromFirestore(doc)
-        .toDomain())) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
+    return collection.get().then((doc) {
+      return right(NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image'])));
+    }) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
+  }
+
+  _loadImage(Reference storageRef, String path) {
+    try {
+      //Chargement de l'image
+
+      if (path != "") {
+        final imgRef = storageRef.child(path);
+        const oneMegabyte = 1024 * 1024;
+        return imgRef.getData(oneMegabyte);
+      }
+    } catch (e) {
+      print('Erreur lors du chargement de l\'image');
+      print(e);
+    }
   }
 }

@@ -22,6 +22,7 @@ mixin _$News {
   String get image => throw _privateConstructorUsedError;
   String get subcontent => throw _privateConstructorUsedError;
   List<String> get keywords => throw _privateConstructorUsedError;
+  Future<Uint8List?>? get imageBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewsCopyWith<News> get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $NewsCopyWith<$Res> {
       String content,
       String image,
       String subcontent,
-      List<String> keywords});
+      List<String> keywords,
+      Future<Uint8List?>? imageBytes});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? imageBytes = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +89,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      imageBytes: freezed == imageBytes
+          ? _value.imageBytes
+          : imageBytes // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
     ) as $Val);
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       String content,
       String image,
       String subcontent,
-      List<String> keywords});
+      List<String> keywords,
+      Future<Uint8List?>? imageBytes});
 }
 
 /// @nodoc
@@ -120,6 +128,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? imageBytes = freezed,
   }) {
     return _then(_$_News(
       id: null == id
@@ -146,6 +155,10 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
           ? _value._keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      imageBytes: freezed == imageBytes
+          ? _value.imageBytes
+          : imageBytes // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
     ));
   }
 }
@@ -159,7 +172,8 @@ class _$_News extends _News {
       required this.content,
       required this.image,
       required this.subcontent,
-      required final List<String> keywords})
+      required final List<String> keywords,
+      this.imageBytes})
       : _keywords = keywords,
         super._();
 
@@ -182,8 +196,11 @@ class _$_News extends _News {
   }
 
   @override
+  final Future<Uint8List?>? imageBytes;
+
+  @override
   String toString() {
-    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords)';
+    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, imageBytes: $imageBytes)';
   }
 
   @override
@@ -197,12 +214,14 @@ class _$_News extends _News {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.subcontent, subcontent) ||
                 other.subcontent == subcontent) &&
-            const DeepCollectionEquality().equals(other._keywords, _keywords));
+            const DeepCollectionEquality().equals(other._keywords, _keywords) &&
+            (identical(other.imageBytes, imageBytes) ||
+                other.imageBytes == imageBytes));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, image,
-      subcontent, const DeepCollectionEquality().hash(_keywords));
+      subcontent, const DeepCollectionEquality().hash(_keywords), imageBytes);
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +237,8 @@ abstract class _News extends News {
       required final String content,
       required final String image,
       required final String subcontent,
-      required final List<String> keywords}) = _$_News;
+      required final List<String> keywords,
+      final Future<Uint8List?>? imageBytes}) = _$_News;
   const _News._() : super._();
 
   @override
@@ -233,6 +253,8 @@ abstract class _News extends News {
   String get subcontent;
   @override
   List<String> get keywords;
+  @override
+  Future<Uint8List?>? get imageBytes;
   @override
   @JsonKey(ignore: true)
   _$$_NewsCopyWith<_$_News> get copyWith => throw _privateConstructorUsedError;
