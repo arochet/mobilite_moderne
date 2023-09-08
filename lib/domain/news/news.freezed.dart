@@ -22,6 +22,8 @@ mixin _$News {
   String get image => throw _privateConstructorUsedError;
   String get subcontent => throw _privateConstructorUsedError;
   List<String> get keywords => throw _privateConstructorUsedError;
+
+  /// Image qui est charger avec le paramètre image
   Future<Uint8List?>? get imageBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -195,6 +197,7 @@ class _$_News extends _News {
     return EqualUnmodifiableListView(_keywords);
   }
 
+  /// Image qui est charger avec le paramètre image
   @override
   final Future<Uint8List?>? imageBytes;
 
@@ -254,6 +257,8 @@ abstract class _News extends News {
   @override
   List<String> get keywords;
   @override
+
+  /// Image qui est charger avec le paramètre image
   Future<Uint8List?>? get imageBytes;
   @override
   @JsonKey(ignore: true)

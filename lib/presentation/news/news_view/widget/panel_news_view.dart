@@ -62,14 +62,12 @@ class PanelNewsView extends StatelessWidget {
             SpaceH20(),
 
             //CONTENU
-            Text("${news.content}", style: Theme.of(context).textTheme.bodyMedium),
+            Text("${news.content.replaceAll('\\n', '\n')}", style: Theme.of(context).textTheme.bodyMedium),
             SpaceH10(),
-            Divider(
-              color: Colors.black,
-            ),
+            Divider(color: Colors.black),
 
             //SOUS CONTENU
-            Text("${news.subcontent}",
+            Text(news.subcontent.replaceAll('\\n', '\n'),
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold)),
             SpaceH10(),
 

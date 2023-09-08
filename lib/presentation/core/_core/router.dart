@@ -21,7 +21,9 @@ import '../../account/account/colors/colors.dart';
 import '../../account/account/utils/utils_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_add/news_add_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -115,6 +117,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/news-view-route',
           page: NewsViewRoute.page,
+        ),
+        AutoRoute(
+          path: '/term_of_use-route',
+          page: Term_of_useRoute.page,
+        ),
+        AutoRoute(
+          path: '/privacy_policy-route',
+          page: Privacy_policyRoute.page,
         ), //insert-route
       ];
 }

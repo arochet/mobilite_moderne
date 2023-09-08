@@ -123,6 +123,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    Privacy_policyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Privacy_policyPage(),
+      );
+    },
     ReauthenticateRoute.name: (routeData) {
       final args = routeData.argsAs<ReauthenticateRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -137,6 +143,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SplashPage(),
+      );
+    },
+    Term_of_useRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Term_of_usePage(),
       );
     },
     TextStyleRoute.name: (routeData) {
@@ -432,6 +444,20 @@ class NewsViewRouteArgs {
 }
 
 /// generated route for
+/// [Privacy_policyPage]
+class Privacy_policyRoute extends PageRouteInfo<void> {
+  const Privacy_policyRoute({List<PageRouteInfo>? children})
+      : super(
+          Privacy_policyRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Privacy_policyRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ReauthenticatePage]
 class ReauthenticateRoute extends PageRouteInfo<ReauthenticateRouteArgs> {
   ReauthenticateRoute({
@@ -479,6 +505,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Term_of_usePage]
+class Term_of_useRoute extends PageRouteInfo<void> {
+  const Term_of_useRoute({List<PageRouteInfo>? children})
+      : super(
+          Term_of_useRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Term_of_useRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
