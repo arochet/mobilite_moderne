@@ -58,7 +58,7 @@ class PanelInit extends StatelessWidget {
               Text("Mobilité Moderne", style: Theme.of(context).textTheme.titleLarge),
               SizedBox(height: 20),
               Image(
-                image: AssetImage("assets/icon.png"),
+                image: AssetImage("assets/icon/icon.png"),
                 height: 120,
               ),
             ],

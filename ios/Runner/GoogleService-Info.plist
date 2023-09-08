@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>881913570091-tdljncqp6ko5tck80f9lg0qd309e36cc.apps.googleusercontent.com</string>
+	<string>504195622727-hr24hhoo96gtviaepf98okaargm4ts8h.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.881913570091-tdljncqp6ko5tck80f9lg0qd309e36cc</string>
+	<string>com.googleusercontent.apps.504195622727-hr24hhoo96gtviaepf98okaargm4ts8h</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDWVCbILlEKyRVB9KRceloMGKZQwmLDII0</string>
+	<string>AIzaSyCunX3-UV0WQBMyMtxNK4JNQ7h17mXBh14</string>
 	<key>GCM_SENDER_ID</key>
-	<string>881913570091</string>
+	<string>504195622727</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.alban.mobilitemoderne</string>
 	<key>PROJECT_ID</key>
-	<string>base-de-projet</string>
+	<string>mobilite-moderne</string>
 	<key>STORAGE_BUCKET</key>
-	<string>base-de-projet.appspot.com</string>
+	<string>mobilite-moderne.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:881913570091:ios:7f13dcce7f1bece0f31b6e</string>
+	<string>1:504195622727:ios:3f6ab644cac08e101a4e62</string>
 </dict>
 </plist>

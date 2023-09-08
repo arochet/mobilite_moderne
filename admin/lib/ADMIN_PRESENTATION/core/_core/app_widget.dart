@@ -120,6 +120,7 @@ class AppWidget extends StatelessWidget {
                 horizontal: (VisualDensity.maximumDensity - 1.0),
                 vertical: (VisualDensity.maximumDensity - 2.0),
               ),
+              padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 10, horizontal: 30)),
               minimumSize: MaterialStateProperty.all(const Size(double.infinity, 30)),
               elevation: MaterialStateProperty.all(0),
             ),

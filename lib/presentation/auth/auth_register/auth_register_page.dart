@@ -14,7 +14,7 @@ class AuthRegisterPage extends StatelessWidget {
     return MainScaffold(
       title: AppLocalizations.of(context)!.sinscrire,
       child: ShowComponentFile(
-        child: FormRegisterProvide(),
+        child: Center(child: FormRegisterProvide()),
       ),
     );
   }

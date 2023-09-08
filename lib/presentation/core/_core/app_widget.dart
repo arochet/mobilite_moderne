@@ -111,14 +111,15 @@ class AppWidget extends StatelessWidget {
 
         //EXTENSIONS
         extensions: <ThemeExtension<dynamic>>[
+          //BUTTONS
           AppThemeExtention(
             buttonLarge: defaultButtonStyle.copyWith(
-              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)),
+              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
               visualDensity: VisualDensity(
                 horizontal: (VisualDensity.maximumDensity - 1.0),
                 vertical: (VisualDensity.maximumDensity - 2.0),
               ),
-              minimumSize: MaterialStateProperty.all(Size(double.infinity, 30)),
+              padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 1)),
               elevation: MaterialStateProperty.all(0),
             ),
             buttonDanger: defaultButtonStyle.copyWith(

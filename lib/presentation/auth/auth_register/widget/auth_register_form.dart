@@ -11,6 +11,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:injectable/injectable.dart';
 
+import '../../../core/_core/app_widget.dart';
+
 class FormRegisterProvide extends ConsumerWidget {
   const FormRegisterProvide({
     Key? key,
@@ -162,14 +164,15 @@ class FormRegister extends ConsumerWidget {
             },
           ),
           const SizedBox(height: 14),
-          ElevatedButton(
-            onPressed: () {
-              printDev();
-              ref.read(registerFormNotifierProvider.notifier).registerWithEmailAndPasswordPressed();
-            },
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                textStyle: MaterialStateProperty.all(TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
-            child: Text(AppLocalizations.of(context)!.sinscrire),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                printDev();
+                ref.read(registerFormNotifierProvider.notifier).registerWithEmailAndPasswordPressed();
+              },
+              style: Theme.of(context).extension<AppThemeExtention>()?.buttonLarge,
+              child: Text(AppLocalizations.of(context)!.sinscrire),
+            ),
           ),
           const SizedBox(height: 12),
           if (ref.read(registerFormNotifierProvider).isSubmitting) ...[
