@@ -33,7 +33,7 @@ Future<bool?> showDialogPassword<bool>(
                     decoration: InputDecoration(
                       hintText: 'Mot de passe',
                       border: OutlineInputBorder(),
-                      hintStyle: TextStyle(color: colorpanel(200)),
+                      hintStyle: TextStyle(color: colorpanel(50)),
                       errorText: textError,
                     ),
                     keyboardType: TextInputType.text,

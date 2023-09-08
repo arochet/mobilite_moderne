@@ -7,11 +7,11 @@ import 'package:injectable/injectable.dart';
 
 /// AppBar référence de l'application<br>
 /// Dispose d'un bouton oeil en mode développeur pour afficher les chemins des fichiers<br>
-AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title) {
+AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title, {Color? color}) {
   final env = ref.watch(environment.notifier).state.name;
   return AppBar(
     toolbarHeight: 55,
-    backgroundColor: colorpanel(700),
+    backgroundColor: color ?? colorpanel(900),
     shadowColor: Colors.transparent,
     iconTheme: IconThemeData(
       color: colorpanel(50),

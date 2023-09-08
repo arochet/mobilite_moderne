@@ -12,7 +12,7 @@ class ShowComponentFile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool displayPath = ref.watch(showFilePath);
-    final Color color = Colors.amber;
+    final Color color = Color(0xffff5470);
 
     if (displayPath) {
       return Stack(

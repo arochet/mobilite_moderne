@@ -12,8 +12,9 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //COLOR
-    const Color primaryColor = Color(0xff2DE1FC);
-    const Color textColor = Colors.white;
+    const Color primaryColor = Color(0xff00ebc7);
+    const Color titleColor = Color(0xff00214d);
+    const Color paragraphColor = Color(0xff1b2d45);
 
     //BUTTON
     ButtonStyle defaultButtonStyle = ElevatedButton.styleFrom(
@@ -41,7 +42,6 @@ class AppWidget extends StatelessWidget {
             textStyle: MaterialStateProperty.all(
                 TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: MaterialStateProperty.all(colorpanel(200)),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
@@ -55,7 +55,8 @@ class AppWidget extends StatelessWidget {
 
         //CARD THEME
         cardTheme: CardTheme(
-            color: colorpanel(800),
+            color: colorpanel(900),
+            elevation: 0,
             margin: EdgeInsets.all(12),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
 
@@ -69,10 +70,10 @@ class AppWidget extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           fillColor: colorpanel(700),
           filled: true,
-          prefixIconColor: colorpanel(100),
-          labelStyle: TextStyle(color: colorpanel(100)),
-          helperStyle: TextStyle(color: Colors.white),
-          floatingLabelStyle: TextStyle(color: Colors.white),
+          prefixIconColor: titleColor,
+          labelStyle: TextStyle(color: titleColor),
+          helperStyle: TextStyle(color: titleColor),
+          floatingLabelStyle: TextStyle(color: titleColor),
           border: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide.none,
@@ -90,23 +91,23 @@ class AppWidget extends StatelessWidget {
 
         //TEXTES
         textTheme: TextTheme(
-          headlineLarge: TextStyle(color: textColor),
-          headlineMedium: TextStyle(color: textColor),
-          headlineSmall: TextStyle(color: textColor),
-          titleLarge: TextStyle(fontWeight: FontWeight.bold, color: textColor),
-          titleMedium: TextStyle(fontWeight: FontWeight.bold, color: textColor),
-          titleSmall: TextStyle(fontWeight: FontWeight.bold, color: textColor),
-          bodyLarge: TextStyle(color: textColor),
-          bodyMedium: TextStyle(color: textColor),
-          bodySmall: TextStyle(color: textColor),
-          labelLarge: TextStyle(color: textColor),
-          labelMedium: TextStyle(color: textColor),
-          labelSmall: TextStyle(color: textColor),
+          headlineLarge: TextStyle(color: titleColor),
+          headlineMedium: TextStyle(color: titleColor),
+          headlineSmall: TextStyle(color: titleColor),
+          titleLarge: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
+          titleMedium: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
+          titleSmall: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
+          bodyLarge: TextStyle(color: paragraphColor),
+          bodyMedium: TextStyle(color: paragraphColor),
+          bodySmall: TextStyle(color: paragraphColor),
+          labelLarge: TextStyle(color: titleColor),
+          labelMedium: TextStyle(color: titleColor),
+          labelSmall: TextStyle(color: titleColor),
         ),
 
         //BOTTOM NAVIGATION BAR
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: paragraphColor,
         ),
 
         //EXTENSIONS
@@ -198,7 +199,20 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
 
 /// Couleur de base de l'application
 Color? colorpanel(int tint) {
-  return Colors.blueGrey[tint];
+  switch (tint) {
+    case 900:
+      return Colors.white;
+    case 800:
+      return Color(0xfff2f4f6);
+    case 700:
+      return Color(0xfff2f4f6);
+    case 100:
+      return Color(0xff00214d);
+    case 50:
+      return Color(0xff00214d);
+    default:
+      return Colors.white;
+  }
 }
 
 /// PAGE TRANSITION THEME ////
