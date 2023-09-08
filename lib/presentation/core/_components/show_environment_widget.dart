@@ -1,3 +1,4 @@
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/injection.dart';
 import 'package:mobilite_moderne/providers.dart';
@@ -26,7 +27,7 @@ class ShowEnvironment extends ConsumerWidget {
       children: [
         if (env != Environment.prod)
           Container(
-            color: Colors.grey,
+            color: colorpanel(800),
             height: 30,
             child: Row(
               children: [
@@ -48,7 +49,7 @@ class ShowEnvironment extends ConsumerWidget {
                 InkWell(
                   child: Icon(Icons.refresh,
                       color:
-                          ref.watch(showWidgetRefresh) ? Colors.white : Color.fromARGB(255, 217, 216, 216)),
+                          ref.watch(showWidgetRefresh) ? Colors.black : Color.fromARGB(255, 217, 216, 216)),
                   onTap: () {
                     //PrintDEV
                     ref.read(showWidgetRefresh.notifier).state = !ref.read(showWidgetRefresh);
@@ -60,7 +61,7 @@ class ShowEnvironment extends ConsumerWidget {
                 SizedBox(width: 10),
                 InkWell(
                   child: Icon(Icons.list,
-                      color: ref.watch(showPrintDEV) ? Colors.white : Color.fromARGB(255, 217, 216, 216)),
+                      color: ref.watch(showPrintDEV) ? Colors.black : Color.fromARGB(255, 217, 216, 216)),
                   onTap: () {
                     //PrintDEV
                     getIt<AppLog>().can = !getIt<AppLog>().can;
@@ -70,7 +71,7 @@ class ShowEnvironment extends ConsumerWidget {
                 SizedBox(width: 10),
                 InkWell(
                   child: Icon(Icons.remove_red_eye,
-                      color: showFile ? Colors.white : Color.fromARGB(255, 217, 216, 216)),
+                      color: showFile ? Colors.black : Color.fromARGB(255, 217, 216, 216)),
                   onTap: () {
                     //File Path Notifier
                     final notifier = ref.read(showFilePath.notifier);

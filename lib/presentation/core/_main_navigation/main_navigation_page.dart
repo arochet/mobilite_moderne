@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/widget/check_connexion_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/bottom_bar_navigation.dart';
@@ -13,6 +14,8 @@ class MainNavigationPage extends StatelessWidget {
 
   final listRoute = [
     HomeRoute(),
+    HomeRoute(),
+    NewsListRoute(),
     AccountRoute(),
   ];
 
@@ -20,14 +23,24 @@ class MainNavigationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final listMenu = [
       {
-        "title": AppLocalizations.of(context)!.accueil,
-        "icon": Icons.home,
+        "title": 'Assistant',
+        "icon": Icons.settings,
         "id": 0,
       },
       {
-        "title": AppLocalizations.of(context)!.compte,
-        "icon": Icons.person_rounded,
+        "title": 'Ressources',
+        "icon": Icons.file_copy,
         "id": 1,
+      },
+      {
+        "title": 'Actualités',
+        "icon": Icons.newspaper,
+        "id": 2,
+      },
+      {
+        "title": AppLocalizations.of(context)!.compte,
+        "icon": Icons.person,
+        "id": 3,
       },
     ];
     return CheckUserConnected(

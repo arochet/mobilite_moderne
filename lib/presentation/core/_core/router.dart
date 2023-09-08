@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/components/components_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/text_style/text_style.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/account_page.dart';
@@ -18,7 +19,9 @@ import 'package:flutter/material.dart';
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
 import '../../account/account/utils/utils_page.dart';
-//insert-import
+import 'package:mobilite_moderne/PRESENTATION/./news/news_add/news_add_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -41,6 +44,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               path: 'account',
               page: AccountRoute.page,
+            ),
+            AutoRoute(
+              path: 'news-list-route',
+              page: NewsListRoute.page,
             ),
           ],
         ),
@@ -100,6 +107,14 @@ class AppRouter extends _$AppRouter {
           path: '/utils-route',
           page: UtilsRoute.page,
         ),
-        //insert-route
+        AutoRoute(
+          path: '/news-add-route',
+          page: NewsAddRoute.page,
+        ),
+
+        AutoRoute(
+          path: '/news-view-route',
+          page: NewsViewRoute.page,
+        ), //insert-route
       ];
 }

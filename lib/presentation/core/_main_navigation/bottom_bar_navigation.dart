@@ -18,16 +18,22 @@ class BottomBarNavigation extends ConsumerWidget {
     final env = ref.watch(environment.notifier).state.name;
     return AutoTabsScaffold(
       appBarBuilder: (_, tabsRouter) => buildAppBar(context, ref, 'Mobilité Moderne',
-          color: tabsRouter.activeIndex != 1 ? colorpanel(900) : colorpanel(800))!,
+          color: tabsRouter.activeIndex != 3 ? colorpanel(900) : colorpanel(800))!,
       backgroundColor: colorpanel(900),
       routes: listRoute,
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
-            backgroundColor: tabsRouter.activeIndex != 1 ? colorpanel(900) : colorpanel(800),
+            backgroundColor: tabsRouter.activeIndex != 3 ? colorpanel(900) : colorpanel(800),
             currentIndex: tabsRouter.activeIndex,
+            type: BottomNavigationBarType.fixed,
             selectedItemColor: Theme.of(context).primaryColor,
             onTap: (int id) {
               tabsRouter.setActiveIndex(id);
+
+              //Met à jour les actualités quand on arrive sur la page
+              if (id == 2) {
+                ref.invalidate(allNewsProvider);
+              }
               printDev();
             },
             selectedLabelStyle: TextStyle(

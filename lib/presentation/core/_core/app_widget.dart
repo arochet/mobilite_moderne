@@ -110,6 +110,19 @@ class AppWidget extends StatelessWidget {
           unselectedItemColor: paragraphColor,
         ),
 
+        //CHIP
+        chipTheme: ChipThemeData(
+          backgroundColor: colorpanel(700),
+          disabledColor: colorpanel(700),
+          selectedColor: colorpanel(700),
+          secondarySelectedColor: colorpanel(700),
+          padding: EdgeInsets.all(8.0),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          labelStyle: TextStyle(color: titleColor),
+          secondaryLabelStyle: TextStyle(color: titleColor),
+          brightness: Brightness.dark,
+        ),
+
         //EXTENSIONS
         extensions: <ThemeExtension<dynamic>>[
           //BUTTONS

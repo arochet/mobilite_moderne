@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/APPLICATION/account/modify_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/auth_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/new_password_form_notifier.dart';
@@ -5,12 +6,17 @@ import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifie
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/reset_password_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/sign_in_form_notifier.dart';
+import 'package:mobilite_moderne/APPLICATION/news/add_news_form_notifier.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 
 import 'DOMAIN/core/errors.dart';
+import 'DOMAIN/core/value_objects.dart';
+import 'DOMAIN/news/news.dart';
 import 'INFRASTRUCTURE/auth/auth_repository.dart';
 import 'injection.dart';
 
@@ -85,6 +91,20 @@ final currentUserData = FutureProvider.autoDispose<UserData?>((ref) async {
   else
     return user;
 });
+
+//News
+
+final newsRepositoryProvider = Provider<INewsRepository>((ref) => getIt<INewsRepository>());
+
+final newsFormNotifierProvider = StateNotifierProvider.autoDispose<NewsFormNotifier, AddNewsFormData>(
+  (ref) => NewsFormNotifier(ref.watch(newsRepositoryProvider)),
+);
+
+final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News>>>(
+    (ref) => ref.watch(newsRepositoryProvider).watch());
+
+final oneNewsProvider = FutureProvider.autoDispose.family<Either<NewsFailure, News>, UniqueId>(
+    (ref, id) => ref.watch(newsRepositoryProvider).watchWithId(id));
 
 //insert-provider
 //Ne pas supprimer la balise ci-dessus
