@@ -31,6 +31,9 @@ class BottomBarNavigation extends ConsumerWidget {
               tabsRouter.setActiveIndex(id);
 
               //Met à jour les actualités quand on arrive sur la page
+              if (id == 1) {
+                ref.invalidate(allArticleProvider);
+              }
               if (id == 2) {
                 ref.invalidate(allNewsProvider);
               }

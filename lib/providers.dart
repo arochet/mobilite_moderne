@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/APPLICATION/account/modify_form_notifier.dart';
+import 'package:mobilite_moderne/APPLICATION/article/add_article_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/auth_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/new_password_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifier.dart';
@@ -12,6 +13,9 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/article/article.dart';
+import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 
 import 'DOMAIN/core/errors.dart';
@@ -105,6 +109,22 @@ final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News
 
 final oneNewsProvider = FutureProvider.autoDispose.family<Either<NewsFailure, News>, UniqueId>(
     (ref, id) => ref.watch(newsRepositoryProvider).watchWithId(id));
+
+//Article
+
+final articleRepositoryProvider = Provider<IArticleRepository>((ref) => getIt<IArticleRepository>());
+
+final articleFormNotifierProvider =
+    StateNotifierProvider.autoDispose<ArticleFormNotifier, AddArticleFormData>(
+  (ref) => ArticleFormNotifier(ref.watch(articleRepositoryProvider)),
+);
+
+final allArticleProvider = StreamProvider.autoDispose<Either<ArticleFailure, List<Article>>>(
+    (ref) => ref.watch(articleRepositoryProvider).watch());
+
+final oneArticleProvider = FutureProvider.autoDispose.family<Either<ArticleFailure, Article>, UniqueId>(
+    (ref, id) => ref.watch(articleRepositoryProvider).watchWithId(id));
+
 
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

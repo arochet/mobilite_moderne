@@ -14,9 +14,9 @@ class MainNavigationPage extends StatelessWidget {
 
   final listRoute = [
     HomeRoute(),
-    HomeRoute(),
+    ArticleListRoute(),
     NewsListRoute(),
-    AccountRoute(),
+    HomeRoute(),
   ];
 
   @override
@@ -38,8 +38,8 @@ class MainNavigationPage extends StatelessWidget {
         "id": 2,
       },
       {
-        "title": AppLocalizations.of(context)!.compte,
-        "icon": Icons.person,
+        "title": 'Messages',
+        "icon": Icons.message,
         "id": 3,
       },
     ];

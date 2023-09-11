@@ -12,7 +12,7 @@ import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_init/auth_init_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_register/auth_register_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_reset_password.dart/auth_reset_password_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/home_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigation_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,10 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_add/news_add_page.dart
 import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/./article/article_add/article_add_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/./article/article_list/article_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/./article/article_view/article_view_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -44,14 +47,18 @@ class AppRouter extends _$AppRouter {
               page: HomeRoute.page,
             ),
             AutoRoute(
-              path: 'account',
-              page: AccountRoute.page,
-            ),
-            AutoRoute(
               path: 'news-list-route',
               page: NewsListRoute.page,
             ),
+            AutoRoute(
+              path: 'article-list-route',
+              page: ArticleListRoute.page,
+            ),
           ],
+        ),
+        AutoRoute(
+          path: '/account',
+          page: AccountRoute.page,
         ),
         AutoRoute(
           path: '/auth-init',
@@ -125,6 +132,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/privacy_policy-route',
           page: Privacy_policyRoute.page,
+        ),
+        AutoRoute(
+          path: '/article-add-route',
+          page: ArticleAddRoute.page,
+        ),
+        AutoRoute(
+          path: '/article-view-route',
+          page: ArticleViewRoute.page,
         ), //insert-route
       ];
 }

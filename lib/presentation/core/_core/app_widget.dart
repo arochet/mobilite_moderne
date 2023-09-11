@@ -31,9 +31,9 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         //COLORS
         primaryColor: primaryColor,
-        canvasColor: Color.fromARGB(255, 111, 17, 142),
         dialogBackgroundColor: Color.fromARGB(255, 135, 45, 252),
         scaffoldBackgroundColor: colorpanel(900),
+        canvasColor: colorpanel(800),
 
         //BUTTONS
         elevatedButtonTheme: ElevatedButtonThemeData(style: defaultButtonStyle),

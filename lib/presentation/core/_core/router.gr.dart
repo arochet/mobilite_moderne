@@ -21,6 +21,28 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AccountPage(),
       );
     },
+    ArticleAddRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ArticleAddPage(),
+      );
+    },
+    ArticleListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ArticleListPage(),
+      );
+    },
+    ArticleViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ArticleViewRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ArticleViewPage(
+          id: args.id,
+          key: args.key,
+        ),
+      );
+    },
     AuthCheckEmailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -178,6 +200,72 @@ class AccountRoute extends PageRouteInfo<void> {
   static const String name = 'AccountRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ArticleAddPage]
+class ArticleAddRoute extends PageRouteInfo<void> {
+  const ArticleAddRoute({List<PageRouteInfo>? children})
+      : super(
+          ArticleAddRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ArticleAddRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ArticleListPage]
+class ArticleListRoute extends PageRouteInfo<void> {
+  const ArticleListRoute({List<PageRouteInfo>? children})
+      : super(
+          ArticleListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ArticleListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ArticleViewPage]
+class ArticleViewRoute extends PageRouteInfo<ArticleViewRouteArgs> {
+  ArticleViewRoute({
+    required UniqueId id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ArticleViewRoute.name,
+          args: ArticleViewRouteArgs(
+            id: id,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ArticleViewRoute';
+
+  static const PageInfo<ArticleViewRouteArgs> page =
+      PageInfo<ArticleViewRouteArgs>(name);
+}
+
+class ArticleViewRouteArgs {
+  const ArticleViewRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final UniqueId id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ArticleViewRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for

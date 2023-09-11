@@ -3,6 +3,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/widget/panel_developper.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/widget/panel_modify_mdp_delete_account.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
@@ -64,29 +65,30 @@ class _AccountPageState extends ConsumerState<AccountPage> {
       final env = ref.watch(environment.notifier).state.name;
 
       //Container Informations personnelles
-      return ShowComponentFile(
-        title: 'account/account/account_pages.dart',
-        child: Container(
-          color: colorpanel(800),
-          child: ListView(
-            children: <Widget>[
-              SpaceH20(),
-              //TEXTE COMPTE
-              DisplayTitle(title: AppLocalizations.of(context)!.compte),
-              //PANEL DONNEES PERSONNELES
-              PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
-              //PANEL INFO
-              PanelInfo(),
-              //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
-              PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
-              //PANEL DEVELOPPEMENT
-              if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
-              SpaceH10(),
-              //BOUTON SE DECONNECTER
-              ButtonLogOut(),
-              SpaceH10(),
-              VersionNumber(),
-            ],
+      return MainScaffold(
+        title: AppLocalizations.of(context)!.compte,
+        child: ShowComponentFile(
+          title: 'account/account/account_pages.dart',
+          child: Container(
+            color: colorpanel(800),
+            child: ListView(
+              children: <Widget>[
+                SpaceH20(),
+                //PANEL DONNEES PERSONNELES
+                PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
+                //PANEL INFO
+                PanelInfo(),
+                //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
+                PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
+                //PANEL DEVELOPPEMENT
+                if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
+                SpaceH10(),
+                //BOUTON SE DECONNECTER
+                ButtonLogOut(),
+                SpaceH10(),
+                VersionNumber(),
+              ],
+            ),
           ),
         ),
       );
