@@ -14,33 +14,33 @@ class MainNavigationPage extends StatelessWidget {
 
   final listRoute = [
     HomeRoute(),
+    AssistantRoute(),
     ArticleListRoute(),
     NewsListRoute(),
-    HomeRoute(),
   ];
 
   @override
   Widget build(BuildContext context) {
     final listMenu = [
       {
+        "title": 'Home',
+        "icon": Icons.home_sharp,
+        "id": 0,
+      },
+      {
         "title": 'Assistant',
         "icon": Icons.settings,
-        "id": 0,
+        "id": 1,
       },
       {
         "title": 'Ressources',
         "icon": Icons.file_copy,
-        "id": 1,
+        "id": 2,
       },
       {
         "title": 'Actualités',
         "icon": Icons.newspaper,
         "id": 2,
-      },
-      {
-        "title": 'Messages',
-        "icon": Icons.message,
-        "id": 3,
       },
     ];
     return CheckUserConnected(

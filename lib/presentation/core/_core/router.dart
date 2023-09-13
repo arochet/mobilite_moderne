@@ -12,10 +12,11 @@ import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_init/auth_init_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_register/auth_register_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_reset_password.dart/auth_reset_password_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/assistant/home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigation_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
 import '../../../DOMAIN/article/category.dart';
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
@@ -46,6 +47,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               path: 'home',
               page: HomeRoute.page,
+            ),
+            AutoRoute(
+              path: 'assistant',
+              page: AssistantRoute.page,
             ),
             AutoRoute(
               path: 'news-list-route',

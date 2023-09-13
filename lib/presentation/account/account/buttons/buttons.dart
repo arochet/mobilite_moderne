@@ -19,7 +19,8 @@ class ButtonsPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10),
           child: ListView(children: [
-            Text("PRESENTATION/core/_core/theme_buttons", style: Theme.of(context).textTheme.titleSmall),
+            Text("PRESENTATION/account/account/buttons/buttons.dart",
+                style: Theme.of(context).textTheme.titleSmall),
             SpaceH20(),
             ElevatedButton(
               onPressed: () {

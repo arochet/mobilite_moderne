@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Category {
   UniqueId get id => throw _privateConstructorUsedError;
+
+  /// Nom d'affichage de la catégorie
   Nom get nom => throw _privateConstructorUsedError;
 
   /// Les sous catégories de la catégories, remplis dans le repository
@@ -162,6 +164,8 @@ class _$_Category extends _Category {
 
   @override
   final UniqueId id;
+
+  /// Nom d'affichage de la catégorie
   @override
   final Nom nom;
 
@@ -229,6 +233,8 @@ abstract class _Category extends Category {
   @override
   UniqueId get id;
   @override
+
+  /// Nom d'affichage de la catégorie
   Nom get nom;
   @override
 

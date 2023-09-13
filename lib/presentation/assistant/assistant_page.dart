@@ -12,14 +12,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Page d'accueil
 @RoutePage()
-class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+class AssistantPage extends ConsumerWidget {
+  const AssistantPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowEnvironment(
       child: ShowComponentFile(
-        title: 'home/home_page.dart',
+        title: 'assistant/assistant_page.dart',
         child: Column(
           children: [
             //Mon compte

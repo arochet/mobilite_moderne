@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ArticleListPage(),
       );
     },
+    AssistantRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AssistantPage(),
+      );
+    },
     AuthCheckEmailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -98,8 +104,7 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MainNavigationRoute.name: (routeData) {
-      final args = routeData.argsAs<MainNavigationRouteArgs>(
-          orElse: () => const MainNavigationRouteArgs());
+      final args = routeData.argsAs<MainNavigationRouteArgs>(orElse: () => const MainNavigationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MainNavigationPage(key: args.key),
@@ -221,6 +226,20 @@ class ArticleListRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AssistantPage]
+class AssistantRoute extends PageRouteInfo<void> {
+  const AssistantRoute({List<PageRouteInfo>? children})
+      : super(
+          AssistantRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AssistantRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AuthCheckEmailPage]
 class AuthCheckEmailRoute extends PageRouteInfo<void> {
   const AuthCheckEmailRoute({List<PageRouteInfo>? children})
@@ -322,8 +341,7 @@ class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
 
   static const String name = 'CategoryRoute';
 
-  static const PageInfo<CategoryRouteArgs> page =
-      PageInfo<CategoryRouteArgs>(name);
+  static const PageInfo<CategoryRouteArgs> page = PageInfo<CategoryRouteArgs>(name);
 }
 
 class CategoryRouteArgs {
@@ -412,8 +430,7 @@ class MainNavigationRoute extends PageRouteInfo<MainNavigationRouteArgs> {
 
   static const String name = 'MainNavigationRoute';
 
-  static const PageInfo<MainNavigationRouteArgs> page =
-      PageInfo<MainNavigationRouteArgs>(name);
+  static const PageInfo<MainNavigationRouteArgs> page = PageInfo<MainNavigationRouteArgs>(name);
 }
 
 class MainNavigationRouteArgs {
@@ -501,8 +518,7 @@ class NewsViewRoute extends PageRouteInfo<NewsViewRouteArgs> {
 
   static const String name = 'NewsViewRoute';
 
-  static const PageInfo<NewsViewRouteArgs> page =
-      PageInfo<NewsViewRouteArgs>(name);
+  static const PageInfo<NewsViewRouteArgs> page = PageInfo<NewsViewRouteArgs>(name);
 }
 
 class NewsViewRouteArgs {
@@ -553,8 +569,7 @@ class ReauthenticateRoute extends PageRouteInfo<ReauthenticateRouteArgs> {
 
   static const String name = 'ReauthenticateRoute';
 
-  static const PageInfo<ReauthenticateRouteArgs> page =
-      PageInfo<ReauthenticateRouteArgs>(name);
+  static const PageInfo<ReauthenticateRouteArgs> page = PageInfo<ReauthenticateRouteArgs>(name);
 }
 
 class ReauthenticateRouteArgs {
@@ -591,8 +606,7 @@ class Ressources_viewRoute extends PageRouteInfo<Ressources_viewRouteArgs> {
 
   static const String name = 'Ressources_viewRoute';
 
-  static const PageInfo<Ressources_viewRouteArgs> page =
-      PageInfo<Ressources_viewRouteArgs>(name);
+  static const PageInfo<Ressources_viewRouteArgs> page = PageInfo<Ressources_viewRouteArgs>(name);
 }
 
 class Ressources_viewRouteArgs {
