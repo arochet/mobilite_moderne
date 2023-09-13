@@ -12,12 +12,14 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobilite_moderne/DOMAIN/article/category_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 
+import 'DOMAIN/article/category.dart';
 import 'DOMAIN/core/errors.dart';
 import 'DOMAIN/core/value_objects.dart';
 import 'DOMAIN/news/news.dart';
@@ -125,6 +127,13 @@ final allArticleProvider = StreamProvider.autoDispose<Either<ArticleFailure, Lis
 final oneArticleProvider = FutureProvider.autoDispose.family<Either<ArticleFailure, Article>, UniqueId>(
     (ref, id) => ref.watch(articleRepositoryProvider).watchWithId(id));
 
+//Category
 
+final allCategoryProvider = StreamProvider.autoDispose<Either<CategoryFailure, List<Category>>>(
+    (ref) => ref.watch(articleRepositoryProvider).watchCategory());
+
+final childrenCategoryProvider = FutureProvider.autoDispose
+    .family<Either<CategoryFailure, List<Category>>, Category>(
+        (ref, category) => ref.watch(articleRepositoryProvider).watchChildrenCategory(category));
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

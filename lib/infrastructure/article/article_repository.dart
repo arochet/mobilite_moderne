@@ -1,11 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:mobilite_moderne/DOMAIN/article/category.dart';
+import 'package:mobilite_moderne/DOMAIN/article/category_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'article_dtos.dart';
+import 'category_dtos.dart';
 
 abstract class IArticleRepository {
   Stream<Either<ArticleFailure, List<Article>>> watch();
@@ -13,6 +17,10 @@ abstract class IArticleRepository {
   Future<Either<ArticleFailure, Unit>> create(Article article);
   Future<Either<ArticleFailure, Unit>> update(Article article);
   Future<Either<ArticleFailure, Unit>> delete(UniqueId id);
+
+  //Category
+  Stream<Either<CategoryFailure, List<Category>>> watchCategory();
+  Future<Either<CategoryFailure, List<Category>>> watchChildrenCategory(Category id);
 }
 
 @LazySingleton(as: IArticleRepository)
@@ -119,5 +127,78 @@ class ArticleRepository implements IArticleRepository {
 
     return collection.get().then((doc) => right(ArticleDTO.fromFirestore(doc)
         .toDomain())) /* .onError((e, stackTrace) => left(const ArticleFailure.unexpected())) */;
+  }
+
+  @override
+  Stream<Either<CategoryFailure, List<Category>>> watchCategory() async* {
+    printDev();
+    final CollectionReference<Object?> collection = _firestore.categoryCollection;
+
+    //Cette fonction retour un stream de categoryCollection avec la liste des categorie dont le nom est dans le champs nom. Pour chaque categorie, on à le stream de la sous catégorie se trouvant la collection subcategory du document
+
+    yield* collection
+        .snapshots()
+        .map(
+          (snapshot) => right<CategoryFailure, List<Category>>(
+            snapshot.docs.map((doc) {
+              try {
+                //Subcategory
+                final listCategories = collection
+                    .doc(doc.id)
+                    .collection('subcategory')
+                    .get()
+                    .then(
+                      (subSnap) => right<CategoryFailure, List<Category>>(
+                        subSnap.docs.map((subdoc) {
+                          try {
+                            //Subcategory
+                            return CategoryDTO.fromFirestore(subdoc).toDomain(null, subdoc.reference.path);
+                          } catch (e, trace) {
+                            print('e $e');
+                            print('$trace');
+                          }
+                          return Category.empty();
+                        }).toList(),
+                      ),
+                    )
+                    .catchError((e) {
+                  if (e is FirebaseException && e.message!.contains('permission-denied')) {
+                    return left(const CategoryFailure.insufficientPermission());
+                  } else {
+                    return left(const CategoryFailure.unexpected());
+                  }
+                });
+
+                print('paht : ${doc.reference.path}');
+
+                return CategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path);
+              } catch (e, trace) {
+                print('e $e');
+                print('$trace');
+              }
+              return Category.empty();
+            }).toList(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException && e.message!.contains('permission-denied')) {
+        return left(const CategoryFailure.insufficientPermission());
+      } else {
+        return left(const CategoryFailure.unexpected());
+      }
+    });
+  }
+
+  @override
+  Future<Either<CategoryFailure, List<Category>>> watchChildrenCategory(Category category) async {
+    DocumentReference<Object?> document;
+    printDev();
+    document = _firestore.doc(category.path);
+
+    return await document.collection('subcategory').get().then((snapshot) => right(
+          snapshot.docs
+              .map((doc) => CategoryDTO.fromFirestore(doc).toDomain(null, doc.reference.path))
+              .toList(),
+        ));
   }
 }

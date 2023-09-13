@@ -21,5 +21,6 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get newsCollection => collection('news');
   CollectionReference get articleCollection => collection('articles');
+CollectionReference get categoryCollection => collection('category');
 //insert-collection
 }

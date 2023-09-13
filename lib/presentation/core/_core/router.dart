@@ -16,6 +16,7 @@ import 'package:mobilite_moderne/PRESENTATION/assistant/home_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigation_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
+import '../../../DOMAIN/article/category.dart';
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
 import '../../account/account/utils/utils_page.dart';
@@ -24,9 +25,9 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.da
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./article/article_add/article_add_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./article/article_list/article_list_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./article/article_view/article_view_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_home/category_home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_view/category_view_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -134,12 +135,12 @@ class AppRouter extends _$AppRouter {
           page: Privacy_policyRoute.page,
         ),
         AutoRoute(
-          path: '/article-add-route',
-          page: ArticleAddRoute.page,
+          path: '/category-route',
+          page: CategoryRoute.page,
         ),
         AutoRoute(
-          path: '/article-view-route',
-          page: ArticleViewRoute.page,
+          path: '/ressources_view-route',
+          page: Ressources_viewRoute.page,
         ), //insert-route
       ];
 }

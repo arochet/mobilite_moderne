@@ -21,6 +21,7 @@ class PanelList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: colorpanel(900),
       child: ShowComponentFile(
         title: title,
         child: Padding(

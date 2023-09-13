@@ -22,8 +22,7 @@ class NewsListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MainScaffold(
-        child: ShowComponentFile(
+    return ShowComponentFile(
       child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: AppAsync(
@@ -40,6 +39,6 @@ class NewsListPage extends ConsumerWidget {
                       ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
                     ])),
           )),
-    ));
+    );
   }
 }

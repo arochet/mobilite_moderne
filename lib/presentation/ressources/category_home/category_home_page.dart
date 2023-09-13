@@ -1,4 +1,4 @@
-import 'widget/panel_article_view.dart';
+import 'widget/panel_category_view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
@@ -20,24 +20,17 @@ class ArticleListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MainScaffold(
-        child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AppAsync(
-              ref.watch(allArticleProvider),
-              builder: (data) => data!.fold(
-                  (error) => AppError(message: error.toString()),
-                  (listArticle) => ListView(children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            context.router.push(ArticleAddRoute());
-                          },
-                          child: Text("Ajout Button"),
-                        ),
-                        ...listArticle
-                            .map<Widget>((articleObj) => PanelArticleView(article: articleObj))
-                            .toList()
-                      ])),
-            )));
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: AppAsync(
+          ref.watch(allCategoryProvider),
+          builder: (data) => data!.fold(
+              (error) => AppError(message: error.toString()),
+              (listCategory) => ListView(children: [
+                    ...listCategory
+                        .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
+                        .toList()
+                  ])),
+        ));
   }
 }

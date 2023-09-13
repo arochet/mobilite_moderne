@@ -55,7 +55,7 @@ class AppWidget extends StatelessWidget {
 
         //CARD THEME
         cardTheme: CardTheme(
-            color: colorpanel(900),
+            color: colorpanel(800),
             elevation: 0,
             margin: EdgeInsets.all(12),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
@@ -218,7 +218,7 @@ Color? colorpanel(int tint) {
     case 800:
       return Color(0xfff2f4f6);
     case 700:
-      return Color(0xfff2f4f6);
+      return Color.fromARGB(255, 229, 231, 234);
     case 100:
       return Color(0xff00214d);
     case 50:

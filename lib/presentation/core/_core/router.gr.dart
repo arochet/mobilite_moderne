@@ -21,26 +21,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AccountPage(),
       );
     },
-    ArticleAddRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ArticleAddPage(),
-      );
-    },
     ArticleListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ArticleListPage(),
-      );
-    },
-    ArticleViewRoute.name: (routeData) {
-      final args = routeData.argsAs<ArticleViewRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ArticleViewPage(
-          id: args.id,
-          key: args.key,
-        ),
       );
     },
     AuthCheckEmailRoute.name: (routeData) {
@@ -77,6 +61,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ButtonsPage(),
+      );
+    },
+    CategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CategoryPage(
+          key: args.key,
+          category: args.category,
+        ),
       );
     },
     ColorsRoute.name: (routeData) {
@@ -161,6 +155,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    Ressources_viewRoute.name: (routeData) {
+      final args = routeData.argsAs<Ressources_viewRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: Ressources_viewPage(
+          args.category,
+          key: args.key,
+        ),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -203,20 +207,6 @@ class AccountRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ArticleAddPage]
-class ArticleAddRoute extends PageRouteInfo<void> {
-  const ArticleAddRoute({List<PageRouteInfo>? children})
-      : super(
-          ArticleAddRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ArticleAddRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [ArticleListPage]
 class ArticleListRoute extends PageRouteInfo<void> {
   const ArticleListRoute({List<PageRouteInfo>? children})
@@ -228,44 +218,6 @@ class ArticleListRoute extends PageRouteInfo<void> {
   static const String name = 'ArticleListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [ArticleViewPage]
-class ArticleViewRoute extends PageRouteInfo<ArticleViewRouteArgs> {
-  ArticleViewRoute({
-    required UniqueId id,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          ArticleViewRoute.name,
-          args: ArticleViewRouteArgs(
-            id: id,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ArticleViewRoute';
-
-  static const PageInfo<ArticleViewRouteArgs> page =
-      PageInfo<ArticleViewRouteArgs>(name);
-}
-
-class ArticleViewRouteArgs {
-  const ArticleViewRouteArgs({
-    required this.id,
-    this.key,
-  });
-
-  final UniqueId id;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'ArticleViewRouteArgs{id: $id, key: $key}';
-  }
 }
 
 /// generated route for
@@ -350,6 +302,44 @@ class ButtonsRoute extends PageRouteInfo<void> {
   static const String name = 'ButtonsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CategoryPage]
+class CategoryRoute extends PageRouteInfo<CategoryRouteArgs> {
+  CategoryRoute({
+    Key? key,
+    required Category category,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CategoryRoute.name,
+          args: CategoryRouteArgs(
+            key: key,
+            category: category,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryRoute';
+
+  static const PageInfo<CategoryRouteArgs> page =
+      PageInfo<CategoryRouteArgs>(name);
+}
+
+class CategoryRouteArgs {
+  const CategoryRouteArgs({
+    this.key,
+    required this.category,
+  });
+
+  final Key? key;
+
+  final Category category;
+
+  @override
+  String toString() {
+    return 'CategoryRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for
@@ -580,6 +570,44 @@ class ReauthenticateRouteArgs {
   @override
   String toString() {
     return 'ReauthenticateRouteArgs{key: $key, route: $route}';
+  }
+}
+
+/// generated route for
+/// [Ressources_viewPage]
+class Ressources_viewRoute extends PageRouteInfo<Ressources_viewRouteArgs> {
+  Ressources_viewRoute({
+    required Category category,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          Ressources_viewRoute.name,
+          args: Ressources_viewRouteArgs(
+            category: category,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'Ressources_viewRoute';
+
+  static const PageInfo<Ressources_viewRouteArgs> page =
+      PageInfo<Ressources_viewRouteArgs>(name);
+}
+
+class Ressources_viewRouteArgs {
+  const Ressources_viewRouteArgs({
+    required this.category,
+    this.key,
+  });
+
+  final Category category;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'Ressources_viewRouteArgs{category: $category, key: $key}';
   }
 }
 
