@@ -16,9 +16,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/_components/app_error.dart';
 
 @RoutePage()
-class CategoryPage extends ConsumerWidget {
+class CategoryViewPage extends ConsumerWidget {
   final Category category;
-  const CategoryPage({
+  const CategoryViewPage({
     Key? key,
     required this.category,
   }) : super(key: key);
@@ -34,11 +34,11 @@ class CategoryPage extends ConsumerWidget {
             ref.watch(childrenCategoryProvider(category)),
             builder: (data) => data!.fold(
                 (error) => AppError(message: error.toString()),
-                (listCategory) => ListView(children: [
-                      ...listCategory
-                          .map<Widget>((categoryObj) => _PanelCategoryView(category: categoryObj))
-                          .toList()
-                    ])),
+                (listCategory) => ListView.separated(
+                      itemCount: listCategory.length,
+                      itemBuilder: (context, index) => _PanelCategoryView(category: listCategory[index]),
+                      separatorBuilder: (context, index) => Divider(),
+                    )),
           ),
         ),
       ),
@@ -54,17 +54,17 @@ class _PanelCategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowComponentFile(
       title: '_PanelCategoryView',
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
-        child: InkWell(
-          onTap: () async {
-            printDev();
-            //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
-            if (this.category.listDocument == null)
-              context.router.push(CategoryRoute(category: category));
-            else
-              context.router.push(Ressources_viewRoute(category: category));
-          },
+      child: InkWell(
+        onTap: () async {
+          printDev();
+          //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
+          if (this.category.listDocument == null)
+            context.router.push(CategoryViewRoute(category: category));
+          else
+            context.router.push(Ressources_viewRoute(category: category));
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
           child: Row(
             children: [
               Expanded(

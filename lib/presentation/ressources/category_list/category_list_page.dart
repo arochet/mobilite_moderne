@@ -1,3 +1,5 @@
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+
 import 'widget/panel_category_view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
@@ -13,24 +15,27 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
 
 @RoutePage()
-class ArticleListPage extends ConsumerWidget {
-  const ArticleListPage({
+class CategoryListPage extends ConsumerWidget {
+  const CategoryListPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: AppAsync(
-          ref.watch(allCategoryProvider),
-          builder: (data) => data!.fold(
-              (error) => AppError(message: error.toString()),
-              (listCategory) => ListView(children: [
-                    ...listCategory
-                        .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
-                        .toList()
-                  ])),
-        ));
+    return ShowComponentFile(
+      title: 'CategoryListPage',
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AppAsync(
+            ref.watch(allCategoryProvider),
+            builder: (data) => data!.fold(
+                (error) => AppError(message: error.toString()),
+                (listCategory) => ListView(children: [
+                      ...listCategory
+                          .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
+                          .toList()
+                    ])),
+          )),
+    );
   }
 }

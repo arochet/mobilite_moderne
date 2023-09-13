@@ -5,6 +5,8 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_fi
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,11 +26,18 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              //Image du logo
+              Image.asset(
+                AssetsImage.logo,
+                width: 100,
+              ),
+              SizedBox(height: 70),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     printDev();
+                    context.router.push(AssistantRoute());
                   },
                   child: Text('Assistant Technique'),
                   //style: Theme.of(context).extension<AppThemeExtention>()?.buttonLarge.copyWith(),
@@ -43,6 +52,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       printDev();
+                      context.router.push(CategoryListRoute());
                     },
                     child: Text('Ressources')),
               ),
@@ -54,10 +64,12 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       printDev();
+                      context.router.push(NewsListRoute());
                     },
                     child: Text('Actualités')),
               ),
               Text("Les dernières actualités techniques", style: Theme.of(context).textTheme.bodySmall),
+              SizedBox(height: 70),
             ],
           ),
         )),

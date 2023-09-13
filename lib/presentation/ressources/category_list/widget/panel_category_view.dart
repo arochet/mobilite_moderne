@@ -31,8 +31,8 @@ class PanelCategoryView extends StatelessWidget {
                       .textTheme
                       .titleLarge
                       ?.copyWith(color: Theme.of(context).primaryColor)),
-              SizedBox(height: 10),
-              Divider(color: Colors.black54),
+              SizedBox(height: 5),
+              Divider(),
               SizedBox(height: 10),
               if (category.subcategory != null)
                 FutureBuilder(
@@ -73,7 +73,7 @@ class _PanelSubCategoryView extends StatelessWidget {
         child: InkWell(
           onTap: () {
             printDev();
-            context.router.push(CategoryRoute(category: category));
+            context.router.push(CategoryViewRoute(category: category));
           },
           child: Row(
             children: [

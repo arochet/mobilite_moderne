@@ -110,6 +110,9 @@ class AppWidget extends StatelessWidget {
           unselectedItemColor: paragraphColor,
         ),
 
+        //DIVIDER
+        dividerColor: titleColor,
+
         //CHIP
         chipTheme: ChipThemeData(
           backgroundColor: colorpanel(700),

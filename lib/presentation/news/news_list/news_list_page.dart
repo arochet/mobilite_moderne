@@ -23,21 +23,15 @@ class NewsListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowComponentFile(
+      title: 'NewsListPage',
       child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: AppAsync(
             ref.watch(allNewsProvider),
             builder: (data) => data!.fold(
                 (error) => AppError(message: error.toString()),
-                (listNews) => ListView(children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          context.router.push(NewsAddRoute());
-                        },
-                        child: Text("Nouvelle Actualité"),
-                      ),
-                      ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
-                    ])),
+                (listNews) => ListView(
+                    children: [...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()])),
           )),
     );
   }

@@ -26,7 +26,7 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.da
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_home/category_home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart'; //insert-import
 part 'router.gr.dart';
@@ -53,12 +53,12 @@ class AppRouter extends _$AppRouter {
               page: AssistantRoute.page,
             ),
             AutoRoute(
-              path: 'news-list-route',
-              page: NewsListRoute.page,
+              path: 'ressources-list-route',
+              page: CategoryListRoute.page,
             ),
             AutoRoute(
-              path: 'article-list-route',
-              page: ArticleListRoute.page,
+              path: 'news-list-route',
+              page: NewsListRoute.page,
             ),
           ],
         ),
@@ -141,7 +141,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           path: '/category-route',
-          page: CategoryRoute.page,
+          page: CategoryViewRoute.page,
         ),
         AutoRoute(
           path: '/ressources_view-route',

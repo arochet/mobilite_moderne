@@ -15,7 +15,7 @@ class MainNavigationPage extends StatelessWidget {
   final listRoute = [
     HomeRoute(),
     AssistantRoute(),
-    ArticleListRoute(),
+    CategoryListRoute(),
     NewsListRoute(),
   ];
 
