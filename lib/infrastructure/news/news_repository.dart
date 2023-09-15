@@ -124,7 +124,7 @@ class NewsRepository implements INewsRepository {
   @override
   Future<Either<NewsFailure, News>> watchWithId(UniqueId id) async {
     final collection = _firestore.newsCollection.doc(id.getOrCrash());
-    final storageRef = FirebaseStorage.instance.ref(); //Storage REF
+    final storageRef = _storage.ref(); //Storage REF
 
     return collection.get().then((doc) {
       return right(NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image'])));

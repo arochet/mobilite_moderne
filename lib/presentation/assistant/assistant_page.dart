@@ -10,6 +10,9 @@ import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../ressources/category_list/category_list_page.dart';
+import 'widget/my_account.dart';
+
 /// Page d'accueil
 @RoutePage()
 class AssistantPage extends ConsumerWidget {
@@ -25,7 +28,7 @@ class AssistantPage extends ConsumerWidget {
             //Mon compte
             Row(
               children: [
-                _MyAccount(),
+                MyAccount(),
                 Expanded(child: Container()),
               ],
             ),
@@ -36,63 +39,45 @@ class AssistantPage extends ConsumerWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Mobilité Moderne",
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(color: colorpanel(50))),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: null,
+                        child: Text("Assistant Diagnostic"),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          printDev();
+                          context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
+                        },
+                        child: Text("Médiathèque"),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: null,
+                        child: Text("Messagerie-Assistance"),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: null,
+                        child: Text("Visio-assistance"),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MyAccount extends ConsumerWidget {
-  const _MyAccount({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return InkWell(
-      onTap: () {
-        printDev();
-        context.router.push(AccountRoute());
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Theme.of(context).canvasColor, borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.account_circle, size: 35),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppAsync(
-                      ref.watch(currentUserData),
-                      builder: (UserData? p0) => Text(p0?.userName.getOrCrash() ?? 'no user',
-                          style: Theme.of(context).textTheme.titleMedium),
-                      loading: Text('...'),
-                    ),
-                    AppAsync(
-                      ref.watch(currentUserData),
-                      builder: (UserData? p0) => Text(p0?.email?.getOrCrash() ?? 'no user',
-                          style: Theme.of(context).textTheme.bodyMedium),
-                      loading: Text('...'),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 10),
-              ],
-            ),
-          ),
         ),
       ),
     );

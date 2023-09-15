@@ -18,6 +18,7 @@ import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 
 import 'DOMAIN/article/category.dart';
 import 'DOMAIN/core/errors.dart';
@@ -128,9 +129,9 @@ final oneArticleProvider = FutureProvider.autoDispose.family<Either<ArticleFailu
     (ref, id) => ref.watch(articleRepositoryProvider).watchWithId(id));
 
 //Category
-
-final allCategoryProvider = StreamProvider.autoDispose<Either<CategoryFailure, List<Category>>>(
-    (ref) => ref.watch(articleRepositoryProvider).watchCategory());
+final allCategoryProvider = StreamProvider.autoDispose
+    .family<Either<CategoryFailure, List<Category>>, CategoryListPageMode>(
+        (ref, mode) => ref.watch(articleRepositoryProvider).watchCategory(mode));
 
 final childrenCategoryProvider = FutureProvider.autoDispose
     .family<Either<CategoryFailure, List<Category>>, Category>(

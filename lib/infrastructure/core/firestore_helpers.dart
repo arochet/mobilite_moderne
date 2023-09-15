@@ -21,6 +21,12 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get newsCollection => collection('news');
   CollectionReference get articleCollection => collection('articles');
-CollectionReference get categoryCollection => collection('category');
+  CollectionReference get categoryCollection => collection('category');
+  CollectionReference get mediathequeCollection =>
+      collection('category').doc('mediatheque').collection('sub');
+  CollectionReference get noticeConstucteurCollection =>
+      collection('category').doc('notice_constructeur').collection('sub');
+  CollectionReference get pieceFournisseurCollection =>
+      collection('category').doc('pieces_et_fournisseurs').collection('sub');
 //insert-collection
 }

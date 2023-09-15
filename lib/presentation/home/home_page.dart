@@ -40,7 +40,6 @@ class HomePage extends StatelessWidget {
                     context.router.push(AssistantRoute());
                   },
                   child: Text('Assistant Technique'),
-                  //style: Theme.of(context).extension<AppThemeExtention>()?.buttonLarge.copyWith(),
                 ),
               ),
               Text(
@@ -52,7 +51,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       printDev();
-                      context.router.push(CategoryListRoute());
+                      context.router.push(Ressources_menuRoute());
                     },
                     child: Text('Ressources')),
               ),
@@ -69,7 +68,6 @@ class HomePage extends StatelessWidget {
                     child: Text('Actualités')),
               ),
               Text("Les dernières actualités techniques", style: Theme.of(context).textTheme.bodySmall),
-              SizedBox(height: 70),
             ],
           ),
         )),

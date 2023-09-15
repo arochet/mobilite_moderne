@@ -64,9 +64,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CategoryListRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryListRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CategoryListPage(),
+        child: CategoryListPage(
+          args.mode,
+          key: args.key,
+        ),
       );
     },
     CategoryViewRoute.name: (routeData) {
@@ -145,6 +149,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    PdfViewerRoute.name: (routeData) {
+      final args = routeData.argsAs<PdfViewerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: PdfViewerPage(
+          args.name,
+          args.url,
+          key: args.key,
+        ),
+      );
+    },
     Privacy_policyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -159,6 +174,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           route: args.route,
         ),
+      );
+    },
+    Ressources_menuRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Ressources_menuPage(),
       );
     },
     Ressources_viewRoute.name: (routeData) {
@@ -312,16 +333,40 @@ class ButtonsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CategoryListPage]
-class CategoryListRoute extends PageRouteInfo<void> {
-  const CategoryListRoute({List<PageRouteInfo>? children})
-      : super(
+class CategoryListRoute extends PageRouteInfo<CategoryListRouteArgs> {
+  CategoryListRoute({
+    required CategoryListPageMode mode,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           CategoryListRoute.name,
+          args: CategoryListRouteArgs(
+            mode: mode,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CategoryListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CategoryListRouteArgs> page =
+      PageInfo<CategoryListRouteArgs>(name);
+}
+
+class CategoryListRouteArgs {
+  const CategoryListRouteArgs({
+    required this.mode,
+    this.key,
+  });
+
+  final CategoryListPageMode mode;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CategoryListRouteArgs{mode: $mode, key: $key}';
+  }
 }
 
 /// generated route for
@@ -542,6 +587,49 @@ class NewsViewRouteArgs {
 }
 
 /// generated route for
+/// [PdfViewerPage]
+class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
+  PdfViewerRoute({
+    required String name,
+    required String url,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PdfViewerRoute.name,
+          args: PdfViewerRouteArgs(
+            name: name,
+            url: url,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PdfViewerRoute';
+
+  static const PageInfo<PdfViewerRouteArgs> page =
+      PageInfo<PdfViewerRouteArgs>(name);
+}
+
+class PdfViewerRouteArgs {
+  const PdfViewerRouteArgs({
+    required this.name,
+    required this.url,
+    this.key,
+  });
+
+  final String name;
+
+  final String url;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PdfViewerRouteArgs{name: $name, url: $url, key: $key}';
+  }
+}
+
+/// generated route for
 /// [Privacy_policyPage]
 class Privacy_policyRoute extends PageRouteInfo<void> {
   const Privacy_policyRoute({List<PageRouteInfo>? children})
@@ -591,6 +679,20 @@ class ReauthenticateRouteArgs {
   String toString() {
     return 'ReauthenticateRouteArgs{key: $key, route: $route}';
   }
+}
+
+/// generated route for
+/// [Ressources_menuPage]
+class Ressources_menuRoute extends PageRouteInfo<void> {
+  const Ressources_menuRoute({List<PageRouteInfo>? children})
+      : super(
+          Ressources_menuRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Ressources_menuRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

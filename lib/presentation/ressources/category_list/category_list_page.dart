@@ -14,28 +14,48 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
 
+enum CategoryListPageMode { mediatheque, notice_constructeur, pieces_fournisseurs }
+
+extension CategoryListPageModeExtension on CategoryListPageMode {
+  String get title {
+    switch (this) {
+      case CategoryListPageMode.mediatheque:
+        return 'Mediatheque';
+      case CategoryListPageMode.notice_constructeur:
+        return 'Notice Constructeur';
+      case CategoryListPageMode.pieces_fournisseurs:
+        return 'Pièces et Fournisseurs';
+    }
+  }
+}
+
 @RoutePage()
 class CategoryListPage extends ConsumerWidget {
-  const CategoryListPage({
+  final CategoryListPageMode mode;
+  const CategoryListPage(
+    this.mode, {
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ShowComponentFile(
-      title: 'CategoryListPage',
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AppAsync(
-            ref.watch(allCategoryProvider),
-            builder: (data) => data!.fold(
-                (error) => AppError(message: error.toString()),
-                (listCategory) => ListView(children: [
-                      ...listCategory
-                          .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
-                          .toList()
-                    ])),
-          )),
+    return MainScaffold(
+      title: mode.title,
+      child: ShowComponentFile(
+        title: 'CategoryListPage',
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AppAsync(
+              ref.watch(allCategoryProvider(mode)),
+              builder: (data) => data!.fold(
+                  (error) => AppError(message: error.toString()),
+                  (listCategory) => ListView(children: [
+                        ...listCategory
+                            .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
+                            .toList()
+                      ])),
+            )),
+      ),
     );
   }
 }

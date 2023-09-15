@@ -73,7 +73,11 @@ class _PanelSubCategoryView extends StatelessWidget {
         child: InkWell(
           onTap: () {
             printDev();
-            context.router.push(CategoryViewRoute(category: category));
+            //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
+            if (this.category.listDocument == null)
+              context.router.push(CategoryViewRoute(category: category));
+            else
+              context.router.push(Ressources_viewRoute(category: category));
           },
           child: Row(
             children: [

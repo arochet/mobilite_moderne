@@ -28,7 +28,9 @@ import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_o
 import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/category_view/category_view_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_menu/ressources_menu_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/pdfViewer/pdfviewer_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -53,8 +55,8 @@ class AppRouter extends _$AppRouter {
               page: AssistantRoute.page,
             ),
             AutoRoute(
-              path: 'ressources-list-route',
-              page: CategoryListRoute.page,
+              path: 'ressources_menu-route',
+              page: Ressources_menuRoute.page,
             ),
             AutoRoute(
               path: 'news-list-route',
@@ -144,8 +146,16 @@ class AppRouter extends _$AppRouter {
           page: CategoryViewRoute.page,
         ),
         AutoRoute(
+          path: '/category_list-route',
+          page: CategoryListRoute.page,
+        ),
+        AutoRoute(
           path: '/ressources_view-route',
           page: Ressources_viewRoute.page,
+        ),
+        AutoRoute(
+          path: '/pdfViewer-route',
+          page: PdfViewerRoute.page,
         ), //insert-route
       ];
 }

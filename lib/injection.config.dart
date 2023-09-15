@@ -54,8 +54,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => firebaseInjectableModule.storage);
     gh.lazySingleton<_i8.GoogleSignIn>(
         () => firebaseInjectableModule.googleSignIn);
-    gh.lazySingleton<_i9.IArticleRepository>(
-        () => _i9.ArticleRepository(gh<_i6.FirebaseFirestore>()));
+    gh.lazySingleton<_i9.IArticleRepository>(() => _i9.ArticleRepository(
+          gh<_i6.FirebaseFirestore>(),
+          gh<_i7.FirebaseStorage>(),
+        ));
     gh.lazySingleton<_i10.INewsRepository>(() => _i10.NewsRepository(
           gh<_i6.FirebaseFirestore>(),
           gh<_i7.FirebaseStorage>(),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/article/category.dart';
@@ -8,6 +9,7 @@ import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 import 'article_dtos.dart';
 import 'category_dtos.dart';
 
@@ -19,16 +21,21 @@ abstract class IArticleRepository {
   Future<Either<ArticleFailure, Unit>> delete(UniqueId id);
 
   //Category
-  Stream<Either<CategoryFailure, List<Category>>> watchCategory();
+  Stream<Either<CategoryFailure, List<Category>>> watchCategory(CategoryListPageMode mode);
   Future<Either<CategoryFailure, List<Category>>> watchChildrenCategory(Category id);
+
+  //Ressource
+  Future<Either<ArticleFailure, String>> getDocument(String path);
 }
 
 @LazySingleton(as: IArticleRepository)
 class ArticleRepository implements IArticleRepository {
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
 
   ArticleRepository(
     this._firestore,
+    this._storage,
   );
 
   @override
@@ -130,9 +137,18 @@ class ArticleRepository implements IArticleRepository {
   }
 
   @override
-  Stream<Either<CategoryFailure, List<Category>>> watchCategory() async* {
+  Stream<Either<CategoryFailure, List<Category>>> watchCategory(CategoryListPageMode mode) async* {
     printDev();
-    final CollectionReference<Object?> collection = _firestore.categoryCollection;
+    late CollectionReference<Object?> collection;
+
+    switch (mode) {
+      case CategoryListPageMode.mediatheque:
+        collection = _firestore.mediathequeCollection;
+      case CategoryListPageMode.notice_constructeur:
+        collection = _firestore.noticeConstucteurCollection;
+      case CategoryListPageMode.pieces_fournisseurs:
+        collection = _firestore.pieceFournisseurCollection;
+    }
 
     //Cette fonction retour un stream de categoryCollection avec la liste des categorie dont le nom est dans le champs nom. Pour chaque categorie, on à le stream de la sous catégorie se trouvant la collection subcategory du document
 
@@ -145,7 +161,7 @@ class ArticleRepository implements IArticleRepository {
                 //Subcategory
                 final listCategories = collection
                     .doc(doc.id)
-                    .collection('subcategory')
+                    .collection('sub')
                     .get()
                     .then(
                       (subSnap) => right<CategoryFailure, List<Category>>(
@@ -200,5 +216,18 @@ class ArticleRepository implements IArticleRepository {
               .map((doc) => CategoryDTO.fromFirestore(doc).toDomain(null, doc.reference.path))
               .toList(),
         ));
+  }
+
+  @override
+  Future<Either<ArticleFailure, String>> getDocument(String path) async {
+    printDev();
+    final storageRef = _storage.ref(); //Storage REF
+    try {
+      return storageRef.child('mediatheque/$path').getDownloadURL().then((value) {
+        return right(value);
+      });
+    } catch (e) {
+      return left(ArticleFailure.unexpected());
+    }
   }
 }
