@@ -4,6 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/article/category.dart';
 import 'package:mobilite_moderne/DOMAIN/article/category_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource_failure.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/article/resource_dtos.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
@@ -21,11 +24,12 @@ abstract class IArticleRepository {
   Future<Either<ArticleFailure, Unit>> delete(UniqueId id);
 
   //Category
-  Stream<Either<CategoryFailure, List<Category>>> watchCategory(CategoryListPageMode mode);
-  Future<Either<CategoryFailure, List<Category>>> watchChildrenCategory(Category id);
+  Future<Either<CategoryFailure, List<Category>>> watchCategoryList(CategoryListPageMode mode);
+  Future<Either<CategoryFailure, List<Category>>> watchCategoryView(Category id);
 
   //Ressource
   Future<Either<ArticleFailure, String>> getDocument(String path);
+  Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id);
 }
 
 @LazySingleton(as: IArticleRepository)
@@ -136,86 +140,102 @@ class ArticleRepository implements IArticleRepository {
         .toDomain())) /* .onError((e, stackTrace) => left(const ArticleFailure.unexpected())) */;
   }
 
+  /// Fonction pour la page principale des catégories : On voit les catégories principales + les sous catégories
   @override
-  Stream<Either<CategoryFailure, List<Category>>> watchCategory(CategoryListPageMode mode) async* {
+  Future<Either<CategoryFailure, List<Category>>> watchCategoryList(CategoryListPageMode mode) async {
     printDev();
-    late CollectionReference<Object?> collection;
+    final CollectionReference<Object?> collection = mode.getCollection(_firestore);
+    final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
 
-    switch (mode) {
-      case CategoryListPageMode.mediatheque:
-        collection = _firestore.mediathequeCollection;
-      case CategoryListPageMode.notice_constructeur:
-        collection = _firestore.noticeConstucteurCollection;
-      case CategoryListPageMode.pieces_fournisseurs:
-        collection = _firestore.pieceFournisseurCollection;
+    //Récupère les catégories enfants
+    try {
+      return collection.get().then((snapshot) async {
+        final listFutureCategory = (snapshot.docs.map((doc) async {
+          return _getCategory(collectionResources, doc);
+        }).toList());
+
+        return right<CategoryFailure, List<Category>>(await Future.wait(listFutureCategory));
+      });
+    } catch (e) {
+      if (e is FirebaseException && e.message!.contains('permission-denied')) {
+        return left(const CategoryFailure.insufficientPermission());
+      } else {
+        return left(const CategoryFailure.unexpected());
+      }
     }
+    ;
+  }
 
-    //Cette fonction retour un stream de categoryCollection avec la liste des categorie dont le nom est dans le champs nom. Pour chaque categorie, on à le stream de la sous catégorie se trouvant la collection subcategory du document
+  /// Fonction pour la page des catégories : On voit les catégories enfants ou bien les ressources
+  @override
+  Future<Either<CategoryFailure, List<Category>>> watchCategoryView(Category category) async {
+    DocumentReference<Object?> document;
+    printDev();
+    document = _firestore.doc(category.path);
+    final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
 
-    yield* collection
-        .snapshots()
-        .map(
-          (snapshot) => right<CategoryFailure, List<Category>>(
-            snapshot.docs.map((doc) {
+    return await document.collection('sub').get().then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
+      final listFutureCategory = snapshot.docs.map((QueryDocumentSnapshot<Map<String, dynamic>> doc) async {
+        return _getCategory(collectionResources, doc);
+      }).toList();
+
+      return right<CategoryFailure, List<Category>>(await Future.wait(listFutureCategory));
+    });
+  }
+
+  Future<Category> _getCategory(
+      CollectionReference<Object?> collectionResources, QueryDocumentSnapshot<Object?> doc) async {
+    //SUBCATEGORY
+    final Either<CategoryFailure, List<Category>> listCategories = await doc.reference
+        .collection('sub')
+        .get()
+        .then(
+          (subSnap) => right<CategoryFailure, List<Category>>(
+            subSnap.docs.map((subdoc) {
               try {
                 //Subcategory
-                final listCategories = collection
-                    .doc(doc.id)
-                    .collection('sub')
-                    .get()
-                    .then(
-                      (subSnap) => right<CategoryFailure, List<Category>>(
-                        subSnap.docs.map((subdoc) {
-                          try {
-                            //Subcategory
-                            return CategoryDTO.fromFirestore(subdoc).toDomain(null, subdoc.reference.path);
-                          } catch (e, trace) {
-                            print('e $e');
-                            print('$trace');
-                          }
-                          return Category.empty();
-                        }).toList(),
-                      ),
-                    )
-                    .catchError((e) {
-                  if (e is FirebaseException && e.message!.contains('permission-denied')) {
-                    return left(const CategoryFailure.insufficientPermission());
-                  } else {
-                    return left(const CategoryFailure.unexpected());
-                  }
-                });
-
-                print('paht : ${doc.reference.path}');
-
-                return CategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path);
-              } catch (e, trace) {
+                return CategoryDTO.fromFirestore(subdoc)
+                    .toDomain(null, subdoc.reference.path, _getResource(subdoc));
+              } catch (e) {
                 print('e $e');
-                print('$trace');
               }
               return Category.empty();
             }).toList(),
           ),
         )
-        .handleError((e) {
+        .catchError((e) {
       if (e is FirebaseException && e.message!.contains('permission-denied')) {
         return left(const CategoryFailure.insufficientPermission());
       } else {
         return left(const CategoryFailure.unexpected());
       }
     });
+
+    //RESOURCES
+    List<Resource>? listResources = _getResource(doc);
+
+    return CategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path, listResources);
   }
 
-  @override
-  Future<Either<CategoryFailure, List<Category>>> watchChildrenCategory(Category category) async {
-    DocumentReference<Object?> document;
-    printDev();
-    document = _firestore.doc(category.path);
-
-    return await document.collection('subcategory').get().then((snapshot) => right(
-          snapshot.docs
-              .map((doc) => CategoryDTO.fromFirestore(doc).toDomain(null, doc.reference.path))
-              .toList(),
-        ));
+  List<Resource>? _getResource(QueryDocumentSnapshot<Object?> doc) {
+    try {
+      final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
+      List<Resource> listResources = [];
+      if ((doc.data() as Map).containsKey('listResource') == true) {
+        final List? docListResource = doc.get('listResource');
+        if (docListResource != null && docListResource.length > 0)
+          docListResource.forEach((element) async {
+            if (element != null && element != '') {
+              final resource = await collectionResources.doc(element).get();
+              listResources.add(ResourceDTO.fromFirestore(resource).toDomain());
+            }
+          });
+      }
+      return listResources;
+    } catch (e) {
+      print('petite erreur $e');
+      return null;
+    }
   }
 
   @override
@@ -229,5 +249,13 @@ class ArticleRepository implements IArticleRepository {
     } catch (e) {
       return left(ArticleFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id) async {
+    final collection = _firestore.resourcesCollection.doc(id.getOrCrash());
+
+    return collection.get().then((doc) => right(ResourceDTO.fromFirestore(doc)
+        .toDomain())) /* .onError((e, stackTrace) => left(const ResourcesFailure.unexpected())) */;
   }
 }

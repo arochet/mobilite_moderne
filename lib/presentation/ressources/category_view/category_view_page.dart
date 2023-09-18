@@ -31,7 +31,7 @@ class CategoryViewPage extends ConsumerWidget {
         child: Padding(
           padding: EdgeInsets.all(10),
           child: AppAsync(
-            ref.watch(childrenCategoryProvider(category)),
+            ref.watch(categoryViewProvider(category)),
             builder: (data) => data!.fold(
                 (error) => AppError(message: error.toString()),
                 (listCategory) => ListView.separated(
@@ -58,7 +58,7 @@ class _PanelCategoryView extends StatelessWidget {
         onTap: () async {
           printDev();
           //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
-          if (this.category.listDocument == null)
+          if (this.category.listResource == null)
             context.router.push(CategoryViewRoute(category: category));
           else
             context.router.push(Ressources_viewRoute(category: category));

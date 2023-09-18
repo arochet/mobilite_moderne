@@ -129,12 +129,12 @@ final oneArticleProvider = FutureProvider.autoDispose.family<Either<ArticleFailu
     (ref, id) => ref.watch(articleRepositoryProvider).watchWithId(id));
 
 //Category
-final allCategoryProvider = StreamProvider.autoDispose
+final categoryListProvider = FutureProvider.autoDispose
     .family<Either<CategoryFailure, List<Category>>, CategoryListPageMode>(
-        (ref, mode) => ref.watch(articleRepositoryProvider).watchCategory(mode));
+        (ref, mode) => ref.watch(articleRepositoryProvider).watchCategoryList(mode));
 
-final childrenCategoryProvider = FutureProvider.autoDispose
+final categoryViewProvider = FutureProvider.autoDispose
     .family<Either<CategoryFailure, List<Category>>, Category>(
-        (ref, category) => ref.watch(articleRepositoryProvider).watchChildrenCategory(category));
+        (ref, category) => ref.watch(articleRepositoryProvider).watchCategoryView(category));
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

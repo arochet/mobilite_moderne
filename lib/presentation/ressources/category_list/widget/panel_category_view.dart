@@ -35,23 +35,14 @@ class PanelCategoryView extends StatelessWidget {
               Divider(),
               SizedBox(height: 10),
               if (category.subcategory != null)
-                FutureBuilder(
-                    future: category.subcategory,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return snapshot.data!.fold((failure) => AppError(message: failure.toString()),
-                            (List<Category> listCategory) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: listCategory.map((Category category) {
-                              return _PanelSubCategoryView(category: category);
-                            }).toList(),
-                          );
-                        });
-                      } else {
-                        return Container();
-                      }
-                    })
+                category.subcategory!.fold((failure) => AppError(message: failure.toString()),
+                    (List<Category> listCategory) {
+                  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: listCategory.map((Category category) {
+                        return _PanelSubCategoryView(category: category);
+                      }).toList());
+                }),
             ],
           ),
         ),
@@ -74,7 +65,7 @@ class _PanelSubCategoryView extends StatelessWidget {
           onTap: () {
             printDev();
             //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
-            if (this.category.listDocument == null)
+            if (this.category.listResource == null || this.category.listResource == [])
               context.router.push(CategoryViewRoute(category: category));
             else
               context.router.push(Ressources_viewRoute(category: category));

@@ -23,7 +23,7 @@ mixin _$CategoryDTO {
   @JsonKey(ignore: true)
   String? get idCategory => throw _privateConstructorUsedError;
   String get nom => throw _privateConstructorUsedError;
-  List<String>? get listDocument => throw _privateConstructorUsedError;
+  List<String>? get listResource => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $CategoryDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String? idCategory,
       String nom,
-      List<String>? listDocument});
+      List<String>? listResource});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$CategoryDTOCopyWithImpl<$Res, $Val extends CategoryDTO>
   $Res call({
     Object? idCategory = freezed,
     Object? nom = null,
-    Object? listDocument = freezed,
+    Object? listResource = freezed,
   }) {
     return _then(_value.copyWith(
       idCategory: freezed == idCategory
@@ -69,9 +69,9 @@ class _$CategoryDTOCopyWithImpl<$Res, $Val extends CategoryDTO>
           ? _value.nom
           : nom // ignore: cast_nullable_to_non_nullable
               as String,
-      listDocument: freezed == listDocument
-          ? _value.listDocument
-          : listDocument // ignore: cast_nullable_to_non_nullable
+      listResource: freezed == listResource
+          ? _value.listResource
+          : listResource // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ) as $Val);
   }
@@ -88,7 +88,7 @@ abstract class _$$_CategoryDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(ignore: true) String? idCategory,
       String nom,
-      List<String>? listDocument});
+      List<String>? listResource});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$_CategoryDTOCopyWithImpl<$Res>
   $Res call({
     Object? idCategory = freezed,
     Object? nom = null,
-    Object? listDocument = freezed,
+    Object? listResource = freezed,
   }) {
     return _then(_$_CategoryDTO(
       idCategory: freezed == idCategory
@@ -115,9 +115,9 @@ class __$$_CategoryDTOCopyWithImpl<$Res>
           ? _value.nom
           : nom // ignore: cast_nullable_to_non_nullable
               as String,
-      listDocument: freezed == listDocument
-          ? _value._listDocument
-          : listDocument // ignore: cast_nullable_to_non_nullable
+      listResource: freezed == listResource
+          ? _value._listResource
+          : listResource // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -129,8 +129,8 @@ class _$_CategoryDTO extends _CategoryDTO {
   const _$_CategoryDTO(
       {@JsonKey(ignore: true) this.idCategory,
       required this.nom,
-      final List<String>? listDocument})
-      : _listDocument = listDocument,
+      final List<String>? listResource})
+      : _listResource = listResource,
         super._();
 
   factory _$_CategoryDTO.fromJson(Map<String, dynamic> json) =>
@@ -141,19 +141,19 @@ class _$_CategoryDTO extends _CategoryDTO {
   final String? idCategory;
   @override
   final String nom;
-  final List<String>? _listDocument;
+  final List<String>? _listResource;
   @override
-  List<String>? get listDocument {
-    final value = _listDocument;
+  List<String>? get listResource {
+    final value = _listResource;
     if (value == null) return null;
-    if (_listDocument is EqualUnmodifiableListView) return _listDocument;
+    if (_listResource is EqualUnmodifiableListView) return _listResource;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'CategoryDTO(idCategory: $idCategory, nom: $nom, listDocument: $listDocument)';
+    return 'CategoryDTO(idCategory: $idCategory, nom: $nom, listResource: $listResource)';
   }
 
   @override
@@ -165,13 +165,13 @@ class _$_CategoryDTO extends _CategoryDTO {
                 other.idCategory == idCategory) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             const DeepCollectionEquality()
-                .equals(other._listDocument, _listDocument));
+                .equals(other._listResource, _listResource));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, idCategory, nom,
-      const DeepCollectionEquality().hash(_listDocument));
+      const DeepCollectionEquality().hash(_listResource));
 
   @JsonKey(ignore: true)
   @override
@@ -191,7 +191,7 @@ abstract class _CategoryDTO extends CategoryDTO {
   const factory _CategoryDTO(
       {@JsonKey(ignore: true) final String? idCategory,
       required final String nom,
-      final List<String>? listDocument}) = _$_CategoryDTO;
+      final List<String>? listResource}) = _$_CategoryDTO;
   const _CategoryDTO._() : super._();
 
   factory _CategoryDTO.fromJson(Map<String, dynamic> json) =
@@ -203,7 +203,7 @@ abstract class _CategoryDTO extends CategoryDTO {
   @override
   String get nom;
   @override
-  List<String>? get listDocument;
+  List<String>? get listResource;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryDTOCopyWith<_$_CategoryDTO> get copyWith =>

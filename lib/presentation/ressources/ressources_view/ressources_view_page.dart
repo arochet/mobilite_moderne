@@ -24,12 +24,11 @@ class Ressources_viewPage extends StatelessWidget {
       child: ShowComponentFile(
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: category.listDocument != null
+          child: category.listResource != null
               ? ListView.separated(
-                  //children: category.listDocument.map((nameDoc) => ).toList(),
-                  itemCount: category.listDocument!.length,
+                  itemCount: category.listResource!.length,
                   itemBuilder: (context, index) {
-                    return _DocTile(document: category.listDocument![index]);
+                    return _DocTile(document: category.listResource![index].documentPath);
                   },
                   separatorBuilder: (BuildContext context, int index) => const Divider(),
                 )

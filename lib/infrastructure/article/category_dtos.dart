@@ -4,6 +4,7 @@ import 'package:mobilite_moderne/DOMAIN/article/category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 
 import '../../DOMAIN/article/category_failure.dart';
@@ -17,25 +18,26 @@ abstract class CategoryDTO implements _$CategoryDTO {
   const factory CategoryDTO({
     @JsonKey(ignore: true) String? idCategory,
     required String nom,
-    List<String>? listDocument,
+    List<String>? listResource,
   }) = _CategoryDTO;
 
   factory CategoryDTO.fromDomain(Category obj) {
     return CategoryDTO(
       idCategory: obj.id.getOrCrash(),
       nom: obj.nom.getOrCrash(),
-      listDocument: obj.listDocument,
+      listResource: obj.listResource?.map((e) => e.id.getOrCrash()).toList(),
     );
   }
 
-  Category toDomain(Future<Either<CategoryFailure, List<Category>>>? subcategory, String path) {
+  Category toDomain(
+      Either<CategoryFailure, List<Category>>? subcategory, String path, List<Resource>? listResource) {
     printDev();
     return Category(
       id: UniqueId.fromUniqueString(idCategory!),
       nom: Nom(nom),
       subcategory: subcategory,
       path: path,
-      listDocument: listDocument,
+      listResource: listResource,
     );
   }
 

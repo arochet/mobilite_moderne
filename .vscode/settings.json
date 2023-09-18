@@ -1,12 +1,12 @@
 {
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/*.freezed.dart": true,
-        "**/*.g.dart": true
+        "**/.git": false,
+        "**/.svn": false,
+        "**/.hg": false,
+        "**/CVS": false,
+        "**/.DS_Store": false,
+        "**/*.freezed.dart": false,
+        "**/*.g.dart": false
     },
     "explorerExclude.backup": null
 }

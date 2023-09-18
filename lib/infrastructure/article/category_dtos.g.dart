@@ -9,7 +9,7 @@ part of 'category_dtos.dart';
 _$_CategoryDTO _$$_CategoryDTOFromJson(Map<String, dynamic> json) =>
     _$_CategoryDTO(
       nom: json['nom'] as String,
-      listDocument: (json['listDocument'] as List<dynamic>?)
+      listResource: (json['listResource'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
@@ -17,5 +17,5 @@ _$_CategoryDTO _$$_CategoryDTOFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_CategoryDTOToJson(_$_CategoryDTO instance) =>
     <String, dynamic>{
       'nom': instance.nom,
-      'listDocument': instance.listDocument,
+      'listResource': instance.listResource,
     };

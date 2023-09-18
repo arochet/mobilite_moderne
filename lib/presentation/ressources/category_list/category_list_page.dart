@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 
 import 'widget/panel_category_view.dart';
@@ -27,6 +29,17 @@ extension CategoryListPageModeExtension on CategoryListPageMode {
         return 'Pièces et Fournisseurs';
     }
   }
+
+  CollectionReference<Object?> getCollection(FirebaseFirestore _firestore) {
+    switch (this) {
+      case CategoryListPageMode.mediatheque:
+        return _firestore.mediathequeCollection;
+      case CategoryListPageMode.notice_constructeur:
+        return _firestore.noticeConstucteurCollection;
+      case CategoryListPageMode.pieces_fournisseurs:
+        return _firestore.pieceFournisseurCollection;
+    }
+  }
 }
 
 @RoutePage()
@@ -46,7 +59,7 @@ class CategoryListPage extends ConsumerWidget {
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: AppAsync(
-              ref.watch(allCategoryProvider(mode)),
+              ref.watch(categoryListProvider(mode)),
               builder: (data) => data!.fold(
                   (error) => AppError(message: error.toString()),
                   (listCategory) => ListView(children: [

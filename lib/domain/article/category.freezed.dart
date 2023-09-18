@@ -22,14 +22,14 @@ mixin _$Category {
   Nom get nom => throw _privateConstructorUsedError;
 
   /// Les sous catégories de la catégories, remplis dans le repository
-  Future<Either<CategoryFailure, List<Category>>>? get subcategory =>
+  Either<CategoryFailure, List<Category>>? get subcategory =>
       throw _privateConstructorUsedError;
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
   String get path => throw _privateConstructorUsedError;
 
   /// Liste des documents reliés à la catégorie
-  List<String>? get listDocument => throw _privateConstructorUsedError;
+  List<Resource>? get listResource => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoryCopyWith<Category> get copyWith =>
@@ -44,9 +44,9 @@ abstract class $CategoryCopyWith<$Res> {
   $Res call(
       {UniqueId id,
       Nom nom,
-      Future<Either<CategoryFailure, List<Category>>>? subcategory,
+      Either<CategoryFailure, List<Category>>? subcategory,
       String path,
-      List<String>? listDocument});
+      List<Resource>? listResource});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? nom = null,
     Object? subcategory = freezed,
     Object? path = null,
-    Object? listDocument = freezed,
+    Object? listResource = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,15 +80,15 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
       subcategory: freezed == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
-              as Future<Either<CategoryFailure, List<Category>>>?,
+              as Either<CategoryFailure, List<Category>>?,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      listDocument: freezed == listDocument
-          ? _value.listDocument
-          : listDocument // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      listResource: freezed == listResource
+          ? _value.listResource
+          : listResource // ignore: cast_nullable_to_non_nullable
+              as List<Resource>?,
     ) as $Val);
   }
 }
@@ -103,9 +103,9 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
   $Res call(
       {UniqueId id,
       Nom nom,
-      Future<Either<CategoryFailure, List<Category>>>? subcategory,
+      Either<CategoryFailure, List<Category>>? subcategory,
       String path,
-      List<String>? listDocument});
+      List<Resource>? listResource});
 }
 
 /// @nodoc
@@ -123,7 +123,7 @@ class __$$_CategoryCopyWithImpl<$Res>
     Object? nom = null,
     Object? subcategory = freezed,
     Object? path = null,
-    Object? listDocument = freezed,
+    Object? listResource = freezed,
   }) {
     return _then(_$_Category(
       id: null == id
@@ -137,15 +137,15 @@ class __$$_CategoryCopyWithImpl<$Res>
       subcategory: freezed == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
-              as Future<Either<CategoryFailure, List<Category>>>?,
+              as Either<CategoryFailure, List<Category>>?,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      listDocument: freezed == listDocument
-          ? _value._listDocument
-          : listDocument // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      listResource: freezed == listResource
+          ? _value._listResource
+          : listResource // ignore: cast_nullable_to_non_nullable
+              as List<Resource>?,
     ));
   }
 }
@@ -158,8 +158,8 @@ class _$_Category extends _Category {
       required this.nom,
       required this.subcategory,
       required this.path,
-      final List<String>? listDocument})
-      : _listDocument = listDocument,
+      final List<Resource>? listResource})
+      : _listResource = listResource,
         super._();
 
   @override
@@ -171,28 +171,28 @@ class _$_Category extends _Category {
 
   /// Les sous catégories de la catégories, remplis dans le repository
   @override
-  final Future<Either<CategoryFailure, List<Category>>>? subcategory;
+  final Either<CategoryFailure, List<Category>>? subcategory;
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
   @override
   final String path;
 
   /// Liste des documents reliés à la catégorie
-  final List<String>? _listDocument;
+  final List<Resource>? _listResource;
 
   /// Liste des documents reliés à la catégorie
   @override
-  List<String>? get listDocument {
-    final value = _listDocument;
+  List<Resource>? get listResource {
+    final value = _listResource;
     if (value == null) return null;
-    if (_listDocument is EqualUnmodifiableListView) return _listDocument;
+    if (_listResource is EqualUnmodifiableListView) return _listResource;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'Category(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listDocument: $listDocument)';
+    return 'Category(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listResource: $listResource)';
   }
 
   @override
@@ -206,12 +206,12 @@ class _$_Category extends _Category {
                 other.subcategory == subcategory) &&
             (identical(other.path, path) || other.path == path) &&
             const DeepCollectionEquality()
-                .equals(other._listDocument, _listDocument));
+                .equals(other._listResource, _listResource));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, nom, subcategory, path,
-      const DeepCollectionEquality().hash(_listDocument));
+      const DeepCollectionEquality().hash(_listResource));
 
   @JsonKey(ignore: true)
   @override
@@ -224,10 +224,9 @@ abstract class _Category extends Category {
   const factory _Category(
       {required final UniqueId id,
       required final Nom nom,
-      required final Future<Either<CategoryFailure, List<Category>>>?
-          subcategory,
+      required final Either<CategoryFailure, List<Category>>? subcategory,
       required final String path,
-      final List<String>? listDocument}) = _$_Category;
+      final List<Resource>? listResource}) = _$_Category;
   const _Category._() : super._();
 
   @override
@@ -239,7 +238,7 @@ abstract class _Category extends Category {
   @override
 
   /// Les sous catégories de la catégories, remplis dans le repository
-  Future<Either<CategoryFailure, List<Category>>>? get subcategory;
+  Either<CategoryFailure, List<Category>>? get subcategory;
   @override
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
@@ -247,7 +246,7 @@ abstract class _Category extends Category {
   @override
 
   /// Liste des documents reliés à la catégorie
-  List<String>? get listDocument;
+  List<Resource>? get listResource;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryCopyWith<_$_Category> get copyWith =>
