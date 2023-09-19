@@ -44,40 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBUGCipQFvWW5yyOKlQhtPMpNMKlMwplmg',
-    appId: '1:504195622727:web:d27b4ca4956f678e1a4e62',
-    messagingSenderId: '504195622727',
-    projectId: 'mobilite-moderne',
-    authDomain: 'mobilite-moderne.firebaseapp.com',
-    storageBucket: 'mobilite-moderne.appspot.com',
-    measurementId: 'G-8K6T7Q1P28',
+    apiKey: 'AIzaSyB4p9Cry_6RvKlsvg17OMQ11C7ckI2kEjs',
+    appId: '1:722897713075:web:696176e32e4135b7757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    authDomain: 'suptek-digital.firebaseapp.com',
+    storageBucket: 'suptek-digital.appspot.com',
+    measurementId: 'G-4V9QK7D648',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDJiTD-ch4dC7rcEMYGNoSvklX-PavBpTU',
-    appId: '1:504195622727:android:bcc3c54562d359d61a4e62',
-    messagingSenderId: '504195622727',
-    projectId: 'mobilite-moderne',
-    storageBucket: 'mobilite-moderne.appspot.com',
+    apiKey: 'AIzaSyCovc5Yzmy28LGElNyeGVXMQYaKLG1qqFc',
+    appId: '1:722897713075:android:4bccaa7d013bf627757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCunX3-UV0WQBMyMtxNK4JNQ7h17mXBh14',
-    appId: '1:504195622727:ios:3f6ab644cac08e101a4e62',
-    messagingSenderId: '504195622727',
-    projectId: 'mobilite-moderne',
-    storageBucket: 'mobilite-moderne.appspot.com',
-    iosClientId: '504195622727-hr24hhoo96gtviaepf98okaargm4ts8h.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDgA7UDpJsUq729KDBoUL2IOqxblMvjMp8',
+    appId: '1:722897713075:ios:193efc57ed238462757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
     iosBundleId: 'com.alban.mobilitemoderne',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCunX3-UV0WQBMyMtxNK4JNQ7h17mXBh14',
-    appId: '1:504195622727:ios:3f6ab644cac08e101a4e62',
-    messagingSenderId: '504195622727',
-    projectId: 'mobilite-moderne',
-    storageBucket: 'mobilite-moderne.appspot.com',
-    iosClientId: '504195622727-hr24hhoo96gtviaepf98okaargm4ts8h.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDgA7UDpJsUq729KDBoUL2IOqxblMvjMp8',
+    appId: '1:722897713075:ios:193efc57ed238462757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
     iosBundleId: 'com.alban.mobilitemoderne',
   );
 }

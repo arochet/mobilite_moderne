@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
 
 part 'news.freezed.dart';
 
@@ -14,7 +15,7 @@ abstract class News with _$News {
 
   const factory News({
     required UniqueId id,
-    required Nom title,
+    required AppTitle title,
     required String content,
     required String image,
     required String subcontent,
@@ -26,7 +27,7 @@ abstract class News with _$News {
 
   factory News.empty() => News(
         id: UniqueId(),
-        title: Nom(''),
+        title: AppTitle(''),
         content: '',
         image: '',
         subcontent: '',

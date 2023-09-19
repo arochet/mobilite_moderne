@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$News {
   UniqueId get id => throw _privateConstructorUsedError;
-  Nom get title => throw _privateConstructorUsedError;
+  AppTitle get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get subcontent => throw _privateConstructorUsedError;
@@ -32,12 +32,11 @@ mixin _$News {
 
 /// @nodoc
 abstract class $NewsCopyWith<$Res> {
-  factory $NewsCopyWith(News value, $Res Function(News) then) =
-      _$NewsCopyWithImpl<$Res, News>;
+  factory $NewsCopyWith(News value, $Res Function(News) then) = _$NewsCopyWithImpl<$Res, News>;
   @useResult
   $Res call(
       {UniqueId id,
-      Nom title,
+      AppTitle title,
       String content,
       String image,
       String subcontent,
@@ -46,8 +45,7 @@ abstract class $NewsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsCopyWithImpl<$Res, $Val extends News>
-    implements $NewsCopyWith<$Res> {
+class _$NewsCopyWithImpl<$Res, $Val extends News> implements $NewsCopyWith<$Res> {
   _$NewsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -74,7 +72,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as Nom,
+              as AppTitle,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -101,13 +99,12 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
 
 /// @nodoc
 abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
-  factory _$$_NewsCopyWith(_$_News value, $Res Function(_$_News) then) =
-      __$$_NewsCopyWithImpl<$Res>;
+  factory _$$_NewsCopyWith(_$_News value, $Res Function(_$_News) then) = __$$_NewsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {UniqueId id,
-      Nom title,
+      AppTitle title,
       String content,
       String image,
       String subcontent,
@@ -118,8 +115,7 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
 /// @nodoc
 class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     implements _$$_NewsCopyWith<$Res> {
-  __$$_NewsCopyWithImpl(_$_News _value, $Res Function(_$_News) _then)
-      : super(_value, _then);
+  __$$_NewsCopyWithImpl(_$_News _value, $Res Function(_$_News) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -140,7 +136,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as Nom,
+              as AppTitle,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -182,7 +178,7 @@ class _$_News extends _News {
   @override
   final UniqueId id;
   @override
-  final Nom title;
+  final AppTitle title;
   @override
   final String content;
   @override
@@ -215,28 +211,25 @@ class _$_News extends _News {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.subcontent, subcontent) ||
-                other.subcontent == subcontent) &&
+            (identical(other.subcontent, subcontent) || other.subcontent == subcontent) &&
             const DeepCollectionEquality().equals(other._keywords, _keywords) &&
-            (identical(other.imageBytes, imageBytes) ||
-                other.imageBytes == imageBytes));
+            (identical(other.imageBytes, imageBytes) || other.imageBytes == imageBytes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, content, image,
-      subcontent, const DeepCollectionEquality().hash(_keywords), imageBytes);
+  int get hashCode => Object.hash(runtimeType, id, title, content, image, subcontent,
+      const DeepCollectionEquality().hash(_keywords), imageBytes);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsCopyWith<_$_News> get copyWith =>
-      __$$_NewsCopyWithImpl<_$_News>(this, _$identity);
+  _$$_NewsCopyWith<_$_News> get copyWith => __$$_NewsCopyWithImpl<_$_News>(this, _$identity);
 }
 
 abstract class _News extends News {
   const factory _News(
       {required final UniqueId id,
-      required final Nom title,
+      required final AppTitle title,
       required final String content,
       required final String image,
       required final String subcontent,
@@ -247,7 +240,7 @@ abstract class _News extends News {
   @override
   UniqueId get id;
   @override
-  Nom get title;
+  AppTitle get title;
   @override
   String get content;
   @override

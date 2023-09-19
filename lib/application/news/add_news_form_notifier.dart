@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 part 'add_news_form_notifier.freezed.dart';
 
@@ -27,7 +29,8 @@ class NewsFormNotifier extends StateNotifier<AddNewsFormData> {
   NewsFormNotifier(this._iNewsRepository) : super(AddNewsFormData.initial());
 
   titleChanged(String param) {
-    state = state.copyWith(news: state.news.copyWith(title: Nom(param)), authFailureOrSuccessOption: none());
+    state =
+        state.copyWith(news: state.news.copyWith(title: AppTitle(param)), authFailureOrSuccessOption: none());
   }
 
   contentChanged(String param) {
