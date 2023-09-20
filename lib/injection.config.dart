@@ -17,14 +17,16 @@ import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart'
     as _i9;
+import 'package:mobilite_moderne/INFRASTRUCTURE/assistant_diagnostic/assistant_diagnostic_repository.dart'
+    as _i10;
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_fake_repository.dart'
     as _i4;
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart'
     as _i3;
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firebase_injectable_module.dart'
-    as _i11;
+    as _i12;
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart'
-    as _i10;
+    as _i11;
 
 const String _test = 'test';
 const String _dev = 'dev';
@@ -58,7 +60,12 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i6.FirebaseFirestore>(),
           gh<_i7.FirebaseStorage>(),
         ));
-    gh.lazySingleton<_i10.INewsRepository>(() => _i10.NewsRepository(
+    gh.lazySingleton<_i10.IAssistantDiagnosticRepository>(
+        () => _i10.AssistantDiagnosticRepository(
+              gh<_i6.FirebaseFirestore>(),
+              gh<_i9.IArticleRepository>(),
+            ));
+    gh.lazySingleton<_i11.INewsRepository>(() => _i11.NewsRepository(
           gh<_i6.FirebaseFirestore>(),
           gh<_i7.FirebaseStorage>(),
         ));
@@ -78,4 +85,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$FirebaseInjectableModule extends _i11.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i12.FirebaseInjectableModule {}

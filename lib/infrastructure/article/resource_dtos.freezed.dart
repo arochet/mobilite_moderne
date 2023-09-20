@@ -22,6 +22,7 @@ ResourceDTO _$ResourceDTOFromJson(Map<String, dynamic> json) {
 mixin _$ResourceDTO {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
+  String get nom => throw _privateConstructorUsedError;
   String get documentPath => throw _privateConstructorUsedError;
   String get idCategory => throw _privateConstructorUsedError;
   String get keyword => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $ResourceDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
+      String nom,
       String documentPath,
       String idCategory,
       String keyword,
@@ -61,6 +63,7 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
   @override
   $Res call({
     Object? id = freezed,
+    Object? nom = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
@@ -71,6 +74,10 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as String,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -101,6 +108,7 @@ abstract class _$$_ResourceDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
+      String nom,
       String documentPath,
       String idCategory,
       String keyword,
@@ -119,6 +127,7 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? nom = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
@@ -129,6 +138,10 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as String,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -154,6 +167,7 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
 class _$_ResourceDTO extends _ResourceDTO {
   const _$_ResourceDTO(
       {@JsonKey(ignore: true) this.id,
+      required this.nom,
       required this.documentPath,
       required this.idCategory,
       required this.keyword,
@@ -167,6 +181,8 @@ class _$_ResourceDTO extends _ResourceDTO {
   @JsonKey(ignore: true)
   final String? id;
   @override
+  final String nom;
+  @override
   final String documentPath;
   @override
   final String idCategory;
@@ -177,7 +193,7 @@ class _$_ResourceDTO extends _ResourceDTO {
 
   @override
   String toString() {
-    return 'ResourceDTO(id: $id, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
+    return 'ResourceDTO(id: $id, nom: $nom, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
   }
 
   @override
@@ -186,6 +202,7 @@ class _$_ResourceDTO extends _ResourceDTO {
         (other.runtimeType == runtimeType &&
             other is _$_ResourceDTO &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.documentPath, documentPath) ||
                 other.documentPath == documentPath) &&
             (identical(other.idCategory, idCategory) ||
@@ -198,7 +215,7 @@ class _$_ResourceDTO extends _ResourceDTO {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, documentPath, idCategory, keyword, description);
+      runtimeType, id, nom, documentPath, idCategory, keyword, description);
 
   @JsonKey(ignore: true)
   @override
@@ -217,6 +234,7 @@ class _$_ResourceDTO extends _ResourceDTO {
 abstract class _ResourceDTO extends ResourceDTO {
   const factory _ResourceDTO(
       {@JsonKey(ignore: true) final String? id,
+      required final String nom,
       required final String documentPath,
       required final String idCategory,
       required final String keyword,
@@ -229,6 +247,8 @@ abstract class _ResourceDTO extends ResourceDTO {
   @override
   @JsonKey(ignore: true)
   String? get id;
+  @override
+  String get nom;
   @override
   String get documentPath;
   @override

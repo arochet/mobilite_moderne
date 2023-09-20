@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/article/category.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -28,7 +29,7 @@ class Ressources_viewPage extends StatelessWidget {
               ? ListView.separated(
                   itemCount: category.listResource!.length,
                   itemBuilder: (context, index) {
-                    return _DocTile(document: category.listResource![index].documentPath);
+                    return _DocTile(resource: category.listResource![index]);
                   },
                   separatorBuilder: (BuildContext context, int index) => const Divider(),
                 )
@@ -42,21 +43,21 @@ class Ressources_viewPage extends StatelessWidget {
 class _DocTile extends ConsumerWidget {
   const _DocTile({
     super.key,
-    required this.document,
+    required this.resource,
   });
 
-  final String document;
+  final Resource resource;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: Text(document),
+      title: Text(resource.nom.getOrCrash()),
       onTap: () async {
         //Open PDF
         final Either<ArticleFailure, String> doc =
-            await ref.watch(articleRepositoryProvider).getDocument(document);
+            await ref.watch(articleRepositoryProvider).getDocumentURL(resource.documentPath);
         doc.fold((l) => showSnackBar(context, l.toString()),
-            (String result) => context.router.push(PdfViewerRoute(url: result, name: document)));
+            (String result) => context.router.push(PdfViewerRoute(resource: resource)));
       },
       trailing: Icon(Icons.arrow_forward_ios),
     );

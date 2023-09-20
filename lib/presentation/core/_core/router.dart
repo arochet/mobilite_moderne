@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/components/components_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/text_style/text_style.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/account_page.dart';
@@ -7,12 +9,12 @@ import 'package:mobilite_moderne/PRESENTATION/account/delete_account/delete_acco
 import 'package:mobilite_moderne/PRESENTATION/account/modify_account/modify_account_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/new_password/new_password_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/reauthenticate/reauthenticate_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_home/assistant_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_check_email/auth_check_email_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_init/auth_init_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_register/auth_register_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_reset_password.dart/auth_reset_password_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigation_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,9 @@ import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_
 import 'package:mobilite_moderne/PRESENTATION/ressources/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_menu/ressources_menu_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/pdfViewer/pdfviewer_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/ressources/pdfViewer/pdfviewer_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/choice/choice_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -156,6 +160,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/pdfViewer-route',
           page: PdfViewerRoute.page,
+        ),
+        AutoRoute(
+          path: '/choice-route',
+          page: ChoiceRoute.page,
+        ),
+        AutoRoute(
+          path: '/answer-route',
+          page: AnswerRoute.page,
         ), //insert-route
       ];
 }

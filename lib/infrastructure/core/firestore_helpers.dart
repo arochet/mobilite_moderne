@@ -29,5 +29,6 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get pieceFournisseurCollection =>
       collection('category').doc('pieces_et_fournisseurs').collection('sub');
 CollectionReference get resourcesCollection => collection('resources');
+CollectionReference get choiceCollection => collection('choice');
 //insert-collection
 }

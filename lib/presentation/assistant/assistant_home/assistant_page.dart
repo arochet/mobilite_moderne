@@ -1,16 +1,19 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
+import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../ressources/category_list/category_list_page.dart';
 import 'widget/my_account.dart';
 
 /// Page d'accueil
@@ -42,7 +45,19 @@ class AssistantPage extends ConsumerWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: ElevatedButton(
-                        onPressed: null,
+                        onPressed: () {
+                          printDev();
+                          context.router.push(ChoiceRoute(
+                              filAriane: "",
+                              choice: ChoiceWithQuestions(
+                                id: UniqueId.fromUniqueString('votredemandeconcerne'),
+                                nom: Nom("votredemandeconcerne"),
+                                path: 'choice/votredemandeconcerne',
+                                question: Question("votredemandeconcerne"),
+                                choiceQuestion: null,
+                                choiceAnswer: null,
+                              )));
+                        },
                         child: Text("Assistant Diagnostic"),
                       ),
                     ),

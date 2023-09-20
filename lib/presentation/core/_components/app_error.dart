@@ -12,13 +12,12 @@ class AppError extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(width: 5),
-        Icon(Icons.error_outline, color: Theme.of(context).colorScheme.error, size: 18),
-        SizedBox(width: 5),
+        Icon(Icons.error_outline, color: Theme.of(context).colorScheme.error, size: 28),
+        SizedBox(width: 10),
         Expanded(
           child: AutoSizeText(
             message,
             style: Theme.of(context).textTheme.labelLarge,
-            maxLines: 2,
           ),
         ),
         SizedBox(width: 5),

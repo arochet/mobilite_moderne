@@ -32,7 +32,8 @@ mixin _$News {
 
 /// @nodoc
 abstract class $NewsCopyWith<$Res> {
-  factory $NewsCopyWith(News value, $Res Function(News) then) = _$NewsCopyWithImpl<$Res, News>;
+  factory $NewsCopyWith(News value, $Res Function(News) then) =
+      _$NewsCopyWithImpl<$Res, News>;
   @useResult
   $Res call(
       {UniqueId id,
@@ -45,7 +46,8 @@ abstract class $NewsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsCopyWithImpl<$Res, $Val extends News> implements $NewsCopyWith<$Res> {
+class _$NewsCopyWithImpl<$Res, $Val extends News>
+    implements $NewsCopyWith<$Res> {
   _$NewsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -99,7 +101,8 @@ class _$NewsCopyWithImpl<$Res, $Val extends News> implements $NewsCopyWith<$Res>
 
 /// @nodoc
 abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
-  factory _$$_NewsCopyWith(_$_News value, $Res Function(_$_News) then) = __$$_NewsCopyWithImpl<$Res>;
+  factory _$$_NewsCopyWith(_$_News value, $Res Function(_$_News) then) =
+      __$$_NewsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,7 +118,8 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
 /// @nodoc
 class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     implements _$$_NewsCopyWith<$Res> {
-  __$$_NewsCopyWithImpl(_$_News _value, $Res Function(_$_News) _then) : super(_value, _then);
+  __$$_NewsCopyWithImpl(_$_News _value, $Res Function(_$_News) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -211,19 +215,22 @@ class _$_News extends _News {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.subcontent, subcontent) || other.subcontent == subcontent) &&
+            (identical(other.subcontent, subcontent) ||
+                other.subcontent == subcontent) &&
             const DeepCollectionEquality().equals(other._keywords, _keywords) &&
-            (identical(other.imageBytes, imageBytes) || other.imageBytes == imageBytes));
+            (identical(other.imageBytes, imageBytes) ||
+                other.imageBytes == imageBytes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, content, image, subcontent,
-      const DeepCollectionEquality().hash(_keywords), imageBytes);
+  int get hashCode => Object.hash(runtimeType, id, title, content, image,
+      subcontent, const DeepCollectionEquality().hash(_keywords), imageBytes);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsCopyWith<_$_News> get copyWith => __$$_NewsCopyWithImpl<_$_News>(this, _$identity);
+  _$$_NewsCopyWith<_$_News> get copyWith =>
+      __$$_NewsCopyWithImpl<_$_News>(this, _$identity);
 }
 
 abstract class _News extends News {

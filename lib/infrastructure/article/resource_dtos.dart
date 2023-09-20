@@ -12,6 +12,7 @@ abstract class ResourceDTO implements _$ResourceDTO {
 
   const factory ResourceDTO({
     @JsonKey(ignore: true) String? id,
+    required String nom,
     required String documentPath,
     required String idCategory,
     required String keyword,
@@ -25,12 +26,14 @@ abstract class ResourceDTO implements _$ResourceDTO {
       idCategory: obj.idCategory.getOrCrash(),
       keyword: obj.keyword,
       description: obj.description,
+      nom: obj.nom.getOrCrash(),
     );
   }
 
   Resource toDomain() {
     return Resource(
       id: UniqueId.fromUniqueString(id!),
+      nom: Nom(nom),
       documentPath: documentPath,
       idCategory: UniqueId.fromUniqueString(idCategory),
       keyword: keyword,

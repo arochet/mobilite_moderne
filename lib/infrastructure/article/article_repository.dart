@@ -28,7 +28,7 @@ abstract class IArticleRepository {
   Future<Either<CategoryFailure, List<Category>>> watchCategoryView(Category id);
 
   //Ressource
-  Future<Either<ArticleFailure, String>> getDocument(String path);
+  Future<Either<ArticleFailure, String>> getDocumentURL(String path);
   Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id);
 }
 
@@ -239,11 +239,11 @@ class ArticleRepository implements IArticleRepository {
   }
 
   @override
-  Future<Either<ArticleFailure, String>> getDocument(String path) async {
+  Future<Either<ArticleFailure, String>> getDocumentURL(String path) async {
     printDev();
     final storageRef = _storage.ref(); //Storage REF
     try {
-      return storageRef.child('mediatheque/$path').getDownloadURL().then((value) {
+      return storageRef.child(path).getDownloadURL().then((value) {
         return right(value);
       });
     } catch (e) {
@@ -253,9 +253,9 @@ class ArticleRepository implements IArticleRepository {
 
   @override
   Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id) async {
-    final collection = _firestore.resourcesCollection.doc(id.getOrCrash());
+    final document = _firestore.resourcesCollection.doc(id.getOrCrash());
 
-    return collection.get().then((doc) => right(ResourceDTO.fromFirestore(doc)
+    return document.get().then((doc) => right(ResourceDTO.fromFirestore(doc)
         .toDomain())) /* .onError((e, stackTrace) => left(const ResourcesFailure.unexpected())) */;
   }
 }

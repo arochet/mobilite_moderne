@@ -21,9 +21,12 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
 
 import 'DOMAIN/article/category.dart';
+import 'DOMAIN/assistant_diagnostic/choice.dart';
+import 'DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
 import 'DOMAIN/core/errors.dart';
 import 'DOMAIN/core/value_objects.dart';
 import 'DOMAIN/news/news.dart';
+import 'INFRASTRUCTURE/assistant_diagnostic/assistant_diagnostic_repository.dart';
 import 'INFRASTRUCTURE/auth/auth_repository.dart';
 import 'injection.dart';
 
@@ -136,5 +139,18 @@ final categoryListProvider = FutureProvider.autoDispose
 final categoryViewProvider = FutureProvider.autoDispose
     .family<Either<CategoryFailure, List<Category>>, Category>(
         (ref, category) => ref.watch(articleRepositoryProvider).watchCategoryView(category));
+
+//Assistant Diagnostic
+final assistantDiagnosticRepositoryProvider =
+    Provider<IAssistantDiagnosticRepository>((ref) => getIt<IAssistantDiagnosticRepository>());
+
+final oneChoiceProvider = FutureProvider.autoDispose
+    .family<Either<AssistantDiagnosticFailure, ChoiceWithQuestions>, ChoiceWithQuestions>(
+        (ref, choice) => ref.watch(assistantDiagnosticRepositoryProvider).watchWithId(choice));
+
+final oneAnswerProvider = FutureProvider.autoDispose
+    .family<Either<AssistantDiagnosticFailure, ChoiceWithAnswer>, ChoiceWithAnswer>(
+        (ref, choice) => ref.watch(assistantDiagnosticRepositoryProvider).watchAnswerWithId(choice));
+
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

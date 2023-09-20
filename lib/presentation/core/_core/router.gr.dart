@@ -21,6 +21,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AccountPage(),
       );
     },
+    AnswerRoute.name: (routeData) {
+      final args = routeData.argsAs<AnswerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AnswerPage(
+          key: args.key,
+          choice: args.choice,
+          filAriane: args.filAriane,
+        ),
+      );
+    },
     AssistantRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -83,6 +94,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ChoiceRoute.name: (routeData) {
+      final args = routeData.argsAs<ChoiceRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ChoicePage(
+          key: args.key,
+          choice: args.choice,
+          filAriane: args.filAriane,
+        ),
+      );
+    },
     ColorsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -108,8 +130,7 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MainNavigationRoute.name: (routeData) {
-      final args = routeData.argsAs<MainNavigationRouteArgs>(
-          orElse: () => const MainNavigationRouteArgs());
+      final args = routeData.argsAs<MainNavigationRouteArgs>(orElse: () => const MainNavigationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MainNavigationPage(key: args.key),
@@ -154,8 +175,7 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: PdfViewerPage(
-          args.name,
-          args.url,
+          args.resource,
           key: args.key,
         ),
       );
@@ -231,6 +251,48 @@ class AccountRoute extends PageRouteInfo<void> {
   static const String name = 'AccountRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AnswerPage]
+class AnswerRoute extends PageRouteInfo<AnswerRouteArgs> {
+  AnswerRoute({
+    Key? key,
+    required ChoiceWithAnswer choice,
+    required String filAriane,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AnswerRoute.name,
+          args: AnswerRouteArgs(
+            key: key,
+            choice: choice,
+            filAriane: filAriane,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AnswerRoute';
+
+  static const PageInfo<AnswerRouteArgs> page = PageInfo<AnswerRouteArgs>(name);
+}
+
+class AnswerRouteArgs {
+  const AnswerRouteArgs({
+    this.key,
+    required this.choice,
+    required this.filAriane,
+  });
+
+  final Key? key;
+
+  final ChoiceWithAnswer choice;
+
+  final String filAriane;
+
+  @override
+  String toString() {
+    return 'AnswerRouteArgs{key: $key, choice: $choice, filAriane: $filAriane}';
+  }
 }
 
 /// generated route for
@@ -349,8 +411,7 @@ class CategoryListRoute extends PageRouteInfo<CategoryListRouteArgs> {
 
   static const String name = 'CategoryListRoute';
 
-  static const PageInfo<CategoryListRouteArgs> page =
-      PageInfo<CategoryListRouteArgs>(name);
+  static const PageInfo<CategoryListRouteArgs> page = PageInfo<CategoryListRouteArgs>(name);
 }
 
 class CategoryListRouteArgs {
@@ -387,8 +448,7 @@ class CategoryViewRoute extends PageRouteInfo<CategoryViewRouteArgs> {
 
   static const String name = 'CategoryViewRoute';
 
-  static const PageInfo<CategoryViewRouteArgs> page =
-      PageInfo<CategoryViewRouteArgs>(name);
+  static const PageInfo<CategoryViewRouteArgs> page = PageInfo<CategoryViewRouteArgs>(name);
 }
 
 class CategoryViewRouteArgs {
@@ -404,6 +464,48 @@ class CategoryViewRouteArgs {
   @override
   String toString() {
     return 'CategoryViewRouteArgs{key: $key, category: $category}';
+  }
+}
+
+/// generated route for
+/// [ChoicePage]
+class ChoiceRoute extends PageRouteInfo<ChoiceRouteArgs> {
+  ChoiceRoute({
+    Key? key,
+    required ChoiceWithQuestions choice,
+    required String filAriane,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ChoiceRoute.name,
+          args: ChoiceRouteArgs(
+            key: key,
+            choice: choice,
+            filAriane: filAriane,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ChoiceRoute';
+
+  static const PageInfo<ChoiceRouteArgs> page = PageInfo<ChoiceRouteArgs>(name);
+}
+
+class ChoiceRouteArgs {
+  const ChoiceRouteArgs({
+    this.key,
+    required this.choice,
+    required this.filAriane,
+  });
+
+  final Key? key;
+
+  final ChoiceWithQuestions choice;
+
+  final String filAriane;
+
+  @override
+  String toString() {
+    return 'ChoiceRouteArgs{key: $key, choice: $choice, filAriane: $filAriane}';
   }
 }
 
@@ -477,8 +579,7 @@ class MainNavigationRoute extends PageRouteInfo<MainNavigationRouteArgs> {
 
   static const String name = 'MainNavigationRoute';
 
-  static const PageInfo<MainNavigationRouteArgs> page =
-      PageInfo<MainNavigationRouteArgs>(name);
+  static const PageInfo<MainNavigationRouteArgs> page = PageInfo<MainNavigationRouteArgs>(name);
 }
 
 class MainNavigationRouteArgs {
@@ -566,8 +667,7 @@ class NewsViewRoute extends PageRouteInfo<NewsViewRouteArgs> {
 
   static const String name = 'NewsViewRoute';
 
-  static const PageInfo<NewsViewRouteArgs> page =
-      PageInfo<NewsViewRouteArgs>(name);
+  static const PageInfo<NewsViewRouteArgs> page = PageInfo<NewsViewRouteArgs>(name);
 }
 
 class NewsViewRouteArgs {
@@ -590,15 +690,13 @@ class NewsViewRouteArgs {
 /// [PdfViewerPage]
 class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
   PdfViewerRoute({
-    required String name,
-    required String url,
+    required Resource resource,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           PdfViewerRoute.name,
           args: PdfViewerRouteArgs(
-            name: name,
-            url: url,
+            resource: resource,
             key: key,
           ),
           initialChildren: children,
@@ -606,26 +704,22 @@ class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
 
   static const String name = 'PdfViewerRoute';
 
-  static const PageInfo<PdfViewerRouteArgs> page =
-      PageInfo<PdfViewerRouteArgs>(name);
+  static const PageInfo<PdfViewerRouteArgs> page = PageInfo<PdfViewerRouteArgs>(name);
 }
 
 class PdfViewerRouteArgs {
   const PdfViewerRouteArgs({
-    required this.name,
-    required this.url,
+    required this.resource,
     this.key,
   });
 
-  final String name;
-
-  final String url;
+  final Resource resource;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'PdfViewerRouteArgs{name: $name, url: $url, key: $key}';
+    return 'PdfViewerRouteArgs{resource: $resource, key: $key}';
   }
 }
 
@@ -661,8 +755,7 @@ class ReauthenticateRoute extends PageRouteInfo<ReauthenticateRouteArgs> {
 
   static const String name = 'ReauthenticateRoute';
 
-  static const PageInfo<ReauthenticateRouteArgs> page =
-      PageInfo<ReauthenticateRouteArgs>(name);
+  static const PageInfo<ReauthenticateRouteArgs> page = PageInfo<ReauthenticateRouteArgs>(name);
 }
 
 class ReauthenticateRouteArgs {
@@ -713,8 +806,7 @@ class Ressources_viewRoute extends PageRouteInfo<Ressources_viewRouteArgs> {
 
   static const String name = 'Ressources_viewRoute';
 
-  static const PageInfo<Ressources_viewRouteArgs> page =
-      PageInfo<Ressources_viewRouteArgs>(name);
+  static const PageInfo<Ressources_viewRouteArgs> page = PageInfo<Ressources_viewRouteArgs>(name);
 }
 
 class Ressources_viewRouteArgs {

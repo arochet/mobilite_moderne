@@ -17,13 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Resource {
   UniqueId get id => throw _privateConstructorUsedError;
+  Nom get nom => throw _privateConstructorUsedError;
   String get documentPath => throw _privateConstructorUsedError;
   UniqueId get idCategory => throw _privateConstructorUsedError;
   String get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ResourceCopyWith<Resource> get copyWith => throw _privateConstructorUsedError;
+  $ResourceCopyWith<Resource> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -31,11 +33,18 @@ abstract class $ResourceCopyWith<$Res> {
   factory $ResourceCopyWith(Resource value, $Res Function(Resource) then) =
       _$ResourceCopyWithImpl<$Res, Resource>;
   @useResult
-  $Res call({UniqueId id, String documentPath, UniqueId idCategory, String keyword, String description});
+  $Res call(
+      {UniqueId id,
+      Nom nom,
+      String documentPath,
+      UniqueId idCategory,
+      String keyword,
+      String description});
 }
 
 /// @nodoc
-class _$ResourceCopyWithImpl<$Res, $Val extends Resource> implements $ResourceCopyWith<$Res> {
+class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
+    implements $ResourceCopyWith<$Res> {
   _$ResourceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -47,6 +56,7 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource> implements $ResourceCo
   @override
   $Res call({
     Object? id = null,
+    Object? nom = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
@@ -57,6 +67,10 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource> implements $ResourceCo
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as Nom,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -78,33 +92,48 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource> implements $ResourceCo
 }
 
 /// @nodoc
-abstract class _$$_ResourcesCopyWith<$Res> implements $ResourceCopyWith<$Res> {
-  factory _$$_ResourcesCopyWith(_$_Resources value, $Res Function(_$_Resources) then) =
-      __$$_ResourcesCopyWithImpl<$Res>;
+abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
+  factory _$$_ResourceCopyWith(
+          _$_Resource value, $Res Function(_$_Resource) then) =
+      __$$_ResourceCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, String documentPath, UniqueId idCategory, String keyword, String description});
+  $Res call(
+      {UniqueId id,
+      Nom nom,
+      String documentPath,
+      UniqueId idCategory,
+      String keyword,
+      String description});
 }
 
 /// @nodoc
-class __$$_ResourcesCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res, _$_Resources>
-    implements _$$_ResourcesCopyWith<$Res> {
-  __$$_ResourcesCopyWithImpl(_$_Resources _value, $Res Function(_$_Resources) _then) : super(_value, _then);
+class __$$_ResourceCopyWithImpl<$Res>
+    extends _$ResourceCopyWithImpl<$Res, _$_Resource>
+    implements _$$_ResourceCopyWith<$Res> {
+  __$$_ResourceCopyWithImpl(
+      _$_Resource _value, $Res Function(_$_Resource) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
+    Object? nom = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
     Object? description = null,
   }) {
-    return _then(_$_Resources(
+    return _then(_$_Resource(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      nom: null == nom
+          ? _value.nom
+          : nom // ignore: cast_nullable_to_non_nullable
+              as Nom,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -127,9 +156,10 @@ class __$$_ResourcesCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res, _$_R
 
 /// @nodoc
 
-class _$_Resources extends _Resources {
-  const _$_Resources(
+class _$_Resource extends _Resource {
+  const _$_Resource(
       {required this.id,
+      required this.nom,
       required this.documentPath,
       required this.idCategory,
       required this.keyword,
@@ -138,6 +168,8 @@ class _$_Resources extends _Resources {
 
   @override
   final UniqueId id;
+  @override
+  final Nom nom;
   @override
   final String documentPath;
   @override
@@ -149,42 +181,50 @@ class _$_Resources extends _Resources {
 
   @override
   String toString() {
-    return 'Resource(id: $id, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
+    return 'Resource(id: $id, nom: $nom, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Resources &&
+            other is _$_Resource &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.documentPath, documentPath) || other.documentPath == documentPath) &&
-            (identical(other.idCategory, idCategory) || other.idCategory == idCategory) &&
+            (identical(other.nom, nom) || other.nom == nom) &&
+            (identical(other.documentPath, documentPath) ||
+                other.documentPath == documentPath) &&
+            (identical(other.idCategory, idCategory) ||
+                other.idCategory == idCategory) &&
             (identical(other.keyword, keyword) || other.keyword == keyword) &&
-            (identical(other.description, description) || other.description == description));
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, documentPath, idCategory, keyword, description);
+  int get hashCode => Object.hash(
+      runtimeType, id, nom, documentPath, idCategory, keyword, description);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResourcesCopyWith<_$_Resources> get copyWith =>
-      __$$_ResourcesCopyWithImpl<_$_Resources>(this, _$identity);
+  _$$_ResourceCopyWith<_$_Resource> get copyWith =>
+      __$$_ResourceCopyWithImpl<_$_Resource>(this, _$identity);
 }
 
-abstract class _Resources extends Resource {
-  const factory _Resources(
+abstract class _Resource extends Resource {
+  const factory _Resource(
       {required final UniqueId id,
+      required final Nom nom,
       required final String documentPath,
       required final UniqueId idCategory,
       required final String keyword,
-      required final String description}) = _$_Resources;
-  const _Resources._() : super._();
+      required final String description}) = _$_Resource;
+  const _Resource._() : super._();
 
   @override
   UniqueId get id;
+  @override
+  Nom get nom;
   @override
   String get documentPath;
   @override
@@ -195,5 +235,6 @@ abstract class _Resources extends Resource {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_ResourcesCopyWith<_$_Resources> get copyWith => throw _privateConstructorUsedError;
+  _$$_ResourceCopyWith<_$_Resource> get copyWith =>
+      throw _privateConstructorUsedError;
 }
