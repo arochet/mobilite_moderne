@@ -65,6 +65,7 @@ dependencies:
   package_info_plus: ^4.1.0 #Récupère les numéros de version de l'app (1.0.0-12)
   dartdoc: ^6.3.0
   flutter_cached_pdfview: ^0.4.2
+  video_player: ^2.7.2
 
 
 dev_dependencies:

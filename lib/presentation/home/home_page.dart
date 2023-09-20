@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       printDev();
-                      context.router.push(Ressources_menuRoute());
+                      context.router.push(Resource_menuRoute());
                     },
                     child: Text('Ressources')),
               ),

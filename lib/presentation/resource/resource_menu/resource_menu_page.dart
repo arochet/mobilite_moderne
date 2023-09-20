@@ -12,8 +12,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../category_list/category_list_page.dart';
 
 @RoutePage()
-class Ressources_menuPage extends StatelessWidget {
-  const Ressources_menuPage({Key? key}) : super(key: key);
+class Resource_menuPage extends StatelessWidget {
+  const Resource_menuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

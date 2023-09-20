@@ -130,7 +130,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MainNavigationRoute.name: (routeData) {
-      final args = routeData.argsAs<MainNavigationRouteArgs>(orElse: () => const MainNavigationRouteArgs());
+      final args = routeData.argsAs<MainNavigationRouteArgs>(
+          orElse: () => const MainNavigationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MainNavigationPage(key: args.key),
@@ -196,17 +197,23 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    Ressources_menuRoute.name: (routeData) {
+    Resource_menuRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const Ressources_menuPage(),
+        child: const Resource_menuPage(),
       );
     },
-    Ressources_viewRoute.name: (routeData) {
-      final args = routeData.argsAs<Ressources_viewRouteArgs>();
+    Resource_videoplayerRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: Ressources_viewPage(
+        child: const Resource_videoplayerPage(),
+      );
+    },
+    Resource_viewRoute.name: (routeData) {
+      final args = routeData.argsAs<Resource_viewRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: Resource_viewPage(
           args.category,
           key: args.key,
         ),
@@ -411,7 +418,8 @@ class CategoryListRoute extends PageRouteInfo<CategoryListRouteArgs> {
 
   static const String name = 'CategoryListRoute';
 
-  static const PageInfo<CategoryListRouteArgs> page = PageInfo<CategoryListRouteArgs>(name);
+  static const PageInfo<CategoryListRouteArgs> page =
+      PageInfo<CategoryListRouteArgs>(name);
 }
 
 class CategoryListRouteArgs {
@@ -448,7 +456,8 @@ class CategoryViewRoute extends PageRouteInfo<CategoryViewRouteArgs> {
 
   static const String name = 'CategoryViewRoute';
 
-  static const PageInfo<CategoryViewRouteArgs> page = PageInfo<CategoryViewRouteArgs>(name);
+  static const PageInfo<CategoryViewRouteArgs> page =
+      PageInfo<CategoryViewRouteArgs>(name);
 }
 
 class CategoryViewRouteArgs {
@@ -579,7 +588,8 @@ class MainNavigationRoute extends PageRouteInfo<MainNavigationRouteArgs> {
 
   static const String name = 'MainNavigationRoute';
 
-  static const PageInfo<MainNavigationRouteArgs> page = PageInfo<MainNavigationRouteArgs>(name);
+  static const PageInfo<MainNavigationRouteArgs> page =
+      PageInfo<MainNavigationRouteArgs>(name);
 }
 
 class MainNavigationRouteArgs {
@@ -667,7 +677,8 @@ class NewsViewRoute extends PageRouteInfo<NewsViewRouteArgs> {
 
   static const String name = 'NewsViewRoute';
 
-  static const PageInfo<NewsViewRouteArgs> page = PageInfo<NewsViewRouteArgs>(name);
+  static const PageInfo<NewsViewRouteArgs> page =
+      PageInfo<NewsViewRouteArgs>(name);
 }
 
 class NewsViewRouteArgs {
@@ -704,7 +715,8 @@ class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
 
   static const String name = 'PdfViewerRoute';
 
-  static const PageInfo<PdfViewerRouteArgs> page = PageInfo<PdfViewerRouteArgs>(name);
+  static const PageInfo<PdfViewerRouteArgs> page =
+      PageInfo<PdfViewerRouteArgs>(name);
 }
 
 class PdfViewerRouteArgs {
@@ -755,7 +767,8 @@ class ReauthenticateRoute extends PageRouteInfo<ReauthenticateRouteArgs> {
 
   static const String name = 'ReauthenticateRoute';
 
-  static const PageInfo<ReauthenticateRouteArgs> page = PageInfo<ReauthenticateRouteArgs>(name);
+  static const PageInfo<ReauthenticateRouteArgs> page =
+      PageInfo<ReauthenticateRouteArgs>(name);
 }
 
 class ReauthenticateRouteArgs {
@@ -775,42 +788,57 @@ class ReauthenticateRouteArgs {
 }
 
 /// generated route for
-/// [Ressources_menuPage]
-class Ressources_menuRoute extends PageRouteInfo<void> {
-  const Ressources_menuRoute({List<PageRouteInfo>? children})
+/// [Resource_menuPage]
+class Resource_menuRoute extends PageRouteInfo<void> {
+  const Resource_menuRoute({List<PageRouteInfo>? children})
       : super(
-          Ressources_menuRoute.name,
+          Resource_menuRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'Ressources_menuRoute';
+  static const String name = 'Resource_menuRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [Ressources_viewPage]
-class Ressources_viewRoute extends PageRouteInfo<Ressources_viewRouteArgs> {
-  Ressources_viewRoute({
+/// [Resource_videoplayerPage]
+class Resource_videoplayerRoute extends PageRouteInfo<void> {
+  const Resource_videoplayerRoute({List<PageRouteInfo>? children})
+      : super(
+          Resource_videoplayerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Resource_videoplayerRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Resource_viewPage]
+class Resource_viewRoute extends PageRouteInfo<Resource_viewRouteArgs> {
+  Resource_viewRoute({
     required Category category,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          Ressources_viewRoute.name,
-          args: Ressources_viewRouteArgs(
+          Resource_viewRoute.name,
+          args: Resource_viewRouteArgs(
             category: category,
             key: key,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'Ressources_viewRoute';
+  static const String name = 'Resource_viewRoute';
 
-  static const PageInfo<Ressources_viewRouteArgs> page = PageInfo<Ressources_viewRouteArgs>(name);
+  static const PageInfo<Resource_viewRouteArgs> page =
+      PageInfo<Resource_viewRouteArgs>(name);
 }
 
-class Ressources_viewRouteArgs {
-  const Ressources_viewRouteArgs({
+class Resource_viewRouteArgs {
+  const Resource_viewRouteArgs({
     required this.category,
     this.key,
   });
@@ -821,7 +849,7 @@ class Ressources_viewRouteArgs {
 
   @override
   String toString() {
-    return 'Ressources_viewRouteArgs{category: $category, key: $key}';
+    return 'Resource_viewRouteArgs{category: $category, key: $key}';
   }
 }
 

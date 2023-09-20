@@ -27,18 +27,24 @@ Messages / idDiscussion
 
 Category
 ------
-- nom
-- listCategory
+- nom (nom de la catégorie)
+  - sub (liste des sous catégories)
+    - nom
+      - sub
+    - nom
+      - sub
+    - nom
+      - sub
 
-Choix
+ChoiceWithQuestion
 ------
-- idChoix
-- titre
-- question?
-- listIdChoixAnswer
-- idAnswer
+- nom
+- question
+- path (Chemin dans Firebase)
+- listChoixQuestion (Question suivantes)
+- listChoixReponse (Réponse aux question)
 
-Answer
+ChoiceWithAnswer
 ------
 - text
-- listRessources
+- listRessources (référence aux PDFs, vidéo ...)

@@ -14,9 +14,9 @@ import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class Ressources_viewPage extends StatelessWidget {
+class Resource_viewPage extends StatelessWidget {
   final Category category;
-  const Ressources_viewPage(this.category, {Key? key}) : super(key: key);
+  const Resource_viewPage(this.category, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

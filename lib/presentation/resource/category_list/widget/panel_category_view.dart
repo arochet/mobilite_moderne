@@ -68,7 +68,7 @@ class _PanelSubCategoryView extends StatelessWidget {
             if (this.category.listResource == null || this.category.listResource == [])
               context.router.push(CategoryViewRoute(category: category));
             else
-              context.router.push(Ressources_viewRoute(category: category));
+              context.router.push(Resource_viewRoute(category: category));
           },
           child: Row(
             children: [

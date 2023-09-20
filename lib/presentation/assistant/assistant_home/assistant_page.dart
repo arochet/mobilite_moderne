@@ -10,7 +10,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -19,6 +19,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigat
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/resource_videoplayer_page.dart';
 import '../../../DOMAIN/article/category.dart';
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
@@ -28,11 +29,11 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.da
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_view/category_view_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_view/ressources_view_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/ressources_menu/ressources_menu_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/pdfViewer/pdfviewer_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_view/category_view_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_view_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/resource_menu_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/pdfViewer/pdfviewer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/choice/choice_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart'; //insert-import
 part 'router.gr.dart';
@@ -60,7 +61,7 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               path: 'ressources_menu-route',
-              page: Ressources_menuRoute.page,
+              page: Resource_menuRoute.page,
             ),
             AutoRoute(
               path: 'news-list-route',
@@ -155,7 +156,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           path: '/ressources_view-route',
-          page: Ressources_viewRoute.page,
+          page: Resource_viewRoute.page,
         ),
         AutoRoute(
           path: '/pdfViewer-route',

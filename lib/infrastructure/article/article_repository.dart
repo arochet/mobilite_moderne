@@ -12,7 +12,7 @@ import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
 import 'article_dtos.dart';
 import 'category_dtos.dart';
 

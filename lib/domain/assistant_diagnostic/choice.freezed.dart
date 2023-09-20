@@ -272,8 +272,12 @@ abstract class _ChoiceWithQuestions extends ChoiceWithQuestions {
 mixin _$ChoiceWithAnswer {
   UniqueId get id => throw _privateConstructorUsedError;
   Nom get nom => throw _privateConstructorUsedError;
+
+  /// Chemin du choix dans Firebase
   String get path => throw _privateConstructorUsedError;
   Anwser get answer => throw _privateConstructorUsedError;
+
+  /// Liste des ressources qui sont liées à ce choix (PDF ...)
   List<Resource> get listRessources => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -413,11 +417,17 @@ class _$_ChoiceWithAnswer extends _ChoiceWithAnswer {
   final UniqueId id;
   @override
   final Nom nom;
+
+  /// Chemin du choix dans Firebase
   @override
   final String path;
   @override
   final Anwser answer;
+
+  /// Liste des ressources qui sont liées à ce choix (PDF ...)
   final List<Resource> _listRessources;
+
+  /// Liste des ressources qui sont liées à ce choix (PDF ...)
   @override
   List<Resource> get listRessources {
     if (_listRessources is EqualUnmodifiableListView) return _listRessources;
@@ -468,10 +478,14 @@ abstract class _ChoiceWithAnswer extends ChoiceWithAnswer {
   @override
   Nom get nom;
   @override
+
+  /// Chemin du choix dans Firebase
   String get path;
   @override
   Anwser get answer;
   @override
+
+  /// Liste des ressources qui sont liées à ce choix (PDF ...)
   List<Resource> get listRessources;
   @override
   @JsonKey(ignore: true)

@@ -61,7 +61,7 @@ class _PanelCategoryView extends StatelessWidget {
           if (this.category.listResource == null)
             context.router.push(CategoryViewRoute(category: category));
           else
-            context.router.push(Ressources_viewRoute(category: category));
+            context.router.push(Resource_viewRoute(category: category));
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),

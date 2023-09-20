@@ -18,7 +18,7 @@ import 'package:mobilite_moderne/DOMAIN/article/article.dart';
 import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
-import 'package:mobilite_moderne/PRESENTATION/ressources/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
 
 import 'DOMAIN/article/category.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
