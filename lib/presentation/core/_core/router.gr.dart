@@ -171,16 +171,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    PdfViewerRoute.name: (routeData) {
-      final args = routeData.argsAs<PdfViewerRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PdfViewerPage(
-          args.resource,
-          key: args.key,
-        ),
-      );
-    },
     Privacy_policyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -194,6 +184,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ReauthenticatePage(
           key: args.key,
           route: args.route,
+        ),
+      );
+    },
+    ResourcePdfViewerRoute.name: (routeData) {
+      final args = routeData.argsAs<ResourcePdfViewerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ResourcePdfViewerPage(
+          args.resource,
+          key: args.key,
         ),
       );
     },
@@ -698,44 +698,6 @@ class NewsViewRouteArgs {
 }
 
 /// generated route for
-/// [PdfViewerPage]
-class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
-  PdfViewerRoute({
-    required Resource resource,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          PdfViewerRoute.name,
-          args: PdfViewerRouteArgs(
-            resource: resource,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'PdfViewerRoute';
-
-  static const PageInfo<PdfViewerRouteArgs> page =
-      PageInfo<PdfViewerRouteArgs>(name);
-}
-
-class PdfViewerRouteArgs {
-  const PdfViewerRouteArgs({
-    required this.resource,
-    this.key,
-  });
-
-  final Resource resource;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'PdfViewerRouteArgs{resource: $resource, key: $key}';
-  }
-}
-
-/// generated route for
 /// [Privacy_policyPage]
 class Privacy_policyRoute extends PageRouteInfo<void> {
   const Privacy_policyRoute({List<PageRouteInfo>? children})
@@ -784,6 +746,44 @@ class ReauthenticateRouteArgs {
   @override
   String toString() {
     return 'ReauthenticateRouteArgs{key: $key, route: $route}';
+  }
+}
+
+/// generated route for
+/// [ResourcePdfViewerPage]
+class ResourcePdfViewerRoute extends PageRouteInfo<ResourcePdfViewerRouteArgs> {
+  ResourcePdfViewerRoute({
+    required Resource resource,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ResourcePdfViewerRoute.name,
+          args: ResourcePdfViewerRouteArgs(
+            resource: resource,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ResourcePdfViewerRoute';
+
+  static const PageInfo<ResourcePdfViewerRouteArgs> page =
+      PageInfo<ResourcePdfViewerRouteArgs>(name);
+}
+
+class ResourcePdfViewerRouteArgs {
+  const ResourcePdfViewerRouteArgs({
+    required this.resource,
+    this.key,
+  });
+
+  final Resource resource;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResourcePdfViewerRouteArgs{resource: $resource, key: $key}';
   }
 }
 

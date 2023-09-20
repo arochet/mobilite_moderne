@@ -56,4 +56,12 @@ abstract class ChoiceWithAnswer with _$ChoiceWithAnswer {
         answer: Anwser(''),
         listRessources: [],
       );
+
+  factory ChoiceWithAnswer.test() => ChoiceWithAnswer(
+        id: UniqueId.fromUniqueString('choix2'),
+        nom: Nom('Réponse 2 test'),
+        path: 'choice/votredemandeconcerne/answer/veloelectrique/answer/choix2/answer/choix2',
+        answer: Anwser('piapiapia'),
+        listRessources: [],
+      );
 }

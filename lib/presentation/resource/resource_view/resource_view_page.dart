@@ -57,7 +57,7 @@ class _DocTile extends ConsumerWidget {
         final Either<ArticleFailure, String> doc =
             await ref.watch(articleRepositoryProvider).getDocumentURL(resource.documentPath);
         doc.fold((l) => showSnackBar(context, l.toString()),
-            (String result) => context.router.push(PdfViewerRoute(resource: resource)));
+            (String result) => context.router.push(ResourcePdfViewerRoute(resource: resource)));
       },
       trailing: Icon(Icons.arrow_forward_ios),
     );

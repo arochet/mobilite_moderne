@@ -33,7 +33,7 @@ import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_li
 import 'package:mobilite_moderne/PRESENTATION/resource/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/resource_menu_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/pdfViewer/pdfviewer_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_pdf_viewer/pdfviewer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/choice/choice_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart'; //insert-import
 part 'router.gr.dart';
@@ -160,7 +160,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           path: '/pdfViewer-route',
-          page: PdfViewerRoute.page,
+          page: ResourcePdfViewerRoute.page,
         ),
         AutoRoute(
           path: '/choice-route',

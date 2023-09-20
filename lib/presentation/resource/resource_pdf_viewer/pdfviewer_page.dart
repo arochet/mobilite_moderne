@@ -10,9 +10,11 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/snackbar.dart';
 import 'package:mobilite_moderne/providers.dart';
 
 @RoutePage()
-class PdfViewerPage extends ConsumerWidget {
+class ResourcePdfViewerPage extends ConsumerWidget {
   final Resource resource;
-  const PdfViewerPage(this.resource, {Key? key}) : super(key: key);
+  ResourcePdfViewerPage(this.resource, {Key? key})
+      : assert(resource.type == ResourceType.document),
+        super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -77,7 +77,11 @@ class _Body extends StatelessWidget {
           child: Text("Plus d'informations", style: Theme.of(context).textTheme.titleSmall),
         ),
         SpaceH10(),
-        ...choice.listRessources.map((Resource resource) {
+
+        // Liste des PDFs
+        ...choice.listRessources
+            .where((element) => element.type == ResourceType.document)
+            .map((Resource resource) {
           return ListTile(
             leading: Icon(Icons.picture_as_pdf),
             title: Text("${resource.nom.getOrCrash()}"),
@@ -86,7 +90,30 @@ class _Body extends StatelessWidget {
               size: 20,
             ),
             onTap: () {
-              context.router.push(PdfViewerRoute(resource: resource));
+              context.router.push(ResourcePdfViewerRoute(resource: resource));
+            },
+          );
+        }).toList(),
+
+        // Liste des vidéos
+        SpaceH10(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
+          child: Text("Vidéo", style: Theme.of(context).textTheme.titleSmall),
+        ),
+        SpaceH10(),
+        ...choice.listRessources
+            .where((element) => element.type == ResourceType.video)
+            .map((Resource resource) {
+          return ListTile(
+            leading: Icon(Icons.picture_as_pdf),
+            title: Text("${resource.nom.getOrCrash()}"),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              size: 20,
+            ),
+            onTap: () {
+              context.router.push(ResourcePdfViewerRoute(resource: resource));
             },
           );
         }).toList(),

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Resource {
   UniqueId get id => throw _privateConstructorUsedError;
   Nom get nom => throw _privateConstructorUsedError;
+  ResourceType get type => throw _privateConstructorUsedError;
   String get documentPath => throw _privateConstructorUsedError;
   UniqueId get idCategory => throw _privateConstructorUsedError;
   String get keyword => throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $ResourceCopyWith<$Res> {
   $Res call(
       {UniqueId id,
       Nom nom,
+      ResourceType type,
       String documentPath,
       UniqueId idCategory,
       String keyword,
@@ -57,6 +59,7 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
   $Res call({
     Object? id = null,
     Object? nom = null,
+    Object? type = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
@@ -71,6 +74,10 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
           ? _value.nom
           : nom // ignore: cast_nullable_to_non_nullable
               as Nom,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ResourceType,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -101,6 +108,7 @@ abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
   $Res call(
       {UniqueId id,
       Nom nom,
+      ResourceType type,
       String documentPath,
       UniqueId idCategory,
       String keyword,
@@ -120,6 +128,7 @@ class __$$_ResourceCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? nom = null,
+    Object? type = null,
     Object? documentPath = null,
     Object? idCategory = null,
     Object? keyword = null,
@@ -134,6 +143,10 @@ class __$$_ResourceCopyWithImpl<$Res>
           ? _value.nom
           : nom // ignore: cast_nullable_to_non_nullable
               as Nom,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ResourceType,
       documentPath: null == documentPath
           ? _value.documentPath
           : documentPath // ignore: cast_nullable_to_non_nullable
@@ -160,6 +173,7 @@ class _$_Resource extends _Resource {
   const _$_Resource(
       {required this.id,
       required this.nom,
+      required this.type,
       required this.documentPath,
       required this.idCategory,
       required this.keyword,
@@ -171,6 +185,8 @@ class _$_Resource extends _Resource {
   @override
   final Nom nom;
   @override
+  final ResourceType type;
+  @override
   final String documentPath;
   @override
   final UniqueId idCategory;
@@ -181,7 +197,7 @@ class _$_Resource extends _Resource {
 
   @override
   String toString() {
-    return 'Resource(id: $id, nom: $nom, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
+    return 'Resource(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
   }
 
   @override
@@ -191,6 +207,7 @@ class _$_Resource extends _Resource {
             other is _$_Resource &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.documentPath, documentPath) ||
                 other.documentPath == documentPath) &&
             (identical(other.idCategory, idCategory) ||
@@ -201,8 +218,8 @@ class _$_Resource extends _Resource {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, nom, documentPath, idCategory, keyword, description);
+  int get hashCode => Object.hash(runtimeType, id, nom, type, documentPath,
+      idCategory, keyword, description);
 
   @JsonKey(ignore: true)
   @override
@@ -215,6 +232,7 @@ abstract class _Resource extends Resource {
   const factory _Resource(
       {required final UniqueId id,
       required final Nom nom,
+      required final ResourceType type,
       required final String documentPath,
       required final UniqueId idCategory,
       required final String keyword,
@@ -225,6 +243,8 @@ abstract class _Resource extends Resource {
   UniqueId get id;
   @override
   Nom get nom;
+  @override
+  ResourceType get type;
   @override
   String get documentPath;
   @override
