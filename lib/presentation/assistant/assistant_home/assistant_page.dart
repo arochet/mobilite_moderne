@@ -15,6 +15,7 @@ import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'widget/my_account.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Page d'accueil
 @RoutePage()
@@ -83,8 +84,14 @@ class AssistantPage extends ConsumerWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: ElevatedButton(
-                      onPressed: null,
-                      child: Text("Visio-assistance"),
+                      onPressed: () async {
+                        printDev();
+                        final Uri _url = Uri.parse('https://flutter.dev');
+                        if (await canLaunchUrl(_url)) {
+                          await launchUrl(_url);
+                        }
+                      },
+                      child: Text("Visio-assistance ??"),
                     ),
                   ),
                 ],

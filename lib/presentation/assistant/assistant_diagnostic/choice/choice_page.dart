@@ -54,7 +54,10 @@ class _PanelChoiceView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(filAriane, style: Theme.of(context).textTheme.bodyMedium),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(filAriane, style: Theme.of(context).textTheme.bodyMedium),
+        ),
         Expanded(child: Container()),
         Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.bodyLarge)),
         SpaceH20(),
@@ -94,7 +97,7 @@ class _PanelChoiceView extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 40),
+        SizedBox(height: 80),
         Expanded(child: Container()),
       ],
     );
