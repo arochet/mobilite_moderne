@@ -4,17 +4,12 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_fi
 
 import 'widget/panel_category_view.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
-import 'package:another_flushbar/flushbar.dart';
-import 'package:mobilite_moderne/APPLICATION/article/add_article_form_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:auto_route/src/router/auto_router_x.dart';
 
 enum CategoryListPageMode { mediatheque, notice_constructeur, pieces_fournisseurs }
 
