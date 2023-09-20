@@ -74,7 +74,7 @@ class _Body extends StatelessWidget {
         //Liste des PDFs associés à la réponse
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Text("Plus d'informations", style: Theme.of(context).textTheme.titleSmall),
+          child: Text("Documents", style: Theme.of(context).textTheme.titleSmall),
         ),
         SpaceH10(),
 
@@ -106,14 +106,14 @@ class _Body extends StatelessWidget {
             .where((element) => element.type == ResourceType.video)
             .map((Resource resource) {
           return ListTile(
-            leading: Icon(Icons.picture_as_pdf),
+            leading: Icon(Icons.video_file),
             title: Text("${resource.nom.getOrCrash()}"),
             trailing: Icon(
               Icons.arrow_forward_ios,
               size: 20,
             ),
             onTap: () {
-              context.router.push(ResourcePdfViewerRoute(resource: resource));
+              context.router.push(Resource_videoplayerRoute(resource: resource));
             },
           );
         }).toList(),

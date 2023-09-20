@@ -204,9 +204,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     Resource_videoplayerRoute.name: (routeData) {
+      final args = routeData.argsAs<Resource_videoplayerRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const Resource_videoplayerPage(),
+        child: Resource_videoplayerPage(
+          args.resource,
+          key: args.key,
+        ),
       );
     },
     Resource_viewRoute.name: (routeData) {
@@ -803,16 +807,41 @@ class Resource_menuRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [Resource_videoplayerPage]
-class Resource_videoplayerRoute extends PageRouteInfo<void> {
-  const Resource_videoplayerRoute({List<PageRouteInfo>? children})
-      : super(
+class Resource_videoplayerRoute
+    extends PageRouteInfo<Resource_videoplayerRouteArgs> {
+  Resource_videoplayerRoute({
+    required Resource resource,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           Resource_videoplayerRoute.name,
+          args: Resource_videoplayerRouteArgs(
+            resource: resource,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'Resource_videoplayerRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<Resource_videoplayerRouteArgs> page =
+      PageInfo<Resource_videoplayerRouteArgs>(name);
+}
+
+class Resource_videoplayerRouteArgs {
+  const Resource_videoplayerRouteArgs({
+    required this.resource,
+    this.key,
+  });
+
+  final Resource resource;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'Resource_videoplayerRouteArgs{resource: $resource, key: $key}';
+  }
 }
 
 /// generated route for

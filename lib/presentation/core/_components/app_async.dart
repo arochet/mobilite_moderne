@@ -29,7 +29,8 @@ class AppFutureBuilder<T> extends StatelessWidget {
   final Future<T> future;
   final Widget Function(T?) builder;
   final Widget? loading;
-  const AppFutureBuilder({super.key, required this.future, required this.builder, this.loading});
+  final Widget? error;
+  const AppFutureBuilder({super.key, required this.future, required this.builder, this.loading, this.error});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class AppFutureBuilder<T> extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting)
             return loading ?? AppLoading();
           else if (snapshot.hasError)
-            return AppError(message: '${snapshot.error}');
+            return error ?? Center(child: AppError(message: '${snapshot.error}'));
           else
             return builder(snapshot.data);
         }));

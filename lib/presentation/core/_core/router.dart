@@ -169,6 +169,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/answer-route',
           page: AnswerRoute.page,
+        ),
+        AutoRoute(
+          path: '/resource_videoplayer-route',
+          page: Resource_videoplayerRoute.page,
         ), //insert-route
       ];
 }
