@@ -385,7 +385,7 @@
 				DEVELOPMENT_TEAM = 5CR5RNNE6F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mobilité Moderne";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dist Atelier";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -516,7 +516,7 @@
 				DEVELOPMENT_TEAM = 5CR5RNNE6F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mobilité Moderne";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dist Atelier";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -541,7 +541,7 @@
 				DEVELOPMENT_TEAM = 5CR5RNNE6F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mobilité Moderne";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dist Atelier";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

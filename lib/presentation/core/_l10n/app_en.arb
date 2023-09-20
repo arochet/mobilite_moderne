@@ -3,7 +3,7 @@
     "@language" : {
         "description": "The current Language"
     },
-    "nomprojet": "Mobilité Moderne",
+    "nomprojet": "Dist Atelier",
     "helloworld": "Hello World",
     "seconnecter": "Log in",
     "sinscrire": "Register",

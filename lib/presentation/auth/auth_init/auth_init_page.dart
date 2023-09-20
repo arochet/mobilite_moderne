@@ -55,7 +55,7 @@ class PanelInit extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Mobilité Moderne", style: Theme.of(context).textTheme.titleLarge),
+              Text("Dist Atelier", style: Theme.of(context).textTheme.titleLarge),
               SizedBox(height: 20),
               Image(
                 image: AssetImage("assets/icon/icon.png"),

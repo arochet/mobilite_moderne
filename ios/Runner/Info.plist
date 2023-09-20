@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Mobilité Moderne</string>
+	<string>Dist Atelier</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -41,7 +41,7 @@
 	<key>FacebookClientToken</key>
 	<string>fdc03c238dcbcaee1ac70dfd91c67c65</string>
 	<key>FacebookDisplayName</key>
-	<string>Mobilité Moderne</string>
+	<string>Dist Atelier</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

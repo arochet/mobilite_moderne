@@ -26,7 +26,7 @@ class AppWidget extends StatelessWidget {
     );
 
     return MaterialApp.router(
-      title: 'Mobilité Moderne',
+      title: 'Dist Atelier',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //COLORS

@@ -17,7 +17,7 @@ class BottomBarNavigation extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final env = ref.watch(environment.notifier).state.name;
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => buildAppBar(context, ref, 'Mobilité Moderne',
+      appBarBuilder: (_, tabsRouter) => buildAppBar(context, ref, 'Dist Atelier',
           color: tabsRouter.activeIndex != 3 ? colorpanel(900) : colorpanel(800))!,
       backgroundColor: colorpanel(900),
       routes: listRoute,

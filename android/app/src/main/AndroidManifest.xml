@@ -4,7 +4,7 @@
      android:name="android.permission.INTERNET" />
 
    <application
-        android:label="Mobilité Moderne"
+        android:label="Dist Atelier"
         android:icon="@mipmap/ic_launcher"
         android:name="androidx.multidex.MultiDexApplication">
         
