@@ -39,9 +39,10 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     Assistant_visioRoute.name: (routeData) {
+      final args = routeData.argsAs<Assistant_visioRouteArgs>(orElse: () => const Assistant_visioRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: Assistant_visioPage(),
+        child: Assistant_visioPage(key: args.key),
       );
     },
     AuthCheckEmailRoute.name: (routeData) {
@@ -327,16 +328,30 @@ class AssistantRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [Assistant_visioPage]
-class Assistant_visioRoute extends PageRouteInfo<void> {
-  const Assistant_visioRoute({List<PageRouteInfo>? children})
-      : super(
+class Assistant_visioRoute extends PageRouteInfo<Assistant_visioRouteArgs> {
+  Assistant_visioRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           Assistant_visioRoute.name,
+          args: Assistant_visioRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'Assistant_visioRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<Assistant_visioRouteArgs> page = PageInfo<Assistant_visioRouteArgs>(name);
+}
+
+class Assistant_visioRouteArgs {
+  const Assistant_visioRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'Assistant_visioRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -465,7 +480,7 @@ class CategoryListRouteArgs {
 class CategoryViewRoute extends PageRouteInfo<CategoryViewRouteArgs> {
   CategoryViewRoute({
     Key? key,
-    required Category category,
+    required AppCategory category,
     List<PageRouteInfo>? children,
   }) : super(
           CategoryViewRoute.name,
@@ -489,7 +504,7 @@ class CategoryViewRouteArgs {
 
   final Key? key;
 
-  final Category category;
+  final AppCategory category;
 
   @override
   String toString() {
@@ -859,7 +874,7 @@ class Resource_videoplayerRouteArgs {
 /// [Resource_viewPage]
 class Resource_viewRoute extends PageRouteInfo<Resource_viewRouteArgs> {
   Resource_viewRoute({
-    required Category category,
+    required AppCategory category,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
@@ -882,7 +897,7 @@ class Resource_viewRouteArgs {
     this.key,
   });
 
-  final Category category;
+  final AppCategory category;
 
   final Key? key;
 

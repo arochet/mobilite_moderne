@@ -24,7 +24,7 @@ class Resource_videoplayerPage extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.all(10),
             child: AppFutureBuilder(
-              future: ref.watch(articleRepositoryProvider).getDocumentURL(resource.documentPath),
+              future: ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath),
               builder: (eitherUrl) =>
                   eitherUrl?.fold(
                     (l) => Center(child: Text(l.toString())),

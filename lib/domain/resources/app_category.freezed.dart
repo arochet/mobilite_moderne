@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'category.dart';
+part of 'app_category.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,14 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Category {
+mixin _$AppCategory {
   UniqueId get id => throw _privateConstructorUsedError;
 
   /// Nom d'affichage de la catégorie
   Nom get nom => throw _privateConstructorUsedError;
 
   /// Les sous catégories de la catégories, remplis dans le repository
-  Either<CategoryFailure, List<Category>>? get subcategory =>
+  Either<AppCategoryFailure, List<AppCategory>>? get subcategory =>
       throw _privateConstructorUsedError;
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
@@ -32,27 +32,28 @@ mixin _$Category {
   List<Resource>? get listResource => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CategoryCopyWith<Category> get copyWith =>
+  $AppCategoryCopyWith<AppCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryCopyWith<$Res> {
-  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res, Category>;
+abstract class $AppCategoryCopyWith<$Res> {
+  factory $AppCategoryCopyWith(
+          AppCategory value, $Res Function(AppCategory) then) =
+      _$AppCategoryCopyWithImpl<$Res, AppCategory>;
   @useResult
   $Res call(
       {UniqueId id,
       Nom nom,
-      Either<CategoryFailure, List<Category>>? subcategory,
+      Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       String path,
       List<Resource>? listResource});
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res, $Val extends Category>
-    implements $CategoryCopyWith<$Res> {
-  _$CategoryCopyWithImpl(this._value, this._then);
+class _$AppCategoryCopyWithImpl<$Res, $Val extends AppCategory>
+    implements $AppCategoryCopyWith<$Res> {
+  _$AppCategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,7 +81,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
       subcategory: freezed == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
-              as Either<CategoryFailure, List<Category>>?,
+              as Either<AppCategoryFailure, List<AppCategory>>?,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -94,26 +95,27 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 }
 
 /// @nodoc
-abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$$_CategoryCopyWith(
-          _$_Category value, $Res Function(_$_Category) then) =
-      __$$_CategoryCopyWithImpl<$Res>;
+abstract class _$$_AppCategoryCopyWith<$Res>
+    implements $AppCategoryCopyWith<$Res> {
+  factory _$$_AppCategoryCopyWith(
+          _$_AppCategory value, $Res Function(_$_AppCategory) then) =
+      __$$_AppCategoryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {UniqueId id,
       Nom nom,
-      Either<CategoryFailure, List<Category>>? subcategory,
+      Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       String path,
       List<Resource>? listResource});
 }
 
 /// @nodoc
-class __$$_CategoryCopyWithImpl<$Res>
-    extends _$CategoryCopyWithImpl<$Res, _$_Category>
-    implements _$$_CategoryCopyWith<$Res> {
-  __$$_CategoryCopyWithImpl(
-      _$_Category _value, $Res Function(_$_Category) _then)
+class __$$_AppCategoryCopyWithImpl<$Res>
+    extends _$AppCategoryCopyWithImpl<$Res, _$_AppCategory>
+    implements _$$_AppCategoryCopyWith<$Res> {
+  __$$_AppCategoryCopyWithImpl(
+      _$_AppCategory _value, $Res Function(_$_AppCategory) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +127,7 @@ class __$$_CategoryCopyWithImpl<$Res>
     Object? path = null,
     Object? listResource = freezed,
   }) {
-    return _then(_$_Category(
+    return _then(_$_AppCategory(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -137,7 +139,7 @@ class __$$_CategoryCopyWithImpl<$Res>
       subcategory: freezed == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
-              as Either<CategoryFailure, List<Category>>?,
+              as Either<AppCategoryFailure, List<AppCategory>>?,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -152,8 +154,8 @@ class __$$_CategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Category extends _Category {
-  const _$_Category(
+class _$_AppCategory extends _AppCategory {
+  const _$_AppCategory(
       {required this.id,
       required this.nom,
       required this.subcategory,
@@ -171,7 +173,7 @@ class _$_Category extends _Category {
 
   /// Les sous catégories de la catégories, remplis dans le repository
   @override
-  final Either<CategoryFailure, List<Category>>? subcategory;
+  final Either<AppCategoryFailure, List<AppCategory>>? subcategory;
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
   @override
@@ -192,14 +194,14 @@ class _$_Category extends _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listResource: $listResource)';
+    return 'AppCategory(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listResource: $listResource)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Category &&
+            other is _$_AppCategory &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.subcategory, subcategory) ||
@@ -216,18 +218,18 @@ class _$_Category extends _Category {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
-      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
+  _$$_AppCategoryCopyWith<_$_AppCategory> get copyWith =>
+      __$$_AppCategoryCopyWithImpl<_$_AppCategory>(this, _$identity);
 }
 
-abstract class _Category extends Category {
-  const factory _Category(
+abstract class _AppCategory extends AppCategory {
+  const factory _AppCategory(
       {required final UniqueId id,
       required final Nom nom,
-      required final Either<CategoryFailure, List<Category>>? subcategory,
+      required final Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       required final String path,
-      final List<Resource>? listResource}) = _$_Category;
-  const _Category._() : super._();
+      final List<Resource>? listResource}) = _$_AppCategory;
+  const _AppCategory._() : super._();
 
   @override
   UniqueId get id;
@@ -238,7 +240,7 @@ abstract class _Category extends Category {
   @override
 
   /// Les sous catégories de la catégories, remplis dans le repository
-  Either<CategoryFailure, List<Category>>? get subcategory;
+  Either<AppCategoryFailure, List<AppCategory>>? get subcategory;
   @override
 
   /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
@@ -249,6 +251,6 @@ abstract class _Category extends Category {
   List<Resource>? get listResource;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+  _$$_AppCategoryCopyWith<_$_AppCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }

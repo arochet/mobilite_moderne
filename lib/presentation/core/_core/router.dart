@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/components/components_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/text_style/text_style.dart';
@@ -20,7 +21,6 @@ import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/resource_videoplayer_page.dart';
-import '../../../DOMAIN/article/category.dart';
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
 import '../../account/account/utils/utils_page.dart';

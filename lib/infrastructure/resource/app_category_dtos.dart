@@ -1,38 +1,37 @@
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
-import 'package:mobilite_moderne/DOMAIN/article/category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/app_category_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
-
-import '../../DOMAIN/article/category_failure.dart';
-part 'category_dtos.freezed.dart';
-part 'category_dtos.g.dart';
+part 'app_category_dtos.freezed.dart';
+part 'app_category_dtos.g.dart';
 
 @freezed
-abstract class CategoryDTO implements _$CategoryDTO {
-  const CategoryDTO._();
+abstract class AppCategoryDTO implements _$AppCategoryDTO {
+  const AppCategoryDTO._();
 
-  const factory CategoryDTO({
+  const factory AppCategoryDTO({
     @JsonKey(ignore: true) String? idCategory,
     required String nom,
     List<String>? listResource,
-  }) = _CategoryDTO;
+  }) = _AppCategoryDTO;
 
-  factory CategoryDTO.fromDomain(Category obj) {
-    return CategoryDTO(
+  factory AppCategoryDTO.fromDomain(AppCategory obj) {
+    return AppCategoryDTO(
       idCategory: obj.id.getOrCrash(),
       nom: obj.nom.getOrCrash(),
       listResource: obj.listResource?.map((e) => e.id.getOrCrash()).toList(),
     );
   }
 
-  Category toDomain(
-      Either<CategoryFailure, List<Category>>? subcategory, String path, List<Resource>? listResource) {
+  AppCategory toDomain(
+      Either<AppCategoryFailure, List<AppCategory>>? subcategory, String path, List<Resource>? listResource) {
     printDev();
-    return Category(
+    return AppCategory(
       id: UniqueId.fromUniqueString(idCategory!),
       nom: Nom(nom),
       subcategory: subcategory,
@@ -41,9 +40,9 @@ abstract class CategoryDTO implements _$CategoryDTO {
     );
   }
 
-  factory CategoryDTO.fromJson(Map<String, dynamic> json) => _$CategoryDTOFromJson(json);
+  factory AppCategoryDTO.fromJson(Map<String, dynamic> json) => _$AppCategoryDTOFromJson(json);
 
-  factory CategoryDTO.fromFirestore(DocumentSnapshot doc) {
-    return CategoryDTO.fromJson(doc.data() as Map<String, dynamic>).copyWith(idCategory: doc.id);
+  factory AppCategoryDTO.fromFirestore(DocumentSnapshot doc) {
+    return AppCategoryDTO.fromJson(doc.data() as Map<String, dynamic>).copyWith(idCategory: doc.id);
   }
 }

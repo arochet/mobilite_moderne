@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:mobilite_moderne/DOMAIN/article/category.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 
 @RoutePage()
 class Resource_viewPage extends StatelessWidget {
-  final Category category;
+  final AppCategory category;
   const Resource_viewPage(this.category, {Key? key}) : super(key: key);
 
   @override

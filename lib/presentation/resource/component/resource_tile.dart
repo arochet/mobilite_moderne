@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource_failure.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/snackbar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/providers.dart';
@@ -43,8 +43,8 @@ class _DocumentTile extends ConsumerWidget {
       title: Text(resource.nom.getOrCrash()),
       onTap: () async {
         //Open PDF
-        final Either<ArticleFailure, String> doc =
-            await ref.watch(articleRepositoryProvider).getDocumentURL(resource.documentPath);
+        final Either<ResourceFailure, String> doc =
+            await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
         doc.fold((l) => showSnackBar(context, l.toString()),
             (String result) => context.router.push(ResourcePdfViewerRoute(resource: resource)));
       },
@@ -68,8 +68,8 @@ class _VideoTile extends ConsumerWidget {
       title: Text(resource.nom.getOrCrash()),
       onTap: () async {
         //Open PDF
-        final Either<ArticleFailure, String> doc =
-            await ref.watch(articleRepositoryProvider).getDocumentURL(resource.documentPath);
+        final Either<ResourceFailure, String> doc =
+            await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
         doc.fold((l) => showSnackBar(context, l.toString()),
             (String result) => context.router.push(Resource_videoplayerRoute(resource: resource)));
       },

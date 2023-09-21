@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/APPLICATION/account/modify_form_notifier.dart';
-import 'package:mobilite_moderne/APPLICATION/article/add_article_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/auth_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/new_password_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifier.dart';
@@ -12,20 +11,17 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mobilite_moderne/DOMAIN/article/category_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
-import 'package:mobilite_moderne/DOMAIN/article/article.dart';
-import 'package:mobilite_moderne/DOMAIN/article/article_failure.dart';
-import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
-
-import 'DOMAIN/article/category.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
 import 'DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
 import 'DOMAIN/core/errors.dart';
 import 'DOMAIN/core/value_objects.dart';
 import 'DOMAIN/news/news.dart';
+import 'DOMAIN/resources/app_category.dart';
+import 'DOMAIN/resources/app_category_failure.dart';
 import 'INFRASTRUCTURE/assistant_diagnostic/assistant_diagnostic_repository.dart';
 import 'INFRASTRUCTURE/auth/auth_repository.dart';
 import 'injection.dart';
@@ -118,27 +114,16 @@ final oneNewsProvider = FutureProvider.autoDispose.family<Either<NewsFailure, Ne
 
 //Article
 
-final articleRepositoryProvider = Provider<IArticleRepository>((ref) => getIt<IArticleRepository>());
-
-final articleFormNotifierProvider =
-    StateNotifierProvider.autoDispose<ArticleFormNotifier, AddArticleFormData>(
-  (ref) => ArticleFormNotifier(ref.watch(articleRepositoryProvider)),
-);
-
-final allArticleProvider = StreamProvider.autoDispose<Either<ArticleFailure, List<Article>>>(
-    (ref) => ref.watch(articleRepositoryProvider).watch());
-
-final oneArticleProvider = FutureProvider.autoDispose.family<Either<ArticleFailure, Article>, UniqueId>(
-    (ref, id) => ref.watch(articleRepositoryProvider).watchWithId(id));
+final resourceRepositoryProvider = Provider<IResourceRepository>((ref) => getIt<IResourceRepository>());
 
 //Category
 final categoryListProvider = FutureProvider.autoDispose
-    .family<Either<CategoryFailure, List<Category>>, CategoryListPageMode>(
-        (ref, mode) => ref.watch(articleRepositoryProvider).watchCategoryList(mode));
+    .family<Either<AppCategoryFailure, List<AppCategory>>, CategoryListPageMode>(
+        (ref, mode) => ref.watch(resourceRepositoryProvider).watchCategoryList(mode));
 
 final categoryViewProvider = FutureProvider.autoDispose
-    .family<Either<CategoryFailure, List<Category>>, Category>(
-        (ref, category) => ref.watch(articleRepositoryProvider).watchCategoryView(category));
+    .family<Either<AppCategoryFailure, List<AppCategory>>, AppCategory>(
+        (ref, category) => ref.watch(resourceRepositoryProvider).watchCategoryView(category));
 
 //Assistant Diagnostic
 final assistantDiagnosticRepositoryProvider =

@@ -2,8 +2,8 @@ import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
-import 'package:mobilite_moderne/INFRASTRUCTURE/article/algolia_application.dart';
-import 'package:mobilite_moderne/INFRASTRUCTURE/article/resource_dtos.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/resource/algolia_application.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 

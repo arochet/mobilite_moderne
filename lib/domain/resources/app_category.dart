@@ -1,32 +1,33 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobilite_moderne/DOMAIN/article/category_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 
-part 'category.freezed.dart';
+import 'app_category_failure.dart';
+
+part 'app_category.freezed.dart';
 
 @freezed
-abstract class Category with _$Category {
-  const Category._();
+abstract class AppCategory with _$AppCategory {
+  const AppCategory._();
 
-  const factory Category({
+  const factory AppCategory({
     required UniqueId id,
 
     /// Nom d'affichage de la catégorie
     required Nom nom,
 
     /// Les sous catégories de la catégories, remplis dans le repository
-    required Either<CategoryFailure, List<Category>>? subcategory,
+    required Either<AppCategoryFailure, List<AppCategory>>? subcategory,
 
     /// Chemin de la catégorie pour y accéder dans FireStore. Exemple : MLKDJEL/subcategory/qLKLJKD
     required String path,
 
     /// Liste des documents reliés à la catégorie
     List<Resource>? listResource,
-  }) = _Category;
+  }) = _AppCategory;
 
-  factory Category.empty() =>
-      Category(id: UniqueId(), nom: Nom(''), subcategory: null, path: "", listResource: []);
+  factory AppCategory.empty() =>
+      AppCategory(id: UniqueId(), nom: Nom(''), subcategory: null, path: "", listResource: []);
 }

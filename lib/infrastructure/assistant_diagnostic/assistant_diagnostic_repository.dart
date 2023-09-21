@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
-import 'package:mobilite_moderne/INFRASTRUCTURE/article/article_repository.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
@@ -22,7 +22,7 @@ abstract class IAssistantDiagnosticRepository {
 @LazySingleton(as: IAssistantDiagnosticRepository)
 class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
   final FirebaseFirestore _firestore;
-  final IArticleRepository _articleRepository;
+  final IResourceRepository _articleRepository;
 
   AssistantDiagnosticRepository(
     this._firestore,

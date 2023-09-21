@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'category_dtos.dart';
+part of 'app_category_dtos.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CategoryDTO _$CategoryDTOFromJson(Map<String, dynamic> json) {
-  return _CategoryDTO.fromJson(json);
+AppCategoryDTO _$AppCategoryDTOFromJson(Map<String, dynamic> json) {
+  return _AppCategoryDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CategoryDTO {
+mixin _$AppCategoryDTO {
   @JsonKey(ignore: true)
   String? get idCategory => throw _privateConstructorUsedError;
   String get nom => throw _privateConstructorUsedError;
@@ -27,15 +27,15 @@ mixin _$CategoryDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CategoryDTOCopyWith<CategoryDTO> get copyWith =>
+  $AppCategoryDTOCopyWith<AppCategoryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategoryDTOCopyWith<$Res> {
-  factory $CategoryDTOCopyWith(
-          CategoryDTO value, $Res Function(CategoryDTO) then) =
-      _$CategoryDTOCopyWithImpl<$Res, CategoryDTO>;
+abstract class $AppCategoryDTOCopyWith<$Res> {
+  factory $AppCategoryDTOCopyWith(
+          AppCategoryDTO value, $Res Function(AppCategoryDTO) then) =
+      _$AppCategoryDTOCopyWithImpl<$Res, AppCategoryDTO>;
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? idCategory,
@@ -44,9 +44,9 @@ abstract class $CategoryDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CategoryDTOCopyWithImpl<$Res, $Val extends CategoryDTO>
-    implements $CategoryDTOCopyWith<$Res> {
-  _$CategoryDTOCopyWithImpl(this._value, this._then);
+class _$AppCategoryDTOCopyWithImpl<$Res, $Val extends AppCategoryDTO>
+    implements $AppCategoryDTOCopyWith<$Res> {
+  _$AppCategoryDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -78,11 +78,11 @@ class _$CategoryDTOCopyWithImpl<$Res, $Val extends CategoryDTO>
 }
 
 /// @nodoc
-abstract class _$$_CategoryDTOCopyWith<$Res>
-    implements $CategoryDTOCopyWith<$Res> {
-  factory _$$_CategoryDTOCopyWith(
-          _$_CategoryDTO value, $Res Function(_$_CategoryDTO) then) =
-      __$$_CategoryDTOCopyWithImpl<$Res>;
+abstract class _$$_AppCategoryDTOCopyWith<$Res>
+    implements $AppCategoryDTOCopyWith<$Res> {
+  factory _$$_AppCategoryDTOCopyWith(
+          _$_AppCategoryDTO value, $Res Function(_$_AppCategoryDTO) then) =
+      __$$_AppCategoryDTOCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,11 +92,11 @@ abstract class _$$_CategoryDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategoryDTOCopyWithImpl<$Res>
-    extends _$CategoryDTOCopyWithImpl<$Res, _$_CategoryDTO>
-    implements _$$_CategoryDTOCopyWith<$Res> {
-  __$$_CategoryDTOCopyWithImpl(
-      _$_CategoryDTO _value, $Res Function(_$_CategoryDTO) _then)
+class __$$_AppCategoryDTOCopyWithImpl<$Res>
+    extends _$AppCategoryDTOCopyWithImpl<$Res, _$_AppCategoryDTO>
+    implements _$$_AppCategoryDTOCopyWith<$Res> {
+  __$$_AppCategoryDTOCopyWithImpl(
+      _$_AppCategoryDTO _value, $Res Function(_$_AppCategoryDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_CategoryDTOCopyWithImpl<$Res>
     Object? nom = null,
     Object? listResource = freezed,
   }) {
-    return _then(_$_CategoryDTO(
+    return _then(_$_AppCategoryDTO(
       idCategory: freezed == idCategory
           ? _value.idCategory
           : idCategory // ignore: cast_nullable_to_non_nullable
@@ -125,16 +125,16 @@ class __$$_CategoryDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryDTO extends _CategoryDTO {
-  const _$_CategoryDTO(
+class _$_AppCategoryDTO extends _AppCategoryDTO {
+  const _$_AppCategoryDTO(
       {@JsonKey(ignore: true) this.idCategory,
       required this.nom,
       final List<String>? listResource})
       : _listResource = listResource,
         super._();
 
-  factory _$_CategoryDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryDTOFromJson(json);
+  factory _$_AppCategoryDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_AppCategoryDTOFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -153,14 +153,14 @@ class _$_CategoryDTO extends _CategoryDTO {
 
   @override
   String toString() {
-    return 'CategoryDTO(idCategory: $idCategory, nom: $nom, listResource: $listResource)';
+    return 'AppCategoryDTO(idCategory: $idCategory, nom: $nom, listResource: $listResource)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryDTO &&
+            other is _$_AppCategoryDTO &&
             (identical(other.idCategory, idCategory) ||
                 other.idCategory == idCategory) &&
             (identical(other.nom, nom) || other.nom == nom) &&
@@ -176,26 +176,26 @@ class _$_CategoryDTO extends _CategoryDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryDTOCopyWith<_$_CategoryDTO> get copyWith =>
-      __$$_CategoryDTOCopyWithImpl<_$_CategoryDTO>(this, _$identity);
+  _$$_AppCategoryDTOCopyWith<_$_AppCategoryDTO> get copyWith =>
+      __$$_AppCategoryDTOCopyWithImpl<_$_AppCategoryDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryDTOToJson(
+    return _$$_AppCategoryDTOToJson(
       this,
     );
   }
 }
 
-abstract class _CategoryDTO extends CategoryDTO {
-  const factory _CategoryDTO(
+abstract class _AppCategoryDTO extends AppCategoryDTO {
+  const factory _AppCategoryDTO(
       {@JsonKey(ignore: true) final String? idCategory,
       required final String nom,
-      final List<String>? listResource}) = _$_CategoryDTO;
-  const _CategoryDTO._() : super._();
+      final List<String>? listResource}) = _$_AppCategoryDTO;
+  const _AppCategoryDTO._() : super._();
 
-  factory _CategoryDTO.fromJson(Map<String, dynamic> json) =
-      _$_CategoryDTO.fromJson;
+  factory _AppCategoryDTO.fromJson(Map<String, dynamic> json) =
+      _$_AppCategoryDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -206,6 +206,6 @@ abstract class _CategoryDTO extends CategoryDTO {
   List<String>? get listResource;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryDTOCopyWith<_$_CategoryDTO> get copyWith =>
+  _$$_AppCategoryDTOCopyWith<_$_AppCategoryDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

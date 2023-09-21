@@ -32,7 +32,7 @@ class BottomBarNavigation extends ConsumerWidget {
 
               //Met à jour les actualités quand on arrive sur la page
               if (id == 1) {
-                ref.invalidate(allArticleProvider);
+                ref.invalidate(categoryListProvider);
               }
               if (id == 2) {
                 ref.invalidate(allNewsProvider);

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'category_failure.dart';
+part of 'app_category_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CategoryFailure {
+mixin _$AppCategoryFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -64,16 +64,16 @@ mixin _$CategoryFailure {
 }
 
 /// @nodoc
-abstract class $CategoryFailureCopyWith<$Res> {
-  factory $CategoryFailureCopyWith(
-          CategoryFailure value, $Res Function(CategoryFailure) then) =
-      _$CategoryFailureCopyWithImpl<$Res, CategoryFailure>;
+abstract class $AppCategoryFailureCopyWith<$Res> {
+  factory $AppCategoryFailureCopyWith(
+          AppCategoryFailure value, $Res Function(AppCategoryFailure) then) =
+      _$AppCategoryFailureCopyWithImpl<$Res, AppCategoryFailure>;
 }
 
 /// @nodoc
-class _$CategoryFailureCopyWithImpl<$Res, $Val extends CategoryFailure>
-    implements $CategoryFailureCopyWith<$Res> {
-  _$CategoryFailureCopyWithImpl(this._value, this._then);
+class _$AppCategoryFailureCopyWithImpl<$Res, $Val extends AppCategoryFailure>
+    implements $AppCategoryFailureCopyWith<$Res> {
+  _$AppCategoryFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,7 +90,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res, _$_Unexpected>
+    extends _$AppCategoryFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -104,7 +104,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'CategoryFailure.unexpected()';
+    return 'AppCategoryFailure.unexpected()';
   }
 
   @override
@@ -186,7 +186,7 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements CategoryFailure {
+abstract class _Unexpected implements AppCategoryFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -199,7 +199,7 @@ abstract class _$$_InsufficientPermissionCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InsufficientPermissionCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res, _$_InsufficientPermission>
+    extends _$AppCategoryFailureCopyWithImpl<$Res, _$_InsufficientPermission>
     implements _$$_InsufficientPermissionCopyWith<$Res> {
   __$$_InsufficientPermissionCopyWithImpl(_$_InsufficientPermission _value,
       $Res Function(_$_InsufficientPermission) _then)
@@ -213,7 +213,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
 
   @override
   String toString() {
-    return 'CategoryFailure.insufficientPermission()';
+    return 'AppCategoryFailure.insufficientPermission()';
   }
 
   @override
@@ -296,7 +296,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   }
 }
 
-abstract class _InsufficientPermission implements CategoryFailure {
+abstract class _InsufficientPermission implements AppCategoryFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
 }
 
@@ -309,7 +309,7 @@ abstract class _$$_UnableToUpdateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnableToUpdateCopyWithImpl<$Res>
-    extends _$CategoryFailureCopyWithImpl<$Res, _$_UnableToUpdate>
+    extends _$AppCategoryFailureCopyWithImpl<$Res, _$_UnableToUpdate>
     implements _$$_UnableToUpdateCopyWith<$Res> {
   __$$_UnableToUpdateCopyWithImpl(
       _$_UnableToUpdate _value, $Res Function(_$_UnableToUpdate) _then)
@@ -323,7 +323,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
   @override
   String toString() {
-    return 'CategoryFailure.unableToUpdate()';
+    return 'AppCategoryFailure.unableToUpdate()';
   }
 
   @override
@@ -405,6 +405,6 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   }
 }
 
-abstract class _UnableToUpdate implements CategoryFailure {
+abstract class _UnableToUpdate implements AppCategoryFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
 }
