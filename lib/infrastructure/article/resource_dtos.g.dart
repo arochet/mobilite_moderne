@@ -14,6 +14,7 @@ _$_ResourceDTO _$$_ResourceDTOFromJson(Map<String, dynamic> json) =>
       idCategory: json['idCategory'] as String,
       keyword: json['keyword'] as String,
       description: json['description'] as String,
+      categoryPath: json['categoryPath'] as String,
     );
 
 Map<String, dynamic> _$$_ResourceDTOToJson(_$_ResourceDTO instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_ResourceDTOToJson(_$_ResourceDTO instance) =>
       'idCategory': instance.idCategory,
       'keyword': instance.keyword,
       'description': instance.description,
+      'categoryPath': instance.categoryPath,
     };

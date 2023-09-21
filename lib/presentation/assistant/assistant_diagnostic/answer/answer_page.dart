@@ -9,6 +9,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_fi
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -82,17 +83,7 @@ class _Body extends StatelessWidget {
         ...choice.listRessources
             .where((element) => element.type == ResourceType.document)
             .map((Resource resource) {
-          return ListTile(
-            leading: Icon(Icons.picture_as_pdf),
-            title: Text("${resource.nom.getOrCrash()}"),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              size: 20,
-            ),
-            onTap: () {
-              context.router.push(ResourcePdfViewerRoute(resource: resource));
-            },
-          );
+          return ResourceTile(resource: resource);
         }).toList(),
 
         // Liste des vidéos
@@ -105,17 +96,7 @@ class _Body extends StatelessWidget {
         ...choice.listRessources
             .where((element) => element.type == ResourceType.video)
             .map((Resource resource) {
-          return ListTile(
-            leading: Icon(Icons.video_file),
-            title: Text("${resource.nom.getOrCrash()}"),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              size: 20,
-            ),
-            onTap: () {
-              context.router.push(Resource_videoplayerRoute(resource: resource));
-            },
-          );
+          return ResourceTile(resource: resource);
         }).toList(),
       ],
     );

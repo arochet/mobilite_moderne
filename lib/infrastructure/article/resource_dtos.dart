@@ -18,6 +18,7 @@ abstract class ResourceDTO implements _$ResourceDTO {
     required String idCategory,
     required String keyword,
     required String description,
+    required String categoryPath,
   }) = _ResourceDTO;
 
   factory ResourceDTO.fromDomain(Resource obj) {
@@ -29,12 +30,13 @@ abstract class ResourceDTO implements _$ResourceDTO {
       keyword: obj.keyword,
       description: obj.description,
       nom: obj.nom.getOrCrash(),
+      categoryPath: 'undefined',
     );
   }
 
   Resource toDomain() {
     return Resource(
-      id: UniqueId.fromUniqueString(id!),
+      id: id != null ? UniqueId.fromUniqueString(id!) : UniqueId.fromUniqueString('-1'),
       nom: Nom(nom),
       type: ResourceType.values.firstWhere((e) => e.toString() == type),
       documentPath: documentPath,

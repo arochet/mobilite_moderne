@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/injection.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
@@ -45,10 +46,7 @@ class ShowEnvironment extends ConsumerWidget {
                   child: TextButton(
                     onPressed: () {
                       printDev();
-                      context.router.push(AnswerRoute(
-                        filAriane: 'Raccourcis',
-                        choice: ChoiceWithAnswer.test(),
-                      ));
+                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
                     },
                     child: Text("Raccourcis"),
                   ),

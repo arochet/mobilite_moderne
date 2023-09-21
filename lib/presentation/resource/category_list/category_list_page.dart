@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/search_algolia/search_algolia.dart';
 
 import 'widget/panel_category_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -53,15 +54,17 @@ class CategoryListPage extends ConsumerWidget {
         title: 'CategoryListPage',
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: AppAsync(
-              ref.watch(categoryListProvider(mode)),
-              builder: (data) => data!.fold(
-                  (error) => AppError(message: error.toString()),
-                  (listCategory) => ListView(children: [
-                        ...listCategory
-                            .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
-                            .toList()
-                      ])),
+            child: SearchAlgolia(
+              child: AppAsync(
+                ref.watch(categoryListProvider(mode)),
+                builder: (data) => data!.fold(
+                    (error) => AppError(message: error.toString()),
+                    (listCategory) => ListView(children: [
+                          ...listCategory
+                              .map<Widget>((categoryObj) => PanelCategoryView(category: categoryObj))
+                              .toList()
+                        ])),
+              ),
             )),
       ),
     );
