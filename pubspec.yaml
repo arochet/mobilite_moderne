@@ -69,6 +69,7 @@ dependencies:
   chewie: ^1.7.1
   url_launcher: ^6.1.14
   algolia: ^1.1.2
+  webview_flutter: ^4.2.4
 
 
 dev_dependencies:

@@ -38,6 +38,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AssistantPage(),
       );
     },
+    Assistant_visioRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: Assistant_visioPage(),
+      );
+    },
     AuthCheckEmailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -130,8 +136,7 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MainNavigationRoute.name: (routeData) {
-      final args = routeData.argsAs<MainNavigationRouteArgs>(
-          orElse: () => const MainNavigationRouteArgs());
+      final args = routeData.argsAs<MainNavigationRouteArgs>(orElse: () => const MainNavigationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MainNavigationPage(key: args.key),
@@ -321,6 +326,20 @@ class AssistantRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [Assistant_visioPage]
+class Assistant_visioRoute extends PageRouteInfo<void> {
+  const Assistant_visioRoute({List<PageRouteInfo>? children})
+      : super(
+          Assistant_visioRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Assistant_visioRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AuthCheckEmailPage]
 class AuthCheckEmailRoute extends PageRouteInfo<void> {
   const AuthCheckEmailRoute({List<PageRouteInfo>? children})
@@ -422,8 +441,7 @@ class CategoryListRoute extends PageRouteInfo<CategoryListRouteArgs> {
 
   static const String name = 'CategoryListRoute';
 
-  static const PageInfo<CategoryListRouteArgs> page =
-      PageInfo<CategoryListRouteArgs>(name);
+  static const PageInfo<CategoryListRouteArgs> page = PageInfo<CategoryListRouteArgs>(name);
 }
 
 class CategoryListRouteArgs {
@@ -460,8 +478,7 @@ class CategoryViewRoute extends PageRouteInfo<CategoryViewRouteArgs> {
 
   static const String name = 'CategoryViewRoute';
 
-  static const PageInfo<CategoryViewRouteArgs> page =
-      PageInfo<CategoryViewRouteArgs>(name);
+  static const PageInfo<CategoryViewRouteArgs> page = PageInfo<CategoryViewRouteArgs>(name);
 }
 
 class CategoryViewRouteArgs {
@@ -592,8 +609,7 @@ class MainNavigationRoute extends PageRouteInfo<MainNavigationRouteArgs> {
 
   static const String name = 'MainNavigationRoute';
 
-  static const PageInfo<MainNavigationRouteArgs> page =
-      PageInfo<MainNavigationRouteArgs>(name);
+  static const PageInfo<MainNavigationRouteArgs> page = PageInfo<MainNavigationRouteArgs>(name);
 }
 
 class MainNavigationRouteArgs {
@@ -681,8 +697,7 @@ class NewsViewRoute extends PageRouteInfo<NewsViewRouteArgs> {
 
   static const String name = 'NewsViewRoute';
 
-  static const PageInfo<NewsViewRouteArgs> page =
-      PageInfo<NewsViewRouteArgs>(name);
+  static const PageInfo<NewsViewRouteArgs> page = PageInfo<NewsViewRouteArgs>(name);
 }
 
 class NewsViewRouteArgs {
@@ -733,8 +748,7 @@ class ReauthenticateRoute extends PageRouteInfo<ReauthenticateRouteArgs> {
 
   static const String name = 'ReauthenticateRoute';
 
-  static const PageInfo<ReauthenticateRouteArgs> page =
-      PageInfo<ReauthenticateRouteArgs>(name);
+  static const PageInfo<ReauthenticateRouteArgs> page = PageInfo<ReauthenticateRouteArgs>(name);
 }
 
 class ReauthenticateRouteArgs {
@@ -771,8 +785,7 @@ class ResourcePdfViewerRoute extends PageRouteInfo<ResourcePdfViewerRouteArgs> {
 
   static const String name = 'ResourcePdfViewerRoute';
 
-  static const PageInfo<ResourcePdfViewerRouteArgs> page =
-      PageInfo<ResourcePdfViewerRouteArgs>(name);
+  static const PageInfo<ResourcePdfViewerRouteArgs> page = PageInfo<ResourcePdfViewerRouteArgs>(name);
 }
 
 class ResourcePdfViewerRouteArgs {
@@ -807,8 +820,7 @@ class Resource_menuRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [Resource_videoplayerPage]
-class Resource_videoplayerRoute
-    extends PageRouteInfo<Resource_videoplayerRouteArgs> {
+class Resource_videoplayerRoute extends PageRouteInfo<Resource_videoplayerRouteArgs> {
   Resource_videoplayerRoute({
     required Resource resource,
     Key? key,
@@ -824,8 +836,7 @@ class Resource_videoplayerRoute
 
   static const String name = 'Resource_videoplayerRoute';
 
-  static const PageInfo<Resource_videoplayerRouteArgs> page =
-      PageInfo<Resource_videoplayerRouteArgs>(name);
+  static const PageInfo<Resource_videoplayerRouteArgs> page = PageInfo<Resource_videoplayerRouteArgs>(name);
 }
 
 class Resource_videoplayerRouteArgs {
@@ -862,8 +873,7 @@ class Resource_viewRoute extends PageRouteInfo<Resource_viewRouteArgs> {
 
   static const String name = 'Resource_viewRoute';
 
-  static const PageInfo<Resource_viewRouteArgs> page =
-      PageInfo<Resource_viewRouteArgs>(name);
+  static const PageInfo<Resource_viewRouteArgs> page = PageInfo<Resource_viewRouteArgs>(name);
 }
 
 class Resource_viewRouteArgs {

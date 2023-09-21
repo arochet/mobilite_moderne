@@ -35,7 +35,8 @@ import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_vi
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/resource_menu_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_pdf_viewer/pdfviewer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/choice/choice_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_visio/assistant_visio_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -173,6 +174,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/resource_videoplayer-route',
           page: Resource_videoplayerRoute.page,
+        ),
+        AutoRoute(
+          path: '/assistant_visio-route',
+          page: Assistant_visioRoute.page,
         ), //insert-route
       ];
 }

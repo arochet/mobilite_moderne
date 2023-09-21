@@ -86,12 +86,13 @@ class AssistantPage extends ConsumerWidget {
                     child: ElevatedButton(
                       onPressed: () async {
                         printDev();
-                        final Uri _url = Uri.parse('https://flutter.dev');
+                        /* final Uri _url = Uri.parse('https://toulon.mobilitemoderne.fr/smart-agenda.html');
                         if (await canLaunchUrl(_url)) {
                           await launchUrl(_url);
-                        }
+                        } */
+                        context.router.push(Assistant_visioRoute());
                       },
-                      child: Text("Visio-assistance ??"),
+                      child: Text("Visio Assistance"),
                     ),
                   ),
                 ],
