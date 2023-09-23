@@ -24,11 +24,11 @@ dependencies:
   auto_route: ^7.4.0
 
   #Firebase
-  cloud_firestore: ^4.9.1
-  firebase_analytics: ^10.4.5
-  firebase_auth: ^4.9.0
-  firebase_core: ^2.15.1
-  firebase_storage: ^11.2.6
+  cloud_firestore: ^4.9.2
+  firebase_analytics: ^10.5.0
+  firebase_auth: ^4.10.0
+  firebase_core: ^2.16.0
+  firebase_storage: ^11.2.7
   google_sign_in: ^6.1.5
   flutter:
     sdk: flutter

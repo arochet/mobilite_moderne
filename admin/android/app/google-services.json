@@ -1,79 +1,45 @@
 {
   "project_info": {
-    "project_number": "881913570091",
-    "project_id": "base-de-projet",
-    "storage_bucket": "base-de-projet.appspot.com"
+    "project_number": "722897713075",
+    "project_id": "suptek-digital",
+    "storage_bucket": "suptek-digital.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881913570091:android:f5761b7850ceda84f31b6e",
+        "mobilesdk_app_id": "1:722897713075:android:4bccaa7d013bf627757dc6",
         "android_client_info": {
           "package_name": "com.alban.mobilite_moderne"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "881913570091-pl9mchp93v8004qk0snh0flac0pkocaq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwFNdspQ3ty8P4BUvDf5Ru6NAi6hoqpgU"
+          "current_key": "AIzaSyCovc5Yzmy28LGElNyeGVXMQYaKLG1qqFc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "881913570091-pl9mchp93v8004qk0snh0flac0pkocaq.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "881913570091-f44bbcv7drnai9u4tkcdubjdslgbck3m.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.alban.mobilitemoderne"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881913570091:android:7bd30ef7c8098f7ef31b6e",
+        "mobilesdk_app_id": "1:722897713075:android:326fbeab162f4255757dc6",
         "android_client_info": {
           "package_name": "com.example.admin"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "881913570091-pl9mchp93v8004qk0snh0flac0pkocaq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwFNdspQ3ty8P4BUvDf5Ru6NAi6hoqpgU"
+          "current_key": "AIzaSyCovc5Yzmy28LGElNyeGVXMQYaKLG1qqFc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "881913570091-pl9mchp93v8004qk0snh0flac0pkocaq.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "881913570091-f44bbcv7drnai9u4tkcdubjdslgbck3m.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.alban.mobilitemoderne"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

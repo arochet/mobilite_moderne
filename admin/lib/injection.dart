@@ -1,3 +1,4 @@
+import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';

@@ -1,26 +1,43 @@
 {
   "project_info": {
-    "project_number": "722897713075",
-    "project_id": "suptek-digital",
-    "storage_bucket": "suptek-digital.appspot.com"
+    "project_number": "504195622727",
+    "project_id": "mobilite-moderne",
+    "storage_bucket": "mobilite-moderne.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:722897713075:android:4bccaa7d013bf627757dc6",
+        "mobilesdk_app_id": "1:504195622727:android:bcc3c54562d359d61a4e62",
         "android_client_info": {
           "package_name": "com.alban.mobilite_moderne"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "504195622727-4ub455hrfv17v1udao0n85i7ubi5eudv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCovc5Yzmy28LGElNyeGVXMQYaKLG1qqFc"
+          "current_key": "AIzaSyDJiTD-ch4dC7rcEMYGNoSvklX-PavBpTU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504195622727-4ub455hrfv17v1udao0n85i7ubi5eudv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504195622727-hr24hhoo96gtviaepf98okaargm4ts8h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alban.mobilitemoderne"
+              }
+            }
+          ]
         }
       }
     }

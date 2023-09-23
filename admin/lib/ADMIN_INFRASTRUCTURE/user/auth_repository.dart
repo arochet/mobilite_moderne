@@ -128,7 +128,10 @@ class FirebaseAuthFacade implements AuthRepository {
 
     try {
       String psd = await getPasswordConverted(emailAdressStr, passwordStr);
-      await _firebaseAuth.signInWithEmailAndPassword(email: emailAdressStr, password: psd);
+      print('$emailAdressStr - $psd');
+      final UserCredential credential =
+          await _firebaseAuth.signInWithEmailAndPassword(email: emailAdressStr, password: 'psd');
+      print('credential : ${credential.user?.email}');
       return right(unit);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -138,15 +141,8 @@ class FirebaseAuthFacade implements AuthRepository {
           return (left(const AuthFailure.invalidUser()));
         case 'email-already-in-use':
           return (left(const AuthFailure.emailAlreadyInUse()));
-        case 'too-many-requests':
-          return (left(const AuthFailure.tooManyRequest()));
         default:
-          print('e.code => ${e.code}');
-          print('e.message => ${e.message}');
-          print('e.credential => ${e.credential}');
-          print('e.tenantId => ${e.tenantId}');
-          print('e.email => ${e.email}');
-          print('e.stackTrace => ${e.stackTrace}');
+          print('Le code : ${e.code}');
           return left(const AuthFailure.serverError());
       }
     } catch (e) {
@@ -209,65 +205,6 @@ class FirebaseAuthFacade implements AuthRepository {
       return left(const AuthFailure.serverError());
     }
   }
-
-  /* @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
-    //Vérifie la connexion internet
-    if (!(await checkInternetConnexion()))
-      return left(AuthFailure.noInternet());
-    try {
-      final LoginResult loginResult = await this._facebookAuth.login();
-      if (loginResult == null) {
-        return left(const AuthFailure.cancelledByUser());
-      }
-      print("Token ${loginResult.accessToken!.token}");
-      if (loginResult.status == LoginStatus.success) {
-        final OAuthCredential facebookAuthCredential =
-            FacebookAuthProvider.credential(loginResult.accessToken!.token);
-        await this._firebaseAuth.signInWithCredential(facebookAuthCredential);
-      } else {
-        print("echec!! ${loginResult.status}");
-        return left(AuthFailure.serverError());
-      }
-
-      try {
-        //Création des datas Firestore si c'est la première connexion
-        final user = this.getUser().fold(() => null, (user) => user);
-        if (user != null) {
-          final userDoc = await _firestore.userDocument();
-          final userData = UserData(
-            id: UniqueId.fromUniqueString(user.uid),
-            userName: Nom(user.displayName ?? "Uname"),
-            typeAccount: TypeAccount(TypeAccountState.facebook),
-            email: EmailAddress(user.email ?? ""),
-            passwordCrypted: false,
-          );
-          final userDataDTO = UserDataDTO.fromDomain(userData);
-
-          final docSnapshot = await userDoc.get();
-          if (!docSnapshot.exists) {
-            await userDoc.set(userDataDTO.toJson());
-          }
-        } else {
-          return left(const AuthFailure.serverError());
-        }
-      } on FirebaseException catch (e) {
-        if (e.message!.contains('permission')) {
-          return left(const AuthFailure.insufficientPermission());
-        } else {
-          return left(const AuthFailure.serverError());
-        }
-      } catch (e) {
-        return left(const AuthFailure.serverError());
-      }
-
-      return right(unit);
-    } on PlatformException catch (_) {
-      return left(const AuthFailure.serverError());
-    } catch (e) {
-      return left(const AuthFailure.serverError());
-    }
-  } */
 
   /// Récupère l'utilisateur courant sans ses infos Firestore
   /// UNIQUEMENT FireAuth

@@ -11,7 +11,7 @@ void main() async {
   configurationInjection(Environment.prod); //Configuration de GetIt
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: 'base-de-projet',
+    name: 'suptek-digital',
     options: DefaultFirebaseOptions.currentPlatform,
   );
 

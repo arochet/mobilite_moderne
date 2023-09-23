@@ -44,40 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDkgGBWvlUyGJLZIBC78dEDCTFMmsCPFAc',
-    appId: '1:881913570091:web:cf108faa3269e067f31b6e',
-    messagingSenderId: '881913570091',
-    projectId: 'base-de-projet',
-    authDomain: 'base-de-projet.firebaseapp.com',
-    storageBucket: 'base-de-projet.appspot.com',
-    measurementId: 'G-FF61Z7MPZG',
+    apiKey: 'AIzaSyB4p9Cry_6RvKlsvg17OMQ11C7ckI2kEjs',
+    appId: '1:722897713075:web:696176e32e4135b7757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    authDomain: 'suptek-digital.firebaseapp.com',
+    storageBucket: 'suptek-digital.appspot.com',
+    measurementId: 'G-4V9QK7D648',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAwFNdspQ3ty8P4BUvDf5Ru6NAi6hoqpgU',
-    appId: '1:881913570091:android:7bd30ef7c8098f7ef31b6e',
-    messagingSenderId: '881913570091',
-    projectId: 'base-de-projet',
-    storageBucket: 'base-de-projet.appspot.com',
+    apiKey: 'AIzaSyCovc5Yzmy28LGElNyeGVXMQYaKLG1qqFc',
+    appId: '1:722897713075:android:326fbeab162f4255757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDWVCbILlEKyRVB9KRceloMGKZQwmLDII0',
-    appId: '1:881913570091:ios:b66a5e0c48a96632f31b6e',
-    messagingSenderId: '881913570091',
-    projectId: 'base-de-projet',
-    storageBucket: 'base-de-projet.appspot.com',
-    iosClientId: '881913570091-9r5rih9unaffiddn978b136rk8gnl0qg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDgA7UDpJsUq729KDBoUL2IOqxblMvjMp8',
+    appId: '1:722897713075:ios:f0fa8252adefb966757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
     iosBundleId: 'com.example.admin',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDWVCbILlEKyRVB9KRceloMGKZQwmLDII0',
-    appId: '1:881913570091:ios:b66a5e0c48a96632f31b6e',
-    messagingSenderId: '881913570091',
-    projectId: 'base-de-projet',
-    storageBucket: 'base-de-projet.appspot.com',
-    iosClientId: '881913570091-9r5rih9unaffiddn978b136rk8gnl0qg.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDgA7UDpJsUq729KDBoUL2IOqxblMvjMp8',
+    appId: '1:722897713075:ios:f0fa8252adefb966757dc6',
+    messagingSenderId: '722897713075',
+    projectId: 'suptek-digital',
+    storageBucket: 'suptek-digital.appspot.com',
     iosBundleId: 'com.example.admin',
   );
 }

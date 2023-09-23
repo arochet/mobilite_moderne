@@ -1,6 +1,7 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_splash/splash_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/home/home_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/users/users_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/auth/auth_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,10 @@ class AdminRouter extends _$AdminRouter {
             ),
           ],
         ),
-
+        AutoRoute(
+          path: '/auth-route',
+          page: AuthRoute.page,
+        ),
         //insert-route
       ];
 }

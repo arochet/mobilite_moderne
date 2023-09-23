@@ -10,7 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:admin/ADMIN_INFRASTRUCTURE/core/firebase_injectable_module.dart'
-    as _i8;
+    as _i9;
+import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart' as _i8;
 import 'package:admin/ADMIN_INFRASTRUCTURE/user/users_repository.dart' as _i7;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
@@ -24,7 +25,7 @@ const String _test = 'test';
 const String _prod = 'prod';
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -54,8 +55,20 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
+    gh.lazySingleton<_i8.AuthRepository>(
+      () => _i8.FirebaseAuthFacade(
+        gh<_i3.FirebaseAuth>(),
+        gh<_i6.GoogleSignIn>(),
+        gh<_i4.FirebaseFirestore>(),
+        gh<_i5.FirebaseStorage>(),
+      ),
+      registerFor: {
+        _dev,
+        _prod,
+      },
+    );
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i8.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i9.FirebaseInjectableModule {}
