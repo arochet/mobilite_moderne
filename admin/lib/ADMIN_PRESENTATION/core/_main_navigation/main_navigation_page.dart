@@ -11,6 +11,7 @@ class MainNavigationPage extends StatelessWidget {
   final listRoute = [
     const HomeRoute(),
     const UsersRoute(),
+    const AdminNewsRoute(),
   ];
 
   @override
@@ -25,6 +26,11 @@ class MainNavigationPage extends StatelessWidget {
         "title": 'Users',
         "icon": Icons.person_rounded,
         "id": 1,
+      },
+      {
+        "title": 'Actualités',
+        "icon": Icons.person_rounded,
+        "id": 2,
       },
     ];
     return LayoutBuilder(

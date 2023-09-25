@@ -22,32 +22,33 @@ class AuthPage extends ConsumerWidget {
       title: 'DIST ATELIER ADMIN',
       child: ShowComponentFile(
         child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Center(
-              child: Column(
-                children: [
-                  Expanded(child: Container()),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final Either<AuthFailure, Unit> response = await ref
-                          .read(authRepositoryProvider)
-                          .signInWithEmailAndPassword(
-                              emailAdress: EmailAddress('suptekadmin@yopmail.com'),
-                              password: Password('qsdfqsdf'));
+          padding: EdgeInsets.all(10),
+          child: Center(
+            child: Column(
+              children: [
+                Expanded(child: Container()),
+                ElevatedButton(
+                  onPressed: () async {
+                    final Either<AuthFailure, Unit> response = await ref
+                        .read(authRepositoryProvider)
+                        .signInWithEmailAndPassword(
+                            emailAdress: EmailAddress('suptekadmin@yopmail.com'),
+                            password: Password('qsdfqsdf'));
 
-                      if (response.isRight()) {
-                        context.router.replaceAll([HomeRoute()]);
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(content: Text('Erreur de connexion !')));
-                      }
-                    },
-                    child: Text('Se connecter'),
-                  ),
-                  Expanded(child: Container()),
-                ],
-              ),
-            )),
+                    if (response.isRight()) {
+                      context.router.replaceAll([HomeRoute()]);
+                    } else {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text('Erreur de connexion !')));
+                    }
+                  },
+                  child: Text('Se connecter'),
+                ),
+                Expanded(child: Container()),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

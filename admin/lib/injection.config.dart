@@ -10,9 +10,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:admin/ADMIN_INFRASTRUCTURE/core/firebase_injectable_module.dart'
-    as _i9;
-import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart' as _i8;
-import 'package:admin/ADMIN_INFRASTRUCTURE/user/users_repository.dart' as _i7;
+    as _i10;
+import 'package:admin/ADMIN_INFRASTRUCTURE/news/admin_news_repository.dart'
+    as _i7;
+import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart' as _i9;
+import 'package:admin/ADMIN_INFRASTRUCTURE/user/users_repository.dart' as _i8;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:firebase_storage/firebase_storage.dart' as _i5;
@@ -44,8 +46,12 @@ extension GetItInjectableX on _i1.GetIt {
         () => firebaseInjectableModule.storage);
     gh.lazySingleton<_i6.GoogleSignIn>(
         () => firebaseInjectableModule.googleSignIn);
-    gh.lazySingleton<_i7.UsersRepository>(
-      () => _i7.UsersRepositoryFacade(
+    gh.lazySingleton<_i7.IAdminNewsRepository>(() => _i7.AdminNewsRepository(
+          gh<_i4.FirebaseFirestore>(),
+          gh<_i5.FirebaseStorage>(),
+        ));
+    gh.lazySingleton<_i8.UsersRepository>(
+      () => _i8.UsersRepositoryFacade(
         gh<_i4.FirebaseFirestore>(),
         gh<_i5.FirebaseStorage>(),
       ),
@@ -55,8 +61,8 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i8.AuthRepository>(
-      () => _i8.FirebaseAuthFacade(
+    gh.lazySingleton<_i9.AuthRepository>(
+      () => _i9.FirebaseAuthFacade(
         gh<_i3.FirebaseAuth>(),
         gh<_i6.GoogleSignIn>(),
         gh<_i4.FirebaseFirestore>(),
@@ -71,4 +77,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$FirebaseInjectableModule extends _i9.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i10.FirebaseInjectableModule {}

@@ -10,5 +10,6 @@ final GetIt getItAdmin = GetIt.instance;
 void configurationInjection(String env) {
   //Sert à afficher les logs en mode dev
   getItAdmin.registerSingleton<AppLog>(AppLog());
+  print('env : $env');
   getItAdmin.init(environment: env);
 }

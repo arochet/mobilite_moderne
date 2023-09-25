@@ -15,6 +15,12 @@ abstract class _$AdminRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AdminNewsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminNewsPage(),
+      );
+    },
     AuthRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -48,6 +54,20 @@ abstract class _$AdminRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AdminNewsPage]
+class AdminNewsRoute extends PageRouteInfo<void> {
+  const AdminNewsRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminNewsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminNewsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
