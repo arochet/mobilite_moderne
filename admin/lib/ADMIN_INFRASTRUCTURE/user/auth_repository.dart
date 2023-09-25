@@ -130,7 +130,7 @@ class FirebaseAuthFacade implements AuthRepository {
       String psd = await getPasswordConverted(emailAdressStr, passwordStr);
       print('$emailAdressStr - $psd');
       final UserCredential credential =
-          await _firebaseAuth.signInWithEmailAndPassword(email: emailAdressStr, password: 'psd');
+          await _firebaseAuth.signInWithEmailAndPassword(email: emailAdressStr, password: passwordStr);
       print('credential : ${credential.user?.email}');
       return right(unit);
     } on FirebaseAuthException catch (e) {
