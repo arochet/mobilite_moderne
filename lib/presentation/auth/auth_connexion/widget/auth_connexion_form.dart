@@ -54,7 +54,7 @@ class FormConnexion extends ConsumerWidget {
             onPressed: () {
               printDev();
               ref.read(signInFormNotifierProvider.notifier).emailChanged("alban@yopmail.com");
-              ref.read(signInFormNotifierProvider.notifier).passwordChanged("qsdfqsdf");
+              ref.read(signInFormNotifierProvider.notifier).passwordChanged("azerazer");
             },
             child: Text("Fill form"),
           ),

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "mobilite-moderne",
+    "com.alban.mobilite-moderne": "mobilite-moderne"
+  },
+  "targets": {},
+  "etags": {}
+}

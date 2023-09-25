@@ -16,7 +16,7 @@ Future<void> mainCommon(Environment env) async {
   WidgetsFlutterBinding.ensureInitialized();
   await ConfigReader.initialize();
   await Firebase.initializeApp(
-    name: 'suptek-digital',
+    name: 'mobilite-moderne',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
