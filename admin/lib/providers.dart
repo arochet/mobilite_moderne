@@ -1,3 +1,4 @@
+import 'package:admin/ADMIN_APPLICATION/news/add_news_form_notifier.dart';
 import 'package:admin/ADMIN_APPLICATION/user/auth_notifier.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/news/admin_news_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
@@ -29,6 +30,10 @@ final newsRepositoryProvider = Provider<IAdminNewsRepository>((ref) => getItAdmi
 
 final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News>>>(
     (ref) => ref.watch(newsRepositoryProvider).watch());
+
+final newsFormNotifierProvider = StateNotifierProvider.autoDispose<NewsFormNotifier, AddNewsFormData>(
+  (ref) => NewsFormNotifier(ref.watch(newsRepositoryProvider)),
+);
 
 //AUTHENTIFICATION
 /// Repository pour l'authentification

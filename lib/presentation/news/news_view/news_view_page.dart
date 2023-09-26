@@ -7,7 +7,6 @@ import 'widget/panel_news_view.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:another_flushbar/flushbar.dart';
-import 'package:mobilite_moderne/APPLICATION/news/add_news_form_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';

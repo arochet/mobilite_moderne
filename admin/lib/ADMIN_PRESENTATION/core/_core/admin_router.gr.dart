@@ -41,6 +41,12 @@ abstract class _$AdminRouter extends RootStackRouter {
         child: MainNavigationPage(key: args.key),
       );
     },
+    NewsAddRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewsAddPage(),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -125,6 +131,20 @@ class MainNavigationRouteArgs {
   String toString() {
     return 'MainNavigationRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [NewsAddPage]
+class NewsAddRoute extends PageRouteInfo<void> {
+  const NewsAddRoute({List<PageRouteInfo>? children})
+      : super(
+          NewsAddRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsAddRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

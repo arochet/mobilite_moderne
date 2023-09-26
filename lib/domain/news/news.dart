@@ -19,7 +19,12 @@ abstract class News with _$News {
     required String content,
     required String image,
     required String subcontent,
+
+    ///Mots clé pour retrouver l'article
     required List<String> keywords,
+
+    /// Date de publication de l'article
+    required DateTime datePublished,
 
     /// Image qui est charger avec le paramètre image
     Future<Uint8List?>? imageBytes,
@@ -32,5 +37,6 @@ abstract class News with _$News {
         image: '',
         subcontent: '',
         keywords: [],
+        datePublished: DateTime.now(),
       );
 }

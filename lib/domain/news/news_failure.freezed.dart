@@ -21,6 +21,7 @@ mixin _$NewsFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$NewsFailure {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$NewsFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$NewsFailure {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadImage value) unableToLoadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$NewsFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadImage value)? unableToLoadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$NewsFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadImage value)? unableToLoadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +128,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadImage,
   }) {
     return unexpected();
   }
@@ -132,6 +139,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadImage,
   }) {
     return unexpected?.call();
   }
@@ -142,6 +150,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -157,6 +166,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadImage value) unableToLoadImage,
   }) {
     return unexpected(this);
   }
@@ -167,6 +177,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadImage value)? unableToLoadImage,
   }) {
     return unexpected?.call(this);
   }
@@ -177,6 +188,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadImage value)? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -232,6 +244,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadImage,
   }) {
     return insufficientPermission();
   }
@@ -242,6 +255,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadImage,
   }) {
     return insufficientPermission?.call();
   }
@@ -252,6 +266,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -267,6 +282,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadImage value) unableToLoadImage,
   }) {
     return insufficientPermission(this);
   }
@@ -277,6 +293,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadImage value)? unableToLoadImage,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -287,6 +304,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadImage value)? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -341,6 +359,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadImage,
   }) {
     return unableToUpdate();
   }
@@ -351,6 +370,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function()? unexpected,
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadImage,
   }) {
     return unableToUpdate?.call();
   }
@@ -361,6 +381,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -376,6 +397,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadImage value) unableToLoadImage,
   }) {
     return unableToUpdate(this);
   }
@@ -386,6 +408,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadImage value)? unableToLoadImage,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -396,6 +419,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadImage value)? unableToLoadImage,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -407,4 +431,119 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements NewsFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
+}
+
+/// @nodoc
+abstract class _$$_UnableToLoadImageCopyWith<$Res> {
+  factory _$$_UnableToLoadImageCopyWith(_$_UnableToLoadImage value,
+          $Res Function(_$_UnableToLoadImage) then) =
+      __$$_UnableToLoadImageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UnableToLoadImageCopyWithImpl<$Res>
+    extends _$NewsFailureCopyWithImpl<$Res, _$_UnableToLoadImage>
+    implements _$$_UnableToLoadImageCopyWith<$Res> {
+  __$$_UnableToLoadImageCopyWithImpl(
+      _$_UnableToLoadImage _value, $Res Function(_$_UnableToLoadImage) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UnableToLoadImage implements _UnableToLoadImage {
+  const _$_UnableToLoadImage();
+
+  @override
+  String toString() {
+    return 'NewsFailure.unableToLoadImage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UnableToLoadImage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadImage,
+  }) {
+    return unableToLoadImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadImage,
+  }) {
+    return unableToLoadImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadImage,
+    required TResult orElse(),
+  }) {
+    if (unableToLoadImage != null) {
+      return unableToLoadImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadImage value) unableToLoadImage,
+  }) {
+    return unableToLoadImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadImage value)? unableToLoadImage,
+  }) {
+    return unableToLoadImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadImage value)? unableToLoadImage,
+    required TResult orElse(),
+  }) {
+    if (unableToLoadImage != null) {
+      return unableToLoadImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnableToLoadImage implements NewsFailure {
+  const factory _UnableToLoadImage() = _$_UnableToLoadImage;
 }

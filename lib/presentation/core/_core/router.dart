@@ -24,7 +24,6 @@ import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/reso
 import '../../account/account/buttons/buttons.dart';
 import '../../account/account/colors/colors.dart';
 import '../../account/account/utils/utils_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./news/news_add/news_add_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
@@ -130,11 +129,6 @@ class AppRouter extends _$AppRouter {
           path: '/utils-route',
           page: UtilsRoute.page,
         ),
-        AutoRoute(
-          path: '/news-add-route',
-          page: NewsAddRoute.page,
-        ),
-
         AutoRoute(
           path: '/news-view-route',
           page: NewsViewRoute.page,

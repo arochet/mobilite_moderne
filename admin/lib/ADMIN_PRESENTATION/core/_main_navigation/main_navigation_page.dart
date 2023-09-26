@@ -29,7 +29,7 @@ class MainNavigationPage extends StatelessWidget {
       },
       {
         "title": 'Actualités',
-        "icon": Icons.person_rounded,
+        "icon": Icons.newspaper,
         "id": 2,
       },
     ];

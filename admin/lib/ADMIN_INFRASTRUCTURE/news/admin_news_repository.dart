@@ -1,6 +1,9 @@
+import 'dart:io';
+
+import 'package:admin/ADMIN_DOMAIN/core/upload_failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
@@ -15,6 +18,7 @@ abstract class IAdminNewsRepository {
   Future<Either<NewsFailure, Unit>> create(News news);
   Future<Either<NewsFailure, Unit>> update(News news);
   Future<Either<NewsFailure, Unit>> delete(UniqueId id);
+  Future<Either<UploadFailure, Unit>> uploadImage(XFile file);
 }
 
 @LazySingleton(as: IAdminNewsRepository)
@@ -132,6 +136,26 @@ class AdminNewsRepository implements IAdminNewsRepository {
     } catch (e) {
       print('Erreur lors du chargement de l\'image');
       print(e);
+    }
+  }
+
+  @override
+  Future<Either<UploadFailure, Unit>> uploadImage(XFile file) async {
+    try {
+      final TaskSnapshot result =
+          await _storage.ref().child('actualites/${file.name}').putFile(File(file.path));
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e.code);
+      print(e.message);
+      switch (e.code) {
+        case 'permission-denied':
+          return left(UploadFailure.insufficientPermission());
+        case 'download-size-exceeded':
+          return left(UploadFailure.downloadExceed());
+        default:
+          return left(UploadFailure.unexpected());
+      }
     }
   }
 }

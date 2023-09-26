@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddNewsFormData {
   News get news => throw _privateConstructorUsedError;
+  XFile? get image => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<NewsFailure, Unit>> get authFailureOrSuccessOption =>
@@ -35,6 +36,7 @@ abstract class $AddNewsFormDataCopyWith<$Res> {
   @useResult
   $Res call(
       {News news,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<NewsFailure, Unit>> authFailureOrSuccessOption});
@@ -56,6 +58,7 @@ class _$AddNewsFormDataCopyWithImpl<$Res, $Val extends AddNewsFormData>
   @override
   $Res call({
     Object? news = null,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -65,6 +68,10 @@ class _$AddNewsFormDataCopyWithImpl<$Res, $Val extends AddNewsFormData>
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
               as News,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -99,6 +106,7 @@ abstract class _$$_AddNewsFormDataCopyWith<$Res>
   @useResult
   $Res call(
       {News news,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<NewsFailure, Unit>> authFailureOrSuccessOption});
@@ -119,6 +127,7 @@ class __$$_AddNewsFormDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? news = null,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -128,6 +137,10 @@ class __$$_AddNewsFormDataCopyWithImpl<$Res>
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
               as News,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -149,12 +162,15 @@ class __$$_AddNewsFormDataCopyWithImpl<$Res>
 class _$_AddNewsFormData implements _AddNewsFormData {
   const _$_AddNewsFormData(
       {required this.news,
+      required this.image,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.authFailureOrSuccessOption});
 
   @override
   final News news;
+  @override
+  final XFile? image;
   @override
   final bool showErrorMessages;
   @override
@@ -164,7 +180,7 @@ class _$_AddNewsFormData implements _AddNewsFormData {
 
   @override
   String toString() {
-    return 'AddNewsFormData(news: $news, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'AddNewsFormData(news: $news, image: $image, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -173,6 +189,7 @@ class _$_AddNewsFormData implements _AddNewsFormData {
         (other.runtimeType == runtimeType &&
             other is _$_AddNewsFormData &&
             (identical(other.news, news) || other.news == news) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -184,7 +201,7 @@ class _$_AddNewsFormData implements _AddNewsFormData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, news, showErrorMessages,
+  int get hashCode => Object.hash(runtimeType, news, image, showErrorMessages,
       isSubmitting, authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -197,6 +214,7 @@ class _$_AddNewsFormData implements _AddNewsFormData {
 abstract class _AddNewsFormData implements AddNewsFormData {
   const factory _AddNewsFormData(
       {required final News news,
+      required final XFile? image,
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<NewsFailure, Unit>>
@@ -204,6 +222,8 @@ abstract class _AddNewsFormData implements AddNewsFormData {
 
   @override
   News get news;
+  @override
+  XFile? get image;
   @override
   bool get showErrorMessages;
   @override

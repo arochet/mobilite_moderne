@@ -157,12 +157,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewPasswordPage(),
       );
     },
-    NewsAddRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const NewsAddPage(),
-      );
-    },
     NewsListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -668,20 +662,6 @@ class NewPasswordRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NewPasswordRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [NewsAddPage]
-class NewsAddRoute extends PageRouteInfo<void> {
-  const NewsAddRoute({List<PageRouteInfo>? children})
-      : super(
-          NewsAddRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'NewsAddRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

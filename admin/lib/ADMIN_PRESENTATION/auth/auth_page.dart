@@ -32,7 +32,7 @@ class AuthPage extends ConsumerWidget {
                     final Either<AuthFailure, Unit> response = await ref
                         .read(authRepositoryProvider)
                         .signInWithEmailAndPassword(
-                            emailAdress: EmailAddress('suptekadmin@yopmail.com'),
+                            emailAdress: EmailAddress('devsuptekdigital@gmail.com'),
                             password: Password('qsdfqsdf'));
 
                     if (response.isRight()) {

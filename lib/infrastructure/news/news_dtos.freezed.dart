@@ -27,6 +27,7 @@ mixin _$NewsDTO {
   String get image => throw _privateConstructorUsedError;
   String get subcontent => throw _privateConstructorUsedError;
   List<String> get keywords => throw _privateConstructorUsedError;
+  int get datePublished => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $NewsDTOCopyWith<$Res> {
       String content,
       String image,
       String subcontent,
-      List<String> keywords});
+      List<String> keywords,
+      int datePublished});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$NewsDTOCopyWithImpl<$Res, $Val extends NewsDTO>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? datePublished = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -92,6 +95,10 @@ class _$NewsDTOCopyWithImpl<$Res, $Val extends NewsDTO>
           ? _value.keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      datePublished: null == datePublished
+          ? _value.datePublished
+          : datePublished // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$_NewsDTOCopyWith<$Res> implements $NewsDTOCopyWith<$Res> {
       String content,
       String image,
       String subcontent,
-      List<String> keywords});
+      List<String> keywords,
+      int datePublished});
 }
 
 /// @nodoc
@@ -128,6 +136,7 @@ class __$$_NewsDTOCopyWithImpl<$Res>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? datePublished = null,
   }) {
     return _then(_$_NewsDTO(
       id: freezed == id
@@ -154,6 +163,10 @@ class __$$_NewsDTOCopyWithImpl<$Res>
           ? _value._keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      datePublished: null == datePublished
+          ? _value.datePublished
+          : datePublished // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -167,7 +180,8 @@ class _$_NewsDTO extends _NewsDTO {
       required this.content,
       required this.image,
       required this.subcontent,
-      required final List<String> keywords})
+      required final List<String> keywords,
+      required this.datePublished})
       : _keywords = keywords,
         super._();
 
@@ -194,8 +208,11 @@ class _$_NewsDTO extends _NewsDTO {
   }
 
   @override
+  final int datePublished;
+
+  @override
   String toString() {
-    return 'NewsDTO(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords)';
+    return 'NewsDTO(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished)';
   }
 
   @override
@@ -209,13 +226,22 @@ class _$_NewsDTO extends _NewsDTO {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.subcontent, subcontent) ||
                 other.subcontent == subcontent) &&
-            const DeepCollectionEquality().equals(other._keywords, _keywords));
+            const DeepCollectionEquality().equals(other._keywords, _keywords) &&
+            (identical(other.datePublished, datePublished) ||
+                other.datePublished == datePublished));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, content, image,
-      subcontent, const DeepCollectionEquality().hash(_keywords));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      content,
+      image,
+      subcontent,
+      const DeepCollectionEquality().hash(_keywords),
+      datePublished);
 
   @JsonKey(ignore: true)
   @override
@@ -238,7 +264,8 @@ abstract class _NewsDTO extends NewsDTO {
       required final String content,
       required final String image,
       required final String subcontent,
-      required final List<String> keywords}) = _$_NewsDTO;
+      required final List<String> keywords,
+      required final int datePublished}) = _$_NewsDTO;
   const _NewsDTO._() : super._();
 
   factory _NewsDTO.fromJson(Map<String, dynamic> json) = _$_NewsDTO.fromJson;
@@ -256,6 +283,8 @@ abstract class _NewsDTO extends NewsDTO {
   String get subcontent;
   @override
   List<String> get keywords;
+  @override
+  int get datePublished;
   @override
   @JsonKey(ignore: true)
   _$$_NewsDTOCopyWith<_$_NewsDTO> get copyWith =>

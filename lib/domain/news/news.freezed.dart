@@ -21,7 +21,12 @@ mixin _$News {
   String get content => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get subcontent => throw _privateConstructorUsedError;
+
+  ///Mots clé pour retrouver l'article
   List<String> get keywords => throw _privateConstructorUsedError;
+
+  /// Date de publication de l'article
+  DateTime get datePublished => throw _privateConstructorUsedError;
 
   /// Image qui est charger avec le paramètre image
   Future<Uint8List?>? get imageBytes => throw _privateConstructorUsedError;
@@ -42,6 +47,7 @@ abstract class $NewsCopyWith<$Res> {
       String image,
       String subcontent,
       List<String> keywords,
+      DateTime datePublished,
       Future<Uint8List?>? imageBytes});
 }
 
@@ -64,6 +70,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? datePublished = null,
     Object? imageBytes = freezed,
   }) {
     return _then(_value.copyWith(
@@ -91,6 +98,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      datePublished: null == datePublished
+          ? _value.datePublished
+          : datePublished // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       imageBytes: freezed == imageBytes
           ? _value.imageBytes
           : imageBytes // ignore: cast_nullable_to_non_nullable
@@ -112,6 +123,7 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       String image,
       String subcontent,
       List<String> keywords,
+      DateTime datePublished,
       Future<Uint8List?>? imageBytes});
 }
 
@@ -130,6 +142,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     Object? image = null,
     Object? subcontent = null,
     Object? keywords = null,
+    Object? datePublished = null,
     Object? imageBytes = freezed,
   }) {
     return _then(_$_News(
@@ -157,6 +170,10 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
           ? _value._keywords
           : keywords // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      datePublished: null == datePublished
+          ? _value.datePublished
+          : datePublished // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       imageBytes: freezed == imageBytes
           ? _value.imageBytes
           : imageBytes // ignore: cast_nullable_to_non_nullable
@@ -175,6 +192,7 @@ class _$_News extends _News {
       required this.image,
       required this.subcontent,
       required final List<String> keywords,
+      required this.datePublished,
       this.imageBytes})
       : _keywords = keywords,
         super._();
@@ -189,7 +207,11 @@ class _$_News extends _News {
   final String image;
   @override
   final String subcontent;
+
+  ///Mots clé pour retrouver l'article
   final List<String> _keywords;
+
+  ///Mots clé pour retrouver l'article
   @override
   List<String> get keywords {
     if (_keywords is EqualUnmodifiableListView) return _keywords;
@@ -197,13 +219,17 @@ class _$_News extends _News {
     return EqualUnmodifiableListView(_keywords);
   }
 
+  /// Date de publication de l'article
+  @override
+  final DateTime datePublished;
+
   /// Image qui est charger avec le paramètre image
   @override
   final Future<Uint8List?>? imageBytes;
 
   @override
   String toString() {
-    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, imageBytes: $imageBytes)';
+    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished, imageBytes: $imageBytes)';
   }
 
   @override
@@ -218,13 +244,23 @@ class _$_News extends _News {
             (identical(other.subcontent, subcontent) ||
                 other.subcontent == subcontent) &&
             const DeepCollectionEquality().equals(other._keywords, _keywords) &&
+            (identical(other.datePublished, datePublished) ||
+                other.datePublished == datePublished) &&
             (identical(other.imageBytes, imageBytes) ||
                 other.imageBytes == imageBytes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, content, image,
-      subcontent, const DeepCollectionEquality().hash(_keywords), imageBytes);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      content,
+      image,
+      subcontent,
+      const DeepCollectionEquality().hash(_keywords),
+      datePublished,
+      imageBytes);
 
   @JsonKey(ignore: true)
   @override
@@ -241,6 +277,7 @@ abstract class _News extends News {
       required final String image,
       required final String subcontent,
       required final List<String> keywords,
+      required final DateTime datePublished,
       final Future<Uint8List?>? imageBytes}) = _$_News;
   const _News._() : super._();
 
@@ -255,7 +292,13 @@ abstract class _News extends News {
   @override
   String get subcontent;
   @override
+
+  ///Mots clé pour retrouver l'article
   List<String> get keywords;
+  @override
+
+  /// Date de publication de l'article
+  DateTime get datePublished;
   @override
 
   /// Image qui est charger avec le paramètre image

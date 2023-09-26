@@ -13,6 +13,7 @@ _$_NewsDTO _$$_NewsDTOFromJson(Map<String, dynamic> json) => _$_NewsDTO(
       subcontent: json['subcontent'] as String,
       keywords:
           (json['keywords'] as List<dynamic>).map((e) => e as String).toList(),
+      datePublished: json['datePublished'] as int,
     );
 
 Map<String, dynamic> _$$_NewsDTOToJson(_$_NewsDTO instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_NewsDTOToJson(_$_NewsDTO instance) =>
       'image': instance.image,
       'subcontent': instance.subcontent,
       'keywords': instance.keywords,
+      'datePublished': instance.datePublished,
     };

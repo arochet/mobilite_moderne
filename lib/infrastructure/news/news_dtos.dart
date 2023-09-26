@@ -19,6 +19,7 @@ abstract class NewsDTO implements _$NewsDTO {
     required String image,
     required String subcontent,
     required List<String> keywords,
+    required int datePublished,
   }) = _NewsDTO;
 
   factory NewsDTO.fromDomain(News obj) {
@@ -29,6 +30,7 @@ abstract class NewsDTO implements _$NewsDTO {
       image: obj.image,
       subcontent: obj.subcontent,
       keywords: obj.keywords,
+      datePublished: obj.datePublished.millisecondsSinceEpoch,
     );
   }
 
@@ -41,6 +43,7 @@ abstract class NewsDTO implements _$NewsDTO {
       subcontent: subcontent,
       keywords: keywords,
       imageBytes: imageBytes,
+      datePublished: DateTime.fromMillisecondsSinceEpoch(datePublished),
     );
   }
 

@@ -6,7 +6,6 @@ import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifie
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/reset_password_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/sign_in_form_notifier.dart';
-import 'package:mobilite_moderne/APPLICATION/news/add_news_form_notifier.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -101,10 +100,6 @@ final currentUserData = FutureProvider.autoDispose<UserData?>((ref) async {
 //News
 
 final newsRepositoryProvider = Provider<INewsRepository>((ref) => getIt<INewsRepository>());
-
-final newsFormNotifierProvider = StateNotifierProvider.autoDispose<NewsFormNotifier, AddNewsFormData>(
-  (ref) => NewsFormNotifier(ref.watch(newsRepositoryProvider)),
-);
 
 final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News>>>(
     (ref) => ref.watch(newsRepositoryProvider).watch());
