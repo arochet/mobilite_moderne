@@ -8,4 +8,5 @@ abstract class ResourceFailure with _$ResourceFailure {
   const factory ResourceFailure.insufficientPermission() = _InsufficientPermission;
   const factory ResourceFailure.unableToUpdate() = _UnableToUpdate;
   const factory ResourceFailure.unableToLoadFile() = _UnableToLoadFile;
+  const factory ResourceFailure.notExist() = _NotExist;
 }

@@ -128,15 +128,17 @@ class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
       return document.get().then((doc) async {
         //Chargement des ressources lié à la réponse
         final dto = ChoiceDTO.fromFirestore(doc);
-        final listFutureResource = dto.listRessources?.map((idResource) async {
-              final eitherResource =
-                  await _articleRepository.watchResourceWithId(UniqueId.fromUniqueString(idResource));
-              return eitherResource.fold((l) => Resource.empty(), (resource) => resource);
-            }) ??
-            [];
+        final List<Resource> listFutureResource = [];
+
+        dto.listRessources?.forEach((idResource) async {
+          final eitherResource =
+              await _articleRepository.getResourceWithId(UniqueId.fromUniqueString(idResource));
+          eitherResource.fold(
+              (l) => Resource.error(l.toString()), (resource) => listFutureResource.add(resource));
+        });
 
         final choiceAnswer = ChoiceDTO.fromFirestore(doc)
-            .toDomainAnswer(doc.reference.path, listRessources: await Future.wait(listFutureResource));
+            .toDomainAnswer(doc.reference.path, listRessources: (listFutureResource));
 
         return right(choiceAnswer);
       });

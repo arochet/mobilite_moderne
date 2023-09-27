@@ -55,11 +55,21 @@ abstract class Resource with _$Resource {
 
   factory Resource.empty() => Resource(
         id: UniqueId(),
-        nom: Nom(''),
+        nom: Nom('-'),
         type: ResourceType.document,
         documentPath: '',
         idCategory: UniqueId(),
         keyword: [],
         description: '',
+      );
+
+  factory Resource.error(String err) => Resource(
+        id: UniqueId(),
+        nom: Nom('Unfound'),
+        type: ResourceType.document,
+        documentPath: '',
+        idCategory: UniqueId(),
+        keyword: [],
+        description: '$err',
       );
 }

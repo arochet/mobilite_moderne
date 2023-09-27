@@ -20,7 +20,7 @@ abstract class IResourceRepository {
 
   //Ressource
   Future<Either<ResourceFailure, String>> getDocumentURL(String path);
-  Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id);
+  Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id);
 }
 
 @LazySingleton(as: IResourceRepository)
@@ -149,10 +149,12 @@ class ResourceRepository implements IResourceRepository {
   }
 
   @override
-  Future<Either<ResourceFailure, Resource>> watchResourceWithId(UniqueId id) async {
+  Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id) async {
     final document = _firestore.resourcesCollection.doc(id.getOrCrash());
 
-    return document.get().then((doc) => right(ResourceDTO.fromFirestore(doc)
-        .toDomain())) /* .onError((e, stackTrace) => left(const ResourcesFailure.unexpected())) */;
+    return document.get().then((doc) {
+      if (doc.data() == null) return left(ResourceFailure.notExist());
+      return right(ResourceDTO.fromFirestore(doc).toDomain());
+    }) /* .onError((e, stackTrace) => left(const ResourcesFailure.unexpected())) */;
   }
 }

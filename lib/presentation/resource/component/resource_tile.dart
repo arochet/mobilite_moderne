@@ -18,6 +18,7 @@ class ResourceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('resource type : ${resource}');
     if (resource.type == ResourceType.document) {
       return _DocumentTile(resource: resource);
     } else if (resource.type == ResourceType.video) {

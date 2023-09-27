@@ -22,6 +22,7 @@ mixin _$ResourceFailure {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ResourceFailure {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ResourceFailure {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$ResourceFailure {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$ResourceFailure {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$ResourceFailure {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +135,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
   }) {
     return unexpected();
   }
@@ -140,6 +147,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
   }) {
     return unexpected?.call();
   }
@@ -151,6 +159,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -167,6 +176,7 @@ class _$_Unexpected implements _Unexpected {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
   }) {
     return unexpected(this);
   }
@@ -178,6 +188,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
   }) {
     return unexpected?.call(this);
   }
@@ -189,6 +200,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -245,6 +257,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
   }) {
     return insufficientPermission();
   }
@@ -256,6 +269,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
   }) {
     return insufficientPermission?.call();
   }
@@ -267,6 +281,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -283,6 +298,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
   }) {
     return insufficientPermission(this);
   }
@@ -294,6 +310,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -305,6 +322,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -360,6 +378,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
   }) {
     return unableToUpdate();
   }
@@ -371,6 +390,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
   }) {
     return unableToUpdate?.call();
   }
@@ -382,6 +402,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -398,6 +419,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
   }) {
     return unableToUpdate(this);
   }
@@ -409,6 +431,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -420,6 +443,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -475,6 +499,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
   }) {
     return unableToLoadFile();
   }
@@ -486,6 +511,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
   }) {
     return unableToLoadFile?.call();
   }
@@ -497,6 +523,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
     required TResult orElse(),
   }) {
     if (unableToLoadFile != null) {
@@ -513,6 +540,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
   }) {
     return unableToLoadFile(this);
   }
@@ -524,6 +552,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
   }) {
     return unableToLoadFile?.call(this);
   }
@@ -535,6 +564,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
     required TResult orElse(),
   }) {
     if (unableToLoadFile != null) {
@@ -546,4 +576,125 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
 
 abstract class _UnableToLoadFile implements ResourceFailure {
   const factory _UnableToLoadFile() = _$_UnableToLoadFile;
+}
+
+/// @nodoc
+abstract class _$$_NotExistCopyWith<$Res> {
+  factory _$$_NotExistCopyWith(
+          _$_NotExist value, $Res Function(_$_NotExist) then) =
+      __$$_NotExistCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NotExistCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$_NotExist>
+    implements _$$_NotExistCopyWith<$Res> {
+  __$$_NotExistCopyWithImpl(
+      _$_NotExist _value, $Res Function(_$_NotExist) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NotExist implements _NotExist {
+  const _$_NotExist();
+
+  @override
+  String toString() {
+    return 'ResourceFailure.notExist()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NotExist);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToLoadFile,
+    required TResult Function() notExist,
+  }) {
+    return notExist();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToLoadFile,
+    TResult? Function()? notExist,
+  }) {
+    return notExist?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToLoadFile,
+    TResult Function()? notExist,
+    required TResult orElse(),
+  }) {
+    if (notExist != null) {
+      return notExist();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToLoadFile value) unableToLoadFile,
+    required TResult Function(_NotExist value) notExist,
+  }) {
+    return notExist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult? Function(_NotExist value)? notExist,
+  }) {
+    return notExist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToLoadFile value)? unableToLoadFile,
+    TResult Function(_NotExist value)? notExist,
+    required TResult orElse(),
+  }) {
+    if (notExist != null) {
+      return notExist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotExist implements ResourceFailure {
+  const factory _NotExist() = _$_NotExist;
 }
