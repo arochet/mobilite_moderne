@@ -1,5 +1,7 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_splash/splash_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/home/home_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/message/conversation_list/conversation_list_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/message/message_chat/message_chat_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_add/news_add_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_home/news_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/resource/choice_category/choice_category_page.dart';
@@ -48,6 +50,10 @@ class AdminRouter extends _$AdminRouter {
               path: 'news',
               page: AdminNewsRoute.page,
             ),
+            AutoRoute(
+              path: 'conversation-list-route',
+              page: ConversationListRoute.page,
+            ),
           ],
         ),
         AutoRoute(
@@ -69,6 +75,14 @@ class AdminRouter extends _$AdminRouter {
         AutoRoute(
           path: '/choice-category-route',
           page: Choice_categoryRoute.page,
+        ),
+        AutoRoute(
+          path: '/message-chat-route',
+          page: MessageChatRoute.page,
+        ),
+        AutoRoute(
+          path: '/message-chat-route',
+          page: MessageChatRoute.page,
         ),
         //insert-route
       ];

@@ -39,6 +39,12 @@ abstract class _$AdminRouter extends RootStackRouter {
         ),
       );
     },
+    ConversationListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ConversationListPage(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -51,6 +57,16 @@ abstract class _$AdminRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MainNavigationPage(key: args.key),
+      );
+    },
+    MessageChatRoute.name: (routeData) {
+      final args = routeData.argsAs<MessageChatRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MessageChatPage(
+          args.idUser,
+          key: args.key,
+        ),
       );
     },
     NewsAddRoute.name: (routeData) {
@@ -173,6 +189,20 @@ class Choice_categoryRouteArgs {
 }
 
 /// generated route for
+/// [ConversationListPage]
+class ConversationListRoute extends PageRouteInfo<void> {
+  const ConversationListRoute({List<PageRouteInfo>? children})
+      : super(
+          ConversationListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ConversationListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -212,6 +242,44 @@ class MainNavigationRouteArgs {
   @override
   String toString() {
     return 'MainNavigationRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [MessageChatPage]
+class MessageChatRoute extends PageRouteInfo<MessageChatRouteArgs> {
+  MessageChatRoute({
+    required UniqueId idUser,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MessageChatRoute.name,
+          args: MessageChatRouteArgs(
+            idUser: idUser,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MessageChatRoute';
+
+  static const PageInfo<MessageChatRouteArgs> page =
+      PageInfo<MessageChatRouteArgs>(name);
+}
+
+class MessageChatRouteArgs {
+  const MessageChatRouteArgs({
+    required this.idUser,
+    this.key,
+  });
+
+  final UniqueId idUser;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MessageChatRouteArgs{idUser: $idUser, key: $key}';
   }
 }
 

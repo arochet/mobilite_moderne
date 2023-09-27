@@ -13,6 +13,7 @@ class MainNavigationPage extends StatelessWidget {
     const UsersRoute(),
     const ResourceListRoute(),
     const AdminNewsRoute(),
+    const ConversationListRoute(),
   ];
 
   @override
@@ -37,6 +38,11 @@ class MainNavigationPage extends StatelessWidget {
         "title": 'Actualités',
         "icon": Icons.newspaper,
         "id": 3,
+      },
+      {
+        "title": 'Messages',
+        "icon": Icons.message,
+        "id": 4,
       },
     ];
     return LayoutBuilder(

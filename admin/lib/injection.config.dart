@@ -10,6 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:admin/ADMIN_INFRASTRUCTURE/core/firebase_injectable_module.dart'
+    as _i12;
+import 'package:admin/ADMIN_INFRASTRUCTURE/message/message_repository.dart'
     as _i11;
 import 'package:admin/ADMIN_INFRASTRUCTURE/news/admin_news_repository.dart'
     as _i7;
@@ -79,8 +81,12 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
+    gh.lazySingleton<_i11.IMessageRepository>(() => _i11.MessageRepository(
+          gh<_i4.FirebaseFirestore>(),
+          gh<_i10.AuthRepository>(),
+        ));
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i11.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i12.FirebaseInjectableModule {}

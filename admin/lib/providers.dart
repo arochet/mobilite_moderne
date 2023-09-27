@@ -1,6 +1,8 @@
+import 'package:admin/ADMIN_APPLICATION/message/add_message_form_notifier.dart';
 import 'package:admin/ADMIN_APPLICATION/news/add_news_form_notifier.dart';
 import 'package:admin/ADMIN_APPLICATION/resource/add_resource_form_notifier.dart';
 import 'package:admin/ADMIN_APPLICATION/user/auth_notifier.dart';
+import 'package:admin/ADMIN_INFRASTRUCTURE/message/message_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/news/admin_news_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
@@ -10,6 +12,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/message/conversation.dart';
+import 'package:mobilite_moderne/DOMAIN/message/message.dart';
+import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
@@ -73,5 +78,21 @@ final resourceFormNotifierProvider =
 final categoryViewProvider = FutureProvider.autoDispose
     .family<Either<AppCategoryFailure, List<AppCategory>>, AppCategory>(
         (ref, category) => ref.watch(resourceRepositoryProvider).watchCategoryView(category));
-        
+
+//Message
+
+final messageRepositoryProvider = Provider<IMessageRepository>((ref) => getItAdmin<IMessageRepository>());
+
+final messageFormNotifierProvider =
+    StateNotifierProvider.autoDispose<MessageFormNotifier, AddMessageFormData>(
+  (ref) => MessageFormNotifier(ref.watch(messageRepositoryProvider)),
+);
+
+final allDiscutionProvider = StreamProvider.autoDispose<Either<MessageFailure, List<Conversation>>>(
+    (ref) => ref.watch(messageRepositoryProvider).watchAllConversation());
+
+final oneDiscutionProvider = StreamProvider.autoDispose
+    .family<Either<MessageFailure, List<Message>>, UniqueId>(
+        (ref, idUser) => ref.watch(messageRepositoryProvider).watchConversation(idUser));
+
 //insert-provider

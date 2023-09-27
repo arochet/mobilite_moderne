@@ -1,5 +1,5 @@
+import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
-import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobilite_moderne/DOMAIN/core/errors.dart';
 
