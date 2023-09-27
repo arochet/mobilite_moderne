@@ -28,7 +28,8 @@ extension FirestoreX on FirebaseFirestore {
       collection('category').doc('notice_constructeur').collection('sub');
   CollectionReference get pieceFournisseurCollection =>
       collection('category').doc('pieces_et_fournisseurs').collection('sub');
-CollectionReference get resourcesCollection => collection('resources');
-CollectionReference get choiceCollection => collection('choice');
+  CollectionReference get resourcesCollection => collection('resources');
+  CollectionReference get choiceCollection => collection('choice');
+  CollectionReference get messageCollection => collection('message');
 //insert-collection
 }

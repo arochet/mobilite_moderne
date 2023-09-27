@@ -6,11 +6,15 @@ import 'package:mobilite_moderne/APPLICATION/account/reauthenticate_form_notifie
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/reset_password_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/sign_in_form_notifier.dart';
+import 'package:mobilite_moderne/APPLICATION/message/add_message_form_notifier.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobilite_moderne/DOMAIN/message/message.dart';
+import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
@@ -131,6 +135,17 @@ final oneChoiceProvider = FutureProvider.autoDispose
 final oneAnswerProvider = FutureProvider.autoDispose
     .family<Either<AssistantDiagnosticFailure, ChoiceWithAnswer>, ChoiceWithAnswer>(
         (ref, choice) => ref.watch(assistantDiagnosticRepositoryProvider).watchAnswerWithId(choice));
+
+//Message
+final messageRepositoryProvider = Provider<IMessageRepository>((ref) => getIt<IMessageRepository>());
+
+final messageFormNotifierProvider =
+    StateNotifierProvider.autoDispose<MessageFormNotifier, AddMessageFormData>(
+  (ref) => MessageFormNotifier(ref.watch(messageRepositoryProvider)),
+);
+
+final allMessageProvider = StreamProvider.autoDispose<Either<MessageFailure, List<Message>>>(
+    (ref) => ref.watch(messageRepositoryProvider).watch());
 
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

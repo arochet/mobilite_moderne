@@ -145,6 +145,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: MainNavigationPage(key: args.key),
       );
     },
+    MessageListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MessageListPage(),
+      );
+    },
     ModifyAccountRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -636,6 +642,20 @@ class MainNavigationRouteArgs {
   String toString() {
     return 'MainNavigationRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [MessageListPage]
+class MessageListRoute extends PageRouteInfo<void> {
+  const MessageListRoute({List<PageRouteInfo>? children})
+      : super(
+          MessageListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MessageListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

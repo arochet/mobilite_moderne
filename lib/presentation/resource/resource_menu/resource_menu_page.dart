@@ -34,6 +34,17 @@ class Resource_menuPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   printDev();
+                  context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
+                },
+                child: Text("Mediathèque"),
+              ),
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
+                onPressed: () {
+                  printDev();
                   context.router.push(CategoryListRoute(mode: CategoryListPageMode.notice_constructeur));
                 },
                 child: Text("Notice Constructeur"),
@@ -50,6 +61,7 @@ class Resource_menuPage extends StatelessWidget {
                 child: Text("Pièces et Fournisseurs"),
               ),
             ),
+
             const SizedBox(height: 80),
           ],
         ),

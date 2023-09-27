@@ -102,10 +102,12 @@ class ResourceFormProvider extends ConsumerWidget {
                   icon: const Icon(Icons.warning),
                   messageColor: Colors.red,
                   message: failure.map(
-                      insufficientPermission: (_) => "Permission Insuffisante",
-                      unableToUpdate: (_) => "Unable to update",
-                      unexpected: (_) => "Unexpected",
-                      unableToLoadFile: (_) => "Unable to load file"),
+                    insufficientPermission: (_) => "Permission Insuffisante",
+                    unableToUpdate: (_) => "Unable to update",
+                    unexpected: (_) => "Unexpected",
+                    unableToLoadFile: (_) => "Unable to load file",
+                    notExist: (_) => "Not Exist",
+                  ),
                 ).show(context);
               }, (UniqueId idResource) {
                 //Création réussie !
