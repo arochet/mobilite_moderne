@@ -120,7 +120,11 @@ class ResourceRepository implements IResourceRepository {
           docListResource.forEach((element) async {
             if (element != null && element != '') {
               final resource = await collectionResources.doc(element).get();
-              listResources.add(ResourceDTO.fromFirestore(resource).toDomain());
+              if (resource.data() != null) {
+                listResources.add(ResourceDTO.fromFirestore(resource).toDomain());
+              } else {
+                print('Resource $element non trouvé');
+              }
             }
           });
       }

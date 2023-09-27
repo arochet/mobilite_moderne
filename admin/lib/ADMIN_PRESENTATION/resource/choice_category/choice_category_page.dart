@@ -62,7 +62,7 @@ class _ChoiceCategory extends ConsumerWidget {
                   ),
                   separatorBuilder: (context, index) => Divider(),
                 )
-              : Center(child: Text('Aucune catégorie trouvée'))),
+              : _ChoiceThisCategory(idResource, category)),
     );
   }
 }

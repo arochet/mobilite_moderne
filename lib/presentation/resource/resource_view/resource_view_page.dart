@@ -17,7 +17,7 @@ class Resource_viewPage extends StatelessWidget {
       child: ShowComponentFile(
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: category.listResource != null
+          child: category.listResource != null && category.listResource!.isNotEmpty
               ? ListView.separated(
                   itemCount: category.listResource!.length,
                   itemBuilder: (context, index) {
