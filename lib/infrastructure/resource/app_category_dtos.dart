@@ -20,11 +20,13 @@ abstract class AppCategoryDTO implements _$AppCategoryDTO {
     List<String>? listResource,
   }) = _AppCategoryDTO;
 
-  factory AppCategoryDTO.fromDomain(AppCategory obj) {
+  factory AppCategoryDTO.fromDomainWithResource(AppCategory obj, UniqueId idResource) {
+    List<String> appListResource = obj.listResource?.map((e) => e.id.getOrCrash()).toList() ?? [];
+    appListResource.add(idResource.getOrCrash());
     return AppCategoryDTO(
       idCategory: obj.id.getOrCrash(),
       nom: obj.nom.getOrCrash(),
-      listResource: obj.listResource?.map((e) => e.id.getOrCrash()).toList(),
+      listResource: appListResource,
     );
   }
 

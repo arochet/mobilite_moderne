@@ -30,4 +30,8 @@ abstract class AppCategory with _$AppCategory {
 
   factory AppCategory.empty() =>
       AppCategory(id: UniqueId(), nom: Nom(''), subcategory: null, path: "", listResource: []);
+
+  bool get hasSubcategory =>
+      (listResource == null || listResource?.isEmpty == true) &&
+      (subcategory?.fold((l) => null, (r) => r) != null);
 }

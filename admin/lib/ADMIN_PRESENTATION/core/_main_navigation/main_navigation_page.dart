@@ -11,6 +11,7 @@ class MainNavigationPage extends StatelessWidget {
   final listRoute = [
     const HomeRoute(),
     const UsersRoute(),
+    const ResourceListRoute(),
     const AdminNewsRoute(),
   ];
 
@@ -28,9 +29,14 @@ class MainNavigationPage extends StatelessWidget {
         "id": 1,
       },
       {
+        "title": 'Resources',
+        "icon": Icons.file_copy,
+        "id": 2,
+      },
+      {
         "title": 'Actualités',
         "icon": Icons.newspaper,
-        "id": 2,
+        "id": 3,
       },
     ];
     return LayoutBuilder(

@@ -21,7 +21,7 @@ mixin _$Resource {
   ResourceType get type => throw _privateConstructorUsedError;
   String get documentPath => throw _privateConstructorUsedError;
   UniqueId get idCategory => throw _privateConstructorUsedError;
-  String get keyword => throw _privateConstructorUsedError;
+  List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $ResourceCopyWith<$Res> {
       ResourceType type,
       String documentPath,
       UniqueId idCategory,
-      String keyword,
+      List<String> keyword,
       String description});
 }
 
@@ -89,7 +89,7 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
       keyword: null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -111,7 +111,7 @@ abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
       ResourceType type,
       String documentPath,
       UniqueId idCategory,
-      String keyword,
+      List<String> keyword,
       String description});
 }
 
@@ -156,9 +156,9 @@ class __$$_ResourceCopyWithImpl<$Res>
           : idCategory // ignore: cast_nullable_to_non_nullable
               as UniqueId,
       keyword: null == keyword
-          ? _value.keyword
+          ? _value._keyword
           : keyword // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -176,9 +176,10 @@ class _$_Resource extends _Resource {
       required this.type,
       required this.documentPath,
       required this.idCategory,
-      required this.keyword,
+      required final List<String> keyword,
       required this.description})
-      : super._();
+      : _keyword = keyword,
+        super._();
 
   @override
   final UniqueId id;
@@ -190,8 +191,14 @@ class _$_Resource extends _Resource {
   final String documentPath;
   @override
   final UniqueId idCategory;
+  final List<String> _keyword;
   @override
-  final String keyword;
+  List<String> get keyword {
+    if (_keyword is EqualUnmodifiableListView) return _keyword;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_keyword);
+  }
+
   @override
   final String description;
 
@@ -212,14 +219,14 @@ class _$_Resource extends _Resource {
                 other.documentPath == documentPath) &&
             (identical(other.idCategory, idCategory) ||
                 other.idCategory == idCategory) &&
-            (identical(other.keyword, keyword) || other.keyword == keyword) &&
+            const DeepCollectionEquality().equals(other._keyword, _keyword) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, nom, type, documentPath,
-      idCategory, keyword, description);
+      idCategory, const DeepCollectionEquality().hash(_keyword), description);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +242,7 @@ abstract class _Resource extends Resource {
       required final ResourceType type,
       required final String documentPath,
       required final UniqueId idCategory,
-      required final String keyword,
+      required final List<String> keyword,
       required final String description}) = _$_Resource;
   const _Resource._() : super._();
 
@@ -250,7 +257,7 @@ abstract class _Resource extends Resource {
   @override
   UniqueId get idCategory;
   @override
-  String get keyword;
+  List<String> get keyword;
   @override
   String get description;
   @override

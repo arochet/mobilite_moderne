@@ -112,7 +112,6 @@ class NewsForm extends ConsumerWidget {
               try {
                 final ImagePicker picker = ImagePicker();
                 final XFile? image = await picker.pickImage(source: ImageSource.gallery, imageQuality: 25);
-                print('image ${image?.path}');
 
                 if (image == null) {
                   showSnackBar(context, 'Pas d\'image sélectionnée');

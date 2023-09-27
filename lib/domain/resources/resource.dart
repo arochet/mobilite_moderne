@@ -49,7 +49,7 @@ abstract class Resource with _$Resource {
     required ResourceType type,
     required String documentPath,
     required UniqueId idCategory,
-    required String keyword,
+    required List<String> keyword,
     required String description,
   }) = _Resource;
 
@@ -59,7 +59,7 @@ abstract class Resource with _$Resource {
         type: ResourceType.document,
         documentPath: '',
         idCategory: UniqueId(),
-        keyword: '',
+        keyword: [],
         description: '',
       );
 }

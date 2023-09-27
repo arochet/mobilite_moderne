@@ -27,6 +27,18 @@ abstract class _$AdminRouter extends RootStackRouter {
         child: const AuthPage(),
       );
     },
+    Choice_categoryRoute.name: (routeData) {
+      final args = routeData.argsAs<Choice_categoryRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: Choice_categoryPage(
+          args.idResource,
+          args.category,
+          args.canChoiceCategory,
+          key: args.key,
+        ),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -45,6 +57,28 @@ abstract class _$AdminRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const NewsAddPage(),
+      );
+    },
+    ResourceAddRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ResourceAddPage(),
+      );
+    },
+    ResourceListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ResourceListPage(),
+      );
+    },
+    ResourceViewRoute.name: (routeData) {
+      final args = routeData.argsAs<ResourceViewRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ResourceViewPage(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     SplashRoute.name: (routeData) {
@@ -88,6 +122,54 @@ class AuthRoute extends PageRouteInfo<void> {
   static const String name = 'AuthRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Choice_categoryPage]
+class Choice_categoryRoute extends PageRouteInfo<Choice_categoryRouteArgs> {
+  Choice_categoryRoute({
+    required UniqueId idResource,
+    required AppCategory category,
+    required bool canChoiceCategory,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          Choice_categoryRoute.name,
+          args: Choice_categoryRouteArgs(
+            idResource: idResource,
+            category: category,
+            canChoiceCategory: canChoiceCategory,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'Choice_categoryRoute';
+
+  static const PageInfo<Choice_categoryRouteArgs> page =
+      PageInfo<Choice_categoryRouteArgs>(name);
+}
+
+class Choice_categoryRouteArgs {
+  const Choice_categoryRouteArgs({
+    required this.idResource,
+    required this.category,
+    required this.canChoiceCategory,
+    this.key,
+  });
+
+  final UniqueId idResource;
+
+  final AppCategory category;
+
+  final bool canChoiceCategory;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'Choice_categoryRouteArgs{idResource: $idResource, category: $category, canChoiceCategory: $canChoiceCategory, key: $key}';
+  }
 }
 
 /// generated route for
@@ -145,6 +227,72 @@ class NewsAddRoute extends PageRouteInfo<void> {
   static const String name = 'NewsAddRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ResourceAddPage]
+class ResourceAddRoute extends PageRouteInfo<void> {
+  const ResourceAddRoute({List<PageRouteInfo>? children})
+      : super(
+          ResourceAddRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResourceAddRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ResourceListPage]
+class ResourceListRoute extends PageRouteInfo<void> {
+  const ResourceListRoute({List<PageRouteInfo>? children})
+      : super(
+          ResourceListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResourceListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ResourceViewPage]
+class ResourceViewRoute extends PageRouteInfo<ResourceViewRouteArgs> {
+  ResourceViewRoute({
+    required UniqueId id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ResourceViewRoute.name,
+          args: ResourceViewRouteArgs(
+            id: id,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ResourceViewRoute';
+
+  static const PageInfo<ResourceViewRouteArgs> page =
+      PageInfo<ResourceViewRouteArgs>(name);
+}
+
+class ResourceViewRouteArgs {
+  const ResourceViewRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final UniqueId id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResourceViewRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for

@@ -12,7 +12,8 @@ _$_ResourceDTO _$$_ResourceDTOFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String,
       documentPath: json['documentPath'] as String,
       idCategory: json['idCategory'] as String,
-      keyword: json['keyword'] as String,
+      keyword:
+          (json['keyword'] as List<dynamic>).map((e) => e as String).toList(),
       description: json['description'] as String,
       categoryPath: json['categoryPath'] as String,
     );

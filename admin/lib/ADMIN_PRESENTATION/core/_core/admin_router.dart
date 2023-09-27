@@ -2,11 +2,18 @@ import 'package:admin/ADMIN_PRESENTATION/core/_splash/splash_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/home/home_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_add/news_add_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_home/news_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/resource/choice_category/choice_category_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/resource/resource_add/resource_add_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/resource/resource_list/resource_list_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/resource/resource_view/resource_view_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/users/users_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/auth/auth_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 
 import '../_main_navigation/main_navigation_page.dart';
 //insert-import
@@ -34,6 +41,10 @@ class AdminRouter extends _$AdminRouter {
               page: UsersRoute.page,
             ),
             AutoRoute(
+              path: 'resource-list-route',
+              page: ResourceListRoute.page,
+            ),
+            AutoRoute(
               path: 'news',
               page: AdminNewsRoute.page,
             ),
@@ -46,6 +57,18 @@ class AdminRouter extends _$AdminRouter {
         AutoRoute(
           path: '/news-add-route',
           page: NewsAddRoute.page,
+        ),
+        AutoRoute(
+          path: '/resource-add-route',
+          page: ResourceAddRoute.page,
+        ),
+        AutoRoute(
+          path: '/resource-view-route',
+          page: ResourceViewRoute.page,
+        ),
+        AutoRoute(
+          path: '/choice-category-route',
+          page: Choice_categoryRoute.page,
         ),
         //insert-route
       ];

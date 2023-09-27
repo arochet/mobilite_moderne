@@ -19,6 +19,7 @@ class BottomBarNavigation extends ConsumerWidget {
       routes: listRoute,
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             backgroundColor: colorpanel(700),
             currentIndex: tabsRouter.activeIndex,
             selectedItemColor: Theme.of(context).primaryColor,

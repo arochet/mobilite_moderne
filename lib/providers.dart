@@ -107,7 +107,7 @@ final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News
 final oneNewsProvider = FutureProvider.autoDispose.family<Either<NewsFailure, News>, UniqueId>(
     (ref, id) => ref.watch(newsRepositoryProvider).watchWithId(id));
 
-//Article
+//Resource
 
 final resourceRepositoryProvider = Provider<IResourceRepository>((ref) => getIt<IResourceRepository>());
 

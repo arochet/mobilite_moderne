@@ -26,7 +26,7 @@ mixin _$ResourceDTO {
   String get type => throw _privateConstructorUsedError;
   String get documentPath => throw _privateConstructorUsedError;
   String get idCategory => throw _privateConstructorUsedError;
-  String get keyword => throw _privateConstructorUsedError;
+  List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get categoryPath => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $ResourceDTOCopyWith<$Res> {
       String type,
       String documentPath,
       String idCategory,
-      String keyword,
+      List<String> keyword,
       String description,
       String categoryPath});
 }
@@ -99,7 +99,7 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
       keyword: null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ abstract class _$$_ResourceDTOCopyWith<$Res>
       String type,
       String documentPath,
       String idCategory,
-      String keyword,
+      List<String> keyword,
       String description,
       String categoryPath});
 }
@@ -173,9 +173,9 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
           : idCategory // ignore: cast_nullable_to_non_nullable
               as String,
       keyword: null == keyword
-          ? _value.keyword
+          ? _value._keyword
           : keyword // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -197,10 +197,11 @@ class _$_ResourceDTO extends _ResourceDTO {
       required this.type,
       required this.documentPath,
       required this.idCategory,
-      required this.keyword,
+      required final List<String> keyword,
       required this.description,
       required this.categoryPath})
-      : super._();
+      : _keyword = keyword,
+        super._();
 
   factory _$_ResourceDTO.fromJson(Map<String, dynamic> json) =>
       _$$_ResourceDTOFromJson(json);
@@ -216,8 +217,14 @@ class _$_ResourceDTO extends _ResourceDTO {
   final String documentPath;
   @override
   final String idCategory;
+  final List<String> _keyword;
   @override
-  final String keyword;
+  List<String> get keyword {
+    if (_keyword is EqualUnmodifiableListView) return _keyword;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_keyword);
+  }
+
   @override
   final String description;
   @override
@@ -240,7 +247,7 @@ class _$_ResourceDTO extends _ResourceDTO {
                 other.documentPath == documentPath) &&
             (identical(other.idCategory, idCategory) ||
                 other.idCategory == idCategory) &&
-            (identical(other.keyword, keyword) || other.keyword == keyword) &&
+            const DeepCollectionEquality().equals(other._keyword, _keyword) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.categoryPath, categoryPath) ||
@@ -249,8 +256,16 @@ class _$_ResourceDTO extends _ResourceDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, nom, type, documentPath,
-      idCategory, keyword, description, categoryPath);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      nom,
+      type,
+      documentPath,
+      idCategory,
+      const DeepCollectionEquality().hash(_keyword),
+      description,
+      categoryPath);
 
   @JsonKey(ignore: true)
   @override
@@ -273,7 +288,7 @@ abstract class _ResourceDTO extends ResourceDTO {
       required final String type,
       required final String documentPath,
       required final String idCategory,
-      required final String keyword,
+      required final List<String> keyword,
       required final String description,
       required final String categoryPath}) = _$_ResourceDTO;
   const _ResourceDTO._() : super._();
@@ -293,7 +308,7 @@ abstract class _ResourceDTO extends ResourceDTO {
   @override
   String get idCategory;
   @override
-  String get keyword;
+  List<String> get keyword;
   @override
   String get description;
   @override

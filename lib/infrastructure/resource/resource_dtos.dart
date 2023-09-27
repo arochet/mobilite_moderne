@@ -16,7 +16,7 @@ abstract class ResourceDTO implements _$ResourceDTO {
     required String type,
     required String documentPath,
     required String idCategory,
-    required String keyword,
+    required List<String> keyword,
     required String description,
     required String categoryPath,
   }) = _ResourceDTO;
