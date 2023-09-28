@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddMessageFormData {
   Message get message => throw _privateConstructorUsedError;
+  XFile? get image => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<MessageFailure, Unit>> get authFailureOrSuccessOption =>
@@ -35,6 +36,7 @@ abstract class $AddMessageFormDataCopyWith<$Res> {
   @useResult
   $Res call(
       {Message message,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<MessageFailure, Unit>> authFailureOrSuccessOption});
@@ -56,6 +58,7 @@ class _$AddMessageFormDataCopyWithImpl<$Res, $Val extends AddMessageFormData>
   @override
   $Res call({
     Object? message = null,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -65,6 +68,10 @@ class _$AddMessageFormDataCopyWithImpl<$Res, $Val extends AddMessageFormData>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as Message,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -99,6 +106,7 @@ abstract class _$$_AddMessageFormDataCopyWith<$Res>
   @useResult
   $Res call(
       {Message message,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<MessageFailure, Unit>> authFailureOrSuccessOption});
@@ -119,6 +127,7 @@ class __$$_AddMessageFormDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
@@ -128,6 +137,10 @@ class __$$_AddMessageFormDataCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as Message,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -149,12 +162,15 @@ class __$$_AddMessageFormDataCopyWithImpl<$Res>
 class _$_AddMessageFormData implements _AddMessageFormData {
   const _$_AddMessageFormData(
       {required this.message,
+      required this.image,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.authFailureOrSuccessOption});
 
   @override
   final Message message;
+  @override
+  final XFile? image;
   @override
   final bool showErrorMessages;
   @override
@@ -164,7 +180,7 @@ class _$_AddMessageFormData implements _AddMessageFormData {
 
   @override
   String toString() {
-    return 'AddMessageFormData(message: $message, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'AddMessageFormData(message: $message, image: $image, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -173,6 +189,7 @@ class _$_AddMessageFormData implements _AddMessageFormData {
         (other.runtimeType == runtimeType &&
             other is _$_AddMessageFormData &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -184,8 +201,8 @@ class _$_AddMessageFormData implements _AddMessageFormData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, showErrorMessages,
-      isSubmitting, authFailureOrSuccessOption);
+  int get hashCode => Object.hash(runtimeType, message, image,
+      showErrorMessages, isSubmitting, authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -198,6 +215,7 @@ class _$_AddMessageFormData implements _AddMessageFormData {
 abstract class _AddMessageFormData implements AddMessageFormData {
   const factory _AddMessageFormData(
       {required final Message message,
+      required final XFile? image,
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<MessageFailure, Unit>>
@@ -205,6 +223,8 @@ abstract class _AddMessageFormData implements AddMessageFormData {
 
   @override
   Message get message;
+  @override
+  XFile? get image;
   @override
   bool get showErrorMessages;
   @override

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:another_flushbar/flushbar.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
 import 'package:mobilite_moderne/APPLICATION/message/add_message_form_notifier.dart';
@@ -50,43 +53,77 @@ class _MessageFormState extends ConsumerState<MessageForm> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     _textEditingController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(messageFormNotifierProvider);
+    final state = ref.watch(messageFormNotifierProvider);
     return Form(
       autovalidateMode: AutovalidateMode.always,
       child: Column(children: [
+        SizedBox(height: 3),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             SizedBox(width: 5),
 
-            // Champs ajout de texte
-            Expanded(
-              child: TextFormField(
-                autocorrect: false,
-                controller: _textEditingController,
-                textInputAction: TextInputAction.next,
-                maxLines: null,
-                onChanged: (value) {
-                  ref.read(messageFormNotifierProvider.notifier).textChanged(value);
-                },
-                validator: (_) {
-                  return null;
-                },
-              ),
+            //Bouton Photo
+            IconButton(
+              onPressed: () async {
+                final ImagePicker picker = ImagePicker();
+                final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
+
+                if (photo != null) {
+                  ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
+                }
+              },
+              icon: Icon(Icons.photo_camera),
             ),
+            SizedBox(width: 5),
+
+            // Champs image
+            if (state.image != null) ...[
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: SizedBox.fromSize(
+                    size: Size.fromRadius(48),
+                    child: Image.file(
+                      fit: BoxFit.fitHeight,
+                      File(state.image!.path),
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+
+            // Champs ajout de texte
+            if (state.image == null)
+              Expanded(
+                child: TextFormField(
+                  autocorrect: false,
+                  controller: _textEditingController,
+                  textInputAction: TextInputAction.next,
+                  maxLines: null,
+                  onChanged: (value) {
+                    ref.read(messageFormNotifierProvider.notifier).textChanged(value);
+                  },
+                  validator: (_) {
+                    return null;
+                  },
+                ),
+              ),
             SizedBox(width: 5),
 
             //Bouton d'envoie
             IconButton(
               onPressed: () {
                 _textEditingController.clear();
+                FocusScope.of(context).requestFocus(new FocusNode());
                 ref.read(messageFormNotifierProvider.notifier).addMessagePressed();
               },
               icon: Icon(Icons.send),

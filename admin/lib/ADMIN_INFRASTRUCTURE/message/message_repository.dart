@@ -47,7 +47,7 @@ class MessageRepository implements IMessageRepository {
 
       //Actualisation de la conversation
       await _firestore.messageCollection
-          .doc('${idUser.getOrCrash()}')
+          .doc(idUser.getOrCrash())
           .update({'dateLastMessage': message.date.millisecondsSinceEpoch, 'isRead': true});
 
       return right(unit);

@@ -6,7 +6,8 @@
    <application
         android:label="Dist Atelier"
         android:icon="@mipmap/ic_launcher"
-        android:name="androidx.multidex.MultiDexApplication">
+        android:name="androidx.multidex.MultiDexApplication"
+        android:requestLegacyExternalStorage="true">
         
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         

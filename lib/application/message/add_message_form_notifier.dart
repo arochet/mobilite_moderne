@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
@@ -12,6 +13,7 @@ part 'add_message_form_notifier.freezed.dart';
 class AddMessageFormData with _$AddMessageFormData {
   const factory AddMessageFormData({
     required Message message,
+    required XFile? image,
     required bool showErrorMessages,
     required bool isSubmitting,
     required Option<Either<MessageFailure, Unit>> authFailureOrSuccessOption,
@@ -19,6 +21,7 @@ class AddMessageFormData with _$AddMessageFormData {
 
   factory AddMessageFormData.initial() => AddMessageFormData(
       message: Message.empty(),
+      image: null,
       showErrorMessages: false,
       isSubmitting: false,
       authFailureOrSuccessOption: none());
@@ -33,15 +36,19 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
     state = state.copyWith(message: state.message.copyWith(text: param), authFailureOrSuccessOption: none());
   }
 
+  imageChanged(XFile param) {
+    state = state.copyWith(image: param, authFailureOrSuccessOption: none());
+  }
+
   dateChanged(int param) {
     state = state.copyWith(
         message: state.message.copyWith(date: DateTime.fromMillisecondsSinceEpoch(param)),
         authFailureOrSuccessOption: none());
   }
 
-  imageChanged(String param) {
+/*   imageChanged(String param) {
     state = state.copyWith(message: state.message.copyWith(image: param), authFailureOrSuccessOption: none());
-  }
+  } */
 
   idUserChanged(String param) {
     state = state.copyWith(

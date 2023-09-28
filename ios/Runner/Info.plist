@@ -92,5 +92,11 @@
 	<false/>
 	<!-- <key>io.flutter.embedded_views_preview</key>
 	<true/> -->
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Library Access Warning</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone  Library Access Warning</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Access Warning</string>
 </dict>
 </plist>

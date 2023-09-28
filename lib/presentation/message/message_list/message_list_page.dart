@@ -1,3 +1,4 @@
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/date_utils.dart';
 
 import 'widget/add_message.dart';
@@ -50,6 +51,8 @@ class MessageListPage extends ConsumerWidget {
                                             listMessage[listMessage.length - 1].date, "HH:mm"),
                                         style: Theme.of(context).textTheme.bodySmall,
                                       )),
+
+                                    SpaceH10(),
                                   ])),
                         );
                       }),

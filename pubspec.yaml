@@ -70,6 +70,7 @@ dependencies:
   url_launcher: ^6.1.14
   algolia: ^1.1.2
   webview_flutter: ^4.2.4
+  image_picker: ^1.0.4
 
 
 dev_dependencies:
