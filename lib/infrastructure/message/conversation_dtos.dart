@@ -14,13 +14,14 @@ abstract class ConversationDTO implements _$ConversationDTO {
     @JsonKey(ignore: true) String? id,
     String? name,
     int? dateLastMessage,
+    bool? isRead,
   }) = _ConversationDTO;
 
   factory ConversationDTO.fromDomain(Conversation obj) {
     return ConversationDTO(
       id: obj.id.getOrCrash(),
       name: obj.name.getOrCrash(),
-      dateLastMessage: obj.dateLastMessage,
+      dateLastMessage: obj.dateLastMessage?.millisecondsSinceEpoch,
     );
   }
 
@@ -28,7 +29,8 @@ abstract class ConversationDTO implements _$ConversationDTO {
     return Conversation(
       id: UniqueId.fromUniqueString(id!),
       name: Nom(name ?? 'noname'),
-      dateLastMessage: dateLastMessage,
+      dateLastMessage: dateLastMessage != null ? DateTime.fromMillisecondsSinceEpoch(dateLastMessage!) : null,
+      isRead: isRead,
     );
   }
 

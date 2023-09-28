@@ -11,12 +11,14 @@ abstract class Conversation with _$Conversation {
   const factory Conversation({
     required UniqueId id,
     required Nom name,
-    required int? dateLastMessage,
+    required DateTime? dateLastMessage,
+    required bool? isRead,
   }) = _Conversation;
 
   factory Conversation.empty() => Conversation(
         id: UniqueId(),
         name: Nom(''),
         dateLastMessage: null,
+        isRead: null,
       );
 }

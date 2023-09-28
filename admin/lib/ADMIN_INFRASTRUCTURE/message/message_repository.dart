@@ -45,6 +45,11 @@ class MessageRepository implements IMessageRepository {
           .doc('${messageDTO.id}')
           .set(messageDTO.toJson());
 
+      //Actualisation de la conversation
+      await _firestore.messageCollection
+          .doc('${idUser.getOrCrash()}')
+          .update({'dateLastMessage': message.date.millisecondsSinceEpoch, 'isRead': true});
+
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains('permission-denied')) {

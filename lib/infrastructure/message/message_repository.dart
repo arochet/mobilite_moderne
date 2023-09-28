@@ -46,15 +46,13 @@ class MessageRepository implements IMessageRepository {
           .set(messageDTO.toJson());
 
       //Actualisation de la conversation
-      final docConversation = await _firestore.messageCollection.doc('$uid').get();
-      if (!docConversation.exists) {
-        final conversationDTO = ConversationDTO.fromDomain(Conversation(
-          id: UniqueId.fromUniqueString(uid),
-          name: user?.userName ?? Nom('undefined'),
-          dateLastMessage: message.date.millisecondsSinceEpoch,
-        ));
-        await _firestore.messageCollection.doc('$uid').set(conversationDTO.toJson());
-      }
+      final conversationDTO = ConversationDTO.fromDomain(Conversation(
+        id: UniqueId.fromUniqueString(uid),
+        name: user?.userName ?? Nom('undefined'),
+        dateLastMessage: message.date,
+        isRead: false,
+      ));
+      await _firestore.messageCollection.doc('$uid').set(conversationDTO.toJson());
 
       return right(unit);
     } on FirebaseException catch (e) {

@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Conversation {
   UniqueId get id => throw _privateConstructorUsedError;
   Nom get name => throw _privateConstructorUsedError;
-  int? get dateLastMessage => throw _privateConstructorUsedError;
+  DateTime? get dateLastMessage => throw _privateConstructorUsedError;
+  bool? get isRead => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ConversationCopyWith<Conversation> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $ConversationCopyWith<$Res> {
           Conversation value, $Res Function(Conversation) then) =
       _$ConversationCopyWithImpl<$Res, Conversation>;
   @useResult
-  $Res call({UniqueId id, Nom name, int? dateLastMessage});
+  $Res call({UniqueId id, Nom name, DateTime? dateLastMessage, bool? isRead});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
     Object? id = null,
     Object? name = null,
     Object? dateLastMessage = freezed,
+    Object? isRead = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,7 +65,11 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
       dateLastMessage: freezed == dateLastMessage
           ? _value.dateLastMessage
           : dateLastMessage // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
+      isRead: freezed == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -76,7 +82,7 @@ abstract class _$$_ConversationCopyWith<$Res>
       __$$_ConversationCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, Nom name, int? dateLastMessage});
+  $Res call({UniqueId id, Nom name, DateTime? dateLastMessage, bool? isRead});
 }
 
 /// @nodoc
@@ -93,6 +99,7 @@ class __$$_ConversationCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? dateLastMessage = freezed,
+    Object? isRead = freezed,
   }) {
     return _then(_$_Conversation(
       id: null == id
@@ -106,7 +113,11 @@ class __$$_ConversationCopyWithImpl<$Res>
       dateLastMessage: freezed == dateLastMessage
           ? _value.dateLastMessage
           : dateLastMessage // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
+      isRead: freezed == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -115,7 +126,10 @@ class __$$_ConversationCopyWithImpl<$Res>
 
 class _$_Conversation extends _Conversation {
   const _$_Conversation(
-      {required this.id, required this.name, required this.dateLastMessage})
+      {required this.id,
+      required this.name,
+      required this.dateLastMessage,
+      required this.isRead})
       : super._();
 
   @override
@@ -123,11 +137,13 @@ class _$_Conversation extends _Conversation {
   @override
   final Nom name;
   @override
-  final int? dateLastMessage;
+  final DateTime? dateLastMessage;
+  @override
+  final bool? isRead;
 
   @override
   String toString() {
-    return 'Conversation(id: $id, name: $name, dateLastMessage: $dateLastMessage)';
+    return 'Conversation(id: $id, name: $name, dateLastMessage: $dateLastMessage, isRead: $isRead)';
   }
 
   @override
@@ -138,11 +154,13 @@ class _$_Conversation extends _Conversation {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateLastMessage, dateLastMessage) ||
-                other.dateLastMessage == dateLastMessage));
+                other.dateLastMessage == dateLastMessage) &&
+            (identical(other.isRead, isRead) || other.isRead == isRead));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, dateLastMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, dateLastMessage, isRead);
 
   @JsonKey(ignore: true)
   @override
@@ -155,7 +173,8 @@ abstract class _Conversation extends Conversation {
   const factory _Conversation(
       {required final UniqueId id,
       required final Nom name,
-      required final int? dateLastMessage}) = _$_Conversation;
+      required final DateTime? dateLastMessage,
+      required final bool? isRead}) = _$_Conversation;
   const _Conversation._() : super._();
 
   @override
@@ -163,7 +182,9 @@ abstract class _Conversation extends Conversation {
   @override
   Nom get name;
   @override
-  int? get dateLastMessage;
+  DateTime? get dateLastMessage;
+  @override
+  bool? get isRead;
   @override
   @JsonKey(ignore: true)
   _$$_ConversationCopyWith<_$_Conversation> get copyWith =>

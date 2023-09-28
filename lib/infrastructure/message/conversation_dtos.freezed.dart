@@ -24,6 +24,7 @@ mixin _$ConversationDTO {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get dateLastMessage => throw _privateConstructorUsedError;
+  bool? get isRead => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +39,10 @@ abstract class $ConversationDTOCopyWith<$Res> {
       _$ConversationDTOCopyWithImpl<$Res, ConversationDTO>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id, String? name, int? dateLastMessage});
+      {@JsonKey(ignore: true) String? id,
+      String? name,
+      int? dateLastMessage,
+      bool? isRead});
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$ConversationDTOCopyWithImpl<$Res, $Val extends ConversationDTO>
     Object? id = freezed,
     Object? name = freezed,
     Object? dateLastMessage = freezed,
+    Object? isRead = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -71,6 +76,10 @@ class _$ConversationDTOCopyWithImpl<$Res, $Val extends ConversationDTO>
           ? _value.dateLastMessage
           : dateLastMessage // ignore: cast_nullable_to_non_nullable
               as int?,
+      isRead: freezed == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -84,7 +93,10 @@ abstract class _$$_ConversationDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id, String? name, int? dateLastMessage});
+      {@JsonKey(ignore: true) String? id,
+      String? name,
+      int? dateLastMessage,
+      bool? isRead});
 }
 
 /// @nodoc
@@ -101,6 +113,7 @@ class __$$_ConversationDTOCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? dateLastMessage = freezed,
+    Object? isRead = freezed,
   }) {
     return _then(_$_ConversationDTO(
       id: freezed == id
@@ -115,6 +128,10 @@ class __$$_ConversationDTOCopyWithImpl<$Res>
           ? _value.dateLastMessage
           : dateLastMessage // ignore: cast_nullable_to_non_nullable
               as int?,
+      isRead: freezed == isRead
+          ? _value.isRead
+          : isRead // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -123,7 +140,10 @@ class __$$_ConversationDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConversationDTO extends _ConversationDTO {
   const _$_ConversationDTO(
-      {@JsonKey(ignore: true) this.id, this.name, this.dateLastMessage})
+      {@JsonKey(ignore: true) this.id,
+      this.name,
+      this.dateLastMessage,
+      this.isRead})
       : super._();
 
   factory _$_ConversationDTO.fromJson(Map<String, dynamic> json) =>
@@ -136,10 +156,12 @@ class _$_ConversationDTO extends _ConversationDTO {
   final String? name;
   @override
   final int? dateLastMessage;
+  @override
+  final bool? isRead;
 
   @override
   String toString() {
-    return 'ConversationDTO(id: $id, name: $name, dateLastMessage: $dateLastMessage)';
+    return 'ConversationDTO(id: $id, name: $name, dateLastMessage: $dateLastMessage, isRead: $isRead)';
   }
 
   @override
@@ -150,12 +172,14 @@ class _$_ConversationDTO extends _ConversationDTO {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateLastMessage, dateLastMessage) ||
-                other.dateLastMessage == dateLastMessage));
+                other.dateLastMessage == dateLastMessage) &&
+            (identical(other.isRead, isRead) || other.isRead == isRead));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, dateLastMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, dateLastMessage, isRead);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +199,8 @@ abstract class _ConversationDTO extends ConversationDTO {
   const factory _ConversationDTO(
       {@JsonKey(ignore: true) final String? id,
       final String? name,
-      final int? dateLastMessage}) = _$_ConversationDTO;
+      final int? dateLastMessage,
+      final bool? isRead}) = _$_ConversationDTO;
   const _ConversationDTO._() : super._();
 
   factory _ConversationDTO.fromJson(Map<String, dynamic> json) =
@@ -188,6 +213,8 @@ abstract class _ConversationDTO extends ConversationDTO {
   String? get name;
   @override
   int? get dateLastMessage;
+  @override
+  bool? get isRead;
   @override
   @JsonKey(ignore: true)
   _$$_ConversationDTOCopyWith<_$_ConversationDTO> get copyWith =>
