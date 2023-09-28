@@ -18,13 +18,13 @@ abstract class MessageDTO implements _$MessageDTO {
     required String idUser,
   }) = _MessageDTO;
 
-  factory MessageDTO.fromDomain(Message obj) {
+  factory MessageDTO.fromDomain(Message obj, UniqueId? idUser) {
     return MessageDTO(
       id: obj.id.getOrCrash(),
       text: obj.text,
       date: obj.date.millisecondsSinceEpoch,
       image: obj.image,
-      idUser: obj.idUser.getOrCrash(),
+      idUser: idUser?.getOrCrash() ?? obj.idUser.getOrCrash(),
     );
   }
 

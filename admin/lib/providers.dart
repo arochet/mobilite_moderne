@@ -7,10 +7,12 @@ import 'package:admin/ADMIN_INFRASTRUCTURE/news/admin_news_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
 import 'package:admin/injection.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobilite_moderne/DOMAIN/core/errors.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/conversation.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
@@ -33,6 +35,12 @@ final showFilePath = StateProvider<bool>((ref) => false);
 
 //USERS
 final userRepositoryProvider = Provider<UsersRepository>((ref) => getItAdmin<UsersRepository>());
+
+/// Utilisateur courant (comprend son identifiant FirebaseAuth)
+final currentUser = FutureProvider.autoDispose<UserAuth>((ref) async {
+  final userOption = await getItAdmin<AuthRepository>().getSignedUser();
+  return userOption.getOrElse(() => throw NotAuthenticatedError);
+});
 
 final listUsersFormNotifierProvider = StreamProvider.autoDispose<Option<List<UserData>>>(
     (ref) => ref.watch(userRepositoryProvider).listUsers());

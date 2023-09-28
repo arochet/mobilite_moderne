@@ -1,11 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/message/conversation.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'conversation_dtos.dart';
 import 'message_dtos.dart';
 
 abstract class IMessageRepository {
@@ -28,17 +32,29 @@ class MessageRepository implements IMessageRepository {
   @override
   Future<Either<MessageFailure, Unit>> create(Message message) async {
     try {
-      //UID de l'utilisateur
-      final uid = (await _getUidUser())?.getOrCrash();
+      //Donnée de l'utilisateur
+      UserData? user = await _getUser();
+      final uid = user?.id.getOrCrash();
       if (uid == null) return left(const MessageFailure.noUserConnected());
 
       //On crée le méchant message
-      final messageDTO = MessageDTO.fromDomain(message);
+      final messageDTO = MessageDTO.fromDomain(message, user?.id);
       await _firestore.messageCollection
           .doc('$uid')
           .collection('discussion')
           .doc('${messageDTO.id}')
           .set(messageDTO.toJson());
+
+      //Actualisation de la conversation
+      final docConversation = await _firestore.messageCollection.doc('$uid').get();
+      if (!docConversation.exists) {
+        final conversationDTO = ConversationDTO.fromDomain(Conversation(
+          id: UniqueId.fromUniqueString(uid),
+          name: user?.userName ?? Nom('undefined'),
+          dateLastMessage: message.date.millisecondsSinceEpoch,
+        ));
+        await _firestore.messageCollection.doc('$uid').set(conversationDTO.toJson());
+      }
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -78,12 +94,12 @@ class MessageRepository implements IMessageRepository {
   Future<Either<MessageFailure, Unit>> update(Message message) async {
     try {
       //UID de l'utilisateur
-      final uid = (await _getUidUser())?.getOrCrash();
+      final uid = (await _getUidUser());
       if (uid == null) return left(const MessageFailure.noUserConnected());
 
-      final messageDTO = MessageDTO.fromDomain(message);
+      final messageDTO = MessageDTO.fromDomain(message, uid);
       await _firestore.messageCollection
-          .doc('$uid')
+          .doc('${uid.getOrCrash()}')
           .collection('discussion')
           .doc('${messageDTO.id}')
           .update(messageDTO.toJson());
@@ -103,10 +119,11 @@ class MessageRepository implements IMessageRepository {
   @override
   Stream<Either<MessageFailure, List<Message>>> watch() async* {
     //UID de l'utilisateur
-    final uid = (await _getUidUser())?.getOrCrash();
+    final uid = (await _getUidUser());
     if (uid == null) yield left(const MessageFailure.noUserConnected());
 
-    final collection = _firestore.messageCollection.doc('$uid').collection('discussion').orderBy('date');
+    final collection =
+        _firestore.messageCollection.doc('${uid!.getOrCrash()}').collection('discussion').orderBy('date');
 
     yield* collection
         .snapshots()
@@ -134,5 +151,9 @@ class MessageRepository implements IMessageRepository {
 
     //UID de l'utilisateur
     return user?.id;
+  }
+
+  Future<UserData?> _getUser() async {
+    return (await _authRepository.getUserData()).fold(() => null, (user) => user);
   }
 }

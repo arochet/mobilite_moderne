@@ -39,7 +39,10 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
 
     //insert-valid-params
     if (true /* insert-valid-condition */) {
-      state = state.copyWith(isSubmitting: true, authFailureOrSuccessOption: none());
+      state = state.copyWith(
+          message: state.message.copyWith(date: DateTime.now()),
+          isSubmitting: true,
+          authFailureOrSuccessOption: none());
 
       failureOrSuccess = await this._iMessageRepository.create(idUser, state.message);
 

@@ -34,11 +34,11 @@ class MessageRepository implements IMessageRepository {
   Future<Either<MessageFailure, Unit>> create(UniqueId idUser, Message message) async {
     try {
       //UID de l'utilisateur
-      final uid = (await _getUidUser())?.getOrCrash();
-      if (uid == null) return left(const MessageFailure.noUserConnected());
+      final uidAdmin = (await _getUidUser());
+      if (uidAdmin == null) return left(const MessageFailure.noUserConnected());
 
       //On crée le méchant message
-      final messageDTO = MessageDTO.fromDomain(message);
+      final messageDTO = MessageDTO.fromDomain(message, uidAdmin);
       await _firestore.messageCollection
           .doc(idUser.getOrCrash())
           .collection('discussion')
@@ -78,7 +78,11 @@ class MessageRepository implements IMessageRepository {
   @override
   Future<Either<MessageFailure, Unit>> update(Message message) async {
     try {
-      final messageDTO = MessageDTO.fromDomain(message);
+      //UID de l'utilisateur
+      final uidAdmin = (await _getUidUser());
+      if (uidAdmin == null) return left(const MessageFailure.noUserConnected());
+
+      final messageDTO = MessageDTO.fromDomain(message, uidAdmin);
       await _firestore.messageCollection.doc(messageDTO.id).update(messageDTO.toJson());
 
       return right(unit);
@@ -95,7 +99,8 @@ class MessageRepository implements IMessageRepository {
 
   @override
   Stream<Either<MessageFailure, List<Message>>> watchConversation(UniqueId idUser) async* {
-    final collection = _firestore.messageCollection.doc(idUser.getOrCrash()).collection('discussion');
+    final collection =
+        _firestore.messageCollection.doc(idUser.getOrCrash()).collection('discussion').orderBy('date');
 
     final stream = collection
         .snapshots()
@@ -122,7 +127,7 @@ class MessageRepository implements IMessageRepository {
 
   @override
   Stream<Either<MessageFailure, List<Conversation>>> watchAllConversation() async* {
-    final collection = _firestore.messageCollection;
+    final collection = _firestore.messageCollection.orderBy('dateLastMessage', descending: true);
 
     final stream = collection
         .snapshots()

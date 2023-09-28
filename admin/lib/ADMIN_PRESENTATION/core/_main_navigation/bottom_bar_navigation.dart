@@ -1,5 +1,6 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_components/app_bar.dart';
 import 'package:admin/ADMIN_PRESENTATION/core/_core/app_widget.dart';
+import 'package:admin/providers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,9 @@ class BottomBarNavigation extends ConsumerWidget {
             selectedItemColor: Theme.of(context).primaryColor,
             onTap: (int id) {
               tabsRouter.setActiveIndex(id);
+              if (id == 4) {
+                ref.invalidate(allDiscutionProvider);
+              }
               printDev();
             },
             selectedLabelStyle: TextStyle(
