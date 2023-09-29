@@ -26,41 +26,64 @@ class MessageListPage extends ConsumerWidget {
             child: SafeArea(
               child: Column(
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      },
-                      child: AppAsync(ref.watch(currentUser), builder: (currentUserAuth) {
-                        return AppAsync(
-                          ref.watch(allMessageProvider),
-                          builder: (data) => data!.fold(
-                              (error) => AppError(message: error.toString()),
-                              (listMessage) => ListView(children: [
-                                    //Liste des messages
-                                    ...listMessage
-                                        .map<Widget>((messageObj) =>
-                                            PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
-                                        .toList(),
-
-                                    //Heure du dernier message
-                                    if (listMessage.length > 0)
-                                      Center(
-                                          child: Text(
-                                        AppDateUtils.formatDate(
-                                            listMessage[listMessage.length - 1].date, "HH:mm"),
-                                        style: Theme.of(context).textTheme.bodySmall,
-                                      )),
-
-                                    SpaceH10(),
-                                  ])),
-                        );
-                      }),
-                    ),
-                  ),
+                  Expanded(child: _ListMessages()),
                   MessageFormProvider(),
                 ],
               ),
             )));
+  }
+}
+
+class _ListMessages extends ConsumerStatefulWidget {
+  const _ListMessages({Key? key}) : super(key: key);
+
+  @override
+  __ListMessagesState createState() => __ListMessagesState();
+}
+
+class __ListMessagesState extends ConsumerState<_ListMessages> {
+  late ScrollController _controllerListMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    _controllerListMessage = ScrollController();
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      await Future.delayed(Duration(milliseconds: 500));
+      _controllerListMessage.jumpTo(_controllerListMessage.position.maxScrollExtent);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: AppAsync(ref.watch(currentUser), builder: (currentUserAuth) {
+        return AppAsync(
+          ref.watch(allMessageProvider),
+          builder: (data) => data!.fold(
+              (error) => AppError(message: error.toString()),
+              (listMessage) => ListView(controller: _controllerListMessage, children: [
+                    //Liste des messages
+                    ...listMessage
+                        .map<Widget>(
+                            (messageObj) => PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
+                        .toList(),
+
+                    //Heure du dernier message
+                    if (listMessage.length > 0)
+                      Center(
+                          child: Text(
+                        AppDateUtils.formatDate(listMessage[listMessage.length - 1].date, "HH:mm"),
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )),
+
+                    SpaceH10(),
+                  ])),
+        );
+      }),
+    );
   }
 }

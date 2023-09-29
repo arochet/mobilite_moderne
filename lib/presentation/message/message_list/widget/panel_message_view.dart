@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +23,41 @@ class PanelMessageView extends StatelessWidget {
           margin: EdgeInsets.all(4),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text(message.text, style: Theme.of(context).textTheme.bodyLarge),
+            child: message.imageRead == null && message.imagePath == null
+                ? Text(message.text ?? '//', style: Theme.of(context).textTheme.bodyLarge)
+                : _MessageImage(message.imageRead),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _MessageImage extends StatelessWidget {
+  final Future<Uint8List?>? imageRead;
+  const _MessageImage(this.imageRead, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: imageRead,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data == null)
+            return Icon(Icons.broken_image, color: Colors.red);
+          else
+            return Image.memory(snapshot.data as Uint8List);
+        } else if (snapshot.hasError) {
+          return Center(child: Text("Error", style: Theme.of(context).textTheme.bodyMedium));
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.connectionState == ConnectionState.none) {
+          return Icon(Icons.broken_image, color: Colors.blue);
+        } else {
+          return Text("${snapshot.connectionState} ${snapshot.stackTrace}",
+              style: Theme.of(context).textTheme.bodyMedium);
+        }
+      },
     );
   }
 }

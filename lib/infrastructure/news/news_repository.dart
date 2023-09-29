@@ -96,7 +96,7 @@ class NewsRepository implements INewsRepository {
   @override
   Stream<Either<NewsFailure, List<News>>> watch() async* {
     final collection = _firestore.newsCollection; //Firestore collection Actualités
-    final storageRef = FirebaseStorage.instance.ref(); //Storage REF
+    final storageRef = _storage.ref(); //Storage REF
 
     yield* collection
         .snapshots()
@@ -131,7 +131,7 @@ class NewsRepository implements INewsRepository {
     }) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
   }
 
-  _loadImage(Reference storageRef, String path) {
+  Future<Uint8List?> _loadImage(Reference storageRef, String path) async {
     try {
       //Chargement de l'image
 

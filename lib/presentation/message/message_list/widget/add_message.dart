@@ -84,7 +84,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             SizedBox(width: 5),
 
             // Champs image
-            if (state.image != null) ...[
+            if (state.message.imageSend != null) ...[
               Expanded(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
@@ -92,7 +92,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                     size: Size.fromRadius(48),
                     child: Image.file(
                       fit: BoxFit.fitHeight,
-                      File(state.image!.path),
+                      File(state.message.imageSend!.path),
                       width: 120,
                       height: 120,
                     ),
@@ -102,7 +102,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             ],
 
             // Champs ajout de texte
-            if (state.image == null)
+            if (state.message.imageSend == null)
               Expanded(
                 child: TextFormField(
                   autocorrect: false,

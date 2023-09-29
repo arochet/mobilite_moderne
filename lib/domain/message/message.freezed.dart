@@ -17,9 +17,17 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Message {
   UniqueId get id => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+
+  /// Lorsque l'on envoie l'image dans le chat
+  XFile? get imageSend => throw _privateConstructorUsedError;
+
+  /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
+  Future<Uint8List?>? get imageRead => throw _privateConstructorUsedError;
+
+  /// Chemin de l'image dans Storage
+  String? get imagePath => throw _privateConstructorUsedError;
   UniqueId get idUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +40,13 @@ abstract class $MessageCopyWith<$Res> {
       _$MessageCopyWithImpl<$Res, Message>;
   @useResult
   $Res call(
-      {UniqueId id, String text, DateTime date, String image, UniqueId idUser});
+      {UniqueId id,
+      String? text,
+      DateTime date,
+      XFile? imageSend,
+      Future<Uint8List?>? imageRead,
+      String? imagePath,
+      UniqueId idUser});
 }
 
 /// @nodoc
@@ -49,9 +63,11 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? text = freezed,
     Object? date = null,
-    Object? image = null,
+    Object? imageSend = freezed,
+    Object? imageRead = freezed,
+    Object? imagePath = freezed,
     Object? idUser = null,
   }) {
     return _then(_value.copyWith(
@@ -59,18 +75,26 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageSend: freezed == imageSend
+          ? _value.imageSend
+          : imageSend // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      imageRead: freezed == imageRead
+          ? _value.imageRead
+          : imageRead // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       idUser: null == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
@@ -87,7 +111,13 @@ abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {UniqueId id, String text, DateTime date, String image, UniqueId idUser});
+      {UniqueId id,
+      String? text,
+      DateTime date,
+      XFile? imageSend,
+      Future<Uint8List?>? imageRead,
+      String? imagePath,
+      UniqueId idUser});
 }
 
 /// @nodoc
@@ -101,9 +131,11 @@ class __$$_MessageCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? text = null,
+    Object? text = freezed,
     Object? date = null,
-    Object? image = null,
+    Object? imageSend = freezed,
+    Object? imageRead = freezed,
+    Object? imagePath = freezed,
     Object? idUser = null,
   }) {
     return _then(_$_Message(
@@ -111,18 +143,26 @@ class __$$_MessageCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageSend: freezed == imageSend
+          ? _value.imageSend
+          : imageSend // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      imageRead: freezed == imageRead
+          ? _value.imageRead
+          : imageRead // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       idUser: null == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
@@ -138,24 +178,36 @@ class _$_Message extends _Message {
       {required this.id,
       required this.text,
       required this.date,
-      required this.image,
+      required this.imageSend,
+      required this.imageRead,
+      required this.imagePath,
       required this.idUser})
       : super._();
 
   @override
   final UniqueId id;
   @override
-  final String text;
+  final String? text;
   @override
   final DateTime date;
+
+  /// Lorsque l'on envoie l'image dans le chat
   @override
-  final String image;
+  final XFile? imageSend;
+
+  /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
+  @override
+  final Future<Uint8List?>? imageRead;
+
+  /// Chemin de l'image dans Storage
+  @override
+  final String? imagePath;
   @override
   final UniqueId idUser;
 
   @override
   String toString() {
-    return 'Message(id: $id, text: $text, date: $date, image: $image, idUser: $idUser)';
+    return 'Message(id: $id, text: $text, date: $date, imageSend: $imageSend, imageRead: $imageRead, imagePath: $imagePath, idUser: $idUser)';
   }
 
   @override
@@ -166,12 +218,18 @@ class _$_Message extends _Message {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.image, image) || other.image == image) &&
+            (identical(other.imageSend, imageSend) ||
+                other.imageSend == imageSend) &&
+            (identical(other.imageRead, imageRead) ||
+                other.imageRead == imageRead) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
             (identical(other.idUser, idUser) || other.idUser == idUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, text, date, image, idUser);
+  int get hashCode => Object.hash(
+      runtimeType, id, text, date, imageSend, imageRead, imagePath, idUser);
 
   @JsonKey(ignore: true)
   @override
@@ -183,20 +241,32 @@ class _$_Message extends _Message {
 abstract class _Message extends Message {
   const factory _Message(
       {required final UniqueId id,
-      required final String text,
+      required final String? text,
       required final DateTime date,
-      required final String image,
+      required final XFile? imageSend,
+      required final Future<Uint8List?>? imageRead,
+      required final String? imagePath,
       required final UniqueId idUser}) = _$_Message;
   const _Message._() : super._();
 
   @override
   UniqueId get id;
   @override
-  String get text;
+  String? get text;
   @override
   DateTime get date;
   @override
-  String get image;
+
+  /// Lorsque l'on envoie l'image dans le chat
+  XFile? get imageSend;
+  @override
+
+  /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
+  Future<Uint8List?>? get imageRead;
+  @override
+
+  /// Chemin de l'image dans Storage
+  String? get imagePath;
   @override
   UniqueId get idUser;
   @override

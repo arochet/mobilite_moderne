@@ -13,7 +13,6 @@ part 'add_message_form_notifier.freezed.dart';
 class AddMessageFormData with _$AddMessageFormData {
   const factory AddMessageFormData({
     required Message message,
-    required XFile? image,
     required bool showErrorMessages,
     required bool isSubmitting,
     required Option<Either<MessageFailure, Unit>> authFailureOrSuccessOption,
@@ -21,7 +20,6 @@ class AddMessageFormData with _$AddMessageFormData {
 
   factory AddMessageFormData.initial() => AddMessageFormData(
       message: Message.empty(),
-      image: null,
       showErrorMessages: false,
       isSubmitting: false,
       authFailureOrSuccessOption: none());
@@ -37,7 +35,11 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
   }
 
   imageChanged(XFile param) {
-    state = state.copyWith(image: param, authFailureOrSuccessOption: none());
+    //Le chemin de l'image est mis à jour dans le repository
+    state = state.copyWith(
+      message: state.message.copyWith(imageSend: param),
+      authFailureOrSuccessOption: none(),
+    );
   }
 
   dateChanged(int param) {

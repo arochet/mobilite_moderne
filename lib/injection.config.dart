@@ -61,6 +61,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i9.IMessageRepository>(() => _i9.MessageRepository(
           gh<_i6.FirebaseFirestore>(),
           gh<_i3.AuthRepository>(),
+          gh<_i7.FirebaseStorage>(),
         ));
     gh.lazySingleton<_i10.INewsRepository>(() => _i10.NewsRepository(
           gh<_i6.FirebaseFirestore>(),

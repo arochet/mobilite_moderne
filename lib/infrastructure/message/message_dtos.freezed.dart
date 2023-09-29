@@ -22,9 +22,10 @@ MessageDTO _$MessageDTOFromJson(Map<String, dynamic> json) {
 mixin _$MessageDTO {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
   int get date => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  String? get imagePath => throw _privateConstructorUsedError;
   String get idUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,9 +42,10 @@ abstract class $MessageDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String text,
+      String? text,
       int date,
-      String image,
+      String? image,
+      String? imagePath,
       String idUser});
 }
 
@@ -61,9 +63,10 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
   @override
   $Res call({
     Object? id = freezed,
-    Object? text = null,
+    Object? text = freezed,
     Object? date = null,
-    Object? image = null,
+    Object? image = freezed,
+    Object? imagePath = freezed,
     Object? idUser = null,
   }) {
     return _then(_value.copyWith(
@@ -71,18 +74,22 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as int,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       idUser: null == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
@@ -101,9 +108,10 @@ abstract class _$$_MessageDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String text,
+      String? text,
       int date,
-      String image,
+      String? image,
+      String? imagePath,
       String idUser});
 }
 
@@ -119,9 +127,10 @@ class __$$_MessageDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? text = null,
+    Object? text = freezed,
     Object? date = null,
-    Object? image = null,
+    Object? image = freezed,
+    Object? imagePath = freezed,
     Object? idUser = null,
   }) {
     return _then(_$_MessageDTO(
@@ -129,18 +138,22 @@ class __$$_MessageDTOCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as int,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       idUser: null == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
@@ -157,6 +170,7 @@ class _$_MessageDTO extends _MessageDTO {
       required this.text,
       required this.date,
       required this.image,
+      required this.imagePath,
       required this.idUser})
       : super._();
 
@@ -167,17 +181,19 @@ class _$_MessageDTO extends _MessageDTO {
   @JsonKey(ignore: true)
   final String? id;
   @override
-  final String text;
+  final String? text;
   @override
   final int date;
   @override
-  final String image;
+  final String? image;
+  @override
+  final String? imagePath;
   @override
   final String idUser;
 
   @override
   String toString() {
-    return 'MessageDTO(id: $id, text: $text, date: $date, image: $image, idUser: $idUser)';
+    return 'MessageDTO(id: $id, text: $text, date: $date, image: $image, imagePath: $imagePath, idUser: $idUser)';
   }
 
   @override
@@ -189,12 +205,15 @@ class _$_MessageDTO extends _MessageDTO {
             (identical(other.text, text) || other.text == text) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
             (identical(other.idUser, idUser) || other.idUser == idUser));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text, date, image, idUser);
+  int get hashCode =>
+      Object.hash(runtimeType, id, text, date, image, imagePath, idUser);
 
   @JsonKey(ignore: true)
   @override
@@ -213,9 +232,10 @@ class _$_MessageDTO extends _MessageDTO {
 abstract class _MessageDTO extends MessageDTO {
   const factory _MessageDTO(
       {@JsonKey(ignore: true) final String? id,
-      required final String text,
+      required final String? text,
       required final int date,
-      required final String image,
+      required final String? image,
+      required final String? imagePath,
       required final String idUser}) = _$_MessageDTO;
   const _MessageDTO._() : super._();
 
@@ -226,11 +246,13 @@ abstract class _MessageDTO extends MessageDTO {
   @JsonKey(ignore: true)
   String? get id;
   @override
-  String get text;
+  String? get text;
   @override
   int get date;
   @override
-  String get image;
+  String? get image;
+  @override
+  String? get imagePath;
   @override
   String get idUser;
   @override

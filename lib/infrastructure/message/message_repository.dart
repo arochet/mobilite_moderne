@@ -1,4 +1,8 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
@@ -23,10 +27,12 @@ abstract class IMessageRepository {
 class MessageRepository implements IMessageRepository {
   final FirebaseFirestore _firestore;
   final AuthRepository _authRepository;
+  final FirebaseStorage _storage;
 
   MessageRepository(
     this._firestore,
     this._authRepository,
+    this._storage,
   );
 
   @override
@@ -36,14 +42,21 @@ class MessageRepository implements IMessageRepository {
       UserData? user = await _getUser();
       final uid = user?.id.getOrCrash();
       if (uid == null) return left(const MessageFailure.noUserConnected());
+      final String? pathImage = message.imageSend != null ? 'message/$uid/${message.imageSend!.name}' : null;
 
       //On crée le méchant message
-      final messageDTO = MessageDTO.fromDomain(message, user?.id);
+      final messageDTO = MessageDTO.fromDomain(message, user?.id, pathImage);
       await _firestore.messageCollection
           .doc('$uid')
           .collection('discussion')
           .doc('${messageDTO.id}')
           .set(messageDTO.toJson());
+
+      //S'il y'a une image, on l'ajoute
+      if (message.imageSend != null) {
+        final TaskSnapshot result =
+            await _storage.ref().child(pathImage!).putFile(File(message.imageSend!.path));
+      }
 
       //Actualisation de la conversation
       final conversationDTO = ConversationDTO.fromDomain(Conversation(
@@ -94,8 +107,9 @@ class MessageRepository implements IMessageRepository {
       //UID de l'utilisateur
       final uid = (await _getUidUser());
       if (uid == null) return left(const MessageFailure.noUserConnected());
+      final String? pathImage = message.imageSend != null ? 'message/$uid/${message.imageSend!.name}' : null;
 
-      final messageDTO = MessageDTO.fromDomain(message, uid);
+      final messageDTO = MessageDTO.fromDomain(message, uid, pathImage);
       await _firestore.messageCollection
           .doc('${uid.getOrCrash()}')
           .collection('discussion')
@@ -129,7 +143,23 @@ class MessageRepository implements IMessageRepository {
           (snapshot) => right<MessageFailure, List<Message>>(
             snapshot.docs.map((doc) {
               try {
-                return MessageDTO.fromFirestore(doc).toDomain();
+                final MessageDTO dto = MessageDTO.fromFirestore(doc);
+
+                //Image !
+                Future<Uint8List?>? imageRead;
+                if (dto.imagePath != null) {
+                  try {
+                    print('dto.imagePath : ${dto.imagePath}');
+                    final ref = _storage.ref().child(dto.imagePath!);
+                    const oneMegabyte = 2048 * 2048;
+                    imageRead = ref.getData(oneMegabyte);
+                  } catch (e) {
+                    print('Fatal Error : $e');
+                    imageRead = null;
+                  }
+                }
+
+                return dto.toDomain(imageRead);
               } catch (e) {}
               return Message.empty();
             }).toList(),
