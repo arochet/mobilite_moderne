@@ -73,7 +73,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             IconButton(
               onPressed: () async {
                 final ImagePicker picker = ImagePicker();
-                final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
+                final XFile? photo = await picker.pickImage(source: ImageSource.camera);
 
                 if (photo != null) {
                   ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);

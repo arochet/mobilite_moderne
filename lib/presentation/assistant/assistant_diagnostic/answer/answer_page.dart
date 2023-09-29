@@ -53,8 +53,21 @@ class _Body extends StatelessWidget {
         //Fil d'ariane
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          child: Text(filAriane, style: Theme.of(context).textTheme.bodyMedium),
+          child: Wrap(
+              children: filAriane
+                  .split('/')
+                  .map((e) => e.length > 1
+                      ? Card(
+                          margin: EdgeInsets.all(2),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text("$e", style: Theme.of(context).textTheme.bodyMedium),
+                          ),
+                        )
+                      : Container())
+                  .toList()),
         ),
+
         SpaceH30(),
 
         //Titre de la réponse
@@ -85,12 +98,19 @@ class _Body extends StatelessWidget {
             .map((Resource resource) {
           return ResourceTile(resource: resource);
         }).toList(),
+        if (choice.listRessources.where((element) => element.type == ResourceType.document).length == 0)
+          Align(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14.0),
+              child: Text('Pas de documents', style: Theme.of(context).textTheme.bodyMedium),
+            ),
+          ),
 
         // Liste des vidéos
         SpaceH10(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Text("Vidéo", style: Theme.of(context).textTheme.titleSmall),
+          child: Text("Vidéos", style: Theme.of(context).textTheme.titleSmall),
         ),
         SpaceH10(),
         ...choice.listRessources
@@ -98,6 +118,23 @@ class _Body extends StatelessWidget {
             .map((Resource resource) {
           return ResourceTile(resource: resource);
         }).toList(),
+        if (choice.listRessources.where((element) => element.type == ResourceType.video).length == 0)
+          Align(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14.0),
+              child: Text('Pas de vidéos', style: Theme.of(context).textTheme.bodyMedium),
+            ),
+          ),
+
+        SpaceH40(),
+        Align(
+          child: ElevatedButton(
+            onPressed: () {
+              context.router.popUntilRoot();
+            },
+            child: Text("Retour à l'accueil"),
+          ),
+        ),
       ],
     );
   }

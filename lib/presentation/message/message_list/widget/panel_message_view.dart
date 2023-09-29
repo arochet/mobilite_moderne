@@ -39,25 +39,33 @@ class _MessageImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: imageRead,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data == null)
-            return Icon(Icons.broken_image, color: Colors.red);
-          else
-            return Image.memory(snapshot.data as Uint8List);
-        } else if (snapshot.hasError) {
-          return Center(child: Text("Error", style: Theme.of(context).textTheme.bodyMedium));
-        } else if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.connectionState == ConnectionState.none) {
-          return Icon(Icons.broken_image, color: Colors.blue);
-        } else {
-          return Text("${snapshot.connectionState} ${snapshot.stackTrace}",
-              style: Theme.of(context).textTheme.bodyMedium);
-        }
-      },
+    return Container(
+      height: 200,
+      child: FutureBuilder(
+        future: imageRead,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data == null)
+              return Icon(Icons.broken_image, color: Colors.red);
+            else
+              return Image.memory(
+                snapshot.data as Uint8List,
+                height: 200,
+                fit: BoxFit.scaleDown,
+              );
+          } else if (snapshot.hasError) {
+            return Center(
+                child: Text("Error ${snapshot.error}", style: Theme.of(context).textTheme.bodyMedium));
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: const CircularProgressIndicator());
+          } else if (snapshot.connectionState == ConnectionState.none) {
+            return Icon(Icons.broken_image, color: Colors.blue);
+          } else {
+            return Text("${snapshot.connectionState} ${snapshot.stackTrace}",
+                style: Theme.of(context).textTheme.bodyMedium);
+          }
+        },
+      ),
     );
   }
 }

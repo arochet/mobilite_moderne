@@ -10,8 +10,10 @@ import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/dialogs.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 
 @RoutePage()
 class AdminNewsPage extends ConsumerWidget {
@@ -63,7 +65,13 @@ class _TileNewsView extends ConsumerWidget {
       trailing: IconButton(
         icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () async {
-          await ref.read(newsRepositoryProvider).delete(news.id);
+          final canRemove = await showDialogQuestion(
+              context, 'Supprimer', 'Voulez-vous supprimer cet article ?',
+              isDanger: true, txtBtnValidate: 'Supprimer');
+
+          if (canRemove == true) {
+            await ref.read(newsRepositoryProvider).delete(news.id);
+          }
         },
       ),
     );

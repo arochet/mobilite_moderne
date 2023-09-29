@@ -50,7 +50,8 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
     _controllerListMessage = ScrollController();
     WidgetsBinding.instance!.addPostFrameCallback((_) async {
       await Future.delayed(Duration(milliseconds: 500));
-      _controllerListMessage.jumpTo(_controllerListMessage.position.maxScrollExtent);
+      if (_controllerListMessage.hasClients)
+        _controllerListMessage.jumpTo(_controllerListMessage.position.maxScrollExtent);
     });
   }
 
@@ -63,25 +64,25 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
       child: AppAsync(ref.watch(currentUser), builder: (currentUserAuth) {
         return AppAsync(
           ref.watch(allMessageProvider),
-          builder: (data) => data!.fold(
-              (error) => AppError(message: error.toString()),
-              (listMessage) => ListView(controller: _controllerListMessage, children: [
-                    //Liste des messages
-                    ...listMessage
-                        .map<Widget>(
-                            (messageObj) => PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
-                        .toList(),
+          builder: (data) => data!.fold((error) => AppError(message: error.toString()), (listMessage) {
+            return ListView(controller: _controllerListMessage, children: [
+              //Liste des messages
+              ...listMessage
+                  .map<Widget>(
+                      (messageObj) => PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
+                  .toList(),
 
-                    //Heure du dernier message
-                    if (listMessage.length > 0)
-                      Center(
-                          child: Text(
-                        AppDateUtils.formatDate(listMessage[listMessage.length - 1].date, "HH:mm"),
-                        style: Theme.of(context).textTheme.bodySmall,
-                      )),
+              //Heure du dernier message
+              if (listMessage.length > 0)
+                Center(
+                    child: Text(
+                  AppDateUtils.formatDate(listMessage[listMessage.length - 1].date, "HH:mm"),
+                  style: Theme.of(context).textTheme.bodySmall,
+                )),
 
-                    SpaceH10(),
-                  ])),
+              SpaceH20(),
+            ]);
+          }),
         );
       }),
     );

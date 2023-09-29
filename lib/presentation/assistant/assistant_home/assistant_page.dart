@@ -24,6 +24,7 @@ class AssistantPage extends ConsumerWidget {
           //Mon compte
           Row(
             children: [
+              Expanded(child: Container()),
               MyAccount(),
               Expanded(child: Container()),
             ],

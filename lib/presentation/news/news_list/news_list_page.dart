@@ -1,4 +1,5 @@
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 
 import 'widget/panel_news_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -21,17 +22,21 @@ class NewsListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ShowComponentFile(
-      title: 'NewsListPage',
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AppAsync(
-            ref.watch(allNewsProvider),
-            builder: (data) => data!.fold(
-                (error) => AppError(message: error.toString()),
-                (listNews) => ListView(
-                    children: [...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()])),
-          )),
+    return Container(
+      color: colorpanel(800),
+      child: ShowComponentFile(
+        title: 'NewsListPage',
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AppAsync(
+              ref.watch(allNewsProvider),
+              builder: (data) => data!.fold(
+                  (error) => AppError(message: error.toString()),
+                  (listNews) => ListView(children: [
+                        ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
+                      ])),
+            )),
+      ),
     );
   }
 }

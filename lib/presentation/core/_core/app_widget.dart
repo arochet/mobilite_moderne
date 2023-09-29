@@ -151,6 +151,11 @@ class AppWidget extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(Colors.deepPurple[500]),
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
+            buttonLight: defaultButtonStyle.copyWith(
+              backgroundColor: MaterialStateProperty.all(colorpanel(800)),
+              foregroundColor: MaterialStateProperty.all(titleColor),
+              elevation: MaterialStateProperty.all(0),
+            ),
           ),
         ],
       ),
@@ -173,12 +178,14 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
     required this.buttonDanger,
     required this.buttonWarning,
     required this.buttonHelp,
+    required this.buttonLight,
   });
 
   final ButtonStyle? buttonLarge;
   final ButtonStyle? buttonDanger;
   final ButtonStyle? buttonWarning;
   final ButtonStyle? buttonHelp;
+  final ButtonStyle? buttonLight;
 
   @override
   AppThemeExtention copyWith({
@@ -186,12 +193,14 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
     ButtonStyle? danger,
     ButtonStyle? warning,
     ButtonStyle? help,
+    ButtonStyle? light,
   }) {
     return AppThemeExtention(
       buttonLarge: large ?? this.buttonLarge,
       buttonDanger: danger ?? this.buttonDanger,
       buttonWarning: warning ?? this.buttonWarning,
       buttonHelp: help ?? this.buttonHelp,
+      buttonLight: help ?? this.buttonLight,
     );
   }
 
@@ -205,6 +214,7 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
       buttonDanger: buttonDanger,
       buttonWarning: buttonWarning,
       buttonHelp: buttonHelp,
+      buttonLight: buttonLight,
     );
   }
 

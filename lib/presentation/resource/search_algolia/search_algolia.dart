@@ -100,6 +100,7 @@ class _SearchResults extends StatelessWidget {
                 return ListView.builder(
                   itemCount: _results.length < 50 ? _results.length : 50,
                   itemBuilder: (context, index) {
+                    print('_results[index].data ${_results[index].data}');
                     Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain();
                     return ResourceTile(resource: resource);
                   },

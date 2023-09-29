@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:admin/ADMIN_APPLICATION/message/add_message_form_notifier.dart';
 import 'package:admin/providers.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:another_flushbar/flushbar.dart';
@@ -59,7 +62,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(messageFormNotifierProvider);
+    final state = ref.watch(messageFormNotifierProvider);
     return Form(
       autovalidateMode: AutovalidateMode.always,
       child: Column(children: [
@@ -67,21 +70,53 @@ class _MessageFormState extends ConsumerState<MessageForm> {
           children: [
             SizedBox(width: 5),
 
-            // Champs ajout de texte
-            Expanded(
-              child: TextFormField(
-                autocorrect: false,
-                controller: _textEditingController,
-                textInputAction: TextInputAction.next,
-                maxLines: null,
-                onChanged: (value) {
-                  ref.read(messageFormNotifierProvider.notifier).textChanged(value);
-                },
-                validator: (_) {
-                  return null;
-                },
-              ),
+            //Bouton Photo
+            IconButton(
+              onPressed: () async {
+                final ImagePicker picker = ImagePicker();
+                final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+
+                if (photo != null) {
+                  ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
+                }
+              },
+              icon: Icon(Icons.photo_camera),
             ),
+            SizedBox(width: 5),
+
+            // Champs image
+            if (state.message.imageSend != null)
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: SizedBox.fromSize(
+                    size: Size.fromRadius(48),
+                    child: Image.file(
+                      fit: BoxFit.fitHeight,
+                      File(state.message.imageSend!.path),
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                ),
+              ),
+
+            // Champs ajout de texte
+            if (state.message.imageSend == null)
+              Expanded(
+                child: TextFormField(
+                  autocorrect: false,
+                  controller: _textEditingController,
+                  textInputAction: TextInputAction.next,
+                  maxLines: null,
+                  onChanged: (value) {
+                    ref.read(messageFormNotifierProvider.notifier).textChanged(value);
+                  },
+                  validator: (_) {
+                    return null;
+                  },
+                ),
+              ),
             SizedBox(width: 5),
 
             //Bouton d'envoie

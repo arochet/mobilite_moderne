@@ -54,13 +54,31 @@ class _PanelChoiceView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        //Fil d'ariane
         Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(filAriane, style: Theme.of(context).textTheme.bodyMedium),
+          padding: const EdgeInsets.symmetric(horizontal: 22.0),
+          child: Wrap(
+              children: filAriane
+                  .split('/')
+                  .map((e) => e.length > 1
+                      ? Card(
+                          color: colorpanel(900),
+                          margin: EdgeInsets.all(2),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                            child: Text("$e", style: Theme.of(context).textTheme.bodyMedium),
+                          ),
+                        )
+                      : Container())
+                  .toList()),
         ),
         Expanded(child: Container()),
-        Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.bodyLarge)),
+
+        //Titre de la question
+        Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
         SpaceH20(),
+
+        //Carte
         Card(
           color: colorpanel(900),
           child: Padding(

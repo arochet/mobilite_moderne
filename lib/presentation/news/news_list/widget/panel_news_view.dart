@@ -19,7 +19,7 @@ class PanelNewsView extends StatelessWidget {
     return ShowComponentFile(
       title: 'PanelNewsView',
       child: Card(
-        color: colorpanel(800),
+        color: colorpanel(900),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -50,9 +50,11 @@ class PanelNewsView extends StatelessWidget {
                     else {
                       if (snapshotNews.data != null)
                         return Container(
-                          height: 200,
+                          //height: 200,
                           width: double.infinity,
-                          child: Image.memory(snapshotNews.data!),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: Image.memory(snapshotNews.data!)),
                         );
                       else {
                         return Container(
@@ -73,11 +75,14 @@ class PanelNewsView extends StatelessWidget {
               SpaceH10(),
 
               //BOUTON VOIR
-              TextButton(
-                onPressed: () {
-                  context.router.push(NewsViewRoute(id: news.id));
-                },
-                child: Text("Voir"),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.router.push(NewsViewRoute(id: news.id));
+                  },
+                  child: Text("Voir"),
+                  style: Theme.of(context).extension<AppThemeExtention>()?.buttonLight,
+                ),
               ),
             ],
           ),

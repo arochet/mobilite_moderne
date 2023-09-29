@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -98,6 +99,36 @@ Future<bool?> showDialogPassword<bool>(
       });
     },
   );
+}
+
+Future<bool?> showDialogQuestion(BuildContext context, String title, String? body,
+    {bool isDanger = false, String txtBtnValidate = 'OK', String txtBtnAnnuler = 'Annuler'}) async {
+  return await showDialog(
+      context: context,
+      builder: (builder) {
+        return AlertDialog(
+          title: Text(title),
+          content: body != null ? Text(body) : null,
+          actionsAlignment: MainAxisAlignment.center,
+          actions: <Widget>[
+            TextButton(
+              child: Text(txtBtnAnnuler),
+              onPressed: () {
+                printDev();
+                Navigator.of(context).pop(false);
+              },
+            ),
+            ElevatedButton(
+              child: Text(txtBtnValidate),
+              onPressed: () {
+                printDev();
+                Navigator.of(context).pop(true);
+              },
+              style: isDanger == true ? Theme.of(context).extension<AppThemeExtention>()?.buttonDanger : null,
+            ),
+          ],
+        );
+      });
 }
 
 /// Vérifier le mot de passe de l'utilisateur dans Firebase

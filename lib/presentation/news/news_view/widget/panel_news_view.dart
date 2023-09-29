@@ -18,12 +18,13 @@ class PanelNewsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowComponentFile(
       child: Padding(
-        padding: const EdgeInsets.all(22.0),
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: ListView(
           children: [
             //TITRE
-            Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
             SpaceH10(),
+            Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
+            SpaceH30(),
 
             //IMAGE
             FutureBuilder(
@@ -46,9 +47,10 @@ class PanelNewsView extends StatelessWidget {
                   else {
                     if (snapshotNews.data != null)
                       return Container(
-                        height: 200,
                         width: double.infinity,
-                        child: Image.memory(snapshotNews.data!),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(6.0),
+                            child: Image.memory(snapshotNews.data!)),
                       );
                     else {
                       return Container(
@@ -64,7 +66,10 @@ class PanelNewsView extends StatelessWidget {
             //CONTENU
             Text("${news.content.replaceAll('\\n', '\n')}", style: Theme.of(context).textTheme.bodyMedium),
             SpaceH10(),
+
+            //DIVIDER
             Divider(color: Colors.black),
+            SpaceH10(),
 
             //SOUS CONTENU
             Text(news.subcontent.replaceAll('\\n', '\n'),
@@ -80,6 +85,7 @@ class PanelNewsView extends StatelessWidget {
                   )
                   .toList(),
             ),
+            SpaceH10(),
             //insert-info
           ],
         ),

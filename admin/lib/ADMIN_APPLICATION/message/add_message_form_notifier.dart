@@ -2,6 +2,7 @@ import 'package:admin/ADMIN_INFRASTRUCTURE/message/message_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/conversation.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
@@ -32,6 +33,14 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
   textChanged(String param) {
     state = state.copyWith(message: state.message.copyWith(text: param), authFailureOrSuccessOption: none());
   }
+
+  imageChanged(XFile param) {
+    //Le chemin de l'image est mis à jour dans le repository
+    state = state.copyWith(
+      message: state.message.copyWith(imageSend: param),
+      authFailureOrSuccessOption: none(),
+    );
+  }
 //insert-changed
 
   addMessagePressed(UniqueId idUser) async {
@@ -44,7 +53,7 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
           isSubmitting: true,
           authFailureOrSuccessOption: none());
 
-      failureOrSuccess = await this._iMessageRepository.create(idUser, state.message);
+      failureOrSuccess = await _iMessageRepository.create(idUser, state.message);
 
       if (failureOrSuccess.isRight()) {
         state = state.copyWith(message: Message.empty());
