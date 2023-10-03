@@ -40,7 +40,7 @@ class MainNavigationPage extends StatelessWidget {
       {
         "title": 'Actualités',
         "icon": Icons.newspaper,
-        "id": 2,
+        "id": 3,
       },
     ];
     return CheckUserConnected(

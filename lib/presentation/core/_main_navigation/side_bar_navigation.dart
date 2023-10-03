@@ -76,7 +76,7 @@ class NavLink extends ConsumerWidget {
       child: ListTile(
           leading: Icon(icon),
           title: Text(title),
-          tileColor: idCurrentPage == route ? colorpanel(600) : null,
+          tileColor: idCurrentPage == route ? colorpanel(700) : null,
           hoverColor: colorpanel(700),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),

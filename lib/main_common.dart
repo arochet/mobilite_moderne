@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/firebase_options.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,10 +16,16 @@ Future<void> mainCommon(Environment env) async {
   configurationInjection(env.name);
   WidgetsFlutterBinding.ensureInitialized();
   await ConfigReader.initialize();
-  await Firebase.initializeApp(
-    name: 'mobilite-moderne',
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } else {
+    await Firebase.initializeApp(
+      name: 'mobilite-moderne',
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   //Sert à afficher les logs en mode dev
