@@ -34,7 +34,8 @@ abstract class NewsDTO implements _$NewsDTO {
     );
   }
 
-  News toDomain({Future<Uint8List?>? imageBytes}) {
+  News toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl}) {
+    assert(imageBytes == null || imageUrl == null); // On est soit en web soit en mobile
     return News(
       id: UniqueId.fromUniqueString(id!),
       title: AppTitle(title),
@@ -43,6 +44,7 @@ abstract class NewsDTO implements _$NewsDTO {
       subcontent: subcontent,
       keywords: keywords,
       imageBytes: imageBytes,
+      imageUrl: imageUrl,
       datePublished: DateTime.fromMillisecondsSinceEpoch(datePublished),
     );
   }

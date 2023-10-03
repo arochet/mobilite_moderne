@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
@@ -105,7 +106,10 @@ class NewsRepository implements INewsRepository {
             snapshot.docs.map((doc) {
               try {
                 //Chargement de l'actualité + de l'image
-                return NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image']));
+                return NewsDTO.fromFirestore(doc).toDomain(
+                  imageBytes: kIsWeb ? null : _loadImage(storageRef, doc['image']),
+                  imageUrl: kIsWeb ? _loadImageWeb(storageRef, doc['image']) : null,
+                );
               } catch (e) {}
               return News.empty();
             }).toList(),
@@ -127,7 +131,10 @@ class NewsRepository implements INewsRepository {
     final storageRef = _storage.ref(); //Storage REF
 
     return collection.get().then((doc) {
-      return right(NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image'])));
+      return right(NewsDTO.fromFirestore(doc).toDomain(
+        imageBytes: kIsWeb ? null : _loadImage(storageRef, doc['image']),
+        imageUrl: kIsWeb ? _loadImageWeb(storageRef, doc['image']) : null,
+      ));
     }) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
   }
 
@@ -143,6 +150,21 @@ class NewsRepository implements INewsRepository {
     } catch (e) {
       print('Erreur lors du chargement de l\'image');
       print(e);
+    }
+  }
+
+  Future<String> _loadImageWeb(Reference storageRef, String path) async {
+    try {
+      //Chargement de l'image
+
+      if (path != "") {
+        return await storageRef.child(path).getDownloadURL();
+      }
+      return "";
+    } catch (e) {
+      print('Erreur lors du chargement de l\'image');
+      print(e);
+      return "";
     }
   }
 }

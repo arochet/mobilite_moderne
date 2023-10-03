@@ -28,6 +28,9 @@ abstract class News with _$News {
 
     /// Image qui est charger avec le paramètre image
     Future<Uint8List?>? imageBytes,
+
+    /// Image URL pour le web
+    Future<String>? imageUrl,
   }) = _News;
 
   factory News.empty() => News(

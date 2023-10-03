@@ -31,6 +31,9 @@ mixin _$News {
   /// Image qui est charger avec le paramètre image
   Future<Uint8List?>? get imageBytes => throw _privateConstructorUsedError;
 
+  /// Image URL pour le web
+  Future<String>? get imageUrl => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $NewsCopyWith<News> get copyWith => throw _privateConstructorUsedError;
 }
@@ -48,7 +51,8 @@ abstract class $NewsCopyWith<$Res> {
       String subcontent,
       List<String> keywords,
       DateTime datePublished,
-      Future<Uint8List?>? imageBytes});
+      Future<Uint8List?>? imageBytes,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -72,6 +76,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? keywords = null,
     Object? datePublished = null,
     Object? imageBytes = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -106,6 +111,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.imageBytes
           : imageBytes // ignore: cast_nullable_to_non_nullable
               as Future<Uint8List?>?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ) as $Val);
   }
 }
@@ -124,7 +133,8 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       String subcontent,
       List<String> keywords,
       DateTime datePublished,
-      Future<Uint8List?>? imageBytes});
+      Future<Uint8List?>? imageBytes,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -144,6 +154,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     Object? keywords = null,
     Object? datePublished = null,
     Object? imageBytes = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$_News(
       id: null == id
@@ -178,6 +189,10 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
           ? _value.imageBytes
           : imageBytes // ignore: cast_nullable_to_non_nullable
               as Future<Uint8List?>?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ));
   }
 }
@@ -193,7 +208,8 @@ class _$_News extends _News {
       required this.subcontent,
       required final List<String> keywords,
       required this.datePublished,
-      this.imageBytes})
+      this.imageBytes,
+      this.imageUrl})
       : _keywords = keywords,
         super._();
 
@@ -227,9 +243,13 @@ class _$_News extends _News {
   @override
   final Future<Uint8List?>? imageBytes;
 
+  /// Image URL pour le web
+  @override
+  final Future<String>? imageUrl;
+
   @override
   String toString() {
-    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished, imageBytes: $imageBytes)';
+    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished, imageBytes: $imageBytes, imageUrl: $imageUrl)';
   }
 
   @override
@@ -247,7 +267,9 @@ class _$_News extends _News {
             (identical(other.datePublished, datePublished) ||
                 other.datePublished == datePublished) &&
             (identical(other.imageBytes, imageBytes) ||
-                other.imageBytes == imageBytes));
+                other.imageBytes == imageBytes) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @override
@@ -260,7 +282,8 @@ class _$_News extends _News {
       subcontent,
       const DeepCollectionEquality().hash(_keywords),
       datePublished,
-      imageBytes);
+      imageBytes,
+      imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -278,7 +301,8 @@ abstract class _News extends News {
       required final String subcontent,
       required final List<String> keywords,
       required final DateTime datePublished,
-      final Future<Uint8List?>? imageBytes}) = _$_News;
+      final Future<Uint8List?>? imageBytes,
+      final Future<String>? imageUrl}) = _$_News;
   const _News._() : super._();
 
   @override
@@ -303,6 +327,10 @@ abstract class _News extends News {
 
   /// Image qui est charger avec le paramètre image
   Future<Uint8List?>? get imageBytes;
+  @override
+
+  /// Image URL pour le web
+  Future<String>? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_NewsCopyWith<_$_News> get copyWith => throw _privateConstructorUsedError;
