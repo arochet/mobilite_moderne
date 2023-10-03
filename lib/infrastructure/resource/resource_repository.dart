@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
@@ -138,6 +139,17 @@ class ResourceRepository implements IResourceRepository {
   @override
   Future<Either<ResourceFailure, String>> getDocumentURL(String path) async {
     printDev();
+
+    if (kIsWeb) {
+      try {
+        return right(
+            await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getDownloadURL());
+      } catch (e) {
+        print('WEB error $e');
+        return left(ResourceFailure.unexpected());
+      }
+    }
+
     final storageRef = _storage.ref(); //Storage REF
     try {
       return storageRef.child(path).getDownloadURL().then((value) {

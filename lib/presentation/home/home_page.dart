@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
             child: Center(
                 child: Container(
               width: MediaQuery.of(context).size.width * 0.8,
+              constraints: BoxConstraints(maxWidth: 500),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -41,6 +42,7 @@ class HomePage extends StatelessWidget {
                       child: Text('Assistant Technique'),
                     ),
                   ),
+                  SizedBox(height: 5),
                   Text(
                       "Trouvez ici les solutions à vos problèmes: fiches techniques, vidéos, messagerie ou visio-assistance",
                       style: Theme.of(context).textTheme.bodySmall),
@@ -54,6 +56,7 @@ class HomePage extends StatelessWidget {
                         },
                         child: Text('Ressources')),
                   ),
+                  SizedBox(height: 5),
                   Text("Trouvez ici vos listes de fournisseurs par type de pièces et accéssoires",
                       style: Theme.of(context).textTheme.bodySmall),
                   SpaceH20(),
@@ -66,6 +69,7 @@ class HomePage extends StatelessWidget {
                         },
                         child: Text('Actualités')),
                   ),
+                  SizedBox(height: 5),
                   Text("Les dernières actualités techniques", style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),

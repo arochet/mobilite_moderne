@@ -19,69 +19,74 @@ class AssistantPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowComponentFile(
       title: 'assistant/assistant_page.dart',
-      child: Column(
-        children: [
-          //Mon compte
-          Row(
+      child: Align(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 500),
+          child: Column(
             children: [
-              Expanded(child: Container()),
-              MyAccount(),
-              Expanded(child: Container()),
-            ],
-          ),
-
-          //Menu
-          Expanded(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              //Mon compte
+              Row(
                 children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        printDev();
-                        context.router.push(ChoiceRoute(
-                            filAriane: "",
-                            choice: ChoiceWithQuestions(
-                              id: UniqueId.fromUniqueString('votredemandeconcerne'),
-                              nom: Nom("votredemandeconcerne"),
-                              path: 'choice/votredemandeconcerne',
-                              question: Question("votredemandeconcerne"),
-                              choiceQuestion: null,
-                              choiceAnswer: null,
-                            )));
-                      },
-                      child: Text("Assistant Diagnostic"),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        printDev();
-                        context.router.push(MessageListRoute());
-                      },
-                      child: Text("Messagerie-Assistance"),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        printDev();
-                        context.router.push(Assistant_visioRoute());
-                      },
-                      child: Text("Visio Assistance"),
-                    ),
-                  ),
+                  Expanded(child: Container()),
+                  MyAccount(),
+                  Expanded(child: Container()),
                 ],
               ),
-            ),
+
+              //Menu
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            printDev();
+                            context.router.push(ChoiceRoute(
+                                filAriane: "",
+                                choice: ChoiceWithQuestions(
+                                  id: UniqueId.fromUniqueString('votredemandeconcerne'),
+                                  nom: Nom("votredemandeconcerne"),
+                                  path: 'choice/votredemandeconcerne',
+                                  question: Question("votredemandeconcerne"),
+                                  choiceQuestion: null,
+                                  choiceAnswer: null,
+                                )));
+                          },
+                          child: Text("Assistant Diagnostic"),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            printDev();
+                            context.router.push(MessageListRoute());
+                          },
+                          child: Text("Messagerie-Assistance"),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            printDev();
+                            context.router.push(Assistant_visioRoute());
+                          },
+                          child: Text("Visio Assistance"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

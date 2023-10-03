@@ -20,50 +20,55 @@ class Resource_menuPage extends StatelessWidget {
     return ShowComponentFile(
       child: Padding(
         padding: EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //Image du logo
-            Image.asset(
-              AssetsImage.logo,
-              width: 100,
-            ),
-            SizedBox(height: 70),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  printDev();
-                  context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
-                },
-                child: Text("Mediathèque"),
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  printDev();
-                  context.router.push(CategoryListRoute(mode: CategoryListPageMode.notice_constructeur));
-                },
-                child: Text("Notice Constructeur"),
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: ElevatedButton(
-                onPressed: () {
-                  printDev();
-                  context.router.push(CategoryListRoute(mode: CategoryListPageMode.pieces_fournisseurs));
-                },
-                child: Text("Pièces et Fournisseurs"),
-              ),
-            ),
+        child: Align(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 500),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //Image du logo
+                Image.asset(
+                  AssetsImage.logo,
+                  width: 100,
+                ),
+                SizedBox(height: 70),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      printDev();
+                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
+                    },
+                    child: Text("Mediathèque"),
+                  ),
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      printDev();
+                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.notice_constructeur));
+                    },
+                    child: Text("Notice Constructeur"),
+                  ),
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      printDev();
+                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.pieces_fournisseurs));
+                    },
+                    child: Text("Pièces et Fournisseurs"),
+                  ),
+                ),
 
-            const SizedBox(height: 80),
-          ],
+                const SizedBox(height: 80),
+              ],
+            ),
+          ),
         ),
       ),
     );
