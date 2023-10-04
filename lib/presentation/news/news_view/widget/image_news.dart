@@ -9,9 +9,11 @@ class ImageNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late Widget widget;
+
     //IMAGE WEB
     if (kIsWeb)
-      return FutureBuilder(
+      widget = FutureBuilder(
           future: news.imageUrl,
           builder: (context, AsyncSnapshot<String?> snapshotNews) {
             if (snapshotNews.connectionState == ConnectionState.waiting)
@@ -46,7 +48,7 @@ class ImageNews extends StatelessWidget {
 
     //IMAGE MOBILE
     else
-      return FutureBuilder(
+      widget = FutureBuilder(
           future: news.imageBytes,
           builder: (context, AsyncSnapshot<Uint8List?> snapshotNews) {
             if (snapshotNews.connectionState == ConnectionState.waiting)
@@ -78,5 +80,13 @@ class ImageNews extends StatelessWidget {
               }
             }
           });
+
+    return Row(
+      children: [
+        Expanded(child: Container()),
+        Container(constraints: BoxConstraints(maxWidth: 500), child: widget),
+        Expanded(child: Container()),
+      ],
+    );
   }
 }

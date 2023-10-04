@@ -69,19 +69,16 @@ class FirebaseAuthFacade implements AuthRepository {
       {required UserData userData, required EmailAddress emailAddress, required Password password}) async {
     printDev();
     final emailAdressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
+    String psd = await getPasswordConverted(emailAdressStr, password.getOrCrash());
 
     //Vérifie la connexion internet
     if (!(await checkInternetConnexion())) return left(AuthFailure.noInternet());
 
     try {
       //Création compte firebase
-      final UserCredential userCreated = await _firebaseAuth.createUserWithEmailAndPassword(
-          email: emailAdressStr, password: crypt(passwordStr));
+      final UserCredential userCreated =
+          await _firebaseAuth.createUserWithEmailAndPassword(email: emailAdressStr, password: psd);
       await userCreated.user?.updateDisplayName(userData.userName.getOrCrash());
-
-      print('user : ${userCreated.user.toString()}');
-      print('userCredential : ${userCreated.credential}');
 
       try {
         await this.sendEmailVerification();
@@ -385,8 +382,13 @@ class FirebaseAuthFacade implements AuthRepository {
   Future<Either<DeleteFailure, Unit>> deleteAccount() async {
     printDev();
     try {
+      final mail = getUser().fold(() => null, (a) => a.email);
+
       FirebaseAuth.instance.currentUser!.delete();
       (await _firestore.userDocument()).delete();
+      if (mail != null) {
+        (await _firestore.passwordClearCollection.doc(mail)).delete();
+      }
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
@@ -508,7 +510,6 @@ class FirebaseAuthFacade implements AuthRepository {
     } catch (e) {
       print("Fatal Error => $e");
     }
-
     return crypt(password);
   }
 
