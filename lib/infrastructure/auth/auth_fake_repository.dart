@@ -51,7 +51,7 @@ class FakeAuthFacade implements AuthRepository {
   }
 
   @override
-  Future<Option<UserAuth>> getSignedUser() async => some(UserAuth(id: UniqueId.fromUniqueString("test")));
+  Option<UserAuth> getSignedUser() => some(UserAuth(id: UniqueId.fromUniqueString("test")));
 
   @override
   bool isUserEmailVerified() {

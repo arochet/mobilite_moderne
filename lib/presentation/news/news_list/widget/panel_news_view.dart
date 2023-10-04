@@ -111,6 +111,7 @@ class _LargeCard extends StatelessWidget {
 
               //BOUTON VOIR
               Align(
+                alignment: Alignment.bottomLeft,
                 child: ElevatedButton(
                   onPressed: () {
                     context.router.push(NewsViewRoute(id: news.id));

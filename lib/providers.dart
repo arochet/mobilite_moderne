@@ -85,7 +85,7 @@ final currentPageNavProvider = StateProvider<int?>((ref) => null);
 //USER
 /// Utilisateur courant (comprend son identifiant FirebaseAuth)
 final currentUser = FutureProvider.autoDispose<UserAuth>((ref) async {
-  final userOption = await getIt<AuthRepository>().getSignedUser();
+  final userOption = getIt<AuthRepository>().getSignedUser();
   return userOption.getOrElse(() => throw NotAuthenticatedError);
 });
 

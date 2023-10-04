@@ -8,7 +8,7 @@ import '../../injection.dart';
 extension FirestoreX on FirebaseFirestore {
   /// Renvoie la fiche Firestore de l'utilisateur courant
   Future<DocumentReference> userDocument() async {
-    final userOption = await getIt<AuthRepository>().getSignedUser();
+    final userOption = getIt<AuthRepository>().getSignedUser();
     final user = userOption.getOrElse(() => throw NotAuthenticatedError);
     return FirebaseFirestore.instance.collection('user').doc(user.id.getOrCrash());
   }

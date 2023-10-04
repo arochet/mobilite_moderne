@@ -26,7 +26,7 @@ import './firebase_user_mapper.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 abstract class AuthRepository {
-  Future<Option<UserAuth>> getSignedUser();
+  Option<UserAuth> getSignedUser();
   Future<Option<UserData>> getUserData();
   bool isUserEmailVerified();
   Option<User> getUser();
@@ -274,7 +274,7 @@ class FirebaseAuthFacade implements AuthRepository {
   /// Récupère l'utilisateur courant sans ses infos Firestore
   /// UNIQUEMENT FireAuth
   @override
-  Future<Option<UserAuth>> getSignedUser() async {
+  Option<UserAuth> getSignedUser() {
     printDev();
     return optionOf(_firebaseAuth.currentUser?.toDomain());
   }

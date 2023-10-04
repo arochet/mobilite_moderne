@@ -25,17 +25,17 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   AuthNotifier(this._authRepository) : super(AuthInital());
 
-  Future authCheckRequested() async {
+  authCheckRequested() {
     printDev();
     try {
-      final userOption = await _authRepository.getSignedUser();
-      state = await userOption.fold(() => AuthUnauthenticated(), (a) async {
-        if (_authRepository.isUserEmailVerified())
-          return AuthAuthenticated();
-        else
-          return AuthAuthenticated();
+      final userOption = _authRepository.getSignedUser();
+      state = userOption.fold(() => AuthUnauthenticated(), (a) {
+        return AuthAuthenticated();
       });
-    } catch (e) {}
+    } catch (e) {
+      print('Error Auth Check Requested: $e');
+      state = AuthUnauthenticated();
+    }
   }
 
   bool authCheckEmail() {

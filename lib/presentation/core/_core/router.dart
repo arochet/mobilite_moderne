@@ -48,7 +48,7 @@ class AppRouter extends _$AppRouter {
           page: SplashRoute.page,
         ),
         AutoRoute(
-          path: '/main',
+          path: '/',
           page: MainNavigationRoute.page,
           children: [
             RedirectRoute(path: '', redirectTo: 'home'),
