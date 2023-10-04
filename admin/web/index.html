@@ -40,6 +40,26 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+
+       <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyAAVSOIFsZ75OJ4RwZDkcczPsb8fd0SPGQ",
+          authDomain: "note-app-2d746.firebaseapp.com",
+          projectId: "note-app-2d746",
+          storageBucket: "note-app-2d746.appspot.com",
+          messagingSenderId: "732444715939",
+          appId: "1:732444715939:web:c140d1643a40c01b530816",
+          measurementId: "G-DC8GWKQY81"
+        };
+  
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -54,6 +74,9 @@
         }
       });
     });
+  </script>
+  <script>
+    window.flutterWebRenderer = "html";
   </script>
 </body>
 </html>

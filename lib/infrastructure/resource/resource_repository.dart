@@ -140,23 +140,29 @@ class ResourceRepository implements IResourceRepository {
   Future<Either<ResourceFailure, String>> getDocumentURL(String path) async {
     printDev();
 
-    if (kIsWeb) {
-      try {
-        return right(
-            await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getDownloadURL());
-      } catch (e) {
-        print('WEB error $e');
-        return left(ResourceFailure.unexpected());
-      }
-    }
+    //Pour le web !
 
-    final storageRef = _storage.ref(); //Storage REF
     try {
-      return storageRef.child(path).getDownloadURL().then((value) {
+      if (kIsWeb) {
+        //WEB
+        String url =
+            await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getDownloadURL();
+        return right(url);
+      } else {
+        //MOBILE
+
+        final storageRef = _storage.ref(); //Storage REF
+        final value = await storageRef.child(path).getDownloadURL();
         return right(value);
-      });
-    } catch (e) {
-      return left(ResourceFailure.unexpected());
+      }
+    } on FirebaseException catch (e) {
+      print('WEB error ${e.code}');
+      switch (e.code) {
+        case 'object-not-found':
+          return left(ResourceFailure.notExist());
+        default:
+          return left(ResourceFailure.unexpected());
+      }
     }
   }
 

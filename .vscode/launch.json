@@ -33,7 +33,7 @@
             "name": "WEB_PROD",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_prod.dart",
+            "program": "lib/main.dart",
             "args": ["--web-port", "5000"]
         },
         {

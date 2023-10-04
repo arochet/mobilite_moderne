@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
@@ -62,10 +63,12 @@ class AssistantPage extends ConsumerWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: ElevatedButton(
-                          onPressed: () async {
-                            printDev();
-                            context.router.push(MessageListRoute());
-                          },
+                          onPressed: kIsWeb
+                              ? null
+                              : () async {
+                                  printDev();
+                                  context.router.push(MessageListRoute());
+                                },
                           child: Text("Messagerie-Assistance"),
                         ),
                       ),

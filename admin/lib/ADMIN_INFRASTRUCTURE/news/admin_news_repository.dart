@@ -89,7 +89,7 @@ class AdminNewsRepository implements IAdminNewsRepository {
   @override
   Stream<Either<NewsFailure, List<News>>> watch() async* {
     final collection = _firestore.newsCollection; //Firestore collection Actualités
-    final storageRef = FirebaseStorage.instance.ref(); //Storage REF
+    final storageRef = _storage.ref(); //Storage REF
 
     yield* collection
         .snapshots()

@@ -21,7 +21,6 @@ class ResourceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('resource type : ${resource}');
     if (resource.type == ResourceType.document) {
       return _DocumentTile(resource: resource);
     } else if (resource.type == ResourceType.video) {
@@ -50,7 +49,7 @@ class _DocumentTile extends ConsumerWidget {
         //Open PDF
         final Either<ResourceFailure, String> doc =
             await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
-        doc.fold((l) => showSnackBar(context, l.toString()), (String result) {
+        doc.fold((l) => showSnackBar(context, l.message), (String result) {
           String url = result;
           if (kIsWeb) {
             _launchUrl(url);
@@ -88,7 +87,7 @@ class _VideoTile extends ConsumerWidget {
         printDev();
         final Either<ResourceFailure, String> doc =
             await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
-        doc.fold((l) => showSnackBar(context, l.toString()), (String result) {
+        doc.fold((l) => showSnackBar(context, l.message), (String result) {
           if (kIsWeb) {
             _launchUrl(result);
           } else {

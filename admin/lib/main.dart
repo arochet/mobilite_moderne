@@ -1,5 +1,6 @@
 import 'package:admin/injection.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:admin/firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +12,7 @@ void main() async {
   configurationInjection(Environment.prod); //Configuration de GetIt
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: 'suptek-digital',
+    name: kIsWeb ? null : 'mobilite-moderne',
     options: DefaultFirebaseOptions.currentPlatform,
   );
 

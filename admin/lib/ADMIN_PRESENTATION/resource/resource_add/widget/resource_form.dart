@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:admin/ADMIN_APPLICATION/resource/add_resource_form_notifier.dart';
@@ -6,20 +5,15 @@ import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
-import 'package:mobilite_moderne/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/snackbar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 
-import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
 
 enum ResourceCategory { mediatheque, notice_constructeur, pieces_et_fournisseurs }

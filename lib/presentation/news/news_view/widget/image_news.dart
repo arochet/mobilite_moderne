@@ -81,12 +81,6 @@ class ImageNews extends StatelessWidget {
             }
           });
 
-    return Row(
-      children: [
-        Expanded(child: Container()),
-        Container(constraints: BoxConstraints(maxWidth: 500), child: widget),
-        Expanded(child: Container()),
-      ],
-    );
+    return Container(constraints: BoxConstraints(maxWidth: 500), child: widget);
   }
 }
