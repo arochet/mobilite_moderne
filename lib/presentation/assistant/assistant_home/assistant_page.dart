@@ -9,6 +9,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'widget/my_account.dart';
 
 /// Page d'accueil
@@ -78,7 +79,14 @@ class AssistantPage extends ConsumerWidget {
                         child: ElevatedButton(
                           onPressed: () async {
                             printDev();
-                            context.router.push(Assistant_visioRoute());
+                            if (kIsWeb) {
+                              final _url = 'https://toulon.mobilitemoderne.fr/smart-agenda.html';
+                              if (!await launchUrl(Uri.parse(_url))) {
+                                throw Exception('Could not launch $_url');
+                              }
+                            } else {
+                              context.router.push(Assistant_visioRoute());
+                            }
                           },
                           child: Text("Visio Assistance"),
                         ),
