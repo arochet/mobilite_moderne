@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
@@ -28,13 +29,8 @@ class SideBarNavigation extends StatelessWidget {
                     child: ListView(
                       children: [
                         //Titre
-                        Padding(
-                          padding: const EdgeInsets.all(18),
-                          child: Center(
-                            child: Text(AppLocalizations.of(context)!.nomprojet,
-                                style: Theme.of(context).textTheme.titleLarge),
-                          ),
-                        ),
+                        _Title(tabsRouter: tabsRouter),
+                        //Liste des liens
                         ...listMenu.map((element) => NavLink(
                               title: element["title"],
                               icon: element["icon"],
@@ -56,6 +52,33 @@ class SideBarNavigation extends StatelessWidget {
             ),
           );
         });
+  }
+}
+
+class _Title extends ConsumerWidget {
+  const _Title({
+    super.key,
+    required this.tabsRouter,
+  });
+
+  final TabsRouter tabsRouter;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return InkWell(
+      onTap: () {
+        printDev();
+        context.router.replaceAll([AssistantRoute()]);
+        tabsRouter.setActiveIndex(1);
+        ref.read(currentPageNavProvider.notifier).state = 1;
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Center(
+          child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+        ),
+      ),
+    );
   }
 }
 

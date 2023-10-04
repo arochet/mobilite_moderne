@@ -1,11 +1,13 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobilite_moderne/providers.dart';
 
 /// Scaffold de base de l'application qui est responsive en fonction de la taille de l'écran
 class MainScaffold extends ConsumerWidget {
@@ -26,13 +28,14 @@ class MainScaffold extends ConsumerWidget {
                   width: 300,
                   child: Column(
                     children: [
-                      Padding(
+                      /* Padding(
                         padding: const EdgeInsets.all(18),
                         child: Center(
                           child: Text(AppLocalizations.of(context)!.nomprojet,
                               style: Theme.of(context).textTheme.titleLarge),
                         ),
-                      ),
+                      ), */
+                      _Title(),
                       NavLinkRetour(),
                     ],
                   )),
@@ -69,5 +72,28 @@ class NavLinkRetour extends StatelessWidget {
             context.router.pop();
           },
         ));
+  }
+}
+
+class _Title extends ConsumerWidget {
+  const _Title({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return InkWell(
+      onTap: () {
+        printDev();
+        context.router.replaceAll([AssistantRoute()]);
+        ref.read(currentPageNavProvider.notifier).state = 1;
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Center(
+          child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+        ),
+      ),
+    );
   }
 }
