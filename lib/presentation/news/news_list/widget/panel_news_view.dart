@@ -24,17 +24,83 @@ class PanelNewsView extends StatelessWidget {
         color: colorpanel(900),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
+          child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
+            if (constraints.maxWidth > 600)
+              return _LargeCard(news: news);
+            else
+              return _CompressedCard(news: news);
+          }),
+        ),
+      ),
+    );
+  }
+}
+
+class _CompressedCard extends StatelessWidget {
+  const _CompressedCard({
+    super.key,
+    required this.news,
+  });
+
+  final News news;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        //TITRE
+        Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
+        SpaceH10(),
+
+        //IMAGE
+        ImageNews(news),
+
+        SpaceH20(),
+
+        //CONTENU
+        AutoSizeText("${news.content}",
+            overflow: TextOverflow.ellipsis, maxLines: 4, style: Theme.of(context).textTheme.bodyMedium),
+        SpaceH10(),
+
+        //BOUTON VOIR
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              context.router.push(NewsViewRoute(id: news.id));
+            },
+            child: Text("Voir"),
+            style: Theme.of(context).extension<AppThemeExtention>()?.buttonLight,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _LargeCard extends StatelessWidget {
+  const _LargeCard({
+    super.key,
+    required this.news,
+  });
+
+  final News news;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(constraints: BoxConstraints(maxWidth: 350), child: ImageNews(news)),
+        SizedBox(width: 14),
+        Expanded(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //TITRE
               Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
               SpaceH10(),
-
-              //IMAGE
-              ImageNews(news),
-
-              SpaceH20(),
 
               //CONTENU
               AutoSizeText("${news.content}",
@@ -44,7 +110,7 @@ class PanelNewsView extends StatelessWidget {
               SpaceH10(),
 
               //BOUTON VOIR
-              Center(
+              Align(
                 child: ElevatedButton(
                   onPressed: () {
                     context.router.push(NewsViewRoute(id: news.id));
@@ -56,7 +122,8 @@ class PanelNewsView extends StatelessWidget {
             ],
           ),
         ),
-      ),
+        SizedBox(width: 14),
+      ],
     );
   }
 }
