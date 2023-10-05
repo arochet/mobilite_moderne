@@ -3,9 +3,8 @@ import 'dart:typed_data';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storage.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:auto_route/src/router/auto_router_x.dart';
 import '../../../core/_core/router.dart';
 
 class PanelMessageView extends StatelessWidget {
@@ -23,9 +22,12 @@ class PanelMessageView extends StatelessWidget {
           margin: EdgeInsets.all(4),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: message.imageRead == null && message.imagePath == null
+            child: message.imageRead == null && message.imagePath == null && message.imageUrl == null
                 ? Text(message.text ?? '//', style: Theme.of(context).textTheme.bodyLarge)
-                : _MessageImage(message.imageRead),
+                : ImageFromStorage(
+                    url: message.imageUrl,
+                    bytes: message.imageRead,
+                  ) /* _MessageImage(message.imageRead) */,
           ),
         ),
       ),
@@ -41,6 +43,7 @@ class _MessageImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
+      //width: 300,
       child: FutureBuilder(
         future: imageRead,
         builder: (context, snapshot) {

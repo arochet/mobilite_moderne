@@ -72,7 +72,6 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i10.AuthRepository>(
       () => _i10.FirebaseAuthFacade(
         gh<_i3.FirebaseAuth>(),
-        gh<_i6.GoogleSignIn>(),
         gh<_i4.FirebaseFirestore>(),
         gh<_i5.FirebaseStorage>(),
       ),

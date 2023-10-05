@@ -1,11 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 
-class ImageNews extends StatelessWidget {
-  final News news;
-  const ImageNews(this.news, {super.key});
+class ImageFromStorage extends StatelessWidget {
+  final Future<String?>? url;
+  final Future<Uint8List?>? bytes;
+  const ImageFromStorage({
+    super.key,
+    this.url,
+    this.bytes,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +18,16 @@ class ImageNews extends StatelessWidget {
     //IMAGE WEB
     if (kIsWeb)
       widget = FutureBuilder(
-          future: news.imageUrl,
-          builder: (context, AsyncSnapshot<String?> snapshotNews) {
-            if (snapshotNews.connectionState == ConnectionState.waiting)
+          future: url,
+          builder: (context, AsyncSnapshot<String?> snapshotUrl) {
+            if (snapshotUrl.connectionState == ConnectionState.waiting)
               return Container(
                 height: 200,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ),
               );
-            else if (snapshotNews.hasError)
+            else if (snapshotUrl.hasError)
               return Container(
                 height: 200,
                 child: Center(
@@ -31,11 +35,11 @@ class ImageNews extends StatelessWidget {
                 ),
               );
             else {
-              if (snapshotNews.data != null)
+              if (snapshotUrl.data != null)
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0), child: Image.network(snapshotNews.data!)),
+                      borderRadius: BorderRadius.circular(6.0), child: Image.network(snapshotUrl.data!)),
                 );
               else {
                 return Container(
@@ -49,16 +53,16 @@ class ImageNews extends StatelessWidget {
     //IMAGE MOBILE
     else
       widget = FutureBuilder(
-          future: news.imageBytes,
-          builder: (context, AsyncSnapshot<Uint8List?> snapshotNews) {
-            if (snapshotNews.connectionState == ConnectionState.waiting)
+          future: bytes,
+          builder: (context, AsyncSnapshot<Uint8List?> snapshotUrl) {
+            if (snapshotUrl.connectionState == ConnectionState.waiting)
               return Container(
                 height: 200,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ),
               );
-            else if (snapshotNews.hasError)
+            else if (snapshotUrl.hasError)
               return Container(
                 height: 200,
                 child: Center(
@@ -66,11 +70,11 @@ class ImageNews extends StatelessWidget {
                 ),
               );
             else {
-              if (snapshotNews.data != null)
+              if (snapshotUrl.data != null)
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0), child: Image.memory(snapshotNews.data!)),
+                      borderRadius: BorderRadius.circular(6.0), child: Image.memory(snapshotUrl.data!)),
                 );
               else {
                 return Container(
@@ -81,6 +85,6 @@ class ImageNews extends StatelessWidget {
             }
           });
 
-    return widget;
+    return Container(height: 200, child: widget);
   }
 }

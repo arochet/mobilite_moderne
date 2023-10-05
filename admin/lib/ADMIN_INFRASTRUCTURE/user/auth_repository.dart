@@ -36,10 +36,8 @@ abstract class AuthRepository {
   Future<Either<AuthFailure, Unit>> modifyAccount({required Nom userName});
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
       {required EmailAddress emailAdress, required Password password});
-  Future<Either<AuthFailure, Unit>> signInWithGoogle();
   Future<void> sendEmailVerification();
   Future<Either<DeleteFailure, Unit>> deleteAccountWithEmailAndPassword();
-  Future<Either<DeleteFailure, Unit>> deleteAccountGoogle();
   Future<Either<ReauthenticateFailure, Unit>> reauthenticateWithPassword({required Password password});
   Future<Either<NewPasswordFailure, Unit>> newPassword({required Password newPassword});
   Future<Either<ResetPasswordFailure, Unit>> resetPassword({required EmailAddress emailAddress});
@@ -52,13 +50,11 @@ abstract class AuthRepository {
 @LazySingleton(as: AuthRepository, env: [Environment.dev, Environment.prod])
 class FirebaseAuthFacade implements AuthRepository {
   final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
 
   FirebaseAuthFacade(
     this._firebaseAuth,
-    this._googleSignIn,
     this._firestore,
     this._storage,
   );
@@ -150,62 +146,6 @@ class FirebaseAuthFacade implements AuthRepository {
     }
   }
 
-  /// Connexion de l'utilisateur avec Google
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
-    printDev();
-    //Vérifie la connexion internet
-    if (!(await checkInternetConnexion())) return left(AuthFailure.noInternet());
-
-    try {
-      final googleUser = await _googleSignIn.signIn().catchError((onError) {
-        print("Error $onError");
-      });
-
-      if (googleUser == null) {
-        return left(const AuthFailure.cancelledByUser());
-      }
-      final googleAuthentification = await googleUser.authentication;
-      final authCredential = GoogleAuthProvider.credential(
-          idToken: googleAuthentification.idToken, accessToken: googleAuthentification.accessToken);
-      await _firebaseAuth.signInWithCredential(authCredential);
-
-      try {
-        //Création des datas Firestore si c'est la première connexion
-        final userDoc = await _firestore.userDocument();
-        final userData = UserData(
-          id: UniqueId.fromUniqueString(googleUser.id),
-          userName: Nom(googleUser.displayName ?? "Uname"),
-          typeAccount: TypeAccount(TypeAccountState.google),
-          email: EmailAddress(googleUser.email),
-          passwordCrypted: false,
-        );
-        final userDataDTO = UserDataDTO.fromDomain(userData);
-
-        final docSnapshot = await userDoc.get();
-        if (!docSnapshot.exists) {
-          await userDoc.set(userDataDTO.toJson());
-        }
-      } on FirebaseException catch (e) {
-        if (e.message!.contains('permission')) {
-          return left(const AuthFailure.insufficientPermission());
-        } else {
-          return left(const AuthFailure.serverError());
-        }
-      } catch (e) {
-        return left(const AuthFailure.serverError());
-      }
-
-      return right(unit);
-    } on PlatformException catch (e) {
-      print("error fatal => $e");
-      return left(const AuthFailure.serverError());
-    } catch (e) {
-      print("error fatal2");
-      return left(const AuthFailure.serverError());
-    }
-  }
-
   /// Récupère l'utilisateur courant sans ses infos Firestore
   /// UNIQUEMENT FireAuth
   @override
@@ -293,16 +233,6 @@ class FirebaseAuthFacade implements AuthRepository {
   Future<Either<DeleteFailure, Unit>> deleteAccountWithEmailAndPassword() async {
     printDev();
     return deleteAccount();
-  }
-
-  /// Suppression dans FireAuth et Firestore des données de l'utilisateur courant
-  @override
-  Future<Either<DeleteFailure, Unit>> deleteAccountGoogle() async {
-    printDev();
-    await signInWithGoogle();
-    final del = deleteAccount();
-    if (await del == right(unit)) await this._googleSignIn.signOut();
-    return del;
   }
 
   /* @override

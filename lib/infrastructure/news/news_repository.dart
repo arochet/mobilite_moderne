@@ -8,6 +8,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/load_image.dart';
 import 'news_dtos.dart';
 
 abstract class INewsRepository {
@@ -107,8 +108,8 @@ class NewsRepository implements INewsRepository {
               try {
                 //Chargement de l'actualité + de l'image
                 return NewsDTO.fromFirestore(doc).toDomain(
-                  imageBytes: kIsWeb ? null : _loadImage(storageRef, doc['image']),
-                  imageUrl: kIsWeb ? _loadImageWeb(storageRef, doc['image']) : null,
+                  imageBytes: kIsWeb ? null : loadImage(storageRef, doc['image']),
+                  imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
                 );
               } catch (e) {}
               return News.empty();
@@ -132,39 +133,9 @@ class NewsRepository implements INewsRepository {
 
     return collection.get().then((doc) {
       return right(NewsDTO.fromFirestore(doc).toDomain(
-        imageBytes: kIsWeb ? null : _loadImage(storageRef, doc['image']),
-        imageUrl: kIsWeb ? _loadImageWeb(storageRef, doc['image']) : null,
+        imageBytes: kIsWeb ? null : loadImage(storageRef, doc['image']),
+        imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
       ));
     }) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
-  }
-
-  Future<Uint8List?> _loadImage(Reference storageRef, String path) async {
-    try {
-      //Chargement de l'image
-
-      if (path != "") {
-        final imgRef = storageRef.child(path);
-        const oneMegabyte = 1024 * 1024;
-        return imgRef.getData(oneMegabyte);
-      }
-    } catch (e) {
-      print('Erreur lors du chargement de l\'image');
-      print(e);
-    }
-  }
-
-  Future<String> _loadImageWeb(Reference storageRef, String path) async {
-    try {
-      //Chargement de l'image
-
-      if (path != "") {
-        return await storageRef.child(path).getDownloadURL();
-      }
-      return "";
-    } catch (e) {
-      print('Erreur lors du chargement de l\'image');
-      print(e);
-      return "";
-    }
   }
 }

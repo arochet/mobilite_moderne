@@ -32,12 +32,13 @@ abstract class MessageDTO implements _$MessageDTO {
     );
   }
 
-  Message toDomain(Future<Uint8List?>? imageRead) {
+  Message toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl}) {
     return Message(
       id: UniqueId.fromUniqueString(id!),
       text: text,
       date: DateTime.fromMillisecondsSinceEpoch(date),
-      imageRead: imageRead,
+      imageRead: imageBytes,
+      imageUrl: imageUrl,
       imageSend: null,
       imagePath: imagePath,
       idUser: UniqueId.fromUniqueString(idUser),

@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:admin/ADMIN_INFRASTRUCTURE/user/auth_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -12,6 +13,7 @@ import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/DOMAIN/message/conversation.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/load_image.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_dtos.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/message/conversation_dtos.dart';
 
@@ -119,6 +121,7 @@ class MessageRepository implements IMessageRepository {
   Stream<Either<MessageFailure, List<Message>>> watchConversation(UniqueId idUser) async* {
     final collection =
         _firestore.messageCollection.doc(idUser.getOrCrash()).collection('discussion').orderBy('date');
+    final storageRef = _storage.ref(); //Storage REF
 
     final stream = collection
         .snapshots()
@@ -129,20 +132,18 @@ class MessageRepository implements IMessageRepository {
                 final MessageDTO dto = MessageDTO.fromFirestore(doc);
 
                 //Image !
-                Future<Uint8List?>? imageRead;
                 if (dto.imagePath != null) {
-                  try {
-                    final ref = _storage.ref().child(dto.imagePath!);
-                    const oneMegabyte = 2048 * 2048;
-                    imageRead = ref.getData(oneMegabyte);
-                  } catch (e) {
-                    print('Fatal Error : $e');
-                    imageRead = null;
-                  }
+                  return dto.toDomain(
+                    imageBytes: kIsWeb ? null : loadImage(storageRef, dto.imagePath!),
+                    imageUrl: kIsWeb ? loadImageWeb(storageRef, dto.imagePath!) : null,
+                  );
+                } else {
+                  return dto.toDomain(imageBytes: null, imageUrl: null);
                 }
-
-                return dto.toDomain(imageRead);
-              } catch (e) {}
+              } catch (e, trace) {
+                print('MessageRepo Error : $e');
+                print('$trace');
+              }
               return Message.empty();
             }).toList(),
           ),

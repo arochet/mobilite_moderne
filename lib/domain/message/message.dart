@@ -25,6 +25,9 @@ abstract class Message with _$Message {
     /// Chemin de l'image dans Storage
     required String? imagePath,
     required UniqueId idUser,
+
+    /// Image URL pour le web
+    Future<String>? imageUrl,
   }) = _Message;
 
   factory Message.empty() => Message(

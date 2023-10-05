@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 
 /// Scaffold de base de l'application qui est responsive en fonction de la taille de l'écran
@@ -28,9 +29,12 @@ class MainScaffold extends ConsumerWidget {
             children: [
               Container(
                   width: 300,
+                  color: colorpanel(800),
                   child: const Column(
                     children: [
-                      //_Title(),
+                      SpaceH10(),
+                      _Title(),
+                      SpaceH10(),
                       NavLinkRetour(),
                     ],
                   )),
@@ -56,9 +60,9 @@ class NavLinkRetour extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4.0),
         child: ListTile(
-          leading: Icon(Icons.backspace_rounded),
-          title: Text(AppLocalizations.of(context)!.retour),
-          tileColor: colorpanel(600),
+          leading: const Icon(Icons.backspace_rounded),
+          title: const Text('Retour'),
+          tileColor: colorpanel(900),
           hoverColor: colorpanel(700),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -87,7 +91,7 @@ class _Title extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: Center(
-          child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+          child: Text('Admin Dist\'Atelier', style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );

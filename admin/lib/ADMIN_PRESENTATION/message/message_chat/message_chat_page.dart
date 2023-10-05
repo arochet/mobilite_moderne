@@ -1,10 +1,11 @@
+import 'package:admin/ADMIN_PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/date_utils.dart';
 import 'package:mobilite_moderne/PRESENTATION/message/message_list/widget/panel_message_view.dart';
 
 import 'widget/add_message.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:admin/providers.dart';
@@ -79,6 +80,8 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
                       AppDateUtils.formatDate(listMessage[listMessage.length - 1].date, "HH:mm"),
                       style: Theme.of(context).textTheme.bodySmall,
                     )),
+
+                  SpaceH20(),
                 ])),
       );
     });

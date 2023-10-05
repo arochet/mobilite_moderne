@@ -1,19 +1,13 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 
 import 'widget/panel_resource_view.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
-import 'package:another_flushbar/flushbar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
-import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:auto_route/src/router/auto_router_x.dart';
 
 @RoutePage()
 class ResourceListPage extends ConsumerWidget {
@@ -57,6 +51,8 @@ class ResourceListPage extends ConsumerWidget {
                         },
                         child: Text("Ajouter une ressource"),
                       ),
+
+                      const SpaceH20(),
                     ],
                   )),
         ));

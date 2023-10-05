@@ -1,7 +1,8 @@
+import 'package:admin/ADMIN_PRESENTATION/core/_components/main_scaffold.dart';
+
 import 'widget/resource_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/providers.dart';
@@ -13,7 +14,7 @@ class ResourceAddPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MainScaffold(
+    return const MainScaffold(
       title: 'ResourceAdd',
       child: ShowComponentFile(
         child: Padding(

@@ -98,7 +98,7 @@ class AdminNewsRepository implements IAdminNewsRepository {
             snapshot.docs.map((doc) {
               try {
                 //Chargement de l'actualité + de l'image
-                return NewsDTO.fromFirestore(doc).toDomain(imageBytes: _loadImage(storageRef, doc['image']));
+                return NewsDTO.fromFirestore(doc).toDomain(imageBytes: null);
               } catch (e) {}
               return News.empty();
             }).toList(),

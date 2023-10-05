@@ -30,6 +30,9 @@ mixin _$Message {
   String? get imagePath => throw _privateConstructorUsedError;
   UniqueId get idUser => throw _privateConstructorUsedError;
 
+  /// Image URL pour le web
+  Future<String>? get imageUrl => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
 }
@@ -46,7 +49,8 @@ abstract class $MessageCopyWith<$Res> {
       XFile? imageSend,
       Future<Uint8List?>? imageRead,
       String? imagePath,
-      UniqueId idUser});
+      UniqueId idUser,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -69,6 +73,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? imageRead = freezed,
     Object? imagePath = freezed,
     Object? idUser = null,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -99,6 +104,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ) as $Val);
   }
 }
@@ -117,7 +126,8 @@ abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       XFile? imageSend,
       Future<Uint8List?>? imageRead,
       String? imagePath,
-      UniqueId idUser});
+      UniqueId idUser,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -137,6 +147,7 @@ class __$$_MessageCopyWithImpl<$Res>
     Object? imageRead = freezed,
     Object? imagePath = freezed,
     Object? idUser = null,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$_Message(
       id: null == id
@@ -167,6 +178,10 @@ class __$$_MessageCopyWithImpl<$Res>
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ));
   }
 }
@@ -181,7 +196,8 @@ class _$_Message extends _Message {
       required this.imageSend,
       required this.imageRead,
       required this.imagePath,
-      required this.idUser})
+      required this.idUser,
+      this.imageUrl})
       : super._();
 
   @override
@@ -205,9 +221,13 @@ class _$_Message extends _Message {
   @override
   final UniqueId idUser;
 
+  /// Image URL pour le web
+  @override
+  final Future<String>? imageUrl;
+
   @override
   String toString() {
-    return 'Message(id: $id, text: $text, date: $date, imageSend: $imageSend, imageRead: $imageRead, imagePath: $imagePath, idUser: $idUser)';
+    return 'Message(id: $id, text: $text, date: $date, imageSend: $imageSend, imageRead: $imageRead, imagePath: $imagePath, idUser: $idUser, imageUrl: $imageUrl)';
   }
 
   @override
@@ -224,12 +244,14 @@ class _$_Message extends _Message {
                 other.imageRead == imageRead) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
-            (identical(other.idUser, idUser) || other.idUser == idUser));
+            (identical(other.idUser, idUser) || other.idUser == idUser) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, text, date, imageSend, imageRead, imagePath, idUser);
+  int get hashCode => Object.hash(runtimeType, id, text, date, imageSend,
+      imageRead, imagePath, idUser, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -246,7 +268,8 @@ abstract class _Message extends Message {
       required final XFile? imageSend,
       required final Future<Uint8List?>? imageRead,
       required final String? imagePath,
-      required final UniqueId idUser}) = _$_Message;
+      required final UniqueId idUser,
+      final Future<String>? imageUrl}) = _$_Message;
   const _Message._() : super._();
 
   @override
@@ -269,6 +292,10 @@ abstract class _Message extends Message {
   String? get imagePath;
   @override
   UniqueId get idUser;
+  @override
+
+  /// Image URL pour le web
+  Future<String>? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_MessageCopyWith<_$_Message> get copyWith =>

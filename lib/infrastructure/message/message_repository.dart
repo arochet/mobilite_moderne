@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
@@ -13,6 +14,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/load_image.dart';
 import 'conversation_dtos.dart';
 import 'message_dtos.dart';
 
@@ -136,6 +138,7 @@ class MessageRepository implements IMessageRepository {
 
     final collection =
         _firestore.messageCollection.doc('${uid!.getOrCrash()}').collection('discussion').orderBy('date');
+    final storageRef = _storage.ref(); //Storage REF
 
     yield* collection
         .snapshots()
@@ -158,7 +161,10 @@ class MessageRepository implements IMessageRepository {
                   }
                 }
 
-                return dto.toDomain(imageRead);
+                return dto.toDomain(
+                  imageBytes: kIsWeb ? null : loadImage(storageRef, doc['image']),
+                  imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
+                );
               } catch (e) {}
               return Message.empty();
             }).toList(),

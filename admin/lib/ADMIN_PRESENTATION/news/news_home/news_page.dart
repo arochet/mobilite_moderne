@@ -1,19 +1,13 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:admin/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
-import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
-import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/dialogs.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 
 @RoutePage()
 class AdminNewsPage extends ConsumerWidget {

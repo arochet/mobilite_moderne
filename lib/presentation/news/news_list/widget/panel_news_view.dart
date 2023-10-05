@@ -4,12 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storage.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
-import 'package:mobilite_moderne/PRESENTATION/news/news_view/widget/image_news.dart';
 import '../../../core/_core/router.dart';
 
 class PanelNewsView extends StatelessWidget {
@@ -54,7 +53,10 @@ class _CompressedCard extends StatelessWidget {
         SpaceH10(),
 
         //IMAGE
-        ImageNews(news),
+        ImageFromStorage(
+          url: news.imageUrl,
+          bytes: news.imageBytes,
+        ),
 
         SpaceH20(),
 
@@ -91,7 +93,12 @@ class _LargeCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Container(constraints: BoxConstraints(maxWidth: 350), child: ImageNews(news)),
+        Container(
+            constraints: BoxConstraints(maxWidth: 350),
+            child: ImageFromStorage(
+              url: news.imageUrl,
+              bytes: news.imageBytes,
+            )),
         SizedBox(width: 14),
         Expanded(
           child: Column(
