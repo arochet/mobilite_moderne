@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //COLOR
-    const Color primaryColor = Color(0xff2DE1FC);
+    const Color primaryColor = Color(0xff00ebc7);
     const Color textColor = Colors.white;
 
     //BUTTON

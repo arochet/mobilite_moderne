@@ -25,7 +25,7 @@ class UsersPage extends ConsumerWidget {
               return optionListUserData!.fold(() => Container(), (List<UserData> listUser) {
                 //Tableau des utilisateurs (Table Users)
                 return DisplayDBTable(
-                    nameTable: 'Users',
+                    //nameTable: 'Users',
                     titles: const [
                       CellHeader('Nom', width: 120),
                       CellHeader('Email', width: 80),

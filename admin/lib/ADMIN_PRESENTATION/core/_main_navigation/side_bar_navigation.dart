@@ -1,3 +1,4 @@
+import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
@@ -27,9 +28,11 @@ class SideBarNavigation extends StatelessWidget {
                     color: colorpanel(800),
                     child: SizedBox(
                       width: 300,
-                      child: ListView(
+                      child: Column(
                         children: [
                           const SpaceH10(),
+
+                          //TITRE
                           Center(
                             child: Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -37,12 +40,19 @@ class SideBarNavigation extends StatelessWidget {
                                     style: Theme.of(context).textTheme.titleLarge)),
                           ),
                           const SpaceH20(),
+
+                          // MENU
                           ...listMenu.map((element) => NavLink(
                                 title: element["title"],
                                 icon: element["icon"],
                                 route: element["id"],
                                 tabsRouter: tabsRouter,
                               )),
+
+                          Expanded(child: Container()),
+                          // DECONNEXION
+                          const _ButtonDeconnexion(),
+                          const SpaceH20(),
                         ],
                       ),
                     ),
@@ -62,6 +72,26 @@ class SideBarNavigation extends StatelessWidget {
   }
 }
 
+class _ButtonDeconnexion extends ConsumerWidget {
+  const _ButtonDeconnexion({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: ElevatedButton(
+        onPressed: () async {
+          await ref.read(authNotifierProvider.notifier).signOut();
+          context.router.replaceAll([AuthRoute()]);
+        },
+        child: const Text('Se déconnecter'),
+      ),
+    );
+  }
+}
+
 class NavLink extends ConsumerWidget {
   const NavLink(
       {Key? key, this.title = 'link here', required this.route, required this.icon, required this.tabsRouter})
@@ -76,19 +106,35 @@ class NavLink extends ConsumerWidget {
     final idCurrentPage = ref.watch(currentPageNavProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4.0),
-      child: ListTile(
-          leading: Icon(icon, color: Colors.white),
-          title: Text(title),
-          tileColor: idCurrentPage == route ? Theme.of(context).primaryColor : null,
-          hoverColor: colorpanel(700),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+      child: InkWell(
+        onTap: () {
+          printDev();
+          ref.read(currentPageNavProvider.notifier).state = route;
+          tabsRouter.setActiveIndex(route);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            color: idCurrentPage == route ? Theme.of(context).primaryColor : null,
           ),
-          onTap: () {
-            printDev();
-            ref.read(currentPageNavProvider.notifier).state = route;
-            tabsRouter.setActiveIndex(route);
-          }),
+          child: Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Row(
+              children: [
+                const SizedBox(width: 10),
+                Icon(icon, color: idCurrentPage == route ? Colors.black : Colors.white),
+                const SizedBox(width: 20),
+                Expanded(
+                    child: Text(title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: idCurrentPage == route ? Colors.black : Colors.white))),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

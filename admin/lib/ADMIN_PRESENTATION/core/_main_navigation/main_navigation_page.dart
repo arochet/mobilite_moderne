@@ -9,7 +9,6 @@ class MainNavigationPage extends StatelessWidget {
   MainNavigationPage({Key? key}) : super(key: key);
 
   final listRoute = [
-    const HomeRoute(),
     const UsersRoute(),
     const ResourceListRoute(),
     const AdminNewsRoute(),
@@ -20,29 +19,24 @@ class MainNavigationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final listMenu = [
       {
-        "title": 'Accueil',
-        "icon": Icons.home,
-        "id": 0,
-      },
-      {
         "title": 'Users',
         "icon": Icons.person_rounded,
-        "id": 1,
+        "id": 0,
       },
       {
         "title": 'Resources',
         "icon": Icons.file_copy,
-        "id": 2,
+        "id": 1,
       },
       {
         "title": 'Actualités',
         "icon": Icons.newspaper,
-        "id": 3,
+        "id": 2,
       },
       {
         "title": 'Messages',
         "icon": Icons.message,
-        "id": 4,
+        "id": 3,
       },
     ];
     return LayoutBuilder(

@@ -130,6 +130,7 @@ class FirebaseAuthFacade implements AuthRepository {
       print('credential : ${credential.user?.email}');
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      print("e.code : ${e.code}");
       switch (e.code) {
         case 'wrong-password':
           return (left(const AuthFailure.invalidPassword()));

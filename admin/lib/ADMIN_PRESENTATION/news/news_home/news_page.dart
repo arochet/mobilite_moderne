@@ -8,6 +8,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/dialogs.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 
 @RoutePage()
 class AdminNewsPage extends ConsumerWidget {
@@ -41,6 +42,7 @@ class AdminNewsPage extends ConsumerWidget {
                 child: Text('Ajouter un article'),
               ),
             ),
+            SpaceH20(),
           ],
         ),
       ),

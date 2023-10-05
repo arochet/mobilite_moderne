@@ -27,7 +27,7 @@ import 'package:mobilite_moderne/injection.dart';
 import 'ADMIN_INFRASTRUCTURE/user/users_repository.dart';
 
 //HOME PAGE
-final currentPageNavProvider = StateProvider<int?>((ref) => null);
+final currentPageNavProvider = StateProvider<int>((ref) => 0);
 
 //ENVIRONNEMENT
 final environment = StateProvider<Environment>((ref) => const Environment(Environment.dev));

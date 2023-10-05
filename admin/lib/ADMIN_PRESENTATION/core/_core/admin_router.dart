@@ -33,7 +33,7 @@ class AdminRouter extends _$AdminRouter {
           path: '/main',
           page: MainNavigationRoute.page,
           children: [
-            RedirectRoute(path: '', redirectTo: 'home'),
+            RedirectRoute(path: '', redirectTo: 'users'),
             AutoRoute(
               path: 'home',
               page: HomeRoute.page,
