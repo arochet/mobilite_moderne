@@ -29,8 +29,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
     printDev();
     try {
       final userOption = _authRepository.getSignedUser();
-      state = userOption.fold(() => AuthUnauthenticated(), (a) {
-        return AuthAuthenticated();
+      state = userOption.fold(() => const AuthUnauthenticated(), (a) {
+        return const AuthAuthenticated();
       });
     } catch (e) {}
   }
@@ -43,7 +43,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future signOut() async {
     printDev();
     await _authRepository.signOut();
-    state = AuthUnauthenticated();
+    state = const AuthUnauthenticated();
+    print('Sign out !!');
   }
 
   Future deleteAccount(TypeAccountState type) async {
@@ -58,7 +59,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       default:
         break;
     }
-    state = AuthUnauthenticated();
+    state = const AuthUnauthenticated();
   }
 
   Future sendEmailVerification() async {

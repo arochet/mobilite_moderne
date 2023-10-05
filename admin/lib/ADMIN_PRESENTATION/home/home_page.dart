@@ -1,3 +1,5 @@
+import 'package:admin/ADMIN_PRESENTATION/core/_components/spacing.dart';
+import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +17,13 @@ class HomePage extends ConsumerWidget {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
+            SpaceH10(),
             const Center(child: Text('HOME')),
+            SpaceH10(),
             ElevatedButton(
-              onPressed: () {
-                ref.read(authNotifierProvider.notifier).signOut();
+              onPressed: () async {
+                await ref.read(authNotifierProvider.notifier).signOut();
+                context.router.replaceAll([AuthRoute()]);
               },
               child: const Text('Sign out'),
             )

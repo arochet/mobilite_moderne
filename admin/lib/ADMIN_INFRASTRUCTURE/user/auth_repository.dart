@@ -228,7 +228,7 @@ class FirebaseAuthFacade implements AuthRepository {
 
   @override
   Future<void> signOut() => Future.wait([
-        _googleSignIn.signOut(),
+        //_googleSignIn.signOut(),
         _firebaseAuth.signOut(),
       ]);
 
