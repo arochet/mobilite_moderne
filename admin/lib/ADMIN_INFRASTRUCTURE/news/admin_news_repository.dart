@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:admin/ADMIN_DOMAIN/core/upload_failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
@@ -142,8 +143,15 @@ class AdminNewsRepository implements IAdminNewsRepository {
   @override
   Future<Either<UploadFailure, Unit>> uploadImage(XFile file) async {
     try {
-      final TaskSnapshot result =
-          await _storage.ref().child('actualites/${file.name}').putFile(File(file.path));
+      if (kIsWeb) {
+        final data = await file.readAsBytes();
+        await _storage
+            .ref()
+            .child('actualites/${file.name}')
+            .putData(data, SettableMetadata(contentType: 'image/png'));
+      } else {
+        await _storage.ref().child('actualites/${file.name}').putFile(File(file.path));
+      }
       return right(unit);
     } on FirebaseException catch (e) {
       print(e.code);
