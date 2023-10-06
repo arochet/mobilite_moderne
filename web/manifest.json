@@ -1,6 +1,6 @@
 {
-    "name": "mobilite_moderne",
-    "short_name": "mobilite_moderne",
+    "name": "Dist Atelier",
+    "short_name": "dist_atelier",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

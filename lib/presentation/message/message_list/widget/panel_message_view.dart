@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class PanelMessageView extends StatelessWidget {
     return Align(
       alignment: message.idUser == idUser ? Alignment.centerLeft : Alignment.centerRight,
       child: Container(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8),
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8 - (kIsWeb ? 300 : 0)),
         child: Card(
           margin: EdgeInsets.all(4),
           child: Padding(
@@ -27,7 +28,7 @@ class PanelMessageView extends StatelessWidget {
                 : ImageFromStorage(
                     url: message.imageUrl,
                     bytes: message.imageRead,
-                  ) /* _MessageImage(message.imageRead) */,
+                  ),
           ),
         ),
       ),
