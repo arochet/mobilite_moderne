@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/widget/panel_developper.dart';
@@ -64,33 +65,33 @@ class _AccountPageState extends ConsumerState<AccountPage> {
       //Environnement
       final env = ref.watch(environment.notifier).state.name;
 
+      final page = Container(
+        color: colorpanel(800),
+        child: ListView(
+          children: <Widget>[
+            SpaceH20(),
+            //PANEL DONNEES PERSONNELES
+            PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
+            //PANEL INFO
+            PanelInfo(),
+            //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
+            PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
+            //PANEL DEVELOPPEMENT
+            if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
+            SpaceH10(),
+            //BOUTON SE DECONNECTER
+            ButtonLogOut(),
+            SpaceH10(),
+            VersionNumber(),
+          ],
+        ),
+      );
+
       //Container Informations personnelles
+      if (kIsWeb) return page;
       return MainScaffold(
         title: AppLocalizations.of(context)!.compte,
-        child: ShowComponentFile(
-          title: 'account/account/account_pages.dart',
-          child: Container(
-            color: colorpanel(800),
-            child: ListView(
-              children: <Widget>[
-                SpaceH20(),
-                //PANEL DONNEES PERSONNELES
-                PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
-                //PANEL INFO
-                PanelInfo(),
-                //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
-                PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
-                //PANEL DEVELOPPEMENT
-                if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
-                SpaceH10(),
-                //BOUTON SE DECONNECTER
-                ButtonLogOut(),
-                SpaceH10(),
-                VersionNumber(),
-              ],
-            ),
-          ),
-        ),
+        child: ShowComponentFile(title: 'account/account/account_pages.dart', child: page),
       );
     });
   }

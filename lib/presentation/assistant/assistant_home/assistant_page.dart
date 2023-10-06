@@ -27,13 +27,14 @@ class AssistantPage extends ConsumerWidget {
           child: Column(
             children: [
               //Mon compte
-              Row(
-                children: [
-                  Expanded(child: Container()),
-                  MyAccount(),
-                  Expanded(child: Container()),
-                ],
-              ),
+              if (!kIsWeb)
+                Row(
+                  children: [
+                    Expanded(child: Container()),
+                    MyAccount(),
+                    Expanded(child: Container()),
+                  ],
+                ),
 
               //Menu
               Expanded(
