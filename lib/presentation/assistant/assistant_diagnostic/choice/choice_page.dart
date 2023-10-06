@@ -79,38 +79,45 @@ class _PanelChoiceView extends StatelessWidget {
         SpaceH20(),
 
         //Carte
-        Card(
-          color: colorpanel(900),
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: SizedBox(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //Question
-                  Text("${choice.question?.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
-                  Divider(),
+        Align(
+          alignment: Alignment.center,
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 600),
+            child: Card(
+              color: colorpanel(900),
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //Question
+                      Text("${choice.question?.getOrCrash()}",
+                          style: Theme.of(context).textTheme.titleMedium),
+                      Divider(),
 
-                  //Réponses menant à d'autres questions
-                  ...choice.choiceQuestion
-                          ?.map((ChoiceWithQuestions choice) => _TileChoice(
-                                title: choice.nom.getOrCrash(),
-                                onTap: () => context.router.push(ChoiceRoute(
-                                    choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                              ))
-                          .toList() ??
-                      [],
+                      //Réponses menant à d'autres questions
+                      ...choice.choiceQuestion
+                              ?.map((ChoiceWithQuestions choice) => _TileChoice(
+                                    title: choice.nom.getOrCrash(),
+                                    onTap: () => context.router.push(ChoiceRoute(
+                                        choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                  ))
+                              .toList() ??
+                          [],
 
-                  //Réponses menant à des documents
-                  ...choice.choiceAnswer
-                          ?.map((ChoiceWithAnswer choice) => _TileChoice(
-                                title: choice.nom.getOrCrash(),
-                                onTap: () => context.router.push(AnswerRoute(
-                                    choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                              ))
-                          .toList() ??
-                      [],
-                ],
+                      //Réponses menant à des documents
+                      ...choice.choiceAnswer
+                              ?.map((ChoiceWithAnswer choice) => _TileChoice(
+                                    title: choice.nom.getOrCrash(),
+                                    onTap: () => context.router.push(AnswerRoute(
+                                        choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                  ))
+                              .toList() ??
+                          [],
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

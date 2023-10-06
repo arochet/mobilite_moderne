@@ -101,6 +101,7 @@ class NewsRepository implements INewsRepository {
     final storageRef = _storage.ref(); //Storage REF
 
     yield* collection
+        .orderBy('datePublished', descending: true)
         .snapshots()
         .map(
           (snapshot) => right<NewsFailure, List<News>>(

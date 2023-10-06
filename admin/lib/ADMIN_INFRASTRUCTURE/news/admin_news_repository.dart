@@ -93,6 +93,7 @@ class AdminNewsRepository implements IAdminNewsRepository {
     final storageRef = _storage.ref(); //Storage REF
 
     yield* collection
+        .orderBy('datePublished', descending: true)
         .snapshots()
         .map(
           (snapshot) => right<NewsFailure, List<News>>(

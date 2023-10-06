@@ -3,6 +3,17 @@
     "default": "mobilite-moderne",
     "com.alban.mobilite-moderne": "mobilite-moderne"
   },
-  "targets": {},
+  "targets": {
+    "mobilite-moderne": {
+      "hosting": {
+        "admin": [
+          "admin-distatelier"
+        ],
+        "public": [
+          "mobilite-moderne"
+        ]
+      }
+    }
+  },
   "etags": {}
 }

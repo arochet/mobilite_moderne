@@ -11,8 +11,9 @@
       ]
     }
   ],
-  "hosting": {
-    "public": "hosting",
+  "hosting": [{
+    "target": "public",
+    "public": "build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -24,5 +25,19 @@
         "destination": "/index.html"
       }
     ]
-  }
+  }, {
+    "target": "admin",
+    "public": "admin/build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }]
 }
