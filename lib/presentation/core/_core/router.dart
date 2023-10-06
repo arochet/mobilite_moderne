@@ -66,6 +66,10 @@ class AppRouter extends _$AppRouter {
               path: 'news-list-route',
               page: NewsListRoute.page,
             ),
+            AutoRoute(
+              path: 'account',
+              page: AccountRoute.page,
+            ),
           ],
         ),
         AutoRoute(

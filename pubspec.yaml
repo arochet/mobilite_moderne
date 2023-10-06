@@ -97,8 +97,9 @@ flutter_icons:
   image_path: "assets/icon/icon.png"
 
 flutter_native_splash:
-  #color: "#42a5f5"
-  background_image: "assets/splash.png"
+  color: "#42a5f5"
+  #background_image: "assets/splash.png"
+  web: false
 
 flutter:
   uses-material-design: true

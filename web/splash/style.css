@@ -1,8 +1,7 @@
 body, html {
   margin:0;
   height:100%;
-  background: #000000;
-  background-image: url("img/light-background.png");
+  background: #ffffff;
   background-size: 100% 100%;
 }
 
@@ -13,6 +12,7 @@ body, html {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  background-image: url("img/light-background.png");
 }
 
 .contain {
