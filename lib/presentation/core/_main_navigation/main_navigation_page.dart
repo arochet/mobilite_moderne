@@ -21,7 +21,6 @@ class MainNavigationPage extends StatelessWidget {
   ];
 
   final listRouteWEB = [
-    HomeRoute(),
     AssistantRoute(),
     Resource_menuRoute(),
     NewsListRoute(),
