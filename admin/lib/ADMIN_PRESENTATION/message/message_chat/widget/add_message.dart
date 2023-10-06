@@ -67,6 +67,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
     return Form(
       autovalidateMode: AutovalidateMode.always,
       child: Column(children: [
+        SizedBox(height: 5),
         Row(
           children: [
             SizedBox(width: 5),

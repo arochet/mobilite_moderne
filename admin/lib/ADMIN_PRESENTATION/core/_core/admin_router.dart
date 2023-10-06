@@ -13,9 +13,7 @@ import 'package:admin/ADMIN_PRESENTATION/auth/auth_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
-import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
-import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 
 import '../_main_navigation/main_navigation_page.dart';
 //insert-import
@@ -25,10 +23,8 @@ part 'admin_router.gr.dart';
 class AdminRouter extends _$AdminRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          path: '/',
-          page: SplashRoute.page,
-        ),
+        AutoRoute(path: '/', page: SplashRoute.page),
+        AutoRoute(path: '*', page: SplashRoute.page),
         AutoRoute(
           path: '/main',
           page: MainNavigationRoute.page,
