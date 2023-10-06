@@ -8,11 +8,12 @@ Future<Uint8List?> loadImage(Reference storageRef, String path) async {
 
     if (path != "") {
       final imgRef = storageRef.child(path);
-      const oneMegabyte = 1024 * 1024;
-      return imgRef.getData(oneMegabyte);
+      const tenMegabyte = 1024 * 1024 * 10;
+      final data = await imgRef.getData(tenMegabyte);
+      return data;
     } else {}
   } catch (e) {
-    print('Erreur lors du chargement de l\'image');
+    print('Erreur lors du chargement de l\'image MOBILE');
     print(e);
   }
 }
@@ -25,7 +26,7 @@ Future<String> loadImageWeb(Reference storageRef, String path) async {
     }
     return "";
   } catch (e) {
-    print('Erreur lors du chargement de l\'image');
+    print('Erreur lors du chargement de l\'image WEB');
     print(e);
     return "";
   }
