@@ -12,6 +12,7 @@ _$_UserDataDTO _$$_UserDataDTOFromJson(Map<String, dynamic> json) =>
       userNameLowerCase: json['userNameLowerCase'] as String?,
       passwordCrypted: json['passwordCrypted'] as bool,
       typeAccount: json['typeAccount'] as String,
+      idStripe: json['idStripe'] as String?,
     );
 
 Map<String, dynamic> _$$_UserDataDTOToJson(_$_UserDataDTO instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_UserDataDTOToJson(_$_UserDataDTO instance) =>
       'userNameLowerCase': instance.userNameLowerCase,
       'passwordCrypted': instance.passwordCrypted,
       'typeAccount': instance.typeAccount,
+      'idStripe': instance.idStripe,
     };

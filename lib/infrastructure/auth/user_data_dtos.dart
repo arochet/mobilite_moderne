@@ -20,6 +20,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
     required String? userNameLowerCase,
     required bool passwordCrypted,
     required String typeAccount,
+    String? idStripe,
   }) = _UserDataDTO;
 
   /// Convertit UserData en UserDataDTO<br>
@@ -29,6 +30,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
       userNameLowerCase: user.userName.getOrCrash().toLowerCase(),
       passwordCrypted: user.passwordCrypted,
       typeAccount: user.typeAccount.getOrCrash().toShortString(),
+      idStripe: user.idStripe,
     );
   }
 
@@ -40,6 +42,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
       email: _email != null ? EmailAddress(_email) : null,
       passwordCrypted: passwordCrypted,
       typeAccount: TypeAccount.fromString(typeAccount),
+      idStripe: idStripe,
     );
   }
 

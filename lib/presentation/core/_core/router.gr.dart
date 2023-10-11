@@ -237,6 +237,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
+    Subscription_stripeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Subscription_stripePage(),
+      );
+    },
     Term_of_useRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -929,6 +935,20 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Subscription_stripePage]
+class Subscription_stripeRoute extends PageRouteInfo<void> {
+  const Subscription_stripeRoute({List<PageRouteInfo>? children})
+      : super(
+          Subscription_stripeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Subscription_stripeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

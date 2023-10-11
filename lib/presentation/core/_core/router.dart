@@ -36,7 +36,8 @@ import 'package:mobilite_moderne/PRESENTATION/resource/resource_pdf_viewer/pdfvi
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/choice/choice_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_visio/assistant_visio_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_list_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/payment/payment_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -52,7 +53,7 @@ class AppRouter extends _$AppRouter {
             RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(
               path: 'home',
-              page: HomeRoute.page,
+              page: Subscription_stripeRoute.page,
             ),
             AutoRoute(
               path: 'assistant',
@@ -180,6 +181,9 @@ class AppRouter extends _$AppRouter {
           path: '/message-list-route',
           page: MessageListRoute.page,
         ),
-        //insert-route
+        AutoRoute(
+          path: '/subscription_stripe-route',
+          page: Subscription_stripeRoute.page,
+        ), //insert-route
       ];
 }

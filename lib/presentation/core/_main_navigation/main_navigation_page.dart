@@ -14,7 +14,7 @@ class MainNavigationPage extends StatelessWidget {
   MainNavigationPage({Key? key}) : super(key: key);
 
   final listRouteMOBILE = [
-    HomeRoute(),
+    Subscription_stripeRoute(),
     AssistantRoute(),
     Resource_menuRoute(),
     NewsListRoute(),

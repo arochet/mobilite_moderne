@@ -21,6 +21,7 @@ mixin _$UserData {
   EmailAddress? get email => throw _privateConstructorUsedError;
   bool get passwordCrypted => throw _privateConstructorUsedError;
   TypeAccount get typeAccount => throw _privateConstructorUsedError;
+  String? get idStripe => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserDataCopyWith<UserData> get copyWith =>
@@ -37,7 +38,8 @@ abstract class $UserDataCopyWith<$Res> {
       Nom userName,
       EmailAddress? email,
       bool passwordCrypted,
-      TypeAccount typeAccount});
+      TypeAccount typeAccount,
+      String? idStripe});
 }
 
 /// @nodoc
@@ -58,6 +60,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? email = freezed,
     Object? passwordCrypted = null,
     Object? typeAccount = null,
+    Object? idStripe = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,6 +83,10 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.typeAccount
           : typeAccount // ignore: cast_nullable_to_non_nullable
               as TypeAccount,
+      idStripe: freezed == idStripe
+          ? _value.idStripe
+          : idStripe // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -96,7 +103,8 @@ abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
       Nom userName,
       EmailAddress? email,
       bool passwordCrypted,
-      TypeAccount typeAccount});
+      TypeAccount typeAccount,
+      String? idStripe});
 }
 
 /// @nodoc
@@ -115,6 +123,7 @@ class __$$_UserDataCopyWithImpl<$Res>
     Object? email = freezed,
     Object? passwordCrypted = null,
     Object? typeAccount = null,
+    Object? idStripe = freezed,
   }) {
     return _then(_$_UserData(
       id: null == id
@@ -137,6 +146,10 @@ class __$$_UserDataCopyWithImpl<$Res>
           ? _value.typeAccount
           : typeAccount // ignore: cast_nullable_to_non_nullable
               as TypeAccount,
+      idStripe: freezed == idStripe
+          ? _value.idStripe
+          : idStripe // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -149,7 +162,8 @@ class _$_UserData extends _UserData {
       required this.userName,
       required this.email,
       required this.passwordCrypted,
-      required this.typeAccount})
+      required this.typeAccount,
+      this.idStripe})
       : super._();
 
   @override
@@ -162,10 +176,12 @@ class _$_UserData extends _UserData {
   final bool passwordCrypted;
   @override
   final TypeAccount typeAccount;
+  @override
+  final String? idStripe;
 
   @override
   String toString() {
-    return 'UserData(id: $id, userName: $userName, email: $email, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount)';
+    return 'UserData(id: $id, userName: $userName, email: $email, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe)';
   }
 
   @override
@@ -180,12 +196,14 @@ class _$_UserData extends _UserData {
             (identical(other.passwordCrypted, passwordCrypted) ||
                 other.passwordCrypted == passwordCrypted) &&
             (identical(other.typeAccount, typeAccount) ||
-                other.typeAccount == typeAccount));
+                other.typeAccount == typeAccount) &&
+            (identical(other.idStripe, idStripe) ||
+                other.idStripe == idStripe));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, userName, email, passwordCrypted, typeAccount);
+      runtimeType, id, userName, email, passwordCrypted, typeAccount, idStripe);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +218,8 @@ abstract class _UserData extends UserData {
       required final Nom userName,
       required final EmailAddress? email,
       required final bool passwordCrypted,
-      required final TypeAccount typeAccount}) = _$_UserData;
+      required final TypeAccount typeAccount,
+      final String? idStripe}) = _$_UserData;
   const _UserData._() : super._();
 
   @override
@@ -213,6 +232,8 @@ abstract class _UserData extends UserData {
   bool get passwordCrypted;
   @override
   TypeAccount get typeAccount;
+  @override
+  String? get idStripe;
   @override
   @JsonKey(ignore: true)
   _$$_UserDataCopyWith<_$_UserData> get copyWith =>

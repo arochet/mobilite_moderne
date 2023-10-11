@@ -18,6 +18,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart'
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'APPLICATION/payment/payment_notifier.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
 import 'DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
 import 'DOMAIN/core/errors.dart';
@@ -146,6 +147,11 @@ final messageFormNotifierProvider =
 
 final allMessageProvider = StreamProvider.autoDispose<Either<MessageFailure, List<Message>>>(
     (ref) => ref.watch(messageRepositoryProvider).watch());
+
+//PAYMENT STRIPE
+final paymentNotifierProvider = StateNotifierProvider.autoDispose<PaymentNotifier, PaymentState>(
+  (ref) => PaymentNotifier(),
+);
 
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

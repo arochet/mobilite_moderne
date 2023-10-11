@@ -26,6 +26,7 @@ mixin _$UserDataDTO {
   String? get userNameLowerCase => throw _privateConstructorUsedError;
   bool get passwordCrypted => throw _privateConstructorUsedError;
   String get typeAccount => throw _privateConstructorUsedError;
+  String? get idStripe => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $UserDataDTOCopyWith<$Res> {
       String userName,
       String? userNameLowerCase,
       bool passwordCrypted,
-      String typeAccount});
+      String typeAccount,
+      String? idStripe});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$UserDataDTOCopyWithImpl<$Res, $Val extends UserDataDTO>
     Object? userNameLowerCase = freezed,
     Object? passwordCrypted = null,
     Object? typeAccount = null,
+    Object? idStripe = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -87,6 +90,10 @@ class _$UserDataDTOCopyWithImpl<$Res, $Val extends UserDataDTO>
           ? _value.typeAccount
           : typeAccount // ignore: cast_nullable_to_non_nullable
               as String,
+      idStripe: freezed == idStripe
+          ? _value.idStripe
+          : idStripe // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -104,7 +111,8 @@ abstract class _$$_UserDataDTOCopyWith<$Res>
       String userName,
       String? userNameLowerCase,
       bool passwordCrypted,
-      String typeAccount});
+      String typeAccount,
+      String? idStripe});
 }
 
 /// @nodoc
@@ -123,6 +131,7 @@ class __$$_UserDataDTOCopyWithImpl<$Res>
     Object? userNameLowerCase = freezed,
     Object? passwordCrypted = null,
     Object? typeAccount = null,
+    Object? idStripe = freezed,
   }) {
     return _then(_$_UserDataDTO(
       id: freezed == id
@@ -145,6 +154,10 @@ class __$$_UserDataDTOCopyWithImpl<$Res>
           ? _value.typeAccount
           : typeAccount // ignore: cast_nullable_to_non_nullable
               as String,
+      idStripe: freezed == idStripe
+          ? _value.idStripe
+          : idStripe // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -157,7 +170,8 @@ class _$_UserDataDTO extends _UserDataDTO {
       required this.userName,
       required this.userNameLowerCase,
       required this.passwordCrypted,
-      required this.typeAccount})
+      required this.typeAccount,
+      this.idStripe})
       : super._();
 
   factory _$_UserDataDTO.fromJson(Map<String, dynamic> json) =>
@@ -174,10 +188,12 @@ class _$_UserDataDTO extends _UserDataDTO {
   final bool passwordCrypted;
   @override
   final String typeAccount;
+  @override
+  final String? idStripe;
 
   @override
   String toString() {
-    return 'UserDataDTO(id: $id, userName: $userName, userNameLowerCase: $userNameLowerCase, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount)';
+    return 'UserDataDTO(id: $id, userName: $userName, userNameLowerCase: $userNameLowerCase, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe)';
   }
 
   @override
@@ -193,13 +209,15 @@ class _$_UserDataDTO extends _UserDataDTO {
             (identical(other.passwordCrypted, passwordCrypted) ||
                 other.passwordCrypted == passwordCrypted) &&
             (identical(other.typeAccount, typeAccount) ||
-                other.typeAccount == typeAccount));
+                other.typeAccount == typeAccount) &&
+            (identical(other.idStripe, idStripe) ||
+                other.idStripe == idStripe));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, userName, userNameLowerCase,
-      passwordCrypted, typeAccount);
+      passwordCrypted, typeAccount, idStripe);
 
   @JsonKey(ignore: true)
   @override
@@ -221,7 +239,8 @@ abstract class _UserDataDTO extends UserDataDTO {
       required final String userName,
       required final String? userNameLowerCase,
       required final bool passwordCrypted,
-      required final String typeAccount}) = _$_UserDataDTO;
+      required final String typeAccount,
+      final String? idStripe}) = _$_UserDataDTO;
   const _UserDataDTO._() : super._();
 
   factory _UserDataDTO.fromJson(Map<String, dynamic> json) =
@@ -238,6 +257,8 @@ abstract class _UserDataDTO extends UserDataDTO {
   bool get passwordCrypted;
   @override
   String get typeAccount;
+  @override
+  String? get idStripe;
   @override
   @JsonKey(ignore: true)
   _$$_UserDataDTOCopyWith<_$_UserDataDTO> get copyWith =>

@@ -20,7 +20,7 @@
             "name": "PROD",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main_prod.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "WEB_DEV",

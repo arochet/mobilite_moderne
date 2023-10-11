@@ -8,23 +8,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobilite_moderne/injection.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'PRESENTATION/core/_utils/dev_utils.dart';
 import 'config_reader.dart';
+import '.env';
 
 Future<void> mainCommon(Environment env) async {
   configurationInjection(env.name);
   WidgetsFlutterBinding.ensureInitialized();
   await ConfigReader.initialize();
+  Stripe.publishableKey = stripePublishableKey;
+  await Stripe.instance.applySettings();
+
   if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   } else {
-    await Firebase.initializeApp(
-      name: 'mobilite-moderne',
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    await Firebase.initializeApp(name: 'mobilite-moderne', options: DefaultFirebaseOptions.currentPlatform);
   }
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 

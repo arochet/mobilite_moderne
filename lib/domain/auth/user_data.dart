@@ -15,6 +15,7 @@ abstract class UserData with _$UserData {
     required EmailAddress? email,
     required bool passwordCrypted,
     required TypeAccount typeAccount,
+    String? idStripe,
   }) = _UserData;
 
   factory UserData.empty() => UserData(
@@ -23,5 +24,6 @@ abstract class UserData with _$UserData {
         email: null,
         passwordCrypted: true,
         typeAccount: TypeAccount(TypeAccountState.email),
+        idStripe: null,
       );
 }
