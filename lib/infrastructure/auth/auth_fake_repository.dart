@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/auth_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/delete_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/new_password_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/reauthenticate_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/reset_password_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/server_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -148,5 +150,26 @@ class FakeAuthFacade implements AuthRepository {
   @override
   Future<Image?> getPhotoProfileOfPlayer(UniqueId idPlayer) async {
     return null;
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String isStripe) async {
+    return right(false);
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String isStripe) async {
+    return right(unit);
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> paySubscription(
+      String qsf, Nom name, EmailAddress email, Address address) async {
+    return right(unit);
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription) async {
+    return right(unit);
   }
 }

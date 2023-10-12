@@ -18,7 +18,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart'
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
-import 'APPLICATION/payment/payment_notifier.dart';
+import 'APPLICATION/auth/subscription_notifier.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
 import 'DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
 import 'DOMAIN/core/errors.dart';
@@ -103,7 +103,6 @@ final currentUserData = FutureProvider.autoDispose<UserData?>((ref) async {
 });
 
 //News
-
 final newsRepositoryProvider = Provider<INewsRepository>((ref) => getIt<INewsRepository>());
 
 final allNewsProvider = StreamProvider.autoDispose<Either<NewsFailure, List<News>>>(
@@ -148,10 +147,22 @@ final messageFormNotifierProvider =
 final allMessageProvider = StreamProvider.autoDispose<Either<MessageFailure, List<Message>>>(
     (ref) => ref.watch(messageRepositoryProvider).watch());
 
-//PAYMENT STRIPE
-final paymentNotifierProvider = StateNotifierProvider.autoDispose<PaymentNotifier, PaymentState>(
-  (ref) => PaymentNotifier(),
+// ABONNEMENT
+final subscriptionNotifierProvider =
+    StateNotifierProvider.autoDispose<SubscriptionNotifier, SubscriptionState>(
+  (ref) => SubscriptionNotifier(ref.watch(authRepositoryProvider)),
 );
+
+final userIsSubscribed = FutureProvider.autoDispose<bool>((ref) async {
+  final userData = await ref.watch(currentUserData.future);
+  if (userData != null && userData.idStripe != null) {
+    final result = await ref.watch(authRepositoryProvider).isSubscribeTotalAccess(userData.idStripe!);
+    return result.fold((l) => false, (r) => r);
+  } else {
+    print('Error: userData $userData is null');
+    return false;
+  }
+});
 
 //insert-provider
 //Ne pas supprimer la balise ci-dessus

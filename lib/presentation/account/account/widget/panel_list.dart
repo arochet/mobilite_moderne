@@ -31,6 +31,7 @@ class PanelList extends StatelessWidget {
                 .map((ItemPanelList item) => GestureDetector(
                       onTap: item.onTap,
                       child: Container(
+                        color: colorpanel(900),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           children: [

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:mobilite_moderne/APPLICATION/payment/payment_notifier.dart';
+import 'package:mobilite_moderne/APPLICATION/auth/subscription_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,74 +19,55 @@ class Subscription_stripePage extends StatelessWidget {
       child: ShowComponentFile(
         child: Padding(
           padding: EdgeInsets.all(10),
-          child: Column(children: [_Payment()]),
+          child: Column(children: [_Subscription()]),
         ),
       ),
     );
   }
 }
 
-class _Payment extends ConsumerWidget {
-  const _Payment({
+class _Subscription extends ConsumerWidget {
+  const _Subscription({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(paymentNotifierProvider);
-    final notifier = ref.watch(paymentNotifierProvider.notifier);
+    ref.watch(subscriptionNotifierProvider);
+    final notifier = ref.watch(subscriptionNotifierProvider.notifier);
 
-    if (notifier.state.status == PaymentStatus.success) {
+    if (notifier.state.status == SubscriptionStatus.success) {
       return Center(child: Text("Success"));
-    } else if (notifier.state.status == PaymentStatus.failure) {
+    } else if (notifier.state.status == SubscriptionStatus.failure) {
       return Center(
           child: Column(
         children: [
           Text("Fail"),
           ElevatedButton(
             onPressed: () {
-              ref.read(paymentNotifierProvider.notifier).onPaymentStart();
+              ref.read(subscriptionNotifierProvider.notifier).onPaymentStart();
             },
             child: const Text('Try again'),
           ),
         ],
       ));
-    } else if (notifier.state.status == PaymentStatus.loading) {
+    } else if (notifier.state.status == SubscriptionStatus.loading) {
       return Center(child: Text("Loading"));
     } else
       return Column(
         children: [
           CardFormField(
             controller: CardFormEditController(),
-            onCardChanged: (details) => ref.read(paymentNotifierProvider.notifier).onUpdateCardField(details),
+            onCardChanged: (details) =>
+                ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text("Est-ce que je suis abonné ? "),
           ),
           ElevatedButton(
             onPressed: () {
-              ref.read(paymentNotifierProvider.notifier).onPaymentCreateIntent(
-                billingDetails: BillingDetails(
-                  email: 'alban@yopmail.fr',
-                ),
-                items: [
-                  {'id': '0'},
-                  {'id': '1'},
-                  {'id': '1'},
-                  {'id': '1'},
-                  {'id': '1'},
-                  {'id': '2'},
-                ],
-              );
-            },
-            child: Text("Payer"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ref.read(paymentNotifierProvider.notifier).listSubscription();
-            },
-            child: Text("List Subscription"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ref.read(paymentNotifierProvider.notifier).cancelSubscription();
+              ref.read(subscriptionNotifierProvider.notifier).cancelSubscription();
             },
             child: Text("Cancel Subscription"),
           ),

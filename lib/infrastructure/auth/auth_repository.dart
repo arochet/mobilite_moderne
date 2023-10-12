@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:mobilite_moderne/DOMAIN/auth/failure/auth_failure.dart';
@@ -24,6 +27,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:injectable/injectable.dart';
 import './firebase_user_mapper.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:http/http.dart' as http;
 
 abstract class AuthRepository {
   Option<UserAuth> getSignedUser();
@@ -44,9 +48,16 @@ abstract class AuthRepository {
   Future<Either<NewPasswordFailure, Unit>> newPassword({required Password newPassword});
   Future<Either<ResetPasswordFailure, Unit>> resetPassword({required EmailAddress emailAddress});
   Future<void> signOut();
+  //Photo de profil
   Future<Either<ServerFailure, Unit>> uploadPhotoProfile(File file);
   Future<Image?> getPhotoProfile();
   Future<Image?> getPhotoProfileOfPlayer(UniqueId idPlayer);
+  //Subscription
+  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String idStripe);
+  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String idStripe);
+  Future<Either<SubscriptionFailure, Unit>> paySubscription(
+      String paymentIntentClientSecret, Nom name, EmailAddress email, Address address);
+  Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription);
 }
 
 @LazySingleton(as: AuthRepository, env: [Environment.dev, Environment.prod])
@@ -212,65 +223,6 @@ class FirebaseAuthFacade implements AuthRepository {
     }
   }
 
-  /* @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
-    //Vérifie la connexion internet
-    if (!(await checkInternetConnexion()))
-      return left(AuthFailure.noInternet());
-    try {
-      final LoginResult loginResult = await this._facebookAuth.login();
-      if (loginResult == null) {
-        return left(const AuthFailure.cancelledByUser());
-      }
-      print("Token ${loginResult.accessToken!.token}");
-      if (loginResult.status == LoginStatus.success) {
-        final OAuthCredential facebookAuthCredential =
-            FacebookAuthProvider.credential(loginResult.accessToken!.token);
-        await this._firebaseAuth.signInWithCredential(facebookAuthCredential);
-      } else {
-        print("echec!! ${loginResult.status}");
-        return left(AuthFailure.serverError());
-      }
-
-      try {
-        //Création des datas Firestore si c'est la première connexion
-        final user = this.getUser().fold(() => null, (user) => user);
-        if (user != null) {
-          final userDoc = await _firestore.userDocument();
-          final userData = UserData(
-            id: UniqueId.fromUniqueString(user.uid),
-            userName: Nom(user.displayName ?? "Uname"),
-            typeAccount: TypeAccount(TypeAccountState.facebook),
-            email: EmailAddress(user.email ?? ""),
-            passwordCrypted: false,
-          );
-          final userDataDTO = UserDataDTO.fromDomain(userData);
-
-          final docSnapshot = await userDoc.get();
-          if (!docSnapshot.exists) {
-            await userDoc.set(userDataDTO.toJson());
-          }
-        } else {
-          return left(const AuthFailure.serverError());
-        }
-      } on FirebaseException catch (e) {
-        if (e.message!.contains('permission')) {
-          return left(const AuthFailure.insufficientPermission());
-        } else {
-          return left(const AuthFailure.serverError());
-        }
-      } catch (e) {
-        return left(const AuthFailure.serverError());
-      }
-
-      return right(unit);
-    } on PlatformException catch (_) {
-      return left(const AuthFailure.serverError());
-    } catch (e) {
-      return left(const AuthFailure.serverError());
-    }
-  } */
-
   /// Récupère l'utilisateur courant sans ses infos Firestore
   /// UNIQUEMENT FireAuth
   @override
@@ -369,14 +321,6 @@ class FirebaseAuthFacade implements AuthRepository {
     if (await del == right(unit)) await this._googleSignIn.signOut();
     return del;
   }
-
-  /* @override
-  Future<Either<DeleteFailure, Unit>> deleteAccountFacebook() async {
-    await signInWithFacebook();
-    final del = deleteAccount();
-    if (await del == right(unit)) await this._facebookAuth.logOut();
-    return del;
-  } */
 
   /// Suppression dans FireAuth et Firestore des données de l'utilisateur courant
   Future<Either<DeleteFailure, Unit>> deleteAccount() async {
@@ -580,5 +524,96 @@ class FirebaseAuthFacade implements AuthRepository {
       print(e.code);
       return null;
     }
+  }
+
+  // ABONNEMENT ACCES A TOUTE L'APPLICATION
+  @override
+  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String idStripe) async {
+    try {
+      final response = await getCloudFunctions('ListSubscription', {'idStripe': idStripe});
+      print('response ${response.statusCode} / ${response.body}');
+      final result = json.decode(response.body);
+      print('==> ${result['']}');
+
+      if (result.data.length >= 1) {
+        return right(true);
+      } else {
+        return right(false);
+      }
+    } catch (e) {
+      print('error $e');
+      return left(SubscriptionFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String idStripe) async {
+    try {
+      final response = await getCloudFunctions('SubscribeAccesTotal', {'idStripe': idStripe});
+      //final result = json.decode(response.body);
+
+      if (response.statusCode == 200) {
+        return right(unit);
+      } else {
+        return left(SubscriptionFailure.serverError());
+      }
+    } catch (e) {
+      print('error $e');
+      return left(SubscriptionFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> paySubscription(
+      String paymentIntentClientSecret, Nom name, EmailAddress email, Address address) async {
+    try {
+      final PaymentIntent resultConfirm = await Stripe.instance.confirmPayment(
+          paymentIntentClientSecret: paymentIntentClientSecret,
+          data: PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(
+              billingDetails: BillingDetails(
+                name: name.getOrCrash(),
+                email: email.getOrCrash(),
+                address: address,
+              ),
+            ),
+          ));
+
+      if (resultConfirm.status == 200) {
+        print('ResultConfirm ${resultConfirm.id}');
+        return right(unit);
+      } else
+        return left(SubscriptionFailure.serverError());
+    } catch (e) {
+      print('error $e');
+      return left(SubscriptionFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription) async {
+    try {
+      final response = await getCloudFunctions('CancelSubscription', {'idSubscription': idSubscription});
+      //final result = json.decode(response.body);
+
+      if (response.statusCode == 200) {
+        return right(unit);
+      } else
+        return left(SubscriptionFailure.serverError());
+    } catch (e) {
+      print('error $e');
+      return left(SubscriptionFailure.serverError());
+    }
+  }
+
+  Future<http.Response> getCloudFunctions(String function, Object? body) async {
+    final url = Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/$function');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(body),
+    );
+    print('response ${response.statusCode} / ${response.body}');
+    return response;
   }
 }

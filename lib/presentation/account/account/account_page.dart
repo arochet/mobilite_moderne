@@ -17,6 +17,7 @@ import 'package:injectable/injectable.dart';
 import 'widget/button_log_out.dart';
 import 'widget/panel_info.dart';
 import 'widget/panel_personnel_data.dart';
+import 'widget/panel_subscription.dart';
 import 'widget/version_number.dart';
 import 'widget/diplay_title.dart';
 
@@ -74,6 +75,8 @@ class _AccountPageState extends ConsumerState<AccountPage> {
             PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
             //PANEL INFO
             PanelInfo(),
+            //PANEN ABONNEMENT
+            PanelSubscription(),
             //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
             PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
             //PANEL DEVELOPPEMENT

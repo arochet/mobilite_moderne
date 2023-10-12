@@ -3,8 +3,8 @@ import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/components/components_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/text_style/text_style.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/developpement/components/components_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/developpement/text_style/text_style.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/account_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/delete_account/delete_account_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/modify_account/modify_account_page.dart';
@@ -21,13 +21,13 @@ import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/resource_videoplayer_page.dart';
-import '../../account/account/buttons/buttons.dart';
-import '../../account/account/colors/colors.dart';
-import '../../account/account/utils/utils_page.dart';
+import '../../account/developpement/buttons/buttons.dart';
+import '../../account/developpement/colors/colors.dart';
+import '../../account/developpement/utils/utils_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/term_of_use/term_of_use_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/privacy_policy/privacy_policy_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/term_of_use/term_of_use_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/privacy_policy/privacy_policy_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_view_page.dart';
@@ -37,8 +37,8 @@ import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/cho
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/answer/answer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_visio/assistant_visio_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_list_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/payment/payment_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/account/legal_mention/legal_mention_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/account/subscription/subscription_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/legal_mention/legal_mention_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
