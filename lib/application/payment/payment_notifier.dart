@@ -77,6 +77,85 @@ class PaymentNotifier extends StateNotifier<PaymentState> {
     } else {}
   }
 
+  void onSubscribe() async {
+    state = (state.copyWith(status: PaymentStatus.loading));
+
+    /* final url = Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/SubscribeAccesTotal');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'idStripe': 'cus_OnelLPdvnGSeEP',
+      }),
+    );
+    print('response ${response.statusCode} / ${response.body}');
+    final result = json.decode(response.body); */
+
+    final PaymentIntent resultConfirm = await Stripe.instance.confirmPayment(
+        paymentIntentClientSecret: 'pi_3O05naLoHsD8ZYCO0gwTGtq3_secret_WDNSsee7J7FgBwO03HlYnHY6h',
+        data: PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: BillingDetails(
+              name: 'stripe_user',
+              email: 'stripe@yopmail.fr',
+              address: Address(
+                city: 'Toulon',
+                country: 'France',
+                line1: '126 rue Denis Litardi',
+                postalCode: '83000',
+                line2: '',
+                state: '',
+              ),
+            ),
+          ),
+        ));
+
+    resultConfirm.status;
+
+    if (resultConfirm.status != '200') {
+      // Error
+      print('Result: ${resultConfirm.id}');
+      state = (state.copyWith(status: PaymentStatus.failure));
+    } else {
+      // The payment succedeed / went through.
+      state = (state.copyWith(status: PaymentStatus.success));
+    }
+  }
+
+  void listSubscription() async {
+    state = (state.copyWith(status: PaymentStatus.loading));
+
+    final url = Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/ListSubscription');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'idStripe': 'cus_OnelLPdvnGSeEP',
+      }),
+    );
+    print('response ${response.statusCode} / ${response.body}');
+    final result = json.decode(response.body);
+    print('==> ${result['']}');
+
+    state = (state.copyWith(status: PaymentStatus.initial));
+  }
+
+  void cancelSubscription() async {
+    state = (state.copyWith(status: PaymentStatus.loading));
+
+    final url = Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/CancelSubscription');
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'idSubscription': 'sub_1O05naLoHsD8ZYCOwGrsshhp',
+      }),
+    );
+    print('response ${response.statusCode} / ${response.body}');
+    final result = json.decode(response.body);
+    state = (state.copyWith(status: PaymentStatus.initial));
+  }
+
   void onPaymentConfirmIntent({/* required String clientSecret */ required String payemnetIntentID}) async {
     // The payment requires action calling handleNextAction
     try {

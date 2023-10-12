@@ -78,6 +78,18 @@ class _Payment extends ConsumerWidget {
             },
             child: Text("Payer"),
           ),
+          ElevatedButton(
+            onPressed: () {
+              ref.read(paymentNotifierProvider.notifier).listSubscription();
+            },
+            child: Text("List Subscription"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ref.read(paymentNotifierProvider.notifier).cancelSubscription();
+            },
+            child: Text("Cancel Subscription"),
+          ),
         ],
       );
   }

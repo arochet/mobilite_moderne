@@ -36,6 +36,66 @@ exports.deleteUser = functions.firestore
     await stripe.customers.del(snap.id);
     }); 
 
+// ABONNEMENT 
+exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
+    const {
+        idStripe,
+    } = req.body;
+
+    try {
+        const subscription = await stripe.subscriptions.create({
+            customer: idStripe,
+            items: [{
+              price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+            }],
+            payment_behavior: 'default_incomplete',
+            payment_settings: { save_default_payment_method: 'on_subscription' },
+            expand: ['latest_invoice.payment_intent'],
+          });
+
+          res.send({
+            subscriptionId: subscription.id,
+            clientSecret: subscription.latest_invoice.payment_intent.client_secret,
+          });
+    } catch (e) {
+        return res.status(400).send({ error: { message: error.message } });
+    }
+});
+
+// Liste des abonnements
+exports.ListSubscription = functions.https.onRequest(async (req, res) => {
+    const { idStripe } = req.body;
+
+    try {
+        const listSubscription = await stripe.subscriptions.list({
+            customer: idStripe,
+            limit: 10,
+          });
+
+          listSubscription.data.forEach(function (sub) {
+            console.log('SUB id : ' + sub.id);
+            if(sub.id == 'sub_1O05naLoHsD8ZYCOwGrsshhp') {
+                res.status(200).send(sub);
+            }
+          });
+
+          res.status(200).send( { message: 'Pas d abonnement trouvé ' + listSubscription.data.length });
+    } catch (e) {
+        return res.status(400).send({ error: { message: error.message } });
+    }
+});
+
+// Suppression abonnement
+exports.CancelSubscription = functions.https.onRequest(async (req, res) => {
+    const { idSubscription } = req.body;
+
+    try {
+        const deleted = await stripe.subscriptions.cancel(idSubscription);
+          res.status(200).send(deleted);
+    } catch (e) {
+        return res.status(400).send({ error: { message: error.message } });
+    }
+});
 
 // PAYEMENT STRIPE
 const calculateOrderAmount = (items) => {
