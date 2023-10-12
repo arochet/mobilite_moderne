@@ -137,6 +137,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    Legal_mentionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Legal_mentionPage(),
+      );
+    },
     MainNavigationRoute.name: (routeData) {
       final args = routeData.argsAs<MainNavigationRouteArgs>(
           orElse: () => const MainNavigationRouteArgs());
@@ -617,6 +623,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Legal_mentionPage]
+class Legal_mentionRoute extends PageRouteInfo<void> {
+  const Legal_mentionRoute({List<PageRouteInfo>? children})
+      : super(
+          Legal_mentionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Legal_mentionRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
