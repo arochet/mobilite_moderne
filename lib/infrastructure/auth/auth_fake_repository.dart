@@ -158,7 +158,7 @@ class FakeAuthFacade implements AuthRepository {
   }
 
   @override
-  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String isStripe) async {
+  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess() async {
     return right(unit);
   }
 

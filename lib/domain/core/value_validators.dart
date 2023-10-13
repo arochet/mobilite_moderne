@@ -56,6 +56,14 @@ Either<ValueFailure<String>, String> validateTelephone(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validatePostalCode(String input) {
+  if (input.length == 5) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidPostalCode(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validatePassword(String input) {
   if (input.length > 6) {
     return right(input);

@@ -54,7 +54,7 @@ abstract class AuthRepository {
   Future<Image?> getPhotoProfileOfPlayer(UniqueId idPlayer);
   //Subscription
   Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String idStripe);
-  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String idStripe);
+  Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe);
   Future<Either<SubscriptionFailure, Unit>> paySubscription(
       String paymentIntentClientSecret, Nom name, EmailAddress email, Address address);
   Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription);
@@ -547,13 +547,13 @@ class FirebaseAuthFacade implements AuthRepository {
   }
 
   @override
-  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess(String idStripe) async {
+  Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe) async {
     try {
       final response = await getCloudFunctions('SubscribeAccesTotal', {'idStripe': idStripe});
-      //final result = json.decode(response.body);
+      final result = json.decode(response.body);
 
       if (response.statusCode == 200) {
-        return right(unit);
+        return right(result['clientSecret']);
       } else {
         return left(SubscriptionFailure.serverError());
       }

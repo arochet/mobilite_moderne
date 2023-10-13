@@ -38,4 +38,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidEnum({
     required T failedValue,
   }) = InvalidEnum<T>;
+  const factory ValueFailure.invalidPostalCode({
+    required T failedValue,
+  }) = InvalidPostalCode<T>;
 }

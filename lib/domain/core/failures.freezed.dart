@@ -29,6 +29,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +44,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +59,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +93,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,6 +109,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -235,6 +241,7 @@ class _$InvalidPhoneNumber<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return invalidPhoneNumber(failedValue);
   }
@@ -252,6 +259,7 @@ class _$InvalidPhoneNumber<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return invalidPhoneNumber?.call(failedValue);
   }
@@ -269,6 +277,7 @@ class _$InvalidPhoneNumber<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -292,6 +301,7 @@ class _$InvalidPhoneNumber<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return invalidPhoneNumber(this);
   }
@@ -310,6 +320,7 @@ class _$InvalidPhoneNumber<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return invalidPhoneNumber?.call(this);
   }
@@ -328,6 +339,7 @@ class _$InvalidPhoneNumber<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidPhoneNumber != null) {
@@ -437,6 +449,7 @@ class _$InvalidEmail<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return invalidEmail(failedValue);
   }
@@ -454,6 +467,7 @@ class _$InvalidEmail<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -471,6 +485,7 @@ class _$InvalidEmail<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -494,6 +509,7 @@ class _$InvalidEmail<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return invalidEmail(this);
   }
@@ -512,6 +528,7 @@ class _$InvalidEmail<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return invalidEmail?.call(this);
   }
@@ -530,6 +547,7 @@ class _$InvalidEmail<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -639,6 +657,7 @@ class _$ShortPassword<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return shortPassword(failedValue);
   }
@@ -656,6 +675,7 @@ class _$ShortPassword<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -673,6 +693,7 @@ class _$ShortPassword<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -696,6 +717,7 @@ class _$ShortPassword<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return shortPassword(this);
   }
@@ -714,6 +736,7 @@ class _$ShortPassword<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return shortPassword?.call(this);
   }
@@ -732,6 +755,7 @@ class _$ShortPassword<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -844,6 +868,7 @@ class _$ConfirmationPasswordFail<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return confirmationPasswordFail(failedValue);
   }
@@ -861,6 +886,7 @@ class _$ConfirmationPasswordFail<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return confirmationPasswordFail?.call(failedValue);
   }
@@ -878,6 +904,7 @@ class _$ConfirmationPasswordFail<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (confirmationPasswordFail != null) {
@@ -901,6 +928,7 @@ class _$ConfirmationPasswordFail<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return confirmationPasswordFail(this);
   }
@@ -919,6 +947,7 @@ class _$ConfirmationPasswordFail<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return confirmationPasswordFail?.call(this);
   }
@@ -937,6 +966,7 @@ class _$ConfirmationPasswordFail<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (confirmationPasswordFail != null) {
@@ -1056,6 +1086,7 @@ class _$ExceedingLenght<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return exceedingLenght(failedValue, max);
   }
@@ -1073,6 +1104,7 @@ class _$ExceedingLenght<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return exceedingLenght?.call(failedValue, max);
   }
@@ -1090,6 +1122,7 @@ class _$ExceedingLenght<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (exceedingLenght != null) {
@@ -1113,6 +1146,7 @@ class _$ExceedingLenght<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return exceedingLenght(this);
   }
@@ -1131,6 +1165,7 @@ class _$ExceedingLenght<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return exceedingLenght?.call(this);
   }
@@ -1149,6 +1184,7 @@ class _$ExceedingLenght<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (exceedingLenght != null) {
@@ -1272,6 +1308,7 @@ class _$ExceedingLenghtOrNull<T>
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return exceedingLenghtOrNull(failedValue, max);
   }
@@ -1289,6 +1326,7 @@ class _$ExceedingLenghtOrNull<T>
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return exceedingLenghtOrNull?.call(failedValue, max);
   }
@@ -1306,6 +1344,7 @@ class _$ExceedingLenghtOrNull<T>
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (exceedingLenghtOrNull != null) {
@@ -1329,6 +1368,7 @@ class _$ExceedingLenghtOrNull<T>
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return exceedingLenghtOrNull(this);
   }
@@ -1347,6 +1387,7 @@ class _$ExceedingLenghtOrNull<T>
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return exceedingLenghtOrNull?.call(this);
   }
@@ -1365,6 +1406,7 @@ class _$ExceedingLenghtOrNull<T>
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (exceedingLenghtOrNull != null) {
@@ -1474,6 +1516,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return multiline(failedValue);
   }
@@ -1491,6 +1534,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return multiline?.call(failedValue);
   }
@@ -1508,6 +1552,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -1531,6 +1576,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return multiline(this);
   }
@@ -1549,6 +1595,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return multiline?.call(this);
   }
@@ -1567,6 +1614,7 @@ class _$Multiline<T> with DiagnosticableTreeMixin implements Multiline<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -1671,6 +1719,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return empty(failedValue);
   }
@@ -1688,6 +1737,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return empty?.call(failedValue);
   }
@@ -1705,6 +1755,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1728,6 +1779,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return empty(this);
   }
@@ -1746,6 +1798,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return empty?.call(this);
   }
@@ -1764,6 +1817,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1880,6 +1934,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return listTooLong(failedValue, maxLength);
   }
@@ -1897,6 +1952,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return listTooLong?.call(failedValue, maxLength);
   }
@@ -1914,6 +1970,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (listTooLong != null) {
@@ -1937,6 +1994,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return listTooLong(this);
   }
@@ -1955,6 +2013,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return listTooLong?.call(this);
   }
@@ -1973,6 +2032,7 @@ class _$ListTooLong<T> with DiagnosticableTreeMixin implements ListTooLong<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (listTooLong != null) {
@@ -2082,6 +2142,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int maxLength) listTooLong,
     required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
   }) {
     return invalidEnum(failedValue);
   }
@@ -2099,6 +2160,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int maxLength)? listTooLong,
     TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
   }) {
     return invalidEnum?.call(failedValue);
   }
@@ -2116,6 +2178,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int maxLength)? listTooLong,
     TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidEnum != null) {
@@ -2139,6 +2202,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     required TResult Function(Empty<T> value) empty,
     required TResult Function(ListTooLong<T> value) listTooLong,
     required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
   }) {
     return invalidEnum(this);
   }
@@ -2157,6 +2221,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     TResult? Function(Empty<T> value)? empty,
     TResult? Function(ListTooLong<T> value)? listTooLong,
     TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
   }) {
     return invalidEnum?.call(this);
   }
@@ -2175,6 +2240,7 @@ class _$InvalidEnum<T> with DiagnosticableTreeMixin implements InvalidEnum<T> {
     TResult Function(Empty<T> value)? empty,
     TResult Function(ListTooLong<T> value)? listTooLong,
     TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
     required TResult orElse(),
   }) {
     if (invalidEnum != null) {
@@ -2192,5 +2258,214 @@ abstract class InvalidEnum<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   _$$InvalidEnumCopyWith<T, _$InvalidEnum<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InvalidPostalCodeCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$InvalidPostalCodeCopyWith(_$InvalidPostalCode<T> value,
+          $Res Function(_$InvalidPostalCode<T>) then) =
+      __$$InvalidPostalCodeCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$InvalidPostalCodeCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$InvalidPostalCode<T>>
+    implements _$$InvalidPostalCodeCopyWith<T, $Res> {
+  __$$InvalidPostalCodeCopyWithImpl(_$InvalidPostalCode<T> _value,
+      $Res Function(_$InvalidPostalCode<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$InvalidPostalCode<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidPostalCode<T>
+    with DiagnosticableTreeMixin
+    implements InvalidPostalCode<T> {
+  const _$InvalidPostalCode({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ValueFailure<$T>.invalidPostalCode(failedValue: $failedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ValueFailure<$T>.invalidPostalCode'))
+      ..add(DiagnosticsProperty('failedValue', failedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvalidPostalCode<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvalidPostalCodeCopyWith<T, _$InvalidPostalCode<T>> get copyWith =>
+      __$$InvalidPostalCodeCopyWithImpl<T, _$InvalidPostalCode<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) invalidPhoneNumber,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) confirmationPasswordFail,
+    required TResult Function(T failedValue, int max) exceedingLenght,
+    required TResult Function(T failedValue, int max) exceedingLenghtOrNull,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int maxLength) listTooLong,
+    required TResult Function(T failedValue) invalidEnum,
+    required TResult Function(T failedValue) invalidPostalCode,
+  }) {
+    return invalidPostalCode(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? invalidPhoneNumber,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? confirmationPasswordFail,
+    TResult? Function(T failedValue, int max)? exceedingLenght,
+    TResult? Function(T failedValue, int max)? exceedingLenghtOrNull,
+    TResult? Function(T failedValue)? multiline,
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int maxLength)? listTooLong,
+    TResult? Function(T failedValue)? invalidEnum,
+    TResult? Function(T failedValue)? invalidPostalCode,
+  }) {
+    return invalidPostalCode?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? invalidPhoneNumber,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? confirmationPasswordFail,
+    TResult Function(T failedValue, int max)? exceedingLenght,
+    TResult Function(T failedValue, int max)? exceedingLenghtOrNull,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int maxLength)? listTooLong,
+    TResult Function(T failedValue)? invalidEnum,
+    TResult Function(T failedValue)? invalidPostalCode,
+    required TResult orElse(),
+  }) {
+    if (invalidPostalCode != null) {
+      return invalidPostalCode(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidPhoneNumber<T> value) invalidPhoneNumber,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(ConfirmationPasswordFail<T> value)
+        confirmationPasswordFail,
+    required TResult Function(ExceedingLenght<T> value) exceedingLenght,
+    required TResult Function(ExceedingLenghtOrNull<T> value)
+        exceedingLenghtOrNull,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(ListTooLong<T> value) listTooLong,
+    required TResult Function(InvalidEnum<T> value) invalidEnum,
+    required TResult Function(InvalidPostalCode<T> value) invalidPostalCode,
+  }) {
+    return invalidPostalCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(ShortPassword<T> value)? shortPassword,
+    TResult? Function(ConfirmationPasswordFail<T> value)?
+        confirmationPasswordFail,
+    TResult? Function(ExceedingLenght<T> value)? exceedingLenght,
+    TResult? Function(ExceedingLenghtOrNull<T> value)? exceedingLenghtOrNull,
+    TResult? Function(Multiline<T> value)? multiline,
+    TResult? Function(Empty<T> value)? empty,
+    TResult? Function(ListTooLong<T> value)? listTooLong,
+    TResult? Function(InvalidEnum<T> value)? invalidEnum,
+    TResult? Function(InvalidPostalCode<T> value)? invalidPostalCode,
+  }) {
+    return invalidPostalCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidPhoneNumber<T> value)? invalidPhoneNumber,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(ConfirmationPasswordFail<T> value)?
+        confirmationPasswordFail,
+    TResult Function(ExceedingLenght<T> value)? exceedingLenght,
+    TResult Function(ExceedingLenghtOrNull<T> value)? exceedingLenghtOrNull,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(ListTooLong<T> value)? listTooLong,
+    TResult Function(InvalidEnum<T> value)? invalidEnum,
+    TResult Function(InvalidPostalCode<T> value)? invalidPostalCode,
+    required TResult orElse(),
+  }) {
+    if (invalidPostalCode != null) {
+      return invalidPostalCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPostalCode<T> implements ValueFailure<T> {
+  const factory InvalidPostalCode({required final T failedValue}) =
+      _$InvalidPostalCode<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  _$$InvalidPostalCodeCopyWith<T, _$InvalidPostalCode<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

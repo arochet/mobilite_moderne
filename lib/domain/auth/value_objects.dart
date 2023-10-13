@@ -70,6 +70,19 @@ class PasswordConfirmation extends ValueObject<String> {
   const PasswordConfirmation._(this.value);
 }
 
+/// Numéro de téléphone valide
+@immutable
+class PostalCode extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostalCode(String input) {
+    return PostalCode._(validatePostalCode(input));
+  }
+
+  const PostalCode._(this.value);
+}
+
 /// Type de compte (email, google, échec)
 enum TypeAccountState { email, google, fail }
 
