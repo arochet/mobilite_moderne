@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobilite_moderne/providers.dart';
 
-class PanelFormFillAdress extends ConsumerWidget {
-  const PanelFormFillAdress({
+class PanelFormAdress extends ConsumerWidget {
+  const PanelFormAdress({
     super.key,
   });
 

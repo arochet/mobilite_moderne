@@ -60,7 +60,7 @@ class _PanelRecapState extends ConsumerState<PanelRecap> {
               SpaceW10(),
               ElevatedButton(
                 onPressed: () {
-                  //ref.read(subscriptionNotifierProvider.notifier).disableSubscriptionProcess();
+                  ref.read(subscriptionNotifierProvider.notifier).paySubscription();
                 },
                 child: Text("S'abonner"),
               ),

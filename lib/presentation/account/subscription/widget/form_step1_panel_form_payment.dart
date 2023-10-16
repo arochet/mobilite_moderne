@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
 import 'package:mobilite_moderne/providers.dart';
 
-class PanelFormFillInfo extends ConsumerWidget {
-  const PanelFormFillInfo({
+class PanelFormPayment extends ConsumerWidget {
+  const PanelFormPayment({
     super.key,
   });
 

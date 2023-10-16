@@ -8,6 +8,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/failure/reauthenticate_failure.dart
 import 'package:mobilite_moderne/DOMAIN/auth/failure/reset_password_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/server_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/subscriptions.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -153,18 +154,17 @@ class FakeAuthFacade implements AuthRepository {
   }
 
   @override
-  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String isStripe) async {
-    return right(false);
+  Future<Either<SubscriptionFailure, Subscriptions?>> isSubscribeTotalAccess(String isStripe) async {
+    return right(null);
   }
 
   @override
-  Future<Either<SubscriptionFailure, Unit>> subscribeTotalAccess() async {
-    return right(unit);
+  Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe) async {
+    return right('?');
   }
 
   @override
-  Future<Either<SubscriptionFailure, Unit>> paySubscription(
-      String qsf, Nom name, EmailAddress email, Address address) async {
+  Future<Either<SubscriptionFailure, Unit>> paySubscription(String qsf, Address address) async {
     return right(unit);
   }
 

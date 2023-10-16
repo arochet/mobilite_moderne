@@ -19,6 +19,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
+    required TResult Function() userError,
     required TResult Function() noInternet,
     required TResult Function() customerUnfound,
     required TResult Function() paymentFail,
@@ -27,6 +28,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
+    TResult? Function()? userError,
     TResult? Function()? noInternet,
     TResult? Function()? customerUnfound,
     TResult? Function()? paymentFail,
@@ -35,6 +37,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
+    TResult Function()? userError,
     TResult Function()? noInternet,
     TResult Function()? customerUnfound,
     TResult Function()? paymentFail,
@@ -44,6 +47,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
     required TResult Function(NoInternet value) noInternet,
     required TResult Function(CustomerUnfound value) customerUnfound,
     required TResult Function(PaymentFail value) paymentFail,
@@ -52,6 +56,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
     TResult? Function(NoInternet value)? noInternet,
     TResult? Function(CustomerUnfound value)? customerUnfound,
     TResult? Function(PaymentFail value)? paymentFail,
@@ -60,6 +65,7 @@ mixin _$SubscriptionFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
     TResult Function(NoInternet value)? noInternet,
     TResult Function(CustomerUnfound value)? customerUnfound,
     TResult Function(PaymentFail value)? paymentFail,
@@ -125,6 +131,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
+    required TResult Function() userError,
     required TResult Function() noInternet,
     required TResult Function() customerUnfound,
     required TResult Function() paymentFail,
@@ -136,6 +143,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
+    TResult? Function()? userError,
     TResult? Function()? noInternet,
     TResult? Function()? customerUnfound,
     TResult? Function()? paymentFail,
@@ -147,6 +155,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
+    TResult Function()? userError,
     TResult Function()? noInternet,
     TResult Function()? customerUnfound,
     TResult Function()? paymentFail,
@@ -162,6 +171,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
     required TResult Function(NoInternet value) noInternet,
     required TResult Function(CustomerUnfound value) customerUnfound,
     required TResult Function(PaymentFail value) paymentFail,
@@ -173,6 +183,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
     TResult? Function(NoInternet value)? noInternet,
     TResult? Function(CustomerUnfound value)? customerUnfound,
     TResult? Function(PaymentFail value)? paymentFail,
@@ -184,6 +195,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
     TResult Function(NoInternet value)? noInternet,
     TResult Function(CustomerUnfound value)? customerUnfound,
     TResult Function(PaymentFail value)? paymentFail,
@@ -198,6 +210,126 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements SubscriptionFailure {
   const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class _$$UserErrorCopyWith<$Res> {
+  factory _$$UserErrorCopyWith(
+          _$UserError value, $Res Function(_$UserError) then) =
+      __$$UserErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserErrorCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$UserError>
+    implements _$$UserErrorCopyWith<$Res> {
+  __$$UserErrorCopyWithImpl(
+      _$UserError _value, $Res Function(_$UserError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserError implements UserError {
+  const _$UserError();
+
+  @override
+  String toString() {
+    return 'SubscriptionFailure.userError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() userError,
+    required TResult Function() noInternet,
+    required TResult Function() customerUnfound,
+    required TResult Function() paymentFail,
+  }) {
+    return userError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? serverError,
+    TResult? Function()? userError,
+    TResult? Function()? noInternet,
+    TResult? Function()? customerUnfound,
+    TResult? Function()? paymentFail,
+  }) {
+    return userError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? userError,
+    TResult Function()? noInternet,
+    TResult Function()? customerUnfound,
+    TResult Function()? paymentFail,
+    required TResult orElse(),
+  }) {
+    if (userError != null) {
+      return userError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
+    required TResult Function(NoInternet value) noInternet,
+    required TResult Function(CustomerUnfound value) customerUnfound,
+    required TResult Function(PaymentFail value) paymentFail,
+  }) {
+    return userError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
+    TResult? Function(NoInternet value)? noInternet,
+    TResult? Function(CustomerUnfound value)? customerUnfound,
+    TResult? Function(PaymentFail value)? paymentFail,
+  }) {
+    return userError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
+    TResult Function(NoInternet value)? noInternet,
+    TResult Function(CustomerUnfound value)? customerUnfound,
+    TResult Function(PaymentFail value)? paymentFail,
+    required TResult orElse(),
+  }) {
+    if (userError != null) {
+      return userError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserError implements SubscriptionFailure {
+  const factory UserError() = _$UserError;
 }
 
 /// @nodoc
@@ -239,6 +371,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
+    required TResult Function() userError,
     required TResult Function() noInternet,
     required TResult Function() customerUnfound,
     required TResult Function() paymentFail,
@@ -250,6 +383,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
+    TResult? Function()? userError,
     TResult? Function()? noInternet,
     TResult? Function()? customerUnfound,
     TResult? Function()? paymentFail,
@@ -261,6 +395,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
+    TResult Function()? userError,
     TResult Function()? noInternet,
     TResult Function()? customerUnfound,
     TResult Function()? paymentFail,
@@ -276,6 +411,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
     required TResult Function(NoInternet value) noInternet,
     required TResult Function(CustomerUnfound value) customerUnfound,
     required TResult Function(PaymentFail value) paymentFail,
@@ -287,6 +423,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
     TResult? Function(NoInternet value)? noInternet,
     TResult? Function(CustomerUnfound value)? customerUnfound,
     TResult? Function(PaymentFail value)? paymentFail,
@@ -298,6 +435,7 @@ class _$NoInternet implements NoInternet {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
     TResult Function(NoInternet value)? noInternet,
     TResult Function(CustomerUnfound value)? customerUnfound,
     TResult Function(PaymentFail value)? paymentFail,
@@ -353,6 +491,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
+    required TResult Function() userError,
     required TResult Function() noInternet,
     required TResult Function() customerUnfound,
     required TResult Function() paymentFail,
@@ -364,6 +503,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
+    TResult? Function()? userError,
     TResult? Function()? noInternet,
     TResult? Function()? customerUnfound,
     TResult? Function()? paymentFail,
@@ -375,6 +515,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
+    TResult Function()? userError,
     TResult Function()? noInternet,
     TResult Function()? customerUnfound,
     TResult Function()? paymentFail,
@@ -390,6 +531,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
     required TResult Function(NoInternet value) noInternet,
     required TResult Function(CustomerUnfound value) customerUnfound,
     required TResult Function(PaymentFail value) paymentFail,
@@ -401,6 +543,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
     TResult? Function(NoInternet value)? noInternet,
     TResult? Function(CustomerUnfound value)? customerUnfound,
     TResult? Function(PaymentFail value)? paymentFail,
@@ -412,6 +555,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
     TResult Function(NoInternet value)? noInternet,
     TResult Function(CustomerUnfound value)? customerUnfound,
     TResult Function(PaymentFail value)? paymentFail,
@@ -467,6 +611,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
+    required TResult Function() userError,
     required TResult Function() noInternet,
     required TResult Function() customerUnfound,
     required TResult Function() paymentFail,
@@ -478,6 +623,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
+    TResult? Function()? userError,
     TResult? Function()? noInternet,
     TResult? Function()? customerUnfound,
     TResult? Function()? paymentFail,
@@ -489,6 +635,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
+    TResult Function()? userError,
     TResult Function()? noInternet,
     TResult Function()? customerUnfound,
     TResult Function()? paymentFail,
@@ -504,6 +651,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
+    required TResult Function(UserError value) userError,
     required TResult Function(NoInternet value) noInternet,
     required TResult Function(CustomerUnfound value) customerUnfound,
     required TResult Function(PaymentFail value) paymentFail,
@@ -515,6 +663,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
+    TResult? Function(UserError value)? userError,
     TResult? Function(NoInternet value)? noInternet,
     TResult? Function(CustomerUnfound value)? customerUnfound,
     TResult? Function(PaymentFail value)? paymentFail,
@@ -526,6 +675,7 @@ class _$PaymentFail implements PaymentFail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
+    TResult Function(UserError value)? userError,
     TResult Function(NoInternet value)? noInternet,
     TResult Function(CustomerUnfound value)? customerUnfound,
     TResult Function(PaymentFail value)? paymentFail,

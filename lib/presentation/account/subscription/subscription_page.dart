@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/subscriptions.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'widget/form_subscription.dart';
-import 'widget/my_subscribed.dart';
+import 'widget/my_subscription.dart';
 
 @RoutePage()
 class Subscription_stripePage extends StatelessWidget {
@@ -31,12 +32,12 @@ class _IsSubscribe extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userIsSubscribed);
+    final subscriptionAsync = ref.watch(userIsSubscribed);
 
-    return user.when(
-      data: (bool isSubscribed) {
-        if (isSubscribed) {
-          return MySubscription();
+    return subscriptionAsync.when(
+      data: (Subscriptions? subscription) {
+        if (subscription != null) {
+          return MySubscription(subscription);
         } else {
           return FormSubscription();
         }

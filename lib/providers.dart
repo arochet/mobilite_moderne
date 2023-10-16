@@ -18,9 +18,11 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart'
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'APPLICATION/auth/cancel_subscription_notifier.dart';
 import 'APPLICATION/auth/subscription_notifier.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
 import 'DOMAIN/assistant_diagnostic/assistant_diagnostic_failure.dart';
+import 'DOMAIN/auth/subscriptions.dart';
 import 'DOMAIN/core/errors.dart';
 import 'DOMAIN/core/value_objects.dart';
 import 'DOMAIN/news/news.dart';
@@ -153,14 +155,14 @@ final subscriptionNotifierProvider =
   (ref) => SubscriptionNotifier(ref.watch(authRepositoryProvider)),
 );
 
-final userIsSubscribed = FutureProvider.autoDispose<bool>((ref) async {
+final userIsSubscribed = FutureProvider.autoDispose<Subscriptions?>((ref) async {
   final userData = await ref.watch(currentUserData.future);
   if (userData != null && userData.idStripe != null) {
     final result = await ref.watch(authRepositoryProvider).isSubscribeTotalAccess(userData.idStripe!);
-    return result.fold((l) => false, (r) => r);
+    return result.fold((l) => null, (sub) => sub);
   } else {
     print('Error: userData $userData is null');
-    return false;
+    return null;
   }
 });
 

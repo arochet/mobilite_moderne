@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+class SpaceH5 extends StatelessWidget {
+  const SpaceH5({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 5);
+  }
+}
+
 class SpaceH10 extends StatelessWidget {
   const SpaceH10({Key? key}) : super(key: key);
 

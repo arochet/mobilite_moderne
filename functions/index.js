@@ -72,11 +72,15 @@ exports.ListSubscription = functions.https.onRequest(async (req, res) => {
             limit: 10,
           });
 
+          //Rercherche de tous les abonnements 
           listSubscription.data.forEach(function (sub) {
-            console.log('SUB id : ' + sub.id);
-            if(sub.id == 'sub_1O05naLoHsD8ZYCOwGrsshhp') {
-                res.status(200).send(sub);
-            }
+            sub.items.data.forEach(function (item) {
+                //Code du produit acces_total !
+                if(item.price['product'] == 'prod_OnfKo1VMwQsFOV') {
+                    //Retourne toute la subscription
+                    res.status(200).send(sub);
+                } 
+            });
           });
 
           res.status(200).send( { message: 'Pas d abonnement trouvé ' + listSubscription.data.length });

@@ -1,11 +1,21 @@
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart';
 
 //Ajouter freezed !
-enum SubscriptionStatus { initial, fillAccountInfo, fillAddress, recap, loading, success, failure }
+enum SubscriptionStatus {
+  initial,
+  formPayment,
+  formAddress,
+  recap,
+  loading,
+  success,
+  successCancelSubscription,
+  failure
+}
 
 class SubscriptionState {
   final SubscriptionStatus status;
@@ -86,11 +96,11 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   }
 
   void setFillAccountPage() {
-    state = (state.copyWith(status: SubscriptionStatus.fillAccountInfo));
+    state = (state.copyWith(status: SubscriptionStatus.formPayment));
   }
 
   void setAddressPage() {
-    state = (state.copyWith(status: SubscriptionStatus.fillAddress));
+    state = (state.copyWith(status: SubscriptionStatus.formAddress));
   }
 
   void setRecapPage() {
@@ -144,32 +154,31 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
       (l) => state = state.copyWith(status: SubscriptionStatus.failure, msgError: l.toString()),
       (clientSecret) {
         state =
-            state.copyWith(status: SubscriptionStatus.fillAddress, paymentIntentClientSecret: clientSecret);
+            state.copyWith(status: SubscriptionStatus.formAddress, paymentIntentClientSecret: clientSecret);
       },
     );
   }
 
-  void paySubscription(Nom name, EmailAddress email, Address address) async {
+  void paySubscription() async {
     state = (state.copyWith(status: SubscriptionStatus.loading));
 
-    // ON EN ETAIT LA !!!!!
-    final result =
-        await _authRepository.paySubscription(state.paymentIntentClientSecret!, name, email, address);
+    final result = await _authRepository.paySubscription(state.paymentIntentClientSecret!, state.address);
 
-    result.fold(
-      (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.toString()),
-      (r) => state = state.copyWith(status: SubscriptionStatus.success),
+    state = result.fold(
+      (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.message),
+      (r) => state.copyWith(status: SubscriptionStatus.success),
     );
   }
 
   void cancelSubscription(String idSubscription) async {
     state = (state.copyWith(status: SubscriptionStatus.loading));
+    print('Annulation de l abonnement $idSubscription');
 
     final result = await _authRepository.unsubscribeTotalAccess(idSubscription);
 
-    result.fold(
+    state = result.fold(
       (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.toString()),
-      (r) => state = state.copyWith(status: SubscriptionStatus.success),
+      (r) => state.copyWith(status: SubscriptionStatus.successCancelSubscription),
     );
   }
 }

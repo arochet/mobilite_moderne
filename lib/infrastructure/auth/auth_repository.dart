@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/subscriptions.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:mobilite_moderne/DOMAIN/auth/failure/auth_failure.dart';
@@ -28,6 +29,7 @@ import 'package:injectable/injectable.dart';
 import './firebase_user_mapper.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
+import 'subscriptions_dtos.dart';
 
 abstract class AuthRepository {
   Option<UserAuth> getSignedUser();
@@ -53,10 +55,10 @@ abstract class AuthRepository {
   Future<Image?> getPhotoProfile();
   Future<Image?> getPhotoProfileOfPlayer(UniqueId idPlayer);
   //Subscription
-  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String idStripe);
+  Future<Either<SubscriptionFailure, Subscriptions?>> isSubscribeTotalAccess(String idStripe);
   Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe);
   Future<Either<SubscriptionFailure, Unit>> paySubscription(
-      String paymentIntentClientSecret, Nom name, EmailAddress email, Address address);
+      String paymentIntentClientSecret, Address address);
   Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription);
 }
 
@@ -528,17 +530,15 @@ class FirebaseAuthFacade implements AuthRepository {
 
   // ABONNEMENT ACCES A TOUTE L'APPLICATION
   @override
-  Future<Either<SubscriptionFailure, bool>> isSubscribeTotalAccess(String idStripe) async {
+  Future<Either<SubscriptionFailure, Subscriptions?>> isSubscribeTotalAccess(String idStripe) async {
     try {
       final response = await getCloudFunctions('ListSubscription', {'idStripe': idStripe});
-      print('response ${response.statusCode} / ${response.body}');
       final result = json.decode(response.body);
-      print('==> ${result['']}');
 
-      if (result.data.length >= 1) {
-        return right(true);
+      if (response.statusCode == 200 && result['object'] == 'subscription') {
+        return right(SubscriptionsDTO.fromJson(result).toDomain());
       } else {
-        return right(false);
+        return right(null);
       }
     } catch (e) {
       print('error $e');
@@ -565,22 +565,25 @@ class FirebaseAuthFacade implements AuthRepository {
 
   @override
   Future<Either<SubscriptionFailure, Unit>> paySubscription(
-      String paymentIntentClientSecret, Nom name, EmailAddress email, Address address) async {
+      String paymentIntentClientSecret, Address address) async {
     try {
+      UserData? userData = await getUserData().then((value) => value.fold(() => null, (user) => user));
+
+      if (userData == null) return left(SubscriptionFailure.customerUnfound());
+
       final PaymentIntent resultConfirm = await Stripe.instance.confirmPayment(
           paymentIntentClientSecret: paymentIntentClientSecret,
           data: PaymentMethodParams.card(
             paymentMethodData: PaymentMethodData(
               billingDetails: BillingDetails(
-                name: name.getOrCrash(),
-                email: email.getOrCrash(),
+                name: userData.userName.getOrCrash(),
+                email: userData.email?.getOrCrash(),
                 address: address,
               ),
             ),
           ));
 
-      if (resultConfirm.status == 200) {
-        print('ResultConfirm ${resultConfirm.id}');
+      if (resultConfirm.status == PaymentIntentsStatus.Succeeded) {
         return right(unit);
       } else
         return left(SubscriptionFailure.serverError());
@@ -613,7 +616,6 @@ class FirebaseAuthFacade implements AuthRepository {
       headers: {'Content-Type': 'application/json'},
       body: json.encode(body),
     );
-    print('response ${response.statusCode} / ${response.body}');
     return response;
   }
 }
