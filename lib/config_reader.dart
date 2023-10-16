@@ -10,7 +10,6 @@ abstract class ConfigReader {
   }
 
   static String getSecretKey() {
-    return (_config?['secretkey'] ?? 'E8A0B3AAA9AD2030AD413A17EBEA0F3F')
-        as String;
+    return (_config?['secretkey'] ?? 'E8A0B3AAA9AD2030AD413A17EBEA0F3F') as String;
   }
 }
