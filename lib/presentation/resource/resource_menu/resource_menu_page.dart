@@ -27,29 +27,10 @@ class Resource_menuPage extends StatelessWidget {
           child: Align(
             child: Container(
                 constraints: BoxConstraints(maxWidth: 500),
-                child: DefaultTabController(
-                  length: 3,
-                  child: Column(
-                    children: [
-                      // CHOIX DU TYPE DE RESSOURCE
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: TabBar(
-                          tabs: ResourceMainCategory.values.map((e) {
-                            return Tab(text: e.titleBar);
-                          }).toList(),
-                        ),
-                      ),
-                      // LES CATEGORIES
-                      Expanded(
-                        child: TabBarView(
-                          children: ResourceMainCategory.values.map((mode) {
-                            return PanelCategoryList(mode);
-                          }).toList(),
-                        ),
-                      ),
-                    ],
-                  ),
+                child: TabBarView(
+                  children: ResourceMainCategory.values.map((mode) {
+                    return PanelCategoryList(mode);
+                  }).toList(),
                 )),
           ),
         ),

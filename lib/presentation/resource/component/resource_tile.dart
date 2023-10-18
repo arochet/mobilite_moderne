@@ -153,15 +153,17 @@ class _CardTile extends StatelessWidget {
                   SpaceH5(),
                   AutoSizeText(
                     resource.nom.getOrCrash(),
-                    maxLines: 3,
+                    maxLines: 2,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   SpaceH5(),
-                  AutoSizeText(
-                    resource.shortDescription,
-                    maxLines: 3,
-                    style: Theme.of(context).textTheme.bodySmall,
-                    overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    child: AutoSizeText(
+                      resource.shortDescription,
+                      maxLines: 3,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   SpaceH10(),
                 ],

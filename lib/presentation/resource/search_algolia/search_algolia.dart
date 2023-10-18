@@ -32,43 +32,60 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
   Widget build(BuildContext context) {
     return ShowComponentFile(
       title: 'SearchAlgolia',
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: TextField(
-              controller: _searchController,
-              onChanged: (String value) {
-                if (value.length > 0) {
-                  setState(() {
-                    _isSearching = true;
-                  });
-                } else {
-                  setState(() {
-                    _isSearching = false;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                hintText: 'Rechercher',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(10),
+      child: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: TextField(
+                controller: _searchController,
+                onChanged: (String value) {
+                  if (value.length > 0) {
+                    setState(() {
+                      _isSearching = true;
+                    });
+                  } else {
+                    setState(() {
+                      _isSearching = false;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  hintText: 'Rechercher',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
             ),
-          ),
-          SpaceH20(),
-          if (!_isSearching) Expanded(child: widget.child),
-          if (_isSearching)
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-                child: _SearchResults(_searchController.text),
+            SpaceH10(),
+            // CHOIX DU TYPE DE RESSOURCE
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: TabBar(
+                tabs: ResourceMainCategory.values.map((e) {
+                  return Tab(text: e.titleBar);
+                }).toList(),
               ),
             ),
-        ],
+            SpaceH10(),
+            if (!_isSearching) Expanded(child: widget.child),
+            if (_isSearching)
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                  child: TabBarView(
+                    children: ResourceMainCategory.values.map((mode) {
+                      return _SearchResults(_searchController.text, mode);
+                    }).toList(),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -76,9 +93,11 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
 
 class _SearchResults extends StatelessWidget {
   final String search;
+  final ResourceMainCategory mode;
   final Algolia _algoliaApp = AlgoliaApplication.algolia;
   _SearchResults(
-    this.search, {
+    this.search,
+    this.mode, {
     super.key,
   });
 
@@ -105,7 +124,7 @@ class _SearchResults extends StatelessWidget {
                 case ConnectionState.waiting:
                   return Center(child: CircularProgressIndicator());
                 default:
-                  return _ListResults(results: _results);
+                  return _ListResults(results: _results, mode: mode);
               }
             }
           }),
@@ -114,9 +133,11 @@ class _SearchResults extends StatelessWidget {
 }
 
 class _ListResults extends ConsumerWidget {
+  final ResourceMainCategory mode;
   const _ListResults({
     super.key,
     required List<AlgoliaObjectSnapshot> results,
+    required this.mode,
   }) : _results = results;
 
   final List<AlgoliaObjectSnapshot> _results;
@@ -128,6 +149,7 @@ class _ListResults extends ConsumerWidget {
       itemCount: _results.length < 50 ? _results.length : 50,
       itemBuilder: (context, index) {
         Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain(storageRef);
+        if (resource.mainCategory != mode) return Container();
         return ResourceTile(resource: resource);
       },
     );
