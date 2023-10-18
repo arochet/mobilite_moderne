@@ -6,10 +6,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/search_algolia/search_algolia.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../category_list/category_list_page.dart';
+import 'widget/panel_category_list.dart';
 
 @RoutePage()
 class Resource_menuPage extends StatelessWidget {
@@ -18,56 +19,37 @@ class Resource_menuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShowComponentFile(
+      title: 'Resource_menuPage',
       child: Padding(
         padding: EdgeInsets.all(10),
-        child: Align(
-          child: Container(
-            constraints: BoxConstraints(maxWidth: 500),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //Image du logo
-                Image.asset(
-                  AssetsImage.logo,
-                  width: 100,
-                ),
-                SizedBox(height: 70),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      printDev();
-                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.mediatheque));
-                    },
-                    child: Text("Mediathèque"),
+        child: SearchAlgolia(
+          child: Align(
+            child: Container(
+                constraints: BoxConstraints(maxWidth: 500),
+                child: DefaultTabController(
+                  length: 3,
+                  child: Column(
+                    children: [
+                      // CHOIX DU TYPE DE RESSOURCE
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: TabBar(
+                          tabs: CategoryListPageMode.values.map((e) {
+                            return Tab(text: e.titleBar);
+                          }).toList(),
+                        ),
+                      ),
+                      // LES CATEGORIES
+                      Expanded(
+                        child: TabBarView(
+                          children: CategoryListPageMode.values.map((mode) {
+                            return PanelCategoryList(mode);
+                          }).toList(),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(height: 10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      printDev();
-                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.notice_constructeur));
-                    },
-                    child: Text("Notice Constructeur"),
-                  ),
-                ),
-                SizedBox(height: 10),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      printDev();
-                      context.router.push(CategoryListRoute(mode: CategoryListPageMode.pieces_fournisseurs));
-                    },
-                    child: Text("Pièces et Fournisseurs"),
-                  ),
-                ),
-
-                const SizedBox(height: 80),
-              ],
-            ),
+                )),
           ),
         ),
       ),

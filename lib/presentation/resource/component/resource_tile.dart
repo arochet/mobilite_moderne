@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource_failure.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/snackbar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -21,13 +22,16 @@ class ResourceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late Widget tile;
     if (resource.type == ResourceType.document) {
-      return _DocumentTile(resource: resource);
+      tile = _DocumentTile(resource: resource);
     } else if (resource.type == ResourceType.video) {
-      return _VideoTile(resource: resource);
+      tile = _VideoTile(resource: resource);
     } else {
-      return ListTile(title: Text('Resource Type Unfound ${resource.type}'));
+      tile = ListTile(title: Text('Resource Type Unfound ${resource.type}'));
     }
+
+    return tile;
   }
 }
 
@@ -41,24 +45,27 @@ class _DocumentTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      leading: Icon(resource.type.icon),
-      title: Text(resource.nom.getOrCrash()),
-      onTap: () async {
-        printDev();
-        //Open PDF
-        final Either<ResourceFailure, String> doc =
-            await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
-        doc.fold((l) => showSnackBar(context, l.message), (String result) {
-          String url = result;
-          if (kIsWeb) {
-            _launchUrl(url);
-          } else {
-            context.router.push(ResourcePdfViewerRoute(resource: resource));
-          }
-        });
-      },
-      trailing: Icon(Icons.arrow_forward_ios),
+    return ShowComponentFile(
+      title: '_DocumentTile',
+      child: ListTile(
+        leading: Icon(resource.type.icon),
+        title: Text(resource.nom.getOrCrash()),
+        onTap: () async {
+          printDev();
+          //Open PDF
+          final Either<ResourceFailure, String> doc =
+              await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
+          doc.fold((l) => showSnackBar(context, l.message), (String result) {
+            String url = result;
+            if (kIsWeb) {
+              _launchUrl(url);
+            } else {
+              context.router.push(ResourcePdfViewerRoute(resource: resource));
+            }
+          });
+        },
+        trailing: Icon(Icons.arrow_forward_ios),
+      ),
     );
   }
 
@@ -79,23 +86,26 @@ class _VideoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      leading: Icon(Icons.video_library),
-      title: Text(resource.nom.getOrCrash()),
-      onTap: () async {
-        //Open Vidéo
-        printDev();
-        final Either<ResourceFailure, String> doc =
-            await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
-        doc.fold((l) => showSnackBar(context, l.message), (String result) {
-          if (kIsWeb) {
-            _launchUrl(result);
-          } else {
-            context.router.push(Resource_videoplayerRoute(resource: resource));
-          }
-        });
-      },
-      trailing: Icon(Icons.arrow_forward_ios),
+    return ShowComponentFile(
+      title: '_VideoTile',
+      child: ListTile(
+        leading: Icon(Icons.video_library),
+        title: Text(resource.nom.getOrCrash()),
+        onTap: () async {
+          //Open Vidéo
+          printDev();
+          final Either<ResourceFailure, String> doc =
+              await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
+          doc.fold((l) => showSnackBar(context, l.message), (String result) {
+            if (kIsWeb) {
+              _launchUrl(result);
+            } else {
+              context.router.push(Resource_videoplayerRoute(resource: resource));
+            }
+          });
+        },
+        trailing: Icon(Icons.arrow_forward_ios),
+      ),
     );
   }
 

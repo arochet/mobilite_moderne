@@ -23,9 +23,7 @@ class ImageFromStorage extends StatelessWidget {
             if (snapshotUrl.connectionState == ConnectionState.waiting)
               return Container(
                 height: 200,
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                color: colorpanel(800),
               );
             else if (snapshotUrl.hasError)
               return Container(
@@ -58,9 +56,7 @@ class ImageFromStorage extends StatelessWidget {
             if (snapshotUrl.connectionState == ConnectionState.waiting)
               return Container(
                 height: 200,
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                color: colorpanel(800),
               );
             else if (snapshotUrl.hasError)
               return Container(

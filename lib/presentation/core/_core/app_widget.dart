@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //COLOR
     const Color primaryColor = Color(0xff00ebc7);
+    const Color primaryLightColor = Color.fromARGB(35, 0, 235, 200);
     const Color titleColor = Color(0xff00214d);
     const Color paragraphColor = Color(0xff1b2d45);
 
@@ -124,6 +125,19 @@ class AppWidget extends StatelessWidget {
           labelStyle: TextStyle(color: titleColor),
           secondaryLabelStyle: TextStyle(color: titleColor),
           brightness: Brightness.dark,
+        ),
+
+        //TAB BAR
+        tabBarTheme: TabBarTheme(
+          labelColor: titleColor,
+          labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+          unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+          unselectedLabelColor: paragraphColor,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicator: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: primaryLightColor,
+          ),
         ),
 
         //EXTENSIONS

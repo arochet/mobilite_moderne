@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/algolia_application.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 
@@ -28,42 +29,46 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: TextField(
-            controller: _searchController,
-            onChanged: (String value) {
-              if (value.length > 0) {
-                setState(() {
-                  _isSearching = true;
-                });
-              } else {
-                setState(() {
-                  _isSearching = false;
-                });
-              }
-            },
-            decoration: InputDecoration(
-              hintText: 'Search',
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+    return ShowComponentFile(
+      title: 'SearchAlgolia',
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: TextField(
+              controller: _searchController,
+              onChanged: (String value) {
+                if (value.length > 0) {
+                  setState(() {
+                    _isSearching = true;
+                  });
+                } else {
+                  setState(() {
+                    _isSearching = false;
+                  });
+                }
+              },
+              decoration: InputDecoration(
+                hintText: 'Rechercher',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
           ),
-        ),
-        SpaceH20(),
-        if (!_isSearching) Expanded(child: widget.child),
-        if (_isSearching)
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-              child: _SearchResults(_searchController.text),
+          SpaceH20(),
+          if (!_isSearching) Expanded(child: widget.child),
+          if (_isSearching)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                child: _SearchResults(_searchController.text),
+              ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -85,27 +90,30 @@ class _SearchResults extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //On recherche dans la base de donnée Algolia !
-    return StreamBuilder(
-        stream: Stream.fromFuture(_operation(search)),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData)
-            return Center(child: CircularProgressIndicator());
-          else {
-            List<AlgoliaObjectSnapshot> _results = snapshot.data as List<AlgoliaObjectSnapshot>;
+    return ShowComponentFile(
+      title: '_SearchResults',
+      child: StreamBuilder(
+          stream: Stream.fromFuture(_operation(search)),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData)
+              return Center(child: CircularProgressIndicator());
+            else {
+              List<AlgoliaObjectSnapshot> _results = snapshot.data as List<AlgoliaObjectSnapshot>;
 
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator());
-              default:
-                return ListView.builder(
-                  itemCount: _results.length < 50 ? _results.length : 50,
-                  itemBuilder: (context, index) {
-                    Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain();
-                    return ResourceTile(resource: resource);
-                  },
-                );
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return Center(child: CircularProgressIndicator());
+                default:
+                  return ListView.builder(
+                    itemCount: _results.length < 50 ? _results.length : 50,
+                    itemBuilder: (context, index) {
+                      Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain();
+                      return ResourceTile(resource: resource);
+                    },
+                  );
+              }
             }
-          }
-        });
+          }),
+    );
   }
 }

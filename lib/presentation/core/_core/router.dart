@@ -28,7 +28,7 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.da
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/term_of_use/term_of_use_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/privacy_policy/privacy_policy_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/resource_menu_page.dart';
@@ -54,7 +54,7 @@ class AppRouter extends _$AppRouter {
             RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(
               path: 'home',
-              page: Subscription_stripeRoute.page,
+              page: Resource_menuRoute.page, //HOMEPAGE
             ),
             AutoRoute(
               path: 'assistant',
@@ -149,10 +149,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/category-route',
           page: CategoryViewRoute.page,
-        ),
-        AutoRoute(
-          path: '/category_list-route',
-          page: CategoryListRoute.page,
         ),
         AutoRoute(
           path: '/ressources_view-route',

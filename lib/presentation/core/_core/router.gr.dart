@@ -82,16 +82,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ButtonsPage(),
       );
     },
-    CategoryListRoute.name: (routeData) {
-      final args = routeData.argsAs<CategoryListRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CategoryListPage(
-          args.mode,
-          key: args.key,
-        ),
-      );
-    },
     CategoryViewRoute.name: (routeData) {
       final args = routeData.argsAs<CategoryViewRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -451,44 +441,6 @@ class ButtonsRoute extends PageRouteInfo<void> {
   static const String name = 'ButtonsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [CategoryListPage]
-class CategoryListRoute extends PageRouteInfo<CategoryListRouteArgs> {
-  CategoryListRoute({
-    required CategoryListPageMode mode,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          CategoryListRoute.name,
-          args: CategoryListRouteArgs(
-            mode: mode,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'CategoryListRoute';
-
-  static const PageInfo<CategoryListRouteArgs> page =
-      PageInfo<CategoryListRouteArgs>(name);
-}
-
-class CategoryListRouteArgs {
-  const CategoryListRouteArgs({
-    required this.mode,
-    this.key,
-  });
-
-  final CategoryListPageMode mode;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'CategoryListRouteArgs{mode: $mode, key: $key}';
-  }
 }
 
 /// generated route for

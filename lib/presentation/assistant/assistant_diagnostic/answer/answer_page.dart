@@ -6,9 +6,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -114,11 +112,14 @@ class _Body extends StatelessWidget {
         ),
         SpaceH10(),
         ...choice.listRessources
-            .where((element) => element.type == ResourceType.video)
+            .where((Resource resourceDoc) => resourceDoc.type == ResourceType.video)
             .map((Resource resource) {
           return ResourceTile(resource: resource);
         }).toList(),
-        if (choice.listRessources.where((element) => element.type == ResourceType.video).length == 0)
+        if (choice.listRessources
+                .where((Resource resourceVideo) => resourceVideo.type == ResourceType.video)
+                .length ==
+            0)
           Align(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 14.0),

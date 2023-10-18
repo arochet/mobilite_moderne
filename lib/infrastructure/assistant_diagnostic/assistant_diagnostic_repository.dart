@@ -118,6 +118,7 @@ class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
     }
   }
 
+  /// Page de réponse dans le module Assistant Diagnostic
   @override
   Future<Either<AssistantDiagnosticFailure, ChoiceWithAnswer>> watchAnswerWithId(
       ChoiceWithAnswer choice) async {
@@ -130,15 +131,15 @@ class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
         final dto = ChoiceDTO.fromFirestore(doc);
         final List<Resource> listFutureResource = [];
 
-        dto.listRessources?.forEach((idResource) async {
+        for (var idResource in dto.listRessources ?? []) {
           final eitherResource =
               await _articleRepository.getResourceWithId(UniqueId.fromUniqueString(idResource));
           eitherResource.fold(
               (l) => Resource.error(l.toString()), (resource) => listFutureResource.add(resource));
-        });
+        }
 
         final choiceAnswer = ChoiceDTO.fromFirestore(doc)
-            .toDomainAnswer(doc.reference.path, listRessources: (listFutureResource));
+            .toDomainAnswer(doc.reference.path, listRessources: listFutureResource);
 
         return right(choiceAnswer);
       });

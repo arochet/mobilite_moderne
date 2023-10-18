@@ -55,17 +55,17 @@ class _PanelSubCategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowComponentFile(
       title: '_PanelSubCategoryView',
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
-        child: InkWell(
-          onTap: () {
-            printDev();
-            //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
-            if (this.category.listResource == null || this.category.listResource == [])
-              context.router.push(CategoryViewRoute(category: category));
-            else
-              context.router.push(Resource_viewRoute(category: category));
-          },
+      child: InkWell(
+        onTap: () {
+          printDev();
+          //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
+          if (this.category.listResource == null || this.category.listResource == [])
+            context.router.push(CategoryViewRoute(category: category));
+          else
+            context.router.push(Resource_viewRoute(category: category));
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
           child: Row(
             children: [
               Expanded(

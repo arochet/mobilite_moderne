@@ -11,7 +11,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
 import 'app_category_dtos.dart';
 
 abstract class IResourceRepository {

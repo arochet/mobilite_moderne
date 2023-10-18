@@ -17,7 +17,7 @@ import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/category_list/category_list_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
 import 'APPLICATION/auth/cancel_subscription_notifier.dart';
 import 'APPLICATION/auth/subscription_notifier.dart';
 import 'DOMAIN/assistant_diagnostic/choice.dart';
