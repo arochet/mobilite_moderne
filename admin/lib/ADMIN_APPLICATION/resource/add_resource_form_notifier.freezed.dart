@@ -17,9 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddResourceFormData {
   Resource get resource => throw _privateConstructorUsedError;
-  ResourceCategory get category => throw _privateConstructorUsedError;
-  File? get file => throw _privateConstructorUsedError;
+  ResourceMainCategory get category => throw _privateConstructorUsedError;
+  File? get fileMOBILE =>
+      throw _privateConstructorUsedError; // Fichier à upload Mobile
+  Uint8List? get fileWEB =>
+      throw _privateConstructorUsedError; // Fichier à upload WEB
   String? get nameFile => throw _privateConstructorUsedError;
+  XFile? get image => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<ResourceFailure, UniqueId>> get failureOrSuccessOption =>
@@ -38,9 +42,11 @@ abstract class $AddResourceFormDataCopyWith<$Res> {
   @useResult
   $Res call(
       {Resource resource,
-      ResourceCategory category,
-      File? file,
+      ResourceMainCategory category,
+      File? fileMOBILE,
+      Uint8List? fileWEB,
       String? nameFile,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ResourceFailure, UniqueId>> failureOrSuccessOption});
@@ -63,8 +69,10 @@ class _$AddResourceFormDataCopyWithImpl<$Res, $Val extends AddResourceFormData>
   $Res call({
     Object? resource = null,
     Object? category = null,
-    Object? file = freezed,
+    Object? fileMOBILE = freezed,
+    Object? fileWEB = freezed,
     Object? nameFile = freezed,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? failureOrSuccessOption = null,
@@ -77,15 +85,23 @@ class _$AddResourceFormDataCopyWithImpl<$Res, $Val extends AddResourceFormData>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as ResourceCategory,
-      file: freezed == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
+              as ResourceMainCategory,
+      fileMOBILE: freezed == fileMOBILE
+          ? _value.fileMOBILE
+          : fileMOBILE // ignore: cast_nullable_to_non_nullable
               as File?,
+      fileWEB: freezed == fileWEB
+          ? _value.fileWEB
+          : fileWEB // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       nameFile: freezed == nameFile
           ? _value.nameFile
           : nameFile // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -120,9 +136,11 @@ abstract class _$$_AddResourceFormDataCopyWith<$Res>
   @useResult
   $Res call(
       {Resource resource,
-      ResourceCategory category,
-      File? file,
+      ResourceMainCategory category,
+      File? fileMOBILE,
+      Uint8List? fileWEB,
       String? nameFile,
+      XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<ResourceFailure, UniqueId>> failureOrSuccessOption});
@@ -144,8 +162,10 @@ class __$$_AddResourceFormDataCopyWithImpl<$Res>
   $Res call({
     Object? resource = null,
     Object? category = null,
-    Object? file = freezed,
+    Object? fileMOBILE = freezed,
+    Object? fileWEB = freezed,
     Object? nameFile = freezed,
+    Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? failureOrSuccessOption = null,
@@ -158,15 +178,23 @@ class __$$_AddResourceFormDataCopyWithImpl<$Res>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as ResourceCategory,
-      file: freezed == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
+              as ResourceMainCategory,
+      fileMOBILE: freezed == fileMOBILE
+          ? _value.fileMOBILE
+          : fileMOBILE // ignore: cast_nullable_to_non_nullable
               as File?,
+      fileWEB: freezed == fileWEB
+          ? _value.fileWEB
+          : fileWEB // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       nameFile: freezed == nameFile
           ? _value.nameFile
           : nameFile // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -185,12 +213,16 @@ class __$$_AddResourceFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddResourceFormData implements _AddResourceFormData {
+class _$_AddResourceFormData
+    with DiagnosticableTreeMixin
+    implements _AddResourceFormData {
   const _$_AddResourceFormData(
       {required this.resource,
       required this.category,
-      required this.file,
+      required this.fileMOBILE,
+      required this.fileWEB,
       required this.nameFile,
+      required this.image,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.failureOrSuccessOption});
@@ -198,11 +230,17 @@ class _$_AddResourceFormData implements _AddResourceFormData {
   @override
   final Resource resource;
   @override
-  final ResourceCategory category;
+  final ResourceMainCategory category;
   @override
-  final File? file;
+  final File? fileMOBILE;
+// Fichier à upload Mobile
+  @override
+  final Uint8List? fileWEB;
+// Fichier à upload WEB
   @override
   final String? nameFile;
+  @override
+  final XFile? image;
   @override
   final bool showErrorMessages;
   @override
@@ -211,8 +249,25 @@ class _$_AddResourceFormData implements _AddResourceFormData {
   final Option<Either<ResourceFailure, UniqueId>> failureOrSuccessOption;
 
   @override
-  String toString() {
-    return 'AddResourceFormData(resource: $resource, category: $category, file: $file, nameFile: $nameFile, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddResourceFormData(resource: $resource, category: $category, fileMOBILE: $fileMOBILE, fileWEB: $fileWEB, nameFile: $nameFile, image: $image, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddResourceFormData'))
+      ..add(DiagnosticsProperty('resource', resource))
+      ..add(DiagnosticsProperty('category', category))
+      ..add(DiagnosticsProperty('fileMOBILE', fileMOBILE))
+      ..add(DiagnosticsProperty('fileWEB', fileWEB))
+      ..add(DiagnosticsProperty('nameFile', nameFile))
+      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
+      ..add(DiagnosticsProperty(
+          'failureOrSuccessOption', failureOrSuccessOption));
   }
 
   @override
@@ -224,9 +279,12 @@ class _$_AddResourceFormData implements _AddResourceFormData {
                 other.resource == resource) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            (identical(other.file, file) || other.file == file) &&
+            (identical(other.fileMOBILE, fileMOBILE) ||
+                other.fileMOBILE == fileMOBILE) &&
+            const DeepCollectionEquality().equals(other.fileWEB, fileWEB) &&
             (identical(other.nameFile, nameFile) ||
                 other.nameFile == nameFile) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -236,8 +294,17 @@ class _$_AddResourceFormData implements _AddResourceFormData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, resource, category, file,
-      nameFile, showErrorMessages, isSubmitting, failureOrSuccessOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      resource,
+      category,
+      fileMOBILE,
+      const DeepCollectionEquality().hash(fileWEB),
+      nameFile,
+      image,
+      showErrorMessages,
+      isSubmitting,
+      failureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -250,9 +317,11 @@ class _$_AddResourceFormData implements _AddResourceFormData {
 abstract class _AddResourceFormData implements AddResourceFormData {
   const factory _AddResourceFormData(
       {required final Resource resource,
-      required final ResourceCategory category,
-      required final File? file,
+      required final ResourceMainCategory category,
+      required final File? fileMOBILE,
+      required final Uint8List? fileWEB,
       required final String? nameFile,
+      required final XFile? image,
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ResourceFailure, UniqueId>>
@@ -261,11 +330,15 @@ abstract class _AddResourceFormData implements AddResourceFormData {
   @override
   Resource get resource;
   @override
-  ResourceCategory get category;
+  ResourceMainCategory get category;
   @override
-  File? get file;
-  @override
+  File? get fileMOBILE;
+  @override // Fichier à upload Mobile
+  Uint8List? get fileWEB;
+  @override // Fichier à upload WEB
   String? get nameFile;
+  @override
+  XFile? get image;
   @override
   bool get showErrorMessages;
   @override

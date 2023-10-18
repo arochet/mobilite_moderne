@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart';
@@ -119,7 +120,7 @@ final resourceRepositoryProvider = Provider<IResourceRepository>((ref) => getIt<
 
 //Category
 final categoryListProvider = FutureProvider.autoDispose
-    .family<Either<AppCategoryFailure, List<AppCategory>>, CategoryListPageMode>(
+    .family<Either<AppCategoryFailure, List<AppCategory>>, ResourceMainCategory>(
         (ref, mode) => ref.watch(resourceRepositoryProvider).watchCategoryList(mode));
 
 final categoryViewProvider = FutureProvider.autoDispose

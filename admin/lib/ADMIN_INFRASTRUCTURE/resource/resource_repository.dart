@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:admin/ADMIN_DOMAIN/core/upload_failure.dart';
+import 'package:admin/ADMIN_PRESENTATION/resource/resource_add/widget/resource_form.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
@@ -23,6 +25,8 @@ abstract class IResourceRepository {
   Future<Either<ResourceFailure, Unit>> update(Resource resource);
   Future<Either<ResourceFailure, Unit>> delete(Resource resource);
   Future<Either<UploadFailure, Unit>> uploadFile(File file, String path);
+  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path);
+  Future<Either<UploadFailure, Unit>> uploadImage(XFile file, ResourceMainCategory category);
   Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryView(AppCategory category);
   Future<Either<AppCategoryFailure, Unit>> addResourceToCategory(AppCategory category, UniqueId idResource);
 }
@@ -62,6 +66,7 @@ class ResourceRepository implements IResourceRepository {
     try {
       await _firestore.resourcesCollection.doc(resource.id.getOrCrash()).delete();
       await _storage.ref().child(resource.documentPath).delete();
+      await _storage.ref().child(resource.imagePath).delete();
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -130,6 +135,26 @@ class ResourceRepository implements IResourceRepository {
   Future<Either<UploadFailure, Unit>> uploadFile(File file, String path) async {
     try {
       final TaskSnapshot result = await _storage.ref().child(path).putFile(file);
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e.code);
+      print(e.message);
+      print(e.stackTrace);
+      switch (e.code) {
+        case 'permission-denied':
+          return left(UploadFailure.insufficientPermission());
+        case 'download-size-exceeded':
+          return left(UploadFailure.downloadExceed());
+        default:
+          return left(UploadFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path) async {
+    try {
+      final TaskSnapshot result = await _storage.ref().child(path).putData(bytes);
       return right(unit);
     } on FirebaseException catch (e) {
       print(e.code);
@@ -241,6 +266,33 @@ class ResourceRepository implements IResourceRepository {
         return left(const AppCategoryFailure.unableToUpdate());
       } else {
         return left(const AppCategoryFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<UploadFailure, Unit>> uploadImage(XFile file, ResourceMainCategory category) async {
+    try {
+      if (kIsWeb) {
+        final data = await file.readAsBytes();
+        await _storage
+            .ref()
+            .child('${category.nameFile}/${file.name}')
+            .putData(data, SettableMetadata(contentType: 'image/png'));
+      } else {
+        await _storage.ref().child('${category.nameFile}/${file.name}').putFile(File(file.path));
+      }
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e.code);
+      print(e.message);
+      switch (e.code) {
+        case 'permission-denied':
+          return left(UploadFailure.insufficientPermission());
+        case 'download-size-exceeded':
+          return left(UploadFailure.downloadExceed());
+        default:
+          return left(UploadFailure.unexpected());
       }
     }
   }

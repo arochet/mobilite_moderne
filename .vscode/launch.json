@@ -40,7 +40,8 @@
             "name": "ADMIN",
             "request": "launch",
             "type": "dart",
-            "program": "admin/lib/main.dart"
+            "program": "admin/lib/main.dart",
+            "args": ["--web-port", "5000","-d", "chrome", "--web-browser-flag=--disable-web-security"]
         },
     ]
 }

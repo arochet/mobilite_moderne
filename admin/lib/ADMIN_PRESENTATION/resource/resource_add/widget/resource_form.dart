@@ -5,6 +5,8 @@ import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
@@ -15,69 +17,6 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
-
-enum ResourceCategory { mediatheque, notice_constructeur, pieces_et_fournisseurs }
-
-extension ResourceCategoryExtension on ResourceCategory {
-  String get name {
-    switch (this) {
-      case ResourceCategory.mediatheque:
-        return "Médiathèque";
-      case ResourceCategory.notice_constructeur:
-        return "Notice Constructeur";
-      case ResourceCategory.pieces_et_fournisseurs:
-        return "Pièces et Fournisseurs";
-      default:
-        return "Médiathèque";
-    }
-  }
-
-  String get nameFile {
-    switch (this) {
-      case ResourceCategory.mediatheque:
-        return "mediatheque";
-      case ResourceCategory.notice_constructeur:
-        return "notice_constructeur";
-      case ResourceCategory.pieces_et_fournisseurs:
-        return "pieces_et_fournisseurs";
-      default:
-        return "mediatheque";
-    }
-  }
-
-  AppCategory get category {
-    switch (this) {
-      case ResourceCategory.mediatheque:
-        return AppCategory(
-            id: UniqueId.fromUniqueString('mediatheque'),
-            nom: Nom(name),
-            subcategory: null,
-            path: 'category/mediatheque',
-            listResource: null);
-      case ResourceCategory.notice_constructeur:
-        return AppCategory(
-            id: UniqueId.fromUniqueString('notice_constructeur'),
-            nom: Nom(name),
-            subcategory: null,
-            path: 'category/notice_constructeur',
-            listResource: null);
-      case ResourceCategory.pieces_et_fournisseurs:
-        return AppCategory(
-            id: UniqueId.fromUniqueString('pieces_et_fournisseurs'),
-            nom: Nom(name),
-            subcategory: null,
-            path: 'category/pieces_et_fournisseurs',
-            listResource: null);
-      default:
-        return AppCategory(
-            id: UniqueId.fromUniqueString('mediatheque'),
-            nom: Nom(name),
-            subcategory: null,
-            path: 'category/mediatheque',
-            listResource: null);
-    }
-  }
-}
 
 class ResourceFormProvider extends ConsumerWidget {
   const ResourceFormProvider({
@@ -139,6 +78,17 @@ class ResourceForm extends ConsumerWidget {
         child: ListView(padding: const EdgeInsets.all(18), shrinkWrap: true, children: [
           const SizedBox(height: 8),
           //insert-field-complete
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Nom'),
+            autocorrect: false,
+            textInputAction: TextInputAction.next,
+            onChanged: (value) {
+              ref.read(resourceFormNotifierProvider.notifier).nomChanged(value);
+            },
+            validator: (_) {
+              return null;
+            },
+          ),
           SpaceH10(),
           Text(resourceFormData.nameFile ?? "",
               style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey)),
@@ -146,14 +96,24 @@ class ResourceForm extends ConsumerWidget {
           ElevatedButton(
               onPressed: () async {
                 try {
-                  FilePickerResult? result = await FilePicker.platform.pickFiles();
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
 
                   if (result != null) {
-                    ref.read(resourceFormNotifierProvider.notifier).nomChanged(result.files.single.name);
-                    File file = File(result.files.single.path!);
-                    ref
-                        .read(resourceFormNotifierProvider.notifier)
-                        .fileChanged(file, result.files.single.name);
+                    final platformFile = result.files.single;
+
+                    if (kIsWeb) {
+                      final Uint8List? mesButes = platformFile.bytes;
+                      if (mesButes != null) {
+                        ref
+                            .read(resourceFormNotifierProvider.notifier)
+                            .fileWEBchanged(mesButes, platformFile.name);
+                      }
+                    } else {
+                      ref
+                          .read(resourceFormNotifierProvider.notifier)
+                          .fileMOBILEchanged(File(platformFile.path!), platformFile.name);
+                    }
                   } else {
                     // User canceled the picker
                     showSnackBar(context, 'Pas de fichier sélectionnée');
@@ -167,6 +127,8 @@ class ResourceForm extends ConsumerWidget {
               child: const Text("Ajouter un Fichier")),
 
           SpaceH20(),
+
+          // DESCRIPTION
           TextFormField(
             decoration: const InputDecoration(labelText: 'Description'),
             autocorrect: false,
@@ -180,9 +142,26 @@ class ResourceForm extends ConsumerWidget {
             },
           ),
           SpaceH20(),
+
+          // DESCRIPTION COURTE
+          TextFormField(
+            decoration: const InputDecoration(labelText: 'Description Courte'),
+            autocorrect: false,
+            minLines: 2,
+            maxLines: 5,
+            onChanged: (value) {
+              ref.read(resourceFormNotifierProvider.notifier).shortDescriptionChanged(value);
+            },
+            validator: (_) {
+              return null;
+            },
+          ),
+          SpaceH20(),
           Text("Séparez les mots clés par des /. Exemple : kw1/kw2/kw3",
               style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey)),
           SizedBox(height: 3),
+
+          // MOTS CLES
           TextFormField(
             decoration: const InputDecoration(labelText: 'Keyword'),
             autocorrect: false,
@@ -195,6 +174,31 @@ class ResourceForm extends ConsumerWidget {
             },
           ),
           const SpaceH10(),
+
+          Text(resourceFormData.resource.image,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey)),
+          SpaceH10(),
+          ElevatedButton(
+              onPressed: () async {
+                try {
+                  final ImagePicker picker = ImagePicker();
+                  final XFile? image = await picker.pickImage(source: ImageSource.gallery, imageQuality: 25);
+
+                  if (image == null) {
+                    showSnackBar(context, 'Pas d\'image sélectionnée');
+                  }
+                  if (image != null) {
+                    ref.read(resourceFormNotifierProvider.notifier).imageChanged(image);
+                  }
+                } catch (e, trace) {
+                  showSnackBar(context, 'Erreur lors de la sélection de l\'image : $e');
+                  print(e);
+                  print(trace);
+                }
+              },
+              child: const Text("Ajouter une image")),
+
+          // TYPE
           DropdownButton(
               isExpanded: true,
               value: resourceFormData.resource.type,
@@ -212,19 +216,21 @@ class ResourceForm extends ConsumerWidget {
               },
               icon: Icon(Icons.arrow_downward)),
           const SpaceH10(),
+
+          // MAIN CATEGORY
           DropdownButton(
               isExpanded: true,
               value: resourceFormData.category,
               dropdownColor: Colors.black,
               focusColor: Colors.black,
               iconEnabledColor: Colors.white,
-              items: ResourceCategory.values
-                  .map((ResourceCategory e) => DropdownMenuItem(
+              items: ResourceMainCategory.values
+                  .map((ResourceMainCategory e) => DropdownMenuItem(
                         value: e,
                         child: Text(e.name),
                       ))
                   .toList(),
-              onChanged: (ResourceCategory? value) {
+              onChanged: (ResourceMainCategory? value) {
                 if (value != null) ref.read(resourceFormNotifierProvider.notifier).categoryChanged(value);
               },
               icon: Icon(Icons.arrow_downward)),

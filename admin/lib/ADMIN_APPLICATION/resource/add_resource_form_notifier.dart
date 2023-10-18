@@ -1,11 +1,14 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:admin/ADMIN_DOMAIN/core/upload_failure.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:admin/ADMIN_PRESENTATION/resource/resource_add/widget/resource_form.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
@@ -16,9 +19,11 @@ part 'add_resource_form_notifier.freezed.dart';
 class AddResourceFormData with _$AddResourceFormData {
   const factory AddResourceFormData({
     required Resource resource,
-    required ResourceCategory category,
-    required File? file,
+    required ResourceMainCategory category,
+    required File? fileMOBILE, // Fichier à upload Mobile
+    required Uint8List? fileWEB, // Fichier à upload WEB
     required String? nameFile,
+    required XFile? image,
     required bool showErrorMessages,
     required bool isSubmitting,
     required Option<Either<ResourceFailure, UniqueId>> failureOrSuccessOption,
@@ -26,9 +31,11 @@ class AddResourceFormData with _$AddResourceFormData {
 
   factory AddResourceFormData.initial() => AddResourceFormData(
       resource: Resource.empty(),
-      category: ResourceCategory.mediatheque,
-      file: null,
+      category: ResourceMainCategory.mediatheque,
+      fileMOBILE: null,
+      fileWEB: null,
       nameFile: null,
+      image: null,
       showErrorMessages: false,
       isSubmitting: false,
       failureOrSuccessOption: none());
@@ -50,6 +57,19 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
         resource: state.resource.copyWith(description: (param)), failureOrSuccessOption: none());
   }
 
+  shortDescriptionChanged(String param) {
+    state = state.copyWith(
+        resource: state.resource.copyWith(shortDescription: (param)), failureOrSuccessOption: none());
+  }
+
+  imageChanged(XFile param) {
+    state = state.copyWith(
+      image: param,
+      resource: state.resource.copyWith(image: param.name),
+      failureOrSuccessOption: none(),
+    );
+  }
+
   keywordChanged(String param) {
     state = state.copyWith(
         resource: state.resource.copyWith(keyword: param.split('/')), failureOrSuccessOption: none());
@@ -59,17 +79,21 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
     state = state.copyWith(resource: state.resource.copyWith(type: param), failureOrSuccessOption: none());
   }
 
-  categoryChanged(ResourceCategory param) {
+  categoryChanged(ResourceMainCategory param) {
     state = state.copyWith(category: param, failureOrSuccessOption: none());
   }
 
-  fileChanged(File file, String nameFile) {
-    nomChanged(nameFile);
+  fileMOBILEchanged(File file, String nameFile) {
     state = state.copyWith(
-        file: file,
+        fileMOBILE: file,
         nameFile: nameFile,
-        resource: state.resource.copyWith(documentPath: file.path),
+        //resource: state.resource.copyWith(documentPath: file.path),
         failureOrSuccessOption: none());
+  }
+
+  fileWEBchanged(Uint8List file, String nameFile) {
+    print('file $file');
+    state = state.copyWith(fileWEB: file, nameFile: nameFile, failureOrSuccessOption: none());
   }
   //insert-changed
 
@@ -77,15 +101,34 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
     Either<ResourceFailure, UniqueId>? failureOrSuccess;
 
     //insert-valid-params
+    print('hola');
 
     state = state.copyWith(isSubmitting: true, failureOrSuccessOption: none());
     Either<UploadFailure, Unit>? resultUpload;
 
+    // Chemin du fichier
     String pathFile = '${state.category.nameFile}/${state.nameFile!}';
+    state = state.copyWith(
+      resource: state.resource.copyWith(documentPath: pathFile),
+    );
 
-    // Upload de l'image
-    if (state.file != null && state.nameFile != null) {
-      resultUpload = await this._iResourceRepository.uploadFile(state.file!, pathFile);
+    // Upload du FICHIER
+    if (state.nameFile != null) {
+      if (kIsWeb) {
+        if (state.fileWEB != null) {
+          resultUpload = await _iResourceRepository.uploadFileBytes(state.fileWEB!, pathFile);
+        }
+      } else {
+        if (state.fileMOBILE != null) {
+          resultUpload = await _iResourceRepository.uploadFile(state.fileMOBILE!, pathFile);
+        }
+      }
+    }
+
+    // Upload de l'IMAGE
+    Either<UploadFailure, Unit>? resultUploadImage;
+    if (state.image != null) {
+      resultUploadImage = await _iResourceRepository.uploadImage(state.image!, state.resource.mainCategory);
     }
 
     if (resultUpload?.isRight() == true) {

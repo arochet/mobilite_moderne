@@ -28,7 +28,9 @@ mixin _$ResourceDTO {
   String get idCategory => throw _privateConstructorUsedError;
   List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get categoryPath => throw _privateConstructorUsedError;
+  String get shortDescription => throw _privateConstructorUsedError;
+  String get mainCategory => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +52,9 @@ abstract class $ResourceDTOCopyWith<$Res> {
       String idCategory,
       List<String> keyword,
       String description,
-      String categoryPath});
+      String shortDescription,
+      String mainCategory,
+      String image});
 }
 
 /// @nodoc
@@ -73,7 +77,9 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
     Object? idCategory = null,
     Object? keyword = null,
     Object? description = null,
-    Object? categoryPath = null,
+    Object? shortDescription = null,
+    Object? mainCategory = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -104,9 +110,17 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryPath: null == categoryPath
-          ? _value.categoryPath
-          : categoryPath // ignore: cast_nullable_to_non_nullable
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      mainCategory: null == mainCategory
+          ? _value.mainCategory
+          : mainCategory // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -128,7 +142,9 @@ abstract class _$$_ResourceDTOCopyWith<$Res>
       String idCategory,
       List<String> keyword,
       String description,
-      String categoryPath});
+      String shortDescription,
+      String mainCategory,
+      String image});
 }
 
 /// @nodoc
@@ -149,7 +165,9 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
     Object? idCategory = null,
     Object? keyword = null,
     Object? description = null,
-    Object? categoryPath = null,
+    Object? shortDescription = null,
+    Object? mainCategory = null,
+    Object? image = null,
   }) {
     return _then(_$_ResourceDTO(
       id: freezed == id
@@ -180,9 +198,17 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryPath: null == categoryPath
-          ? _value.categoryPath
-          : categoryPath // ignore: cast_nullable_to_non_nullable
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      mainCategory: null == mainCategory
+          ? _value.mainCategory
+          : mainCategory // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -199,7 +225,9 @@ class _$_ResourceDTO extends _ResourceDTO {
       required this.idCategory,
       required final List<String> keyword,
       required this.description,
-      required this.categoryPath})
+      required this.shortDescription,
+      required this.mainCategory,
+      required this.image})
       : _keyword = keyword,
         super._();
 
@@ -228,11 +256,15 @@ class _$_ResourceDTO extends _ResourceDTO {
   @override
   final String description;
   @override
-  final String categoryPath;
+  final String shortDescription;
+  @override
+  final String mainCategory;
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'ResourceDTO(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description, categoryPath: $categoryPath)';
+    return 'ResourceDTO(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description, shortDescription: $shortDescription, mainCategory: $mainCategory, image: $image)';
   }
 
   @override
@@ -250,8 +282,11 @@ class _$_ResourceDTO extends _ResourceDTO {
             const DeepCollectionEquality().equals(other._keyword, _keyword) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.categoryPath, categoryPath) ||
-                other.categoryPath == categoryPath));
+            (identical(other.shortDescription, shortDescription) ||
+                other.shortDescription == shortDescription) &&
+            (identical(other.mainCategory, mainCategory) ||
+                other.mainCategory == mainCategory) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
@@ -265,7 +300,9 @@ class _$_ResourceDTO extends _ResourceDTO {
       idCategory,
       const DeepCollectionEquality().hash(_keyword),
       description,
-      categoryPath);
+      shortDescription,
+      mainCategory,
+      image);
 
   @JsonKey(ignore: true)
   @override
@@ -290,7 +327,9 @@ abstract class _ResourceDTO extends ResourceDTO {
       required final String idCategory,
       required final List<String> keyword,
       required final String description,
-      required final String categoryPath}) = _$_ResourceDTO;
+      required final String shortDescription,
+      required final String mainCategory,
+      required final String image}) = _$_ResourceDTO;
   const _ResourceDTO._() : super._();
 
   factory _ResourceDTO.fromJson(Map<String, dynamic> json) =
@@ -312,7 +351,11 @@ abstract class _ResourceDTO extends ResourceDTO {
   @override
   String get description;
   @override
-  String get categoryPath;
+  String get shortDescription;
+  @override
+  String get mainCategory;
+  @override
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$$_ResourceDTOCopyWith<_$_ResourceDTO> get copyWith =>

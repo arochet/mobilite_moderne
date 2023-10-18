@@ -47,9 +47,7 @@ class _DocumentTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowComponentFile(
       title: '_DocumentTile',
-      child: ListTile(
-        leading: Icon(resource.type.icon),
-        title: Text(resource.nom.getOrCrash()),
+      child: InkWell(
         onTap: () async {
           printDev();
           //Open PDF
@@ -64,7 +62,10 @@ class _DocumentTile extends ConsumerWidget {
             }
           });
         },
-        trailing: Icon(Icons.arrow_forward_ios),
+        child: Card(
+          //leading: Icon(resource.type.icon),
+          child: Text(resource.nom.getOrCrash()),
+        ),
       ),
     );
   }

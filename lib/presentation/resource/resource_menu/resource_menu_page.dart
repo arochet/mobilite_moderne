@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -34,7 +35,7 @@ class Resource_menuPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: TabBar(
-                          tabs: CategoryListPageMode.values.map((e) {
+                          tabs: ResourceMainCategory.values.map((e) {
                             return Tab(text: e.titleBar);
                           }).toList(),
                         ),
@@ -42,7 +43,7 @@ class Resource_menuPage extends StatelessWidget {
                       // LES CATEGORIES
                       Expanded(
                         child: TabBarView(
-                          children: CategoryListPageMode.values.map((mode) {
+                          children: ResourceMainCategory.values.map((mode) {
                             return PanelCategoryList(mode);
                           }).toList(),
                         ),

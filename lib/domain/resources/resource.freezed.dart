@@ -23,6 +23,15 @@ mixin _$Resource {
   UniqueId get idCategory => throw _privateConstructorUsedError;
   List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get shortDescription => throw _privateConstructorUsedError;
+  ResourceMainCategory get mainCategory => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+
+  /// Image qui est charger avec le paramètre image
+  Future<Uint8List?>? get imageBytes => throw _privateConstructorUsedError;
+
+  /// Image URL pour le web
+  Future<String>? get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ResourceCopyWith<Resource> get copyWith =>
@@ -41,7 +50,12 @@ abstract class $ResourceCopyWith<$Res> {
       String documentPath,
       UniqueId idCategory,
       List<String> keyword,
-      String description});
+      String description,
+      String shortDescription,
+      ResourceMainCategory mainCategory,
+      String image,
+      Future<Uint8List?>? imageBytes,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -64,6 +78,11 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
     Object? idCategory = null,
     Object? keyword = null,
     Object? description = null,
+    Object? shortDescription = null,
+    Object? mainCategory = null,
+    Object? image = null,
+    Object? imageBytes = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -94,6 +113,26 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      mainCategory: null == mainCategory
+          ? _value.mainCategory
+          : mainCategory // ignore: cast_nullable_to_non_nullable
+              as ResourceMainCategory,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageBytes: freezed == imageBytes
+          ? _value.imageBytes
+          : imageBytes // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ) as $Val);
   }
 }
@@ -112,7 +151,12 @@ abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
       String documentPath,
       UniqueId idCategory,
       List<String> keyword,
-      String description});
+      String description,
+      String shortDescription,
+      ResourceMainCategory mainCategory,
+      String image,
+      Future<Uint8List?>? imageBytes,
+      Future<String>? imageUrl});
 }
 
 /// @nodoc
@@ -133,6 +177,11 @@ class __$$_ResourceCopyWithImpl<$Res>
     Object? idCategory = null,
     Object? keyword = null,
     Object? description = null,
+    Object? shortDescription = null,
+    Object? mainCategory = null,
+    Object? image = null,
+    Object? imageBytes = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$_Resource(
       id: null == id
@@ -163,6 +212,26 @@ class __$$_ResourceCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      shortDescription: null == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      mainCategory: null == mainCategory
+          ? _value.mainCategory
+          : mainCategory // ignore: cast_nullable_to_non_nullable
+              as ResourceMainCategory,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageBytes: freezed == imageBytes
+          ? _value.imageBytes
+          : imageBytes // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?>?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as Future<String>?,
     ));
   }
 }
@@ -177,7 +246,12 @@ class _$_Resource extends _Resource {
       required this.documentPath,
       required this.idCategory,
       required final List<String> keyword,
-      required this.description})
+      required this.description,
+      required this.shortDescription,
+      required this.mainCategory,
+      required this.image,
+      this.imageBytes,
+      this.imageUrl})
       : _keyword = keyword,
         super._();
 
@@ -201,10 +275,24 @@ class _$_Resource extends _Resource {
 
   @override
   final String description;
+  @override
+  final String shortDescription;
+  @override
+  final ResourceMainCategory mainCategory;
+  @override
+  final String image;
+
+  /// Image qui est charger avec le paramètre image
+  @override
+  final Future<Uint8List?>? imageBytes;
+
+  /// Image URL pour le web
+  @override
+  final Future<String>? imageUrl;
 
   @override
   String toString() {
-    return 'Resource(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description)';
+    return 'Resource(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description, shortDescription: $shortDescription, mainCategory: $mainCategory, image: $image, imageBytes: $imageBytes, imageUrl: $imageUrl)';
   }
 
   @override
@@ -221,12 +309,33 @@ class _$_Resource extends _Resource {
                 other.idCategory == idCategory) &&
             const DeepCollectionEquality().equals(other._keyword, _keyword) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.shortDescription, shortDescription) ||
+                other.shortDescription == shortDescription) &&
+            (identical(other.mainCategory, mainCategory) ||
+                other.mainCategory == mainCategory) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.imageBytes, imageBytes) ||
+                other.imageBytes == imageBytes) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, nom, type, documentPath,
-      idCategory, const DeepCollectionEquality().hash(_keyword), description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      nom,
+      type,
+      documentPath,
+      idCategory,
+      const DeepCollectionEquality().hash(_keyword),
+      description,
+      shortDescription,
+      mainCategory,
+      image,
+      imageBytes,
+      imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -243,7 +352,12 @@ abstract class _Resource extends Resource {
       required final String documentPath,
       required final UniqueId idCategory,
       required final List<String> keyword,
-      required final String description}) = _$_Resource;
+      required final String description,
+      required final String shortDescription,
+      required final ResourceMainCategory mainCategory,
+      required final String image,
+      final Future<Uint8List?>? imageBytes,
+      final Future<String>? imageUrl}) = _$_Resource;
   const _Resource._() : super._();
 
   @override
@@ -260,6 +374,20 @@ abstract class _Resource extends Resource {
   List<String> get keyword;
   @override
   String get description;
+  @override
+  String get shortDescription;
+  @override
+  ResourceMainCategory get mainCategory;
+  @override
+  String get image;
+  @override
+
+  /// Image qui est charger avec le paramètre image
+  Future<Uint8List?>? get imageBytes;
+  @override
+
+  /// Image URL pour le web
+  Future<String>? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_ResourceCopyWith<_$_Resource> get copyWith =>

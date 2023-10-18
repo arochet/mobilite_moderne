@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
@@ -18,7 +20,9 @@ abstract class ResourceDTO implements _$ResourceDTO {
     required String idCategory,
     required List<String> keyword,
     required String description,
-    required String categoryPath,
+    required String shortDescription,
+    required String mainCategory,
+    required String image,
   }) = _ResourceDTO;
 
   factory ResourceDTO.fromDomain(Resource obj) {
@@ -30,11 +34,13 @@ abstract class ResourceDTO implements _$ResourceDTO {
       keyword: obj.keyword,
       description: obj.description,
       nom: obj.nom.getOrCrash(),
-      categoryPath: 'undefined',
+      shortDescription: obj.shortDescription,
+      mainCategory: obj.mainCategory.toString(),
+      image: obj.image,
     );
   }
 
-  Resource toDomain() {
+  Resource toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl}) {
     return Resource(
       id: id != null ? UniqueId.fromUniqueString(id!) : UniqueId.fromUniqueString('-1'),
       nom: Nom(nom),
@@ -43,6 +49,11 @@ abstract class ResourceDTO implements _$ResourceDTO {
       idCategory: UniqueId.fromUniqueString(idCategory),
       keyword: keyword,
       description: description,
+      shortDescription: shortDescription,
+      mainCategory: ResourceMainCategory.values.firstWhere((e) => e.toString() == mainCategory),
+      image: image,
+      imageBytes: imageBytes,
+      imageUrl: imageUrl,
     );
   }
 

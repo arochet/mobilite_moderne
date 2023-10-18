@@ -70,8 +70,8 @@ class NewsFormNotifier extends StateNotifier<AddNewsFormData> {
     if (false /* insert-valid-condition */ || istitleValid) {
       state = state.copyWith(isSubmitting: true, authFailureOrSuccessOption: none());
 
-      Either<UploadFailure, Unit>? resultUpload;
       // Upload de l'image
+      Either<UploadFailure, Unit>? resultUpload;
       if (state.image != null) {
         resultUpload = await this._iNewsRepository.uploadImage(state.image!);
       }

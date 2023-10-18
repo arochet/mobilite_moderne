@@ -16,7 +16,7 @@ import 'app_category_dtos.dart';
 
 abstract class IResourceRepository {
   //Category
-  Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryList(CategoryListPageMode mode);
+  Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryList(ResourceMainCategory mode);
   Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryView(AppCategory id);
 
   //Ressource
@@ -36,7 +36,7 @@ class ResourceRepository implements IResourceRepository {
 
   /// Fonction pour la page principale des catégories : On voit les catégories principales + les sous catégories
   @override
-  Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryList(CategoryListPageMode mode) async {
+  Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryList(ResourceMainCategory mode) async {
     printDev();
     final CollectionReference<Object?> collection = mode.getCollection(_firestore);
     final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
