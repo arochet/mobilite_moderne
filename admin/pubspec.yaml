@@ -33,6 +33,8 @@ dependencies:
     sdk: flutter
   file_picker: ^5.5.0
   image_picker: ^1.0.4
+  flutter_stripe: ^9.4.0
+  flutter_stripe_web: ^4.4.0
   
 
 

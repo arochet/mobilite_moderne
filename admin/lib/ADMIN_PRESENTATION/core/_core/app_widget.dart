@@ -110,6 +110,12 @@ class AppWidget extends StatelessWidget {
           unselectedItemColor: Colors.white,
         ),
 
+        chipTheme: ChipThemeData.fromDefaults(
+                primaryColor: Colors.black,
+                secondaryColor: Colors.black,
+                labelStyle: const TextStyle(color: Colors.white))
+            .copyWith(backgroundColor: primaryColor),
+
         //EXTENSIONS
         extensions: <ThemeExtension<dynamic>>[
           AppThemeExtention(
