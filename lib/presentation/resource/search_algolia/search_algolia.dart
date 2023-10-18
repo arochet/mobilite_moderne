@@ -145,13 +145,21 @@ class _ListResults extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final storageRef = ref.watch(resourceRepositoryProvider).storageRef;
-    return ListView.builder(
-      itemCount: _results.length < 50 ? _results.length : 50,
-      itemBuilder: (context, index) {
-        Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain(storageRef);
-        if (resource.mainCategory != mode) return Container();
-        return ResourceTile(resource: resource);
-      },
+
+    //Tri des résultats par catégorie
+    List<Resource> listResources = _results
+        .map((e) => ResourceDTO.fromJson(e.data).toDomain(storageRef))
+        .where((res) => res.mainCategory == mode)
+        .toList();
+
+    //Limite à 10 résultats
+    listResources = listResources.sublist(0, listResources.length > 10 ? 10 : listResources.length);
+
+    if (listResources.length == 0) return Center(child: Text('Aucun résultat trouvé'));
+
+    //Affichage des résultats
+    return ListView(
+      children: listResources.map((resource) => ResourceTile(resource: resource)).toList(),
     );
   }
 }
