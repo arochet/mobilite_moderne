@@ -24,6 +24,7 @@ abstract class SubscriptionsDTO implements _$SubscriptionsDTO {
   }) = _SubscriptionsDTO;
 
   Subscriptions toDomain() {
+    print('status $status');
     return Subscriptions(
       id: id ?? '??',
       items: items,

@@ -78,7 +78,7 @@ class _PanelSuccessCancelSubscription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Text(
-      "Votre abonnement a bien été annulé\nA bienôt sur Dist'Atelier",
+      "Votre abonnement a bien été annulé\nA bientôt sur Dist'Atelier",
       style: Theme.of(context).textTheme.titleMedium,
     ));
   }

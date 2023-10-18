@@ -27,14 +27,14 @@
             "request": "launch",
             "type": "dart",
             "program": "lib/main_dev.dart",
-            "args": ["--web-port", "5000"]
+            "args": ["--web-port", "5000","-d", "chrome",  "--web-browser-flag=--disable-web-security"]
         },
         {
             "name": "WEB_PROD",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
-            "args": ["--web-port", "5000"]
+            "args": ["--web-port", "5000","-d", "chrome", "--web-browser-flag=--disable-web-security"]
         },
         {
             "name": "ADMIN",

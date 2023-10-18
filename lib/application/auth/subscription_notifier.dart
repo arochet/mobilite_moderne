@@ -119,6 +119,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
 
   void onUpdateCardField(CardFieldInputDetails? cardFieldInputDetails) {
     state = state.copyWith(cardFieldInputDetails: cardFieldInputDetails);
+    print('CVC: ${state.cardFieldInputDetails.cvc}');
   }
 
   void onUpdateAddressField(
@@ -138,7 +139,6 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     final userData = await _authRepository.getUserData();
     final clientSecretAsync = await (userData.fold(() => null, (UserData userData) async {
       if (userData.idStripe == null) {
-        print('UserData.idStripe is null');
         return null;
       } else {
         return await _authRepository.subscribeTotalAccess(userData.idStripe!);
@@ -151,7 +151,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     }
 
     clientSecretAsync?.fold(
-      (l) => state = state.copyWith(status: SubscriptionStatus.failure, msgError: l.toString()),
+      (l) => state = state.copyWith(status: SubscriptionStatus.failure, msgError: l.message),
       (clientSecret) {
         state =
             state.copyWith(status: SubscriptionStatus.formAddress, paymentIntentClientSecret: clientSecret);
@@ -170,6 +170,20 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     );
   }
 
+  void paySubscriptionWEB() async {
+    state = (state.copyWith(status: SubscriptionStatus.loading));
+
+    print(state.cardFieldInputDetails.toJson());
+    print('CVC: ${state.cardFieldInputDetails.cvc}');
+
+    final result = await _authRepository.paySubscription(state.paymentIntentClientSecret!, state.address);
+
+    state = result.fold(
+      (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.message),
+      (r) => state.copyWith(status: SubscriptionStatus.success),
+    );
+  }
+
   void cancelSubscription(String idSubscription) async {
     state = (state.copyWith(status: SubscriptionStatus.loading));
     print('Annulation de l abonnement $idSubscription');
@@ -177,7 +191,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     final result = await _authRepository.unsubscribeTotalAccess(idSubscription);
 
     state = result.fold(
-      (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.toString()),
+      (l) => state.copyWith(status: SubscriptionStatus.failure, msgError: l.message),
       (r) => state.copyWith(status: SubscriptionStatus.successCancelSubscription),
     );
   }

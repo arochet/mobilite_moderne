@@ -78,7 +78,8 @@ class PanelNewSubscription extends ConsumerWidget {
                 // BOUTON S'ABONNER
                 ElevatedButton(
                   onPressed: () async {
-                    if (kIsWeb) {
+                    ref.read(subscriptionNotifierProvider.notifier).setFillAccountPage();
+                    /* if (kIsWeb) {
                       final user = await ref.read(currentUserData.future);
                       if (user != null) {
                         print('user.idStripe ${user.idStripe}');
@@ -91,7 +92,7 @@ class PanelNewSubscription extends ConsumerWidget {
                       }
                     } else {
                       ref.read(subscriptionNotifierProvider.notifier).setFillAccountPage();
-                    }
+                    } */
                   },
                   child: Text("S'abonner"),
                 ),

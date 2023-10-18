@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
@@ -60,7 +61,10 @@ class _PanelRecapState extends ConsumerState<PanelRecap> {
               SpaceW10(),
               ElevatedButton(
                 onPressed: () {
-                  ref.read(subscriptionNotifierProvider.notifier).paySubscription();
+                  if (kIsWeb)
+                    ref.read(subscriptionNotifierProvider.notifier).paySubscriptionWEB();
+                  else
+                    ref.read(subscriptionNotifierProvider.notifier).paySubscription();
                 },
                 child: Text("S'abonner"),
               ),

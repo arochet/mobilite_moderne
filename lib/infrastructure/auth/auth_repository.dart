@@ -572,23 +572,26 @@ class FirebaseAuthFacade implements AuthRepository {
       if (userData == null) return left(SubscriptionFailure.customerUnfound());
 
       final PaymentIntent resultConfirm = await Stripe.instance.confirmPayment(
-          paymentIntentClientSecret: paymentIntentClientSecret,
-          data: PaymentMethodParams.card(
-            paymentMethodData: PaymentMethodData(
-              billingDetails: BillingDetails(
-                name: userData.userName.getOrCrash(),
-                email: userData.email?.getOrCrash(),
-                address: address,
-              ),
+        paymentIntentClientSecret: paymentIntentClientSecret,
+        data: PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: BillingDetails(
+              name: userData.userName.getOrCrash(),
+              email: userData.email?.getOrCrash(),
+              address: address,
             ),
-          ));
+          ),
+        ),
+      );
+
+      print('resultConfirm.status ${resultConfirm.status}');
 
       if (resultConfirm.status == PaymentIntentsStatus.Succeeded) {
         return right(unit);
       } else
         return left(SubscriptionFailure.serverError());
     } catch (e) {
-      print('error $e');
+      print('paySubscription error $e');
       return left(SubscriptionFailure.serverError());
     }
   }
@@ -610,7 +613,9 @@ class FirebaseAuthFacade implements AuthRepository {
   }
 
   Future<http.Response> getCloudFunctions(String function, Object? body) async {
-    final url = Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/$function');
+    final url = kIsWeb
+        ? Uri.https('us-central1-mobilite-moderne.cloudfunctions.net', function)
+        : Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/$function');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
