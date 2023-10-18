@@ -1,10 +1,13 @@
 import 'dart:typed_data';
 
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/core/load_image.dart';
 part 'resource_dtos.freezed.dart';
 part 'resource_dtos.g.dart';
 
@@ -40,7 +43,7 @@ abstract class ResourceDTO implements _$ResourceDTO {
     );
   }
 
-  Resource toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl}) {
+  Resource toDomain(Reference? storageRef) {
     return Resource(
       id: id != null ? UniqueId.fromUniqueString(id!) : UniqueId.fromUniqueString('-1'),
       nom: Nom(nom),
@@ -50,12 +53,14 @@ abstract class ResourceDTO implements _$ResourceDTO {
       keyword: keyword,
       description: description,
       shortDescription: shortDescription,
-      mainCategory: ResourceMainCategory.values.firstWhere((e) => e.toString() == mainCategory),
+      mainCategory: ResourceMainCategoryUtils.fromString(mainCategory),
       image: image,
-      imageBytes: imageBytes,
-      imageUrl: imageUrl,
+      imageBytes: !kIsWeb && storageRef != null ? loadImage(storageRef, this.imagePath) : null,
+      imageUrl: kIsWeb && storageRef != null ? loadImageWeb(storageRef, this.imagePath) : null,
     );
   }
+
+  String get imagePath => '${ResourceMainCategoryUtils.fromString(mainCategory).nameFile}/$image';
 
   factory ResourceDTO.fromJson(Map<String, dynamic> json) => _$ResourceDTOFromJson(json);
 

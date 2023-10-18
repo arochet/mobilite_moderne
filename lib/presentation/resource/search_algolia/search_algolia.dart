@@ -7,6 +7,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
+import 'package:mobilite_moderne/providers.dart';
 
 class SearchAlgolia extends ConsumerStatefulWidget {
   final Widget child;
@@ -104,16 +105,31 @@ class _SearchResults extends StatelessWidget {
                 case ConnectionState.waiting:
                   return Center(child: CircularProgressIndicator());
                 default:
-                  return ListView.builder(
-                    itemCount: _results.length < 50 ? _results.length : 50,
-                    itemBuilder: (context, index) {
-                      Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain();
-                      return ResourceTile(resource: resource);
-                    },
-                  );
+                  return _ListResults(results: _results);
               }
             }
           }),
+    );
+  }
+}
+
+class _ListResults extends ConsumerWidget {
+  const _ListResults({
+    super.key,
+    required List<AlgoliaObjectSnapshot> results,
+  }) : _results = results;
+
+  final List<AlgoliaObjectSnapshot> _results;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final storageRef = ref.watch(resourceRepositoryProvider).storageRef;
+    return ListView.builder(
+      itemCount: _results.length < 50 ? _results.length : 50,
+      itemBuilder: (context, index) {
+        Resource resource = ResourceDTO.fromJson(_results[index].data).toDomain(storageRef);
+        return ResourceTile(resource: resource);
+      },
     );
   }
 }

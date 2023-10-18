@@ -12,7 +12,6 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //COLOR
-    const Color primaryColor = Color(0xff00ebc7);
     const Color primaryLightColor = Color.fromARGB(35, 0, 235, 200);
     const Color titleColor = Color(0xff00214d);
     const Color paragraphColor = Color(0xff1b2d45);
@@ -254,6 +253,8 @@ Color? colorpanel(int tint) {
       return Colors.white;
   }
 }
+
+const Color primaryColor = Color(0xff00ebc7);
 
 /// PAGE TRANSITION THEME ////
 class NonePageTransitionsBuilder extends PageTransitionsBuilder {

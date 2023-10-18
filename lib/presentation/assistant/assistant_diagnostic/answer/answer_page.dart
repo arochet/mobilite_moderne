@@ -94,7 +94,10 @@ class _Body extends StatelessWidget {
         ...choice.listRessources
             .where((element) => element.type == ResourceType.document)
             .map((Resource resource) {
-          return ResourceTile(resource: resource);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14.0),
+            child: ResourceTile(resource: resource),
+          );
         }).toList(),
         if (choice.listRessources.where((element) => element.type == ResourceType.document).length == 0)
           Align(
@@ -114,7 +117,10 @@ class _Body extends StatelessWidget {
         ...choice.listRessources
             .where((Resource resourceDoc) => resourceDoc.type == ResourceType.video)
             .map((Resource resource) {
-          return ResourceTile(resource: resource);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14.0),
+            child: ResourceTile(resource: resource),
+          );
         }).toList(),
         if (choice.listRessources
                 .where((Resource resourceVideo) => resourceVideo.type == ResourceType.video)

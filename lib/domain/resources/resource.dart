@@ -44,6 +44,12 @@ extension ResourceTypeExtension on ResourceType {
 
 enum ResourceMainCategory { mediatheque, notice_constructeur, pieces_fournisseurs }
 
+class ResourceMainCategoryUtils {
+  static ResourceMainCategory fromString(String value) {
+    return ResourceMainCategory.values.firstWhere((e) => e.toString() == value);
+  }
+}
+
 extension ResourceMainCategoryExtension on ResourceMainCategory {
   String get title {
     switch (this) {

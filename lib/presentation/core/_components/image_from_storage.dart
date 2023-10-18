@@ -5,10 +5,15 @@ import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 class ImageFromStorage extends StatelessWidget {
   final Future<String?>? url;
   final Future<Uint8List?>? bytes;
+  final double width;
+  final double height;
+
   const ImageFromStorage({
     super.key,
     this.url,
     this.bytes,
+    this.width = 200,
+    this.height = 200,
   });
 
   @override
@@ -21,29 +26,23 @@ class ImageFromStorage extends StatelessWidget {
           future: url,
           builder: (context, AsyncSnapshot<String?> snapshotUrl) {
             if (snapshotUrl.connectionState == ConnectionState.waiting)
-              return Container(
-                height: 200,
-                color: colorpanel(800),
-              );
+              return _Waiting(height: height);
             else if (snapshotUrl.hasError)
-              return Container(
-                height: 200,
-                child: Center(
-                  child: Text("Erreur"),
-                ),
-              );
+              //ERREUR
+              return _Erreur(height: height);
             else {
               if (snapshotUrl.data != null)
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0), child: Image.network(snapshotUrl.data!)),
+                      borderRadius: BorderRadius.circular(6.0),
+                      child: FittedBox(
+                        child: Image.network(snapshotUrl.data!),
+                        fit: BoxFit.fitHeight,
+                      )),
                 );
               else {
-                return Container(
-                  height: 200,
-                  color: colorpanel(900),
-                );
+                return _NoData(height: height);
               }
             }
           });
@@ -54,33 +53,81 @@ class ImageFromStorage extends StatelessWidget {
           future: bytes,
           builder: (context, AsyncSnapshot<Uint8List?> snapshotUrl) {
             if (snapshotUrl.connectionState == ConnectionState.waiting)
-              return Container(
-                height: 200,
-                color: colorpanel(800),
-              );
+              //ATTENTE
+              return _Waiting(height: height);
             else if (snapshotUrl.hasError)
-              return Container(
-                height: 200,
-                child: Center(
-                  child: Text("Erreur"),
-                ),
-              );
+              //ERREUR
+              return _Erreur(height: height);
             else {
               if (snapshotUrl.data != null)
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0), child: Image.memory(snapshotUrl.data!)),
+                      borderRadius: BorderRadius.circular(6.0),
+                      child: FittedBox(
+                        child: Image.memory(snapshotUrl.data!),
+                        fit: BoxFit.fitHeight,
+                      )),
                 );
               else {
-                return Container(
-                  height: 200,
-                  color: colorpanel(900),
-                );
+                return _NoData(height: height);
               }
             }
           });
 
-    return Container(height: 200, child: widget);
+    return Container(height: height, child: widget);
+  }
+}
+
+class _NoData extends StatelessWidget {
+  const _NoData({
+    super.key,
+    required this.height,
+  });
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      color: colorpanel(900),
+    );
+  }
+}
+
+class _Waiting extends StatelessWidget {
+  const _Waiting({
+    super.key,
+    required this.height,
+  });
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      color: colorpanel(800),
+    );
+  }
+}
+
+class _Erreur extends StatelessWidget {
+  const _Erreur({
+    super.key,
+    required this.height,
+  });
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      child: Center(
+        child: Text("Erreur"),
+      ),
+    );
   }
 }

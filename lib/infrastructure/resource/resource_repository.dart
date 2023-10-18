@@ -12,6 +12,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
+import '../core/load_image.dart';
 import 'app_category_dtos.dart';
 
 abstract class IResourceRepository {
@@ -22,6 +23,8 @@ abstract class IResourceRepository {
   //Ressource
   Future<Either<ResourceFailure, String>> getDocumentURL(String path);
   Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id);
+
+  Reference get storageRef;
 }
 
 @LazySingleton(as: IResourceRepository)
@@ -80,24 +83,25 @@ class ResourceRepository implements IResourceRepository {
   Future<AppCategory> _getCategory(
       CollectionReference<Object?> collectionResources, QueryDocumentSnapshot<Object?> doc) async {
     //SUBCATEGORY
-    final Either<AppCategoryFailure, List<AppCategory>> listCategories = await doc.reference
-        .collection('sub')
-        .get()
-        .then(
-          (subSnap) => right<AppCategoryFailure, List<AppCategory>>(
-            subSnap.docs.map((subdoc) {
-              try {
-                //Subcategory
-                return AppCategoryDTO.fromFirestore(subdoc)
-                    .toDomain(null, subdoc.reference.path, _getResource(subdoc));
-              } catch (e) {
-                print('e $e');
-              }
-              return AppCategory.empty();
-            }).toList(),
-          ),
-        )
-        .catchError((e) {
+    final Either<AppCategoryFailure, List<AppCategory>> listCategories =
+        await doc.reference.collection('sub').get().then((subSnap) async {
+      final List<Future<AppCategory>> listFutureAppCategory = subSnap.docs.map((subdoc) async {
+        try {
+          //Subcategory
+          return AppCategoryDTO.fromFirestore(subdoc).toDomain(
+            null,
+            subdoc.reference.path, // Chemin de la sous catégorie
+            await _getResource(subdoc), // Liste des ressources de la sous catégorie
+          );
+        } catch (e) {
+          print('e $e');
+        }
+        return AppCategory.empty();
+      }).toList();
+
+      //Retourne la liste des categories
+      return right<AppCategoryFailure, List<AppCategory>>(await Future.wait(listFutureAppCategory));
+    }).catchError((e) {
       if (e is FirebaseException && e.message!.contains('permission-denied')) {
         return left(const AppCategoryFailure.insufficientPermission());
       } else {
@@ -106,28 +110,35 @@ class ResourceRepository implements IResourceRepository {
     });
 
     //RESOURCES
-    List<Resource>? listResources = _getResource(doc);
+    List<Resource>? listResources = await _getResource(doc);
 
     return AppCategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path, listResources);
   }
 
-  List<Resource>? _getResource(QueryDocumentSnapshot<Object?> doc) {
+  Future<List<Resource>?> _getResource(QueryDocumentSnapshot<Object?> doc) async {
+    final storageRef = _storage.ref(); //Storage REF
+    final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
+
     try {
-      final CollectionReference<Object?> collectionResources = _firestore.resourcesCollection;
       List<Resource> listResources = [];
+      //Doc contient la liste des ressources
       if ((doc.data() as Map).containsKey('listResource') == true) {
         final List? docListResource = doc.get('listResource');
         if (docListResource != null && docListResource.length > 0)
-          docListResource.forEach((element) async {
+          //Pour chaque ressource
+          for (final element in docListResource) {
             if (element != null && element != '') {
-              final resource = await collectionResources.doc(element).get();
+              final resource =
+                  await collectionResources.doc(element).get(); //On cherche la resource dans la collection
               if (resource.data() != null) {
-                listResources.add(ResourceDTO.fromFirestore(resource).toDomain());
+                final hasImg = (resource.data() as Map).containsKey('image') == true;
+                // On charge l'image de la ressource + on ajoute la ressource à la liste
+                listResources.add(ResourceDTO.fromFirestore(resource).toDomain(storageRef));
               } else {
                 print('Resource $element non trouvé');
               }
             }
-          });
+          }
       }
       return listResources;
     } catch (e) {
@@ -169,10 +180,13 @@ class ResourceRepository implements IResourceRepository {
   @override
   Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id) async {
     final document = _firestore.resourcesCollection.doc(id.getOrCrash());
+    final storageRef = _storage.ref(); //Storage REF
 
     return document.get().then((doc) {
       if (doc.data() == null) return left(ResourceFailure.notExist());
-      return right(ResourceDTO.fromFirestore(doc).toDomain());
-    }) /* .onError((e, stackTrace) => left(const ResourcesFailure.unexpected())) */;
+      return right(ResourceDTO.fromFirestore(doc).toDomain(storageRef));
+    });
   }
+
+  Reference get storageRef => _storage.ref();
 }
