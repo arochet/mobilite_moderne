@@ -103,16 +103,61 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
             },
           ),
           SpaceH10(),
+
+          // TYPE
+          DropdownButton(
+              isExpanded: true,
+              value: resourceFormData.resource.type,
+              dropdownColor: Colors.black,
+              focusColor: Colors.black,
+              iconEnabledColor: Colors.white,
+              items: ResourceType.values
+                  .where((element) => element != ResourceType.link)
+                  .map((ResourceType e) => DropdownMenuItem(
+                        child: Text(e.name),
+                        value: e,
+                      ))
+                  .toList(),
+              onChanged: (ResourceType? value) {
+                if (resourceFormData.nameFile != null) {
+                  showSnackBar(context, 'Vous devez avoir aucun fichier sélectionné');
+                  return;
+                }
+                if (value != null) {
+                  ref.read(resourceFormNotifierProvider.notifier).typeChanged(value);
+                }
+              },
+              icon: Icon(Icons.arrow_downward)),
+          SpaceH10(),
           Text(resourceFormData.nameFile ?? "",
               style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey)),
           SpaceH10(),
-
           // AJOUTER UN FICHIER
           ElevatedButton(
               onPressed: () async {
                 try {
-                  FilePickerResult? result =
-                      await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
+                  FilePickerResult? result;
+
+                  if (ref.read(resourceFormNotifierProvider).resource.type == ResourceType.document) {
+                    result = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: [
+                      'pdf',
+                    ]);
+                  } else if (ref.read(resourceFormNotifierProvider).resource.type == ResourceType.video) {
+                    result = await FilePicker.platform.pickFiles(type: FileType.custom, allowedExtensions: [
+                      'mp4',
+                      'm4v',
+                      'mov',
+                      'avi',
+                      'flv',
+                      'wmv',
+                      'asf',
+                      'mpeg',
+                      'mpg',
+                      'vob',
+                      'mkv',
+                      'asf'
+                    ]);
+                  }
 
                   if (result != null) {
                     final platformFile = result.files.single;
@@ -225,23 +270,6 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
               },
               child: const Text("Ajouter une image")),
 
-          // TYPE
-          DropdownButton(
-              isExpanded: true,
-              value: resourceFormData.resource.type,
-              dropdownColor: Colors.black,
-              focusColor: Colors.black,
-              iconEnabledColor: Colors.white,
-              items: ResourceType.values
-                  .map((ResourceType e) => DropdownMenuItem(
-                        child: Text(e.name),
-                        value: e,
-                      ))
-                  .toList(),
-              onChanged: (ResourceType? value) {
-                if (value != null) ref.read(resourceFormNotifierProvider.notifier).typeChanged(value);
-              },
-              icon: Icon(Icons.arrow_downward)),
           const SpaceH10(),
 
           // MAIN CATEGORY
