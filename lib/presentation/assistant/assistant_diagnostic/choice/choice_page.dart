@@ -26,20 +26,18 @@ class ChoicePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MainScaffold(
         color: colorpanel(800),
-        child: ShowComponentFile(
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AppAsync(
-                ref.watch(oneChoiceProvider(choice)),
-                builder: (data) => data!.fold(
-                  (error) => Center(child: AppError(message: error.toString())),
-                  (ChoiceWithQuestions choiceLoaded) => _PanelChoiceView(
-                    choice: choiceLoaded,
-                    filAriane: filAriane,
-                  ),
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AppAsync(
+              ref.watch(oneChoiceProvider(choice)),
+              builder: (data) => data!.fold(
+                (error) => Center(child: AppError(message: error.toString())),
+                (ChoiceWithQuestions choiceLoaded) => _PanelChoiceView(
+                  choice: choiceLoaded,
+                  filAriane: filAriane,
                 ),
-              )),
-        ));
+              ),
+            )));
   }
 }
 
@@ -50,81 +48,94 @@ class _PanelChoiceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //Fil d'ariane
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          child: Wrap(
-              children: filAriane
-                  .split('/')
-                  .map((e) => e.length > 1
-                      ? Card(
-                          color: colorpanel(900),
-                          margin: EdgeInsets.all(2),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
-                            child: Text("$e", style: Theme.of(context).textTheme.bodyMedium),
-                          ),
-                        )
-                      : Container())
-                  .toList()),
-        ),
-        Expanded(child: Container()),
+    return ShowComponentFile(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //Fil d'ariane
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
+            child: Wrap(
+                children: filAriane
+                    .split('/')
+                    .map((e) => e.length > 1
+                        ? Card(
+                            color: colorpanel(900),
+                            margin: EdgeInsets.all(2),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                              child: Text("$e", style: Theme.of(context).textTheme.bodyMedium),
+                            ),
+                          )
+                        : Container())
+                    .toList()),
+          ),
+          Expanded(child: Container()),
 
-        //Titre de la question
-        Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
-        SpaceH20(),
+          //Titre de la question
+          Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
+          SpaceH20(),
 
-        //Carte
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            constraints: BoxConstraints(maxWidth: 600),
-            child: Card(
-              color: colorpanel(900),
-              child: Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: SizedBox(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //Question
-                      Text("${choice.question?.getOrCrash()}",
-                          style: Theme.of(context).textTheme.titleMedium),
-                      Divider(),
+          //Carte
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 600),
+              child: Card(
+                color: colorpanel(900),
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: SizedBox(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //Question
+                        Text("${choice.question?.getOrCrash()}",
+                            style: Theme.of(context).textTheme.titleMedium),
+                        Divider(),
 
-                      //Réponses menant à d'autres questions
-                      ...choice.choiceQuestion
-                              ?.map((ChoiceWithQuestions choice) => _TileChoice(
-                                    title: choice.nom.getOrCrash(),
-                                    onTap: () => context.router.push(ChoiceRoute(
-                                        choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                                  ))
-                              .toList() ??
-                          [],
+                        //Réponses menant à d'autres questions
+                        ...choice.choiceQuestion
+                                ?.map((ChoiceWithQuestions choice) => _TileChoice(
+                                      title: choice.nom.getOrCrash(),
+                                      onTap: () => context.router.push(ChoiceRoute(
+                                          choice: choice,
+                                          filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                    ))
+                                .toList() ??
+                            [],
 
-                      //Réponses menant à des documents
-                      ...choice.choiceAnswer
-                              ?.map((ChoiceWithAnswer choice) => _TileChoice(
-                                    title: choice.nom.getOrCrash(),
-                                    onTap: () => context.router.push(AnswerRoute(
-                                        choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                                  ))
-                              .toList() ??
-                          [],
-                    ],
+                        //Réponses menant à des documents
+                        ...choice.choiceAnswer
+                                ?.map((ChoiceWithAnswer choice) => _TileChoice(
+                                      title: choice.nom.getOrCrash(),
+                                      onTap: () => context.router.push(AnswerRoute(
+                                          choice: choice,
+                                          filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                    ))
+                                .toList() ??
+                            [],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(height: 80),
-        Expanded(child: Container()),
-      ],
+          SpaceH20(),
+          Align(
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Retour"),
+            ),
+          ),
+          SizedBox(height: 80),
+          Expanded(child: Container()),
+        ],
+      ),
     );
   }
 }

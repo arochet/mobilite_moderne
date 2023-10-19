@@ -61,7 +61,7 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
                 ),
               ),
             ),
-            SpaceH10(),
+            SpaceH20(),
             // CHOIX DU TYPE DE RESSOURCE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),

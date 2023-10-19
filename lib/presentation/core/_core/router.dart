@@ -54,7 +54,7 @@ class AppRouter extends _$AppRouter {
             RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(
               path: 'home',
-              page: Resource_menuRoute.page, //HOMEPAGE
+              page: AssistantRoute.page, //HOMEPAGE
             ),
             AutoRoute(
               path: 'assistant',

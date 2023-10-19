@@ -18,7 +18,7 @@ class PanelCategoryList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowComponentFile(
-      title: 'CategoryListPage',
+      title: 'PanelCategoryList',
       child: AppAsync(
         ref.watch(categoryListProvider(mode)),
         builder: (data) => data!.fold(
