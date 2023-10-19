@@ -16,7 +16,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:mobilite_moderne/INFRASTRUCTURE/assistant_diagnostic/assistant_diagnostic_repository.dart'
-    as _i12;
+    as _i11;
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_fake_repository.dart'
     as _i4;
 import 'package:mobilite_moderne/INFRASTRUCTURE/auth/auth_repository.dart'
@@ -26,9 +26,9 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/core/firebase_injectable_module.
 import 'package:mobilite_moderne/INFRASTRUCTURE/message/message_repository.dart'
     as _i9;
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_repository.dart'
-    as _i10;
+    as _i12;
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart'
-    as _i11;
+    as _i10;
 
 const String _test = 'test';
 const String _dev = 'dev';
@@ -63,11 +63,7 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i3.AuthRepository>(),
           gh<_i7.FirebaseStorage>(),
         ));
-    gh.lazySingleton<_i10.INewsRepository>(() => _i10.NewsRepository(
-          gh<_i6.FirebaseFirestore>(),
-          gh<_i7.FirebaseStorage>(),
-        ));
-    gh.lazySingleton<_i11.IResourceRepository>(() => _i11.ResourceRepository(
+    gh.lazySingleton<_i10.IResourceRepository>(() => _i10.ResourceRepository(
           gh<_i6.FirebaseFirestore>(),
           gh<_i7.FirebaseStorage>(),
         ));
@@ -83,11 +79,16 @@ extension GetItInjectableX on _i1.GetIt {
         _prod,
       },
     );
-    gh.lazySingleton<_i12.IAssistantDiagnosticRepository>(
-        () => _i12.AssistantDiagnosticRepository(
+    gh.lazySingleton<_i11.IAssistantDiagnosticRepository>(
+        () => _i11.AssistantDiagnosticRepository(
               gh<_i6.FirebaseFirestore>(),
-              gh<_i11.IResourceRepository>(),
+              gh<_i10.IResourceRepository>(),
             ));
+    gh.lazySingleton<_i12.INewsRepository>(() => _i12.NewsRepository(
+          gh<_i6.FirebaseFirestore>(),
+          gh<_i7.FirebaseStorage>(),
+          gh<_i10.IResourceRepository>(),
+        ));
     return this;
   }
 }

@@ -33,6 +33,7 @@ mixin _$News {
 
   /// Image URL pour le web
   Future<String>? get imageUrl => throw _privateConstructorUsedError;
+  List<Resource> get listRessources => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewsCopyWith<News> get copyWith => throw _privateConstructorUsedError;
@@ -52,7 +53,8 @@ abstract class $NewsCopyWith<$Res> {
       List<String> keywords,
       DateTime datePublished,
       Future<Uint8List?>? imageBytes,
-      Future<String>? imageUrl});
+      Future<String>? imageUrl,
+      List<Resource> listRessources});
 }
 
 /// @nodoc
@@ -77,6 +79,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? datePublished = null,
     Object? imageBytes = freezed,
     Object? imageUrl = freezed,
+    Object? listRessources = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -115,6 +118,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Future<String>?,
+      listRessources: null == listRessources
+          ? _value.listRessources
+          : listRessources // ignore: cast_nullable_to_non_nullable
+              as List<Resource>,
     ) as $Val);
   }
 }
@@ -134,7 +141,8 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       List<String> keywords,
       DateTime datePublished,
       Future<Uint8List?>? imageBytes,
-      Future<String>? imageUrl});
+      Future<String>? imageUrl,
+      List<Resource> listRessources});
 }
 
 /// @nodoc
@@ -155,6 +163,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     Object? datePublished = null,
     Object? imageBytes = freezed,
     Object? imageUrl = freezed,
+    Object? listRessources = null,
   }) {
     return _then(_$_News(
       id: null == id
@@ -193,6 +202,10 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Future<String>?,
+      listRessources: null == listRessources
+          ? _value._listRessources
+          : listRessources // ignore: cast_nullable_to_non_nullable
+              as List<Resource>,
     ));
   }
 }
@@ -209,8 +222,10 @@ class _$_News extends _News {
       required final List<String> keywords,
       required this.datePublished,
       this.imageBytes,
-      this.imageUrl})
+      this.imageUrl,
+      required final List<Resource> listRessources})
       : _keywords = keywords,
+        _listRessources = listRessources,
         super._();
 
   @override
@@ -246,10 +261,17 @@ class _$_News extends _News {
   /// Image URL pour le web
   @override
   final Future<String>? imageUrl;
+  final List<Resource> _listRessources;
+  @override
+  List<Resource> get listRessources {
+    if (_listRessources is EqualUnmodifiableListView) return _listRessources;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listRessources);
+  }
 
   @override
   String toString() {
-    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished, imageBytes: $imageBytes, imageUrl: $imageUrl)';
+    return 'News(id: $id, title: $title, content: $content, image: $image, subcontent: $subcontent, keywords: $keywords, datePublished: $datePublished, imageBytes: $imageBytes, imageUrl: $imageUrl, listRessources: $listRessources)';
   }
 
   @override
@@ -269,7 +291,9 @@ class _$_News extends _News {
             (identical(other.imageBytes, imageBytes) ||
                 other.imageBytes == imageBytes) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._listRessources, _listRessources));
   }
 
   @override
@@ -283,7 +307,8 @@ class _$_News extends _News {
       const DeepCollectionEquality().hash(_keywords),
       datePublished,
       imageBytes,
-      imageUrl);
+      imageUrl,
+      const DeepCollectionEquality().hash(_listRessources));
 
   @JsonKey(ignore: true)
   @override
@@ -302,7 +327,8 @@ abstract class _News extends News {
       required final List<String> keywords,
       required final DateTime datePublished,
       final Future<Uint8List?>? imageBytes,
-      final Future<String>? imageUrl}) = _$_News;
+      final Future<String>? imageUrl,
+      required final List<Resource> listRessources}) = _$_News;
   const _News._() : super._();
 
   @override
@@ -331,6 +357,8 @@ abstract class _News extends News {
 
   /// Image URL pour le web
   Future<String>? get imageUrl;
+  @override
+  List<Resource> get listRessources;
   @override
   @JsonKey(ignore: true)
   _$$_NewsCopyWith<_$_News> get copyWith => throw _privateConstructorUsedError;

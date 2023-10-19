@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
-import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/component/panel_list_resources.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -84,54 +83,7 @@ class _Body extends StatelessWidget {
         SpaceH30(),
 
         //Liste des PDFs associés à la réponse
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Text("Documents", style: Theme.of(context).textTheme.titleSmall),
-        ),
-        SpaceH10(),
-
-        // Liste des PDFs
-        ...choice.listRessources
-            .where((element) => element.type == ResourceType.document)
-            .map((Resource resource) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14.0),
-            child: ResourceTile(resource: resource),
-          );
-        }).toList(),
-        if (choice.listRessources.where((element) => element.type == ResourceType.document).length == 0)
-          Align(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14.0),
-              child: Text('Pas de documents', style: Theme.of(context).textTheme.bodyMedium),
-            ),
-          ),
-
-        // Liste des vidéos
-        SpaceH10(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Text("Vidéos", style: Theme.of(context).textTheme.titleSmall),
-        ),
-        SpaceH10(),
-        ...choice.listRessources
-            .where((Resource resourceDoc) => resourceDoc.type == ResourceType.video)
-            .map((Resource resource) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14.0),
-            child: ResourceTile(resource: resource),
-          );
-        }).toList(),
-        if (choice.listRessources
-                .where((Resource resourceVideo) => resourceVideo.type == ResourceType.video)
-                .length ==
-            0)
-          Align(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14.0),
-              child: Text('Pas de vidéos', style: Theme.of(context).textTheme.bodyMedium),
-            ),
-          ),
+        PanelListResources(choice.listRessources),
 
         SpaceH40(),
         Align(

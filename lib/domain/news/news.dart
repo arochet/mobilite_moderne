@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
-import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 
 part 'news.freezed.dart';
 
@@ -31,6 +31,7 @@ abstract class News with _$News {
 
     /// Image URL pour le web
     Future<String>? imageUrl,
+    required List<Resource> listRessources,
   }) = _News;
 
   factory News.empty() => News(
@@ -41,5 +42,6 @@ abstract class News with _$News {
         subcontent: '',
         keywords: [],
         datePublished: DateTime.now(),
+        listRessources: [],
       );
 }

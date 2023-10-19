@@ -14,6 +14,9 @@ _$_NewsDTO _$$_NewsDTOFromJson(Map<String, dynamic> json) => _$_NewsDTO(
       keywords:
           (json['keywords'] as List<dynamic>).map((e) => e as String).toList(),
       datePublished: json['datePublished'] as int,
+      listRessources: (json['listRessources'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_NewsDTOToJson(_$_NewsDTO instance) =>
@@ -24,4 +27,5 @@ Map<String, dynamic> _$$_NewsDTOToJson(_$_NewsDTO instance) =>
       'subcontent': instance.subcontent,
       'keywords': instance.keywords,
       'datePublished': instance.datePublished,
+      'listRessources': instance.listRessources,
     };

@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 part 'news_dtos.freezed.dart';
 part 'news_dtos.g.dart';
 
@@ -20,6 +21,7 @@ abstract class NewsDTO implements _$NewsDTO {
     required String subcontent,
     required List<String> keywords,
     required int datePublished,
+    required List<String>? listRessources,
   }) = _NewsDTO;
 
   factory NewsDTO.fromDomain(News obj) {
@@ -31,10 +33,11 @@ abstract class NewsDTO implements _$NewsDTO {
       subcontent: obj.subcontent,
       keywords: obj.keywords,
       datePublished: obj.datePublished.millisecondsSinceEpoch,
+      listRessources: null,
     );
   }
 
-  News toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl}) {
+  News toDomain({Future<Uint8List?>? imageBytes, Future<String>? imageUrl, List<Resource>? listRessources}) {
     assert(imageBytes == null || imageUrl == null); // On est soit en web soit en mobile
     return News(
       id: UniqueId.fromUniqueString(id!),
@@ -46,6 +49,7 @@ abstract class NewsDTO implements _$NewsDTO {
       imageBytes: imageBytes,
       imageUrl: imageUrl,
       datePublished: DateTime.fromMillisecondsSinceEpoch(datePublished),
+      listRessources: listRessources ?? [],
     );
   }
 

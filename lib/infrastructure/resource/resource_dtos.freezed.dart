@@ -216,7 +216,7 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResourceDTO extends _ResourceDTO {
+class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
   const _$_ResourceDTO(
       {@JsonKey(ignore: true) this.id,
       required this.nom,
@@ -263,8 +263,25 @@ class _$_ResourceDTO extends _ResourceDTO {
   final String image;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ResourceDTO(id: $id, nom: $nom, type: $type, documentPath: $documentPath, idCategory: $idCategory, keyword: $keyword, description: $description, shortDescription: $shortDescription, mainCategory: $mainCategory, image: $image)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResourceDTO'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('nom', nom))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('documentPath', documentPath))
+      ..add(DiagnosticsProperty('idCategory', idCategory))
+      ..add(DiagnosticsProperty('keyword', keyword))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('shortDescription', shortDescription))
+      ..add(DiagnosticsProperty('mainCategory', mainCategory))
+      ..add(DiagnosticsProperty('image', image));
   }
 
   @override

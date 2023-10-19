@@ -22,11 +22,11 @@ abstract class IAssistantDiagnosticRepository {
 @LazySingleton(as: IAssistantDiagnosticRepository)
 class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
   final FirebaseFirestore _firestore;
-  final IResourceRepository _articleRepository;
+  final IResourceRepository _resourceRepository;
 
   AssistantDiagnosticRepository(
     this._firestore,
-    this._articleRepository,
+    this._resourceRepository,
   );
 
   @override
@@ -133,7 +133,7 @@ class AssistantDiagnosticRepository implements IAssistantDiagnosticRepository {
 
         for (var idResource in dto.listRessources ?? []) {
           final eitherResource =
-              await _articleRepository.getResourceWithId(UniqueId.fromUniqueString(idResource));
+              await _resourceRepository.getResourceWithId(UniqueId.fromUniqueString(idResource));
           eitherResource.fold(
               (l) => Resource.error(l.toString()), (resource) => listFutureResource.add(resource));
         }

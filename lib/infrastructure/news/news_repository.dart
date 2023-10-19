@@ -4,11 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/load_image.dart';
+import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_repository.dart';
 import 'news_dtos.dart';
 
 abstract class INewsRepository {
@@ -23,10 +25,12 @@ abstract class INewsRepository {
 class NewsRepository implements INewsRepository {
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
+  final IResourceRepository _resourceRepository;
 
   NewsRepository(
     this._firestore,
     this._storage,
+    this._resourceRepository,
   );
 
   @override
@@ -132,10 +136,22 @@ class NewsRepository implements INewsRepository {
     final collection = _firestore.newsCollection.doc(id.getOrCrash());
     final storageRef = _storage.ref(); //Storage REF
 
-    return collection.get().then((doc) {
-      return right(NewsDTO.fromFirestore(doc).toDomain(
+    return collection.get().then((doc) async {
+      final dto = NewsDTO.fromFirestore(doc);
+
+      //Récupère la liste des ressources associé à l'article
+      final List<Resource> listFutureResource = [];
+      for (var idResource in dto.listRessources ?? []) {
+        final eitherResource =
+            await _resourceRepository.getResourceWithId(UniqueId.fromUniqueString(idResource));
+        eitherResource.fold(
+            (l) => Resource.error(l.toString()), (resource) => listFutureResource.add(resource));
+      }
+
+      return right(dto.toDomain(
         imageBytes: kIsWeb ? null : loadImage(storageRef, doc['image']),
         imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
+        listRessources: listFutureResource,
       ));
     }) /* .onError((e, stackTrace) => left(const NewsFailure.unexpected())) */;
   }

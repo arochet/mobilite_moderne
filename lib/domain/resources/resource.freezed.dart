@@ -24,7 +24,8 @@ mixin _$Resource {
   List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
-  ResourceMainCategory get mainCategory => throw _privateConstructorUsedError;
+  ResourceMainCategory get mainCategory =>
+      throw _privateConstructorUsedError; // Nom du fichier de l'image
   String get image => throw _privateConstructorUsedError;
 
   /// Image qui est charger avec le paramètre image
@@ -279,6 +280,7 @@ class _$_Resource extends _Resource {
   final String shortDescription;
   @override
   final ResourceMainCategory mainCategory;
+// Nom du fichier de l'image
   @override
   final String image;
 
@@ -378,7 +380,7 @@ abstract class _Resource extends Resource {
   String get shortDescription;
   @override
   ResourceMainCategory get mainCategory;
-  @override
+  @override // Nom du fichier de l'image
   String get image;
   @override
 

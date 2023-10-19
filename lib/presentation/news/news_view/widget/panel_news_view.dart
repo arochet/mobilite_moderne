@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storage.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/component/panel_list_resources.dart';
 
 class PanelNewsView extends StatelessWidget {
   final News news;
@@ -55,6 +55,9 @@ class PanelNewsView extends StatelessWidget {
             ),
             SpaceH10(),
             //insert-info
+
+            //RESSOURCES
+            PanelListResources(news.listRessources),
           ],
         ),
       ),
