@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/date_utils.dart';
@@ -66,6 +67,12 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
         return AppAsync(
           ref.watch(allMessageProvider),
           builder: (data) => data!.fold((error) => AppError(message: error.toString()), (listMessage) {
+            //Scroll to bottom
+            SchedulerBinding.instance?.addPostFrameCallback((_) {
+              _controllerListMessage.animateTo(_controllerListMessage.position.maxScrollExtent,
+                  duration: const Duration(milliseconds: 1), curve: Curves.fastOutSlowIn);
+            });
+
             return ListView(controller: _controllerListMessage, children: [
               //Liste des messages
               ...listMessage
@@ -80,7 +87,6 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
                   AppDateUtils.formatDate(listMessage[listMessage.length - 1].date, "HH:mm"),
                   style: Theme.of(context).textTheme.bodySmall,
                 )),
-
               SpaceH20(),
             ]);
           }),
