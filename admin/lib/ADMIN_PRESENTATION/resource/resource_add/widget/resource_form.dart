@@ -6,6 +6,7 @@ import 'package:admin/providers.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -17,6 +18,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:read_pdf_text/read_pdf_text.dart';
 
 class ResourceFormProvider extends ConsumerWidget {
   const ResourceFormProvider({
@@ -61,13 +63,24 @@ class ResourceFormProvider extends ConsumerWidget {
   }
 }
 
-class ResourceForm extends ConsumerWidget {
-  const ResourceForm({
-    Key? key,
-  }) : super(key: key);
+class ResourceForm extends ConsumerStatefulWidget {
+  const ResourceForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _ResourceFormState createState() => _ResourceFormState();
+}
+
+class _ResourceFormState extends ConsumerState<ResourceForm> {
+  late TextEditingController _descriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    _descriptionController = TextEditingController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final AddResourceFormData resourceFormData = ref.watch(resourceFormNotifierProvider);
     return GestureDetector(
       onTap: () {
@@ -77,7 +90,7 @@ class ResourceForm extends ConsumerWidget {
         autovalidateMode: AutovalidateMode.always,
         child: ListView(padding: const EdgeInsets.all(18), shrinkWrap: true, children: [
           const SizedBox(height: 8),
-          //insert-field-complete
+          // NOM
           TextFormField(
             decoration: const InputDecoration(labelText: 'Nom'),
             autocorrect: false,
@@ -93,6 +106,8 @@ class ResourceForm extends ConsumerWidget {
           Text(resourceFormData.nameFile ?? "",
               style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey)),
           SpaceH10(),
+
+          // AJOUTER UN FICHIER
           ElevatedButton(
               onPressed: () async {
                 try {
@@ -113,6 +128,13 @@ class ResourceForm extends ConsumerWidget {
                       ref
                           .read(resourceFormNotifierProvider.notifier)
                           .fileMOBILEchanged(File(platformFile.path!), platformFile.name);
+
+                      // TODO : Ajouter la conversion du fichier en texte pour la description
+                      // >>>>>>>>      <<<<<<<<<<<
+                      final textFromPDF = await getPDFtext(platformFile.path!);
+                      print('textFromPDF : $textFromPDF');
+                      _descriptionController.text = textFromPDF;
+                      ref.read(resourceFormNotifierProvider.notifier).descriptionChanged(textFromPDF);
                     }
                   } else {
                     // User canceled the picker
@@ -129,11 +151,16 @@ class ResourceForm extends ConsumerWidget {
           SpaceH20(),
 
           // DESCRIPTION
+          Text(
+              "L'ajout automatique de description lié au PDF est uniqment disponible sur mobile. Elle sert uniquement pour le moteur de recherche",
+              style: Theme.of(context).textTheme.bodySmall),
+          SpaceH5(),
           TextFormField(
             decoration: const InputDecoration(labelText: 'Description'),
             autocorrect: false,
+            controller: _descriptionController,
             minLines: 5,
-            maxLines: 200,
+            maxLines: 20,
             onChanged: (value) {
               ref.read(resourceFormNotifierProvider.notifier).descriptionChanged(value);
             },
@@ -255,5 +282,22 @@ class ResourceForm extends ConsumerWidget {
         ]),
       ),
     );
+  }
+
+  Future<String> getPDFtext(String path) async {
+    String text = "";
+    try {
+      text = await ReadPdfText.getPDFtext(path);
+    } on PlatformException {
+      print('Failed to get PDF text.');
+    }
+    return text;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _descriptionController.dispose();
   }
 }

@@ -108,7 +108,7 @@ class ResourceRepository implements IResourceRepository {
           (snapshot) => right<ResourceFailure, List<Resource>>(
             snapshot.docs.map((doc) {
               try {
-                return ResourceDTO.fromFirestore(doc).toDomain();
+                return ResourceDTO.fromFirestore(doc).toDomain(null);
               } catch (e) {}
               return Resource.empty();
             }).toList(),
@@ -128,7 +128,7 @@ class ResourceRepository implements IResourceRepository {
     final collection = _firestore.resourcesCollection.doc(id.getOrCrash());
 
     return collection.get().then((doc) => right(ResourceDTO.fromFirestore(doc)
-        .toDomain())) /* .onError((e, stackTrace) => left(const ResourceFailure.unexpected())) */;
+        .toDomain(null))) /* .onError((e, stackTrace) => left(const ResourceFailure.unexpected())) */;
   }
 
   @override
@@ -233,7 +233,7 @@ class ResourceRepository implements IResourceRepository {
             if (element != null && element != '') {
               final resource = await collectionResources.doc(element).get();
               if (resource.data() != null) {
-                listResources.add(ResourceDTO.fromFirestore(resource).toDomain());
+                listResources.add(ResourceDTO.fromFirestore(resource).toDomain(null));
               } else {
                 print('Erreur ! Resource $element non trouvée');
               }
