@@ -160,13 +160,16 @@ class MessageRepository implements IMessageRepository {
                     imageRead = null;
                   }
                 }
-
+                //AREVOIR -> Le chargmenet des l'image y'a trop de duplication
                 return dto.toDomain(
-                  imageBytes: kIsWeb ? null : loadImage(storageRef, doc['image']),
+                  imageBytes: !kIsWeb ? loadImage(storageRef, doc['image']) : null,
                   imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
                 );
-              } catch (e) {}
-              return Message.empty();
+              } catch (e, trace) {
+                print('MessageError : $e');
+                print('$trace');
+              }
+              return Message.error();
             }).toList(),
           ),
         )

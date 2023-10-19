@@ -1,3 +1,4 @@
+import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/date_utils.dart';
 
@@ -68,8 +69,8 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
             return ListView(controller: _controllerListMessage, children: [
               //Liste des messages
               ...listMessage
-                  .map<Widget>(
-                      (messageObj) => PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
+                  .map<Widget>((Message messageObj) =>
+                      PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
                   .toList(),
 
               //Heure du dernier message

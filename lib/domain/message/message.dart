@@ -39,4 +39,13 @@ abstract class Message with _$Message {
         imagePath: null,
         idUser: UniqueId(),
       );
+  factory Message.error() => Message(
+        id: UniqueId(),
+        text: 'Error',
+        date: DateTime.now(),
+        imageRead: null,
+        imageSend: null,
+        imagePath: null,
+        idUser: UniqueId(),
+      );
 }

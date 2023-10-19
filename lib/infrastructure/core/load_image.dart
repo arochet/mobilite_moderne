@@ -2,32 +2,32 @@ import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-Future<Uint8List?> loadImage(Reference storageRef, String path) async {
+Future<Uint8List?>? loadImage(Reference storageRef, String? path) {
   try {
     //Chargement de l'image
 
-    if (path != "") {
+    if (path != "" && path != null) {
       final imgRef = storageRef.child(path);
       const tenMegabyte = 1024 * 1024 * 10;
-      final data = await imgRef.getData(tenMegabyte);
-      return data;
-    } else {}
+      return imgRef.getData(tenMegabyte);
+    }
+    return null;
   } catch (e) {
     print('Erreur lors du chargement de l\'image MOBILE');
     print(e);
   }
 }
 
-Future<String> loadImageWeb(Reference storageRef, String path) async {
+Future<String>? loadImageWeb(Reference storageRef, String path) {
   try {
     //Chargement de l'image
     if (path != "") {
-      return await storageRef.child(path).getDownloadURL();
+      return storageRef.child(path).getDownloadURL();
     }
-    return "";
+    return null;
   } catch (e) {
     print('Erreur lors du chargement de l\'image WEB');
     print(e);
-    return "";
+    return null;
   }
 }
