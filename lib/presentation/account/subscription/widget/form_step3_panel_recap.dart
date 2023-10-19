@@ -21,12 +21,17 @@ class _PanelRecapState extends ConsumerState<PanelRecap> {
         children: [
           SpaceH10(),
           Center(
-            child: Text(
-              "Récapitulatif de votre abonnement",
-              style: Theme.of(context).textTheme.titleLarge,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                "Récapitulatif de votre abonnement",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             ),
           ),
-          SpaceH30(),
+          SpaceH10(),
+
+          //ADRESSE DE FACTURATION
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text("Adresse de facturation", style: Theme.of(context).textTheme.titleMedium),
@@ -49,6 +54,34 @@ class _PanelRecapState extends ConsumerState<PanelRecap> {
             ),
           ),
           SpaceH20(),
+
+          //RECAPITULATIF ABONNEMENT
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text("Somme à payer", style: Theme.of(context).textTheme.titleMedium),
+          ),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Abonnement Dist'Atelier : 10€/mois", style: Theme.of(context).textTheme.bodyLarge),
+                  SpaceH10(),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text("Somme à payer : 10€",
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SpaceH20(),
+
+          //BOUTONS DE VALIDATION
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
