@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
@@ -31,44 +29,6 @@ class PanelMessageView extends StatelessWidget {
                   ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _MessageImage extends StatelessWidget {
-  final Future<Uint8List?>? imageRead;
-  const _MessageImage(this.imageRead, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      //width: 300,
-      child: FutureBuilder(
-        future: imageRead,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data == null)
-              return Icon(Icons.broken_image, color: Colors.red);
-            else
-              return Image.memory(
-                snapshot.data as Uint8List,
-                height: 200,
-                fit: BoxFit.scaleDown,
-              );
-          } else if (snapshot.hasError) {
-            return Center(
-                child: Text("Error ${snapshot.error}", style: Theme.of(context).textTheme.bodyMedium));
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: const CircularProgressIndicator());
-          } else if (snapshot.connectionState == ConnectionState.none) {
-            return Icon(Icons.broken_image, color: Colors.blue);
-          } else {
-            return Text("${snapshot.connectionState} ${snapshot.stackTrace}",
-                style: Theme.of(context).textTheme.bodyMedium);
-          }
-        },
       ),
     );
   }

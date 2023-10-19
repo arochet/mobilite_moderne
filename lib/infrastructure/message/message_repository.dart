@@ -148,22 +148,10 @@ class MessageRepository implements IMessageRepository {
               try {
                 final MessageDTO dto = MessageDTO.fromFirestore(doc);
 
-                //Image !
-                Future<Uint8List?>? imageRead;
-                if (dto.imagePath != null) {
-                  try {
-                    final ref = _storage.ref().child(dto.imagePath!);
-                    const oneMegabyte = 2048 * 2048;
-                    imageRead = ref.getData(oneMegabyte);
-                  } catch (e) {
-                    print('Fatal Error : $e');
-                    imageRead = null;
-                  }
-                }
                 //AREVOIR -> Le chargmenet des l'image y'a trop de duplication
                 return dto.toDomain(
-                  imageBytes: !kIsWeb ? loadImage(storageRef, doc['image']) : null,
-                  imageUrl: kIsWeb ? loadImageWeb(storageRef, doc['image']) : null,
+                  imageBytes: !kIsWeb ? loadImage(storageRef, dto.imagePath) : null,
+                  imageUrl: kIsWeb ? loadImageWeb(storageRef, dto.imagePath) : null,
                 );
               } catch (e, trace) {
                 print('MessageError : $e');

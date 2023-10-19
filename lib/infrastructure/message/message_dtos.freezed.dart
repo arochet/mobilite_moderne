@@ -24,7 +24,6 @@ mixin _$MessageDTO {
   String? get id => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   int get date => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
   String? get imagePath => throw _privateConstructorUsedError;
   String get idUser => throw _privateConstructorUsedError;
 
@@ -44,7 +43,6 @@ abstract class $MessageDTOCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String? text,
       int date,
-      String? image,
       String? imagePath,
       String idUser});
 }
@@ -65,7 +63,6 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
     Object? id = freezed,
     Object? text = freezed,
     Object? date = null,
-    Object? image = freezed,
     Object? imagePath = freezed,
     Object? idUser = null,
   }) {
@@ -82,10 +79,6 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as int,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -110,7 +103,6 @@ abstract class _$$_MessageDTOCopyWith<$Res>
       {@JsonKey(ignore: true) String? id,
       String? text,
       int date,
-      String? image,
       String? imagePath,
       String idUser});
 }
@@ -129,7 +121,6 @@ class __$$_MessageDTOCopyWithImpl<$Res>
     Object? id = freezed,
     Object? text = freezed,
     Object? date = null,
-    Object? image = freezed,
     Object? imagePath = freezed,
     Object? idUser = null,
   }) {
@@ -146,10 +137,6 @@ class __$$_MessageDTOCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as int,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -169,7 +156,6 @@ class _$_MessageDTO extends _MessageDTO {
       {@JsonKey(ignore: true) this.id,
       required this.text,
       required this.date,
-      required this.image,
       required this.imagePath,
       required this.idUser})
       : super._();
@@ -185,15 +171,13 @@ class _$_MessageDTO extends _MessageDTO {
   @override
   final int date;
   @override
-  final String? image;
-  @override
   final String? imagePath;
   @override
   final String idUser;
 
   @override
   String toString() {
-    return 'MessageDTO(id: $id, text: $text, date: $date, image: $image, imagePath: $imagePath, idUser: $idUser)';
+    return 'MessageDTO(id: $id, text: $text, date: $date, imagePath: $imagePath, idUser: $idUser)';
   }
 
   @override
@@ -204,7 +188,6 @@ class _$_MessageDTO extends _MessageDTO {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.image, image) || other.image == image) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
             (identical(other.idUser, idUser) || other.idUser == idUser));
@@ -213,7 +196,7 @@ class _$_MessageDTO extends _MessageDTO {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, text, date, image, imagePath, idUser);
+      Object.hash(runtimeType, id, text, date, imagePath, idUser);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +217,6 @@ abstract class _MessageDTO extends MessageDTO {
       {@JsonKey(ignore: true) final String? id,
       required final String? text,
       required final int date,
-      required final String? image,
       required final String? imagePath,
       required final String idUser}) = _$_MessageDTO;
   const _MessageDTO._() : super._();
@@ -249,8 +231,6 @@ abstract class _MessageDTO extends MessageDTO {
   String? get text;
   @override
   int get date;
-  @override
-  String? get image;
   @override
   String? get imagePath;
   @override

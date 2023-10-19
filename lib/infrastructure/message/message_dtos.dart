@@ -16,7 +16,6 @@ abstract class MessageDTO implements _$MessageDTO {
     @JsonKey(ignore: true) String? id,
     required String? text,
     required int date,
-    required String? image,
     required String? imagePath,
     required String idUser,
   }) = _MessageDTO;
@@ -26,7 +25,6 @@ abstract class MessageDTO implements _$MessageDTO {
       id: obj.id.getOrCrash(),
       text: obj.text,
       date: obj.date.millisecondsSinceEpoch,
-      image: null,
       imagePath: imagePath ?? obj.imagePath,
       idUser: idUser?.getOrCrash() ?? obj.idUser.getOrCrash(),
     );
