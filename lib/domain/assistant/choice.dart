@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/value_objects.dart';
+import 'package:mobilite_moderne/DOMAIN/assistant/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';

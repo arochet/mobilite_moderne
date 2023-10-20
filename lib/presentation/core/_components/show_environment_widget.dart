@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:mobilite_moderne/DOMAIN/assistant_diagnostic/choice.dart';
+import 'package:mobilite_moderne/DOMAIN/assistant/choice.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';

@@ -55,38 +55,49 @@ class HomePage extends StatelessWidget {
                               context.router.push(AssistantRoute());
                             },
                             child: Text('Assistant Technique'),
+                            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                ),
                           ),
                         ),
                         SizedBox(height: 5),
                         Text(
                             "Trouvez ici les solutions à vos problèmes: fiches techniques, vidéos, messagerie ou visio-assistance",
-                            style: Theme.of(context).textTheme.bodySmall),
+                            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
                         SpaceH20(),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () {
-                                printDev();
-                                context.router.push(Resource_menuRoute());
-                              },
-                              child: Text('Ressources')),
+                            onPressed: () {
+                              printDev();
+                              context.router.push(Resource_menuRoute());
+                            },
+                            child: Text('Ressources'),
+                            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                ),
+                          ),
                         ),
                         SizedBox(height: 5),
                         Text("Trouvez ici vos listes de fournisseurs par type de pièces et accéssoires",
-                            style: Theme.of(context).textTheme.bodySmall),
+                            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
                         SpaceH20(),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () {
-                                printDev();
-                                context.router.push(NewsListRoute());
-                              },
-                              child: Text('Actualités')),
+                            onPressed: () {
+                              printDev();
+                              context.router.push(NewsListRoute());
+                            },
+                            child: Text('Actualités'),
+                            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                ),
+                          ),
                         ),
                         SizedBox(height: 5),
                         Text("Les dernières actualités techniques",
-                            style: Theme.of(context).textTheme.bodySmall),
+                            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
                       ],
                     ),
                   )),
