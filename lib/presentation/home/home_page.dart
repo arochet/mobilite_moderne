@@ -4,6 +4,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widg
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_icons.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -14,66 +15,84 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShowEnvironment(
-      child: ShowComponentFile(
-        child: IsConnected(
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Center(
-                child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              constraints: BoxConstraints(maxWidth: 500),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //Image du logo
-                  Image.asset(
-                    AssetsImage.logo,
-                    width: 100,
-                  ),
-                  SizedBox(height: 70),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        printDev();
-                        context.router.push(AssistantRoute());
-                      },
-                      child: Text('Assistant Technique'),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AssetsImage.fondMenuWeb),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: ShowEnvironment(
+            child: ShowComponentFile(
+              child: IsConnected(
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Center(
+                      child: Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    constraints: BoxConstraints(maxWidth: 500),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //Image du logo
+                        /* Image.asset(
+                          AssetsImage.logo,
+                          width: 100,
+                        ) */
+                        Icon(
+                          MyFlutterApp.logo_blanc,
+                          size: 80,
+                          color: Colors.white,
+                        ),
+                        SizedBox(height: 70),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              printDev();
+                              context.router.push(AssistantRoute());
+                            },
+                            child: Text('Assistant Technique'),
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                            "Trouvez ici les solutions à vos problèmes: fiches techniques, vidéos, messagerie ou visio-assistance",
+                            style: Theme.of(context).textTheme.bodySmall),
+                        SpaceH20(),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                printDev();
+                                context.router.push(Resource_menuRoute());
+                              },
+                              child: Text('Ressources')),
+                        ),
+                        SizedBox(height: 5),
+                        Text("Trouvez ici vos listes de fournisseurs par type de pièces et accéssoires",
+                            style: Theme.of(context).textTheme.bodySmall),
+                        SpaceH20(),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                printDev();
+                                context.router.push(NewsListRoute());
+                              },
+                              child: Text('Actualités')),
+                        ),
+                        SizedBox(height: 5),
+                        Text("Les dernières actualités techniques",
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                      "Trouvez ici les solutions à vos problèmes: fiches techniques, vidéos, messagerie ou visio-assistance",
-                      style: Theme.of(context).textTheme.bodySmall),
-                  SpaceH20(),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          printDev();
-                          context.router.push(Resource_menuRoute());
-                        },
-                        child: Text('Ressources')),
-                  ),
-                  SizedBox(height: 5),
-                  Text("Trouvez ici vos listes de fournisseurs par type de pièces et accéssoires",
-                      style: Theme.of(context).textTheme.bodySmall),
-                  SpaceH20(),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          printDev();
-                          context.router.push(NewsListRoute());
-                        },
-                        child: Text('Actualités')),
-                  ),
-                  SizedBox(height: 5),
-                  Text("Les dernières actualités techniques", style: Theme.of(context).textTheme.bodySmall),
-                ],
+                  )),
+                ),
               ),
-            )),
+            ),
           ),
         ),
       ),

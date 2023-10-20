@@ -91,11 +91,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
       );
 
       //Container Informations personnelles
-      if (kIsWeb) return page;
-      return MainScaffold(
-        title: AppLocalizations.of(context)!.compte,
-        child: ShowComponentFile(title: 'account/account/account_pages.dart', child: page),
-      );
+      return page;
     });
   }
 }

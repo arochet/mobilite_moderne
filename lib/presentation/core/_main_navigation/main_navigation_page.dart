@@ -12,14 +12,7 @@ import 'side_bar_navigation.dart';
 class MainNavigationPage extends StatelessWidget {
   MainNavigationPage({Key? key}) : super(key: key);
 
-  final listRouteMOBILE = [
-    HomeRoute(), //HOMEPAGE
-    AssistantRoute(),
-    Resource_menuRoute(),
-    NewsListRoute(),
-  ];
-
-  final listRouteWEB = [
+  final listRoute = [
     AssistantRoute(),
     Resource_menuRoute(),
     NewsListRoute(),
@@ -28,34 +21,7 @@ class MainNavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listMenuMOBILE = [
-      {
-        "title": 'Home',
-        "icon": Icons.home_outlined,
-        "id": 0,
-      },
-      {
-        "title": 'Assistant',
-        "icon": MyFlutterApp.assistance,
-        "id": 1,
-      },
-      {
-        "title": 'Ressources',
-        "icon": MyFlutterApp.ressources,
-        "id": 2,
-      },
-      {
-        "title": 'Actualités',
-        "icon": Icons.notifications_active_outlined,
-        "id": 3,
-      },
-    ];
-    final listMenuWEB = [
-      /* {
-        "title": 'Home',
-        "icon": Icons.home_sharp,
-        "id": 0,
-      }, */
+    final listMenu = [
       {
         "title": 'Assistant',
         "icon": MyFlutterApp.assistance,
@@ -73,7 +39,7 @@ class MainNavigationPage extends StatelessWidget {
       },
       {
         "title": 'Compte',
-        "icon": Icons.account_circle,
+        "icon": Icons.account_circle_outlined,
         "id": 3,
       },
     ];
@@ -81,13 +47,13 @@ class MainNavigationPage extends StatelessWidget {
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth > 600)
           return SideBarNavigation(
-            listRoute: kIsWeb ? listRouteWEB : listRouteMOBILE,
-            listMenu: kIsWeb ? listMenuWEB : listMenuMOBILE,
+            listRoute: listRoute,
+            listMenu: listMenu,
           );
         else
           return BottomBarNavigation(
-            listRoute: kIsWeb ? listRouteWEB : listRouteMOBILE,
-            listMenu: kIsWeb ? listMenuWEB : listMenuMOBILE,
+            listRoute: listRoute,
+            listMenu: listMenu,
           );
       }),
     );

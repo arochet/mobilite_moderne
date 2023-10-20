@@ -78,7 +78,9 @@ class AppWidget extends StatelessWidget {
         //DIALOG THEME
         dialogTheme: DialogTheme(
             backgroundColor: colorpanel(800),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid)),
             actionsPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
 
         //CHAMPS DE FORMULAIRE

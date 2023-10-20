@@ -15,7 +15,7 @@ class BottomBarNavigation extends ConsumerWidget {
   final List listMenu;
 
   PreferredSizeWidget _appBar(context, ref, int index, sizeHeight) {
-    if (index == 1) {
+    if (index == 0) {
       return buildAppBarAssistance(context, sizeHeight);
     } else {
       return buildAppBar(context, ref, 'Dist Atelier',

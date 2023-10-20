@@ -6,6 +6,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/resource/algolia_application.dar
 import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 import 'package:mobilite_moderne/providers.dart';
 
@@ -55,7 +56,7 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
                   hintText: 'Rechercher',
                   prefixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
+                    borderSide: BorderSide(color: primaryColor, width: 1.0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),

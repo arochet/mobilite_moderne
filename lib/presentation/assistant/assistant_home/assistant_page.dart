@@ -80,7 +80,7 @@ class AssistantPage extends ConsumerWidget {
                         onPressed: () async {
                           printDev();
                           if (kIsWeb) {
-                            final _url = 'https://toulon.mobilitemoderne.fr/smart-agenda.html';
+                            final _url = 'https://www.smartagenda.fr/pro/dist-atelier/rendez-vous/';
                             if (!await launchUrl(Uri.parse(_url))) {
                               throw Exception('Could not launch $_url');
                             }

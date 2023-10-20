@@ -48,6 +48,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/', page: SplashRoute.page),
         AutoRoute(path: '*', page: SplashRoute.page),
         AutoRoute(
+          path: '/home',
+          page: HomeRoute.page, //HOMEPAGE
+        ),
+        AutoRoute(
           path: '/',
           page: MainNavigationRoute.page,
           children: [
