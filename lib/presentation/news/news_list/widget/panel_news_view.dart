@@ -9,6 +9,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storag
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/news/components/list_keywords_chips.dart';
 import '../../../core/_core/router.dart';
 
 class PanelNewsView extends StatelessWidget {
@@ -21,15 +22,12 @@ class PanelNewsView extends StatelessWidget {
       title: 'PanelNewsView',
       child: Card(
         color: colorpanel(900),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
-            if (constraints.maxWidth > 600)
-              return _LargeCard(news: news);
-            else
-              return _CompressedCard(news: news);
-          }),
-        ),
+        child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
+          if (constraints.maxWidth > 600)
+            return _LargeCard(news: news);
+          else
+            return _CompressedCard(news: news);
+        }),
       ),
     );
   }
@@ -45,37 +43,55 @@ class _CompressedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //TITRE
-        Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
-        SpaceH10(),
-
-        //IMAGE
-        ImageFromStorage(
-          url: news.imageUrl,
-          bytes: news.imageBytes,
-        ),
-
-        SpaceH20(),
-
-        //CONTENU
-        AutoSizeText("${news.content}",
-            overflow: TextOverflow.ellipsis, maxLines: 4, style: Theme.of(context).textTheme.bodyMedium),
-        SpaceH10(),
-
-        //BOUTON VOIR
-        Center(
-          child: ElevatedButton(
-            onPressed: () {
-              context.router.push(NewsViewRoute(id: news.id));
-            },
-            child: Text("Voir"),
-            style: Theme.of(context).extension<AppThemeExtention>()?.buttonLight,
+    return Container(
+      height: 280,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //IMAGE
+          Expanded(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                ImageFromStorage(
+                    url: news.imageUrl,
+                    bytes: news.imageBytes,
+                    fit: BoxFit.cover,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    )),
+                Positioned(top: 5, left: 6, child: ListKeywordsChips(news: news)),
+              ],
+            ),
           ),
-        ),
-      ],
+
+          InkWell(
+            onTap: () => context.router.push(NewsViewRoute(id: news.id)),
+            child: Container(
+              height: 60,
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text("${news.title.getOrCrash()}",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
+                    ),
+                    const SpaceH5(),
+                    Icon(Icons.remove_red_eye, color: Colors.white),
+                    const SpaceH5(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

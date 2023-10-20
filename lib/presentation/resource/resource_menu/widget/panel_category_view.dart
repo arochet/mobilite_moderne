@@ -22,11 +22,7 @@ class PanelCategoryView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text("${category.nom.getOrCrash()}",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(color: Theme.of(context).primaryColor)),
+              Text("${category.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
               SizedBox(height: 5),
               Divider(),
               SizedBox(height: 10),

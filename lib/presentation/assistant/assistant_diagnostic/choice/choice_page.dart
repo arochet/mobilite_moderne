@@ -75,50 +75,42 @@ class _PanelChoiceView extends StatelessWidget {
 
           //Titre de la question
           Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
-          SpaceH20(),
+          SpaceH30(),
 
           //Carte
           Align(
             alignment: Alignment.center,
             child: Container(
               constraints: BoxConstraints(maxWidth: 600),
-              child: Card(
-                color: colorpanel(900),
-                child: Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: SizedBox(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        //Question
-                        Text("${choice.question?.getOrCrash()}",
-                            style: Theme.of(context).textTheme.titleMedium),
-                        Divider(),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //Question
+                    Text("${choice.question?.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
+                    SizedBox(height: 20),
 
-                        //Réponses menant à d'autres questions
-                        ...choice.choiceQuestion
-                                ?.map((ChoiceWithQuestions choice) => _TileChoice(
-                                      title: choice.nom.getOrCrash(),
-                                      onTap: () => context.router.push(ChoiceRoute(
-                                          choice: choice,
-                                          filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                                    ))
-                                .toList() ??
-                            [],
+                    //Réponses menant à d'autres questions
+                    ...choice.choiceQuestion
+                            ?.map((ChoiceWithQuestions choice) => _TileChoice(
+                                  title: choice.nom.getOrCrash(),
+                                  onTap: () => context.router.push(ChoiceRoute(
+                                      choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                ))
+                            .toList() ??
+                        [],
 
-                        //Réponses menant à des documents
-                        ...choice.choiceAnswer
-                                ?.map((ChoiceWithAnswer choice) => _TileChoice(
-                                      title: choice.nom.getOrCrash(),
-                                      onTap: () => context.router.push(AnswerRoute(
-                                          choice: choice,
-                                          filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
-                                    ))
-                                .toList() ??
-                            [],
-                      ],
-                    ),
-                  ),
+                    //Réponses menant à des documents
+                    ...choice.choiceAnswer
+                            ?.map((ChoiceWithAnswer choice) => _TileChoice(
+                                  title: choice.nom.getOrCrash(),
+                                  onTap: () => context.router.push(AnswerRoute(
+                                      choice: choice, filAriane: '$filAriane/${choice.nom.getOrCrash()}')),
+                                ))
+                            .toList() ??
+                        [],
+                  ],
                 ),
               ),
             ),
@@ -151,13 +143,12 @@ class _TileChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title, style: Theme.of(context).textTheme.bodyMedium),
-      trailing: const Icon(
-        Icons.arrow_forward_ios,
-        size: 15,
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onTap,
+        child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
       ),
-      onTap: onTap,
     );
   }
 }

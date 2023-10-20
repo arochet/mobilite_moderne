@@ -43,14 +43,14 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SizedBox(height: 15),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: ListView(
+        children: [
+          SizedBox(height: 15),
 
-        //Fil d'ariane
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          child: Wrap(
+          //Fil d'ariane
+          Wrap(
               children: filAriane
                   .split('/')
                   .map((e) => e.length > 1
@@ -63,38 +63,36 @@ class _Body extends StatelessWidget {
                         )
                       : Container())
                   .toList()),
-        ),
 
-        SpaceH30(),
+          SpaceH30(),
 
-        //Titre de la réponse
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22.0),
-          child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
-        ),
-        //Réponse au format Texte
-        Card(
-          margin: EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Text("${choice.answer.getOrCrash()}", style: Theme.of(context).textTheme.bodyMedium),
+          //Titre de la réponse
+          Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
+          SpaceH10(),
+          //Réponse au format Texte
+          Card(
+            margin: EdgeInsets.all(0),
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Text("${choice.answer.getOrCrash()}", style: Theme.of(context).textTheme.bodyMedium),
+            ),
           ),
-        ),
-        SpaceH30(),
+          SpaceH30(),
 
-        //Liste des PDFs associés à la réponse
-        PanelListResources(choice.listRessources),
+          //Liste des PDFs associés à la réponse
+          PanelListResources(choice.listRessources),
 
-        SpaceH40(),
-        Align(
-          child: ElevatedButton(
-            onPressed: () {
-              context.router.popUntilRoot();
-            },
-            child: Text("Retour à l'accueil"),
+          SpaceH40(),
+          Align(
+            child: ElevatedButton(
+              onPressed: () {
+                context.router.popUntilRoot();
+              },
+              child: Text("Retour à l'accueil"),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

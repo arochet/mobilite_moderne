@@ -12,18 +12,23 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //COLOR
-    const Color primaryLightColor = Color.fromARGB(35, 0, 235, 200);
+    const Color primaryLightColor = Color.fromARGB(35, 0, 255, 0);
     const Color titleColor = Color(0xff00214d);
     const Color paragraphColor = Color(0xff1b2d45);
 
     //BUTTON
     ButtonStyle defaultButtonStyle = ElevatedButton.styleFrom(
-      backgroundColor: primaryColor, // Couleur primary
-      foregroundColor: Colors.black,
-      textStyle: TextStyle(fontWeight: FontWeight.bold),
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
-    );
+        backgroundColor: Colors.transparent, // Couleur primary
+        foregroundColor: Colors.black,
+        textStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Onest',
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+            side: BorderSide(color: primaryColor, width: 2.0, style: BorderStyle.solid)));
 
     return MaterialApp.router(
       title: 'Dist Atelier',
@@ -34,14 +39,21 @@ class AppWidget extends StatelessWidget {
         dialogBackgroundColor: Color.fromARGB(255, 135, 45, 252),
         scaffoldBackgroundColor: colorpanel(900),
         canvasColor: colorpanel(800),
+        fontFamily: 'Onest',
 
         //BUTTONS
         elevatedButtonTheme: ElevatedButtonThemeData(style: defaultButtonStyle),
         textButtonTheme: TextButtonThemeData(
           style: defaultButtonStyle.copyWith(
-            textStyle: MaterialStateProperty.all(
-                TextStyle(fontWeight: FontWeight.bold, decoration: TextDecoration.underline)),
+            textStyle: MaterialStateProperty.all(TextStyle(
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+              color: primaryColor,
+              fontFamily: 'Onest',
+            )),
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30.0)))),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
@@ -58,7 +70,10 @@ class AppWidget extends StatelessWidget {
             color: colorpanel(800),
             elevation: 0,
             margin: EdgeInsets.all(12),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
+            )),
 
         //DIALOG THEME
         dialogTheme: DialogTheme(
@@ -111,7 +126,10 @@ class AppWidget extends StatelessWidget {
         ),
 
         //DIVIDER
-        dividerColor: titleColor,
+        dividerTheme: DividerThemeData(
+          color: primaryColor,
+          thickness: 1,
+        ),
 
         //CHIP
         chipTheme: ChipThemeData(
@@ -254,7 +272,7 @@ Color? colorpanel(int tint) {
   }
 }
 
-const Color primaryColor = Color(0xff00ebc7);
+const Color primaryColor = Color.fromARGB(255, 0, 255, 0);
 
 /// PAGE TRANSITION THEME ////
 class NonePageTransitionsBuilder extends PageTransitionsBuilder {

@@ -109,3 +109,33 @@ flutter:
   assets:
     - config/
     - assets/icon/icon.png
+    - assets/icon/icon.png
+    - assets/background/assistance-diagnostic.jpg
+    - assets/background/assistance.jpg
+    - assets/background/compte.jpg
+    - assets/background/fond-menuweb.jpg
+    - assets/background/mediatheque.jpg
+    - assets/background/notice-constructeur.jpg
+    - assets/background/piece-fournisseur.jpg
+    - assets/background/ressource.jpg
+    - assets/background/visio-assistance.jpg
+  fonts:
+    - family: Onest
+      fonts:
+        - asset: fonts/onest/Onest-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/onest/Onest-Light.ttf
+          weight: 300
+        - asset: fonts/onest/Onest-Medium.ttf
+          weight: 400
+        - asset: fonts/onest/Onest-Regular.ttf
+          weight: 500
+        - asset: fonts/onest/Onest-SemiBold.ttf
+          weight: 600
+        - asset: fonts/onest/Onest-Bold.ttf
+          weight: 700
+        - asset: fonts/onest/Onest-ExtraBold.ttf
+          weight: 800
+    - family: MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf

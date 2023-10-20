@@ -7,6 +7,8 @@ class ImageFromStorage extends StatelessWidget {
   final Future<Uint8List?>? bytes;
   final double width;
   final double height;
+  final BoxFit? fit;
+  final BorderRadius? borderRadius;
 
   const ImageFromStorage({
     super.key,
@@ -14,6 +16,8 @@ class ImageFromStorage extends StatelessWidget {
     this.bytes,
     this.width = 200,
     this.height = 200,
+    this.fit,
+    this.borderRadius,
   });
 
   @override
@@ -35,10 +39,10 @@ class ImageFromStorage extends StatelessWidget {
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0),
+                      borderRadius: borderRadius ?? BorderRadius.circular(10.0),
                       child: FittedBox(
                         child: Image.network(snapshotUrl.data!),
-                        fit: BoxFit.fitHeight,
+                        fit: fit ?? BoxFit.fitHeight,
                       )),
                 );
               else {
@@ -63,10 +67,10 @@ class ImageFromStorage extends StatelessWidget {
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0),
+                      borderRadius: borderRadius ?? BorderRadius.circular(10.0),
                       child: FittedBox(
                         child: Image.memory(snapshotUrl.data!),
-                        fit: BoxFit.fitHeight,
+                        fit: fit ?? BoxFit.fitHeight,
                       )),
                 );
               else {

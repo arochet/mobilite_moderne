@@ -1,4 +1,5 @@
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
@@ -35,4 +36,22 @@ AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title,
           ]
         : null,
   );
+}
+
+PreferredSizeWidget buildAppBarAssistance(context, sizeHeight) {
+  return PreferredSize(
+      preferredSize: Size.fromHeight(sizeHeight), // here the desired height
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+            child: Image.asset(AssetsImage.assistance, height: sizeHeight, fit: BoxFit.cover),
+          ),
+          Center(
+              widthFactor: 1.3,
+              heightFactor: 7,
+              child: Text("Dist'Atelier",
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
+        ],
+      ));
 }

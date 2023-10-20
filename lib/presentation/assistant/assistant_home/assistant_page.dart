@@ -27,75 +27,75 @@ class AssistantPage extends ConsumerWidget {
           child: Column(
             children: [
               //Mon compte
-              if (!kIsWeb)
-                Row(
-                  children: [
-                    Expanded(child: Container()),
-                    MyAccount(),
-                    Expanded(child: Container()),
-                  ],
-                ),
+              Expanded(child: Container()),
+              Text("ASSISTANT", style: Theme.of(context).textTheme.titleLarge),
+              Expanded(child: Container()),
 
               //Menu
-              Expanded(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            printDev();
-                            context.router.push(ChoiceRoute(
-                                filAriane: "",
-                                choice: ChoiceWithQuestions(
-                                  id: UniqueId.fromUniqueString('votredemandeconcerne'),
-                                  nom: Nom("votredemandeconcerne"),
-                                  path: 'choice/votredemandeconcerne',
-                                  question: Question("votredemandeconcerne"),
-                                  choiceQuestion: null,
-                                  choiceAnswer: null,
-                                )));
-                          },
-                          child: Text("Assistant Diagnostic"),
-                        ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // BOUTON ASSISTANT DIAGNOSTIC
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          printDev();
+                          context.router.push(ChoiceRoute(
+                              filAriane: "",
+                              choice: ChoiceWithQuestions(
+                                id: UniqueId.fromUniqueString('votredemandeconcerne'),
+                                nom: Nom("votredemandeconcerne"),
+                                path: 'choice/votredemandeconcerne',
+                                question: Question("votredemandeconcerne"),
+                                choiceQuestion: null,
+                                choiceAnswer: null,
+                              )));
+                        },
+                        child: Text("Assistant Diagnostic"),
                       ),
-                      SizedBox(height: 10),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: ElevatedButton(
-                          onPressed: kIsWeb
-                              ? null
-                              : () async {
-                                  printDev();
-                                  context.router.push(MessageListRoute());
-                                },
-                          child: Text("Messagerie-Assistance"),
-                        ),
+                    ),
+                    SizedBox(height: 10),
+
+                    // BOUTON MESSAGERIE
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: kIsWeb
+                            ? null
+                            : () async {
+                                printDev();
+                                context.router.push(MessageListRoute());
+                              },
+                        child: Text("Messagerie-Assistance"),
                       ),
-                      SizedBox(height: 10),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            printDev();
-                            if (kIsWeb) {
-                              final _url = 'https://toulon.mobilitemoderne.fr/smart-agenda.html';
-                              if (!await launchUrl(Uri.parse(_url))) {
-                                throw Exception('Could not launch $_url');
-                              }
-                            } else {
-                              context.router.push(Assistant_visioRoute());
+                    ),
+                    SizedBox(height: 10),
+
+                    // BOUTON VISIO ASSISTANCE
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          printDev();
+                          if (kIsWeb) {
+                            final _url = 'https://toulon.mobilitemoderne.fr/smart-agenda.html';
+                            if (!await launchUrl(Uri.parse(_url))) {
+                              throw Exception('Could not launch $_url');
                             }
-                          },
-                          child: Text("Visio Assistance"),
-                        ),
+                          } else {
+                            context.router.push(Assistant_visioRoute());
+                          }
+                        },
+                        child: Text("Visio Assistance"),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
+
+              Expanded(child: Container()),
             ],
           ),
         ),
