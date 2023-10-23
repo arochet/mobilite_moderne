@@ -12,7 +12,8 @@ import 'package:mobilite_moderne/providers.dart';
 
 class SearchAlgolia extends ConsumerStatefulWidget {
   final Widget child;
-  SearchAlgolia({Key? key, required this.child}) : super(key: key);
+  final TabController? controller;
+  SearchAlgolia({Key? key, required this.child, this.controller}) : super(key: key);
 
   @override
   _SearchAlgoliaState createState() => _SearchAlgoliaState();
@@ -67,6 +68,7 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: TabBar(
+                controller: widget.controller,
                 tabs: ResourceMainCategory.values.map((e) {
                   return Tab(text: e.titleBar);
                 }).toList(),
@@ -79,6 +81,7 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
                   child: TabBarView(
+                    controller: widget.controller,
                     children: ResourceMainCategory.values.map((mode) {
                       return _SearchResults(_searchController.text, mode);
                     }).toList(),

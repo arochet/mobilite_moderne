@@ -34,18 +34,20 @@ class ResourceViewPage extends ConsumerWidget {
             builder: (data) => data!.fold(
               (error) => AppError(message: error.toString()),
               (resource) => Center(
-                  child: Column(
-                children: [
-                  PanelResourceView(resource: resource),
-                  SpaceH10(),
-                  ElevatedButton(
-                      onPressed: () async {
-                        await ref.read(resourceRepositoryProvider).delete(resource);
-                        context.router.pop();
-                      },
-                      style: Theme.of(context).extension<AppThemeExtention>()?.buttonDanger,
-                      child: const Text('Supprimer')),
-                ],
+                  child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    PanelResourceView(resource: resource),
+                    SpaceH10(),
+                    ElevatedButton(
+                        onPressed: () async {
+                          await ref.read(resourceRepositoryProvider).delete(resource);
+                          context.router.pop();
+                        },
+                        style: Theme.of(context).extension<AppThemeExtention>()?.buttonDanger,
+                        child: const Text('Supprimer')),
+                  ],
+                ),
               )),
             ),
           ),

@@ -23,17 +23,41 @@ class Resource_menuPage extends StatelessWidget {
       title: 'Resource_menuPage',
       child: Padding(
         padding: EdgeInsets.all(10),
-        child: SearchAlgolia(
-          child: Align(
-            child: Container(
-                constraints: BoxConstraints(maxWidth: 500),
-                child: TabBarView(
-                  children: ResourceMainCategory.values.map((mode) {
-                    return PanelCategoryList(mode);
-                  }).toList(),
-                )),
-          ),
-        ),
+        child: _Body(),
+      ),
+    );
+  }
+}
+
+class _Body extends ConsumerStatefulWidget {
+  const _Body({Key? key}) : super(key: key);
+
+  @override
+  __BodyState createState() => __BodyState();
+}
+
+class __BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMixin {
+  late TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: ResourceMainCategory.values.length, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SearchAlgolia(
+      controller: controller,
+      child: Align(
+        child: Container(
+            constraints: BoxConstraints(maxWidth: 500),
+            child: TabBarView(
+              controller: controller,
+              children: ResourceMainCategory.values.map((mode) {
+                return PanelCategoryList(mode);
+              }).toList(),
+            )),
       ),
     );
   }

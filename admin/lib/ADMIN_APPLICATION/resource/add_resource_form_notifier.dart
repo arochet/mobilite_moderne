@@ -103,9 +103,6 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
   addResourcePressed() async {
     Either<ResourceFailure, UniqueId>? failureOrSuccess;
 
-    //insert-valid-params
-    print('hola');
-
     state = state.copyWith(isSubmitting: true, failureOrSuccessOption: none());
     Either<UploadFailure, Unit>? resultUpload;
 

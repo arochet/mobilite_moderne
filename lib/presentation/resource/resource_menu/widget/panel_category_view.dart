@@ -52,6 +52,7 @@ class _PanelSubCategoryView extends StatelessWidget {
     return ShowComponentFile(
       title: '_PanelSubCategoryView',
       child: InkWell(
+        hoverColor: Colors.grey[200],
         onTap: () {
           printDev();
           //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie

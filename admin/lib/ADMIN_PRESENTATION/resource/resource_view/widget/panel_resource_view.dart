@@ -17,15 +17,21 @@ class PanelResourceView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SpaceH10(),
+            const SpaceH10(),
             Text("${resource.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text("ID: ${resource.id.getOrCrash()}", style: Theme.of(context).textTheme.labelMedium),
             Text("Type : ${resource.type.name}", style: Theme.of(context).textTheme.labelMedium),
-            SpaceH20(),
+            const SpaceH20(),
+            Text('Description Courte', style: Theme.of(context).textTheme.bodyMedium),
+            Text(resource.shortDescription, style: Theme.of(context).textTheme.labelLarge),
+            const SpaceH20(),
             Text('Description', style: Theme.of(context).textTheme.bodyMedium),
-            Text(resource.description, style: Theme.of(context).textTheme.labelLarge),
-            SpaceH10(),
+            Container(
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: SingleChildScrollView(
+                    child: Text(resource.description, style: Theme.of(context).textTheme.labelLarge))),
+            const SpaceH10(),
             Wrap(
               spacing: 5,
               children: [
