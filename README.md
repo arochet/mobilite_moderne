@@ -167,6 +167,7 @@ Dist' Atelier utilise Algolia pour faire de la recherche par mot clé. Chaque re
 
 Toute la base de donnée est stocké avec Firebase. On utilise Firebase Auth, Firestore, Firebase Storage et Functions. 
 Voir le schéma de base de donnée
+Pour le déploiement en WEB on utilise Firebase Hosting
 
 #### Clouds Functions
 
@@ -182,7 +183,14 @@ Firebase : mobilitemodernedev@gmail.com
 Apple : devsuptekdigital@gmail.com
 Android : devsuptekdigital@gmail.com
 
+#### Déploiement WEB
 
+```````
+flutter build web (2x : dans mobilite moderne + admin)
+-> Ca va générer le code web dans le dossier build/web
+firebase deploy --only hosting
+-> Ca récupère le code web pour le deployer sur FirebaseHosting (utilisateur et admin)
+```````
 
 ## DONNEES UTILISATEUR
 

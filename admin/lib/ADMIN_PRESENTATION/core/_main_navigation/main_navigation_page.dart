@@ -19,12 +19,12 @@ class MainNavigationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final listMenu = [
       {
-        "title": 'Users',
+        "title": 'Utilisateurs',
         "icon": Icons.person_rounded,
         "id": 0,
       },
       {
-        "title": 'Resources',
+        "title": 'Ressources',
         "icon": Icons.file_copy,
         "id": 1,
       },

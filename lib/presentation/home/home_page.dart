@@ -57,11 +57,6 @@ class _ColumnMenu extends ConsumerWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        //Image du logo
-        /* Image.asset(
-          AssetsImage.logo,
-          width: 100,
-        ) */
         Icon(
           MyFlutterApp.logo_blanc,
           size: 80,

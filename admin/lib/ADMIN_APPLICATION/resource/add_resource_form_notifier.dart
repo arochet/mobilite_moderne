@@ -80,7 +80,10 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
   }
 
   categoryChanged(ResourceMainCategory param) {
-    state = state.copyWith(category: param, failureOrSuccessOption: none());
+    state = state.copyWith(
+        category: param,
+        resource: state.resource.copyWith(mainCategory: param),
+        failureOrSuccessOption: none());
   }
 
   fileMOBILEchanged(File file, String nameFile) {
