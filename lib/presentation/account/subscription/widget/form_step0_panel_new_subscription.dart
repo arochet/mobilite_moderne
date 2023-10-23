@@ -23,7 +23,7 @@ class PanelNewSubscription extends ConsumerWidget {
               children: [
                 // TITRE
                 SpaceH10(),
-                Text("Abonnement Dist'Atelier", style: Theme.of(context).textTheme.titleMedium),
+                Text("Abonnement Dist'Atelier (Mode Test)", style: Theme.of(context).textTheme.titleMedium),
                 SpaceH20(),
 
                 // SOUS TITRE

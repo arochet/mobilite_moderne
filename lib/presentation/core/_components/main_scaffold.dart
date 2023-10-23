@@ -11,10 +11,11 @@ import 'package:mobilite_moderne/providers.dart';
 
 /// Scaffold de base de l'application qui est responsive en fonction de la taille de l'écran
 class MainScaffold extends ConsumerWidget {
-  const MainScaffold({Key? key, required this.child, this.title, this.color}) : super(key: key);
+  const MainScaffold({Key? key, required this.child, this.title, this.color, this.appBar}) : super(key: key);
   final Widget child;
   final String? title;
   final Color? color;
+  final PreferredSizeWidget? appBar;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +46,7 @@ class MainScaffold extends ConsumerWidget {
         );
       else
         return Scaffold(
-          appBar: buildAppBar(context, ref, title, color: color),
+          appBar: appBar ?? buildAppBar(context, ref, title, color: color),
           backgroundColor: color,
           body: child,
         );

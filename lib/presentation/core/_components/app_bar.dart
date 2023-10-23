@@ -38,7 +38,7 @@ AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title,
   );
 }
 
-PreferredSizeWidget buildAppBarAssistance(context, sizeHeight) {
+PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeight) {
   return PreferredSize(
       preferredSize: Size.fromHeight(sizeHeight), // here the desired height
       child: Stack(

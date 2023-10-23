@@ -1,5 +1,6 @@
 import 'package:mobilite_moderne/DOMAIN/assistant/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
@@ -25,6 +26,7 @@ class ChoicePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MainScaffold(
+        appBar: buildAppBarAssistance(context, MediaQuery.of(context).size.height * 0.4),
         color: colorpanel(800),
         child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -49,10 +51,14 @@ class _PanelChoiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShowComponentFile(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
+          SpaceH20(),
+
+          //Titre de la question
+          Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
+          SpaceH20(),
+
           //Fil d'ariane
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 22.0),
@@ -71,11 +77,6 @@ class _PanelChoiceView extends StatelessWidget {
                         : Container())
                     .toList()),
           ),
-          Expanded(child: Container()),
-
-          //Titre de la question
-          Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
-          SpaceH30(),
 
           //Carte
           Align(
@@ -115,7 +116,6 @@ class _PanelChoiceView extends StatelessWidget {
               ),
             ),
           ),
-          SpaceH20(),
           Align(
             child: TextButton(
               onPressed: () {
@@ -125,7 +125,6 @@ class _PanelChoiceView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 80),
-          Expanded(child: Container()),
         ],
       ),
     );
