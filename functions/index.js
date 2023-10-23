@@ -153,6 +153,7 @@ exports.CancelSubscription = functions.https.onRequest(async (req, res) => {
     }
 });
 
+//DEPRECATED
 // PAYEMENT STRIPE
 const calculateOrderAmount = (items) => {
     prices = [];
@@ -172,6 +173,7 @@ const calculateOrderAmount = (items) => {
     return parseInt(prices.reduce((a, b) => a + b) * 100);
 };
 
+//DEPRECATED
 const generateResponse = function (intent) {
     // Generate a response based on the intent's status
     console.log(`generate response ${intent}`);
@@ -208,7 +210,7 @@ const generateResponse = function (intent) {
     };
 };
 
-
+//DEPRECATED
 exports.StripePayEndpointMethodId = functions.https.onRequest(async (req, res) => {
     const {
         paymentMethodId,
@@ -242,6 +244,7 @@ exports.StripePayEndpointMethodId = functions.https.onRequest(async (req, res) =
     }
 });
 
+//DEPRECATED
 exports.StripePayEndpointIntentId = functions.https.onRequest(async (req, res) => {
     const {
         paymentIntentId,

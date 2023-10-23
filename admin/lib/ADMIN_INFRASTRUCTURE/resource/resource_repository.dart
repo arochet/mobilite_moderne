@@ -19,15 +19,34 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 
 abstract class IResourceRepository {
+  /// Récupère toutes les ressources
   Stream<Either<ResourceFailure, List<Resource>>> watch();
+
+  /// Récupère une ressource avec son id
   Future<Either<ResourceFailure, Resource>> watchWithId(UniqueId id);
+
+  /// Créer une ressource
   Future<Either<ResourceFailure, UniqueId>> create(Resource resource);
+
+  /// Met à jour une ressource
   Future<Either<ResourceFailure, Unit>> update(Resource resource);
+
+  /// Supprime une ressource
   Future<Either<ResourceFailure, Unit>> delete(Resource resource);
+
+  /// Upload un fichier File
   Future<Either<UploadFailure, Unit>> uploadFile(File file, String path);
+
+  /// Upload un fichier avec les bytes
   Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path);
+
+  /// Upload une image
   Future<Either<UploadFailure, Unit>> uploadImage(XFile file, ResourceMainCategory category);
+
+  /// Récupère les catégories enfants ou les ressources
   Future<Either<AppCategoryFailure, List<AppCategory>>> watchCategoryView(AppCategory category);
+
+  /// Ajoute une ressource à une catégorie
   Future<Either<AppCategoryFailure, Unit>> addResourceToCategory(AppCategory category, UniqueId idResource);
 }
 

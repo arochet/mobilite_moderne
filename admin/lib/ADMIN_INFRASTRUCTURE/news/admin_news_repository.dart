@@ -14,11 +14,22 @@ import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/news/news_dtos.dart';
 
 abstract class IAdminNewsRepository {
+  /// Retourne la liste des actualités
   Stream<Either<NewsFailure, List<News>>> watch();
+
+  /// Retourne l'actualité avec l'id
   Future<Either<NewsFailure, News>> watchWithId(UniqueId id);
+
+  /// Création d'une actualité
   Future<Either<NewsFailure, Unit>> create(News news);
+
+  /// Mise à jour d'une actualité
   Future<Either<NewsFailure, Unit>> update(News news);
+
+  /// Suppression d'une actualité
   Future<Either<NewsFailure, Unit>> delete(UniqueId id);
+
+  /// Upload d'une image
   Future<Either<UploadFailure, Unit>> uploadImage(XFile file);
 }
 

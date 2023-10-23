@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:504195622727:ios:3f6ab644cac08e101a4e62</string>
+	<key>App Uses Non-Exempt Encryption</key>
+	<string>No</string>
 </dict>
 </plist>

@@ -8,6 +8,9 @@ import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 part 'choice_dtos.freezed.dart';
 part 'choice_dtos.g.dart';
 
+/// Chaque choix est un noeuds dans l'arborescence de l'assistant diagnostique.
+/// Un choix mène à un autre choix ou bien à une réponse
+/// Il y'a 2 choix : choix avec question ou bien choix avec réponse.
 @freezed
 abstract class ChoiceDTO implements _$ChoiceDTO {
   const ChoiceDTO._();
@@ -34,6 +37,7 @@ abstract class ChoiceDTO implements _$ChoiceDTO {
     List<ChoiceWithQuestions> choiceQuestion = [];
     List<ChoiceWithAnswer> choiceAnswer = [];
 
+    // Cas non conforme ou il n'y a pas de choix
     if (listChoixDTO == null) {
       return ChoiceWithQuestions(
         id: UniqueId.fromUniqueString(id!),
@@ -48,8 +52,10 @@ abstract class ChoiceDTO implements _$ChoiceDTO {
     //On parcours la liste des choix
     for (var i = 0; i < listChoixDTO.length; i++) {
       if (listChoixDTO[i].question != null) {
+        // CHOIX AVEC DES QUESTIONS
         choiceQuestion.add(listChoixDTO[i].toDomain(null, '$path/answer/${listChoixDTO[i].id}'));
       } else {
+        // CHOIX AVEC DES REPONSES
         choiceAnswer.add(listChoixDTO[i].toDomainAnswer('$path/answer/${listChoixDTO[i].id}'));
       }
     }
@@ -64,6 +70,7 @@ abstract class ChoiceDTO implements _$ChoiceDTO {
     );
   }
 
+  // Cela mène a une page de réponse
   ChoiceWithAnswer toDomainAnswer(String path, {List<Resource>? listRessources}) {
     return ChoiceWithAnswer(
       id: UniqueId.fromUniqueString(id!),

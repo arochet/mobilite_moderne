@@ -87,18 +87,20 @@ final categoryViewProvider = FutureProvider.autoDispose
     .family<Either<AppCategoryFailure, List<AppCategory>>, AppCategory>(
         (ref, category) => ref.watch(resourceRepositoryProvider).watchCategoryView(category));
 
-//Message
-
+/// MESSAGE REPOSITORY
 final messageRepositoryProvider = Provider<IMessageRepository>((ref) => getItAdmin<IMessageRepository>());
 
+/// Formulaire d'ajout de message
 final messageFormNotifierProvider =
     StateNotifierProvider.autoDispose<MessageFormNotifier, AddMessageFormData>(
   (ref) => MessageFormNotifier(ref.watch(messageRepositoryProvider)),
 );
 
+/// Liste des discussions
 final allDiscutionProvider = StreamProvider.autoDispose<Either<MessageFailure, List<Conversation>>>(
     (ref) => ref.watch(messageRepositoryProvider).watchAllConversation());
 
+/// Une discussion
 final oneDiscutionProvider = StreamProvider.autoDispose
     .family<Either<MessageFailure, List<Message>>, UniqueId>(
         (ref, idUser) => ref.watch(messageRepositoryProvider).watchConversation(idUser));

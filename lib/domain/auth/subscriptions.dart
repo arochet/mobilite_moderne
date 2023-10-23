@@ -4,16 +4,24 @@ import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 
 part 'subscriptions.freezed.dart';
 
-/// Fiche utilisateur que l'on stocke dans Firestore
+/// Abonnement Stripe. Chaque utilisateur a un abonnement pour l'accès des fonctionnalités de l'app
 @freezed
 abstract class Subscriptions with _$Subscriptions {
   const Subscriptions._();
 
   const factory Subscriptions({
     required String id,
+
+    /// Date de début de l'abonnement
     required DateTime? startDate,
+
+    /// Correspond au produit de paiement Stripe
     required Map<String, dynamic> items,
+
+    /// Tarif de l'abonnement
     required double tarif,
+
+    /// Statut de l'abonnement : actif ou non
     required bool status,
     String? idStripe,
   }) = _Subscriptions;

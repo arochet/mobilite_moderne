@@ -10,6 +10,7 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 
 part 'resource.freezed.dart';
 
+/// Type de ressource : document, vidéo, lien
 enum ResourceType { document, video, link }
 
 //Extention de resourceType pour afficher le nom de l'enum
@@ -86,6 +87,7 @@ extension ResourceMainCategoryExtension on ResourceMainCategory {
     }
   }
 
+  /// Sert pour l'interface admin
   AppCategory get category {
     switch (this) {
       case ResourceMainCategory.mediatheque:
@@ -119,6 +121,7 @@ extension ResourceMainCategoryExtension on ResourceMainCategory {
     }
   }
 
+  /// Retourne la collection Firestore en fonction de la catégorie
   CollectionReference<Object?> getCollection(FirebaseFirestore _firestore) {
     switch (this) {
       case ResourceMainCategory.mediatheque:
@@ -139,13 +142,27 @@ abstract class Resource with _$Resource {
 
   const factory Resource({
     required UniqueId id,
+
+    /// Nom de la ressource affiché dans la page
     required Nom nom,
+
+    /// Type de ressource : document, vidéo, lien
     required ResourceType type,
+
+    /// Chemin du document dans Firebase Storage
     required String documentPath,
-    required UniqueId idCategory,
+    @deprecated required UniqueId idCategory,
+
+    /// Liste de mot clé pour la recherche Algolia
     required List<String> keyword,
+
+    /// Description de la ressource, sert pour le moteur de recherche Algolia
     required String description,
+
+    /// Description pour l'affichage dans la liste des ressources
     required String shortDescription,
+
+    /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
     required ResourceMainCategory mainCategory,
     // Nom du fichier de l'image
     required String image,

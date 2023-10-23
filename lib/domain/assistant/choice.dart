@@ -14,10 +14,20 @@ abstract class ChoiceWithQuestions with _$ChoiceWithQuestions {
 
   const factory ChoiceWithQuestions({
     required UniqueId id,
+
+    /// Titre de la question
     required Nom nom,
+
+    /// Question posée à l'utilisateur
     required Question question,
+
+    /// Fil d'ariane pour retrouver le choix dans Firebase
     required String path,
+
+    /// Liste des choix possibles pour cette question
     required List<ChoiceWithQuestions>? choiceQuestion,
+
+    /// Ou bien liste des réponses
     required List<ChoiceWithAnswer>? choiceAnswer,
   }) = _ChoiceWithQuestions;
 
@@ -43,6 +53,8 @@ abstract class ChoiceWithAnswer with _$ChoiceWithAnswer {
 
     /// Chemin du choix dans Firebase
     required String path,
+
+    /// Réponse à toutes les questions
     required Anwser answer,
 
     /// Liste des ressources qui sont liées à ce choix (PDF ...)

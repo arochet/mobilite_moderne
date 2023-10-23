@@ -19,6 +19,7 @@ class UsersRepositoryFacade extends UsersRepository {
     this._storage,
   );
 
+  /// Pour l'interface administrateur, on peut récupérer tous les utilisateurs
   @override
   Stream<Option<List<UserData>>> listUsers() async* {
     yield* _firestore

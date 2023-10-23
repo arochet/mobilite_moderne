@@ -7,6 +7,7 @@ User
 - passwordCrypted
 - typeAccount
 - userName
+- idStripe
 
 
 # MESSAGERIE
@@ -37,13 +38,14 @@ Category
 
 Resource
 ------
-- categoryPath (Sert pour la recherche Algolia)
-- description (Sert pour la recherche Algolia)
-- documentPath (Chemin d'accès dans Storage)
-- idCategory (vide)
-- keyword (Sert pour la recherche Algolia)
+- categoryPath
+- description
+- documentPath
+- idCategory (deprecated)
+- keyword
 - nom (Nom du document)
 - type (PDF / Video / ...)
+
 
 # ASSISTANT
 

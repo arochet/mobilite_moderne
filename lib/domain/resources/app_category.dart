@@ -8,6 +8,9 @@ import 'app_category_failure.dart';
 
 part 'app_category.freezed.dart';
 
+/// Catégorie des ressources
+/// Chaque ressources est lié à une catégorie
+/// Une catégorie peut avoir des sous catégories. Elles constitue une arborescence de catégorie pour retrouver les ressources
 @freezed
 abstract class AppCategory with _$AppCategory {
   const AppCategory._();

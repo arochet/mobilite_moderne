@@ -19,12 +19,18 @@ abstract class ResourceDTO implements _$ResourceDTO {
     @JsonKey(ignore: true) String? id,
     required String nom,
     required String type,
+
+    /// Chemin du document dans Firebase Storage
     required String documentPath,
-    required String idCategory,
+    @deprecated required String idCategory,
     required List<String> keyword,
     required String description,
     required String shortDescription,
+
+    /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
     required String mainCategory,
+
+    /// Nom du fichier de l'image. On reconstitue le chemin avec le mainCategory
     required String image,
   }) = _ResourceDTO;
 
