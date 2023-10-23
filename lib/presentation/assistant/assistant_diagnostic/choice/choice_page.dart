@@ -26,7 +26,7 @@ class ChoicePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MainScaffold(
-        appBar: buildAppBarAssistance(context, MediaQuery.of(context).size.height * 0.4),
+        appBar: buildAppBarAssistance(context, MediaQuery.of(context).size.height * 0.4, true),
         color: colorpanel(800),
         child: Padding(
             padding: const EdgeInsets.all(8.0),

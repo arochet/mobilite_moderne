@@ -38,14 +38,16 @@ AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title,
   );
 }
 
-PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeight) {
+PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeight,
+    [bool isAssitant = false]) {
   return PreferredSize(
       preferredSize: Size.fromHeight(sizeHeight), // here the desired height
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-            child: Image.asset(AssetsImage.assistance, height: sizeHeight, fit: BoxFit.cover),
+            child: Image.asset(isAssitant ? AssetsImage.assistanceDiagnostic : AssetsImage.assistance,
+                height: sizeHeight, fit: BoxFit.cover),
           ),
           Center(
             widthFactor: 1,
