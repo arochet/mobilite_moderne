@@ -28,20 +28,7 @@ class SideBarNavigation extends StatelessWidget {
                   //MENU LATERAL
                   Container(
                     width: 300,
-                    child: ListView(
-                      children: [
-                        //Titre
-                        _Title(tabsRouter: tabsRouter),
-                        SpaceH20(),
-                        //Liste des liens
-                        ...listMenu.map((element) => NavLink(
-                              title: element["title"],
-                              icon: element["icon"],
-                              route: element["id"],
-                              tabsRouter: tabsRouter,
-                            )),
-                      ],
-                    ),
+                    child: SideMenu(listMenu: listMenu),
                   ),
                   //PAGE
                   Expanded(
@@ -55,6 +42,34 @@ class SideBarNavigation extends StatelessWidget {
             ),
           );
         });
+  }
+}
+
+class SideMenu extends StatelessWidget {
+  const SideMenu({
+    super.key,
+    required this.listMenu,
+  });
+
+  final List listMenu;
+
+  @override
+  Widget build(BuildContext context) {
+    final tabsRouter = AutoTabsRouter.of(context);
+    return ListView(
+      children: [
+        //Titre
+        _Title(tabsRouter: tabsRouter),
+        SpaceH20(),
+        //Liste des liens
+        ...listMenu.map((element) => NavLink(
+              title: element["title"],
+              icon: element["icon"],
+              route: element["id"],
+              tabsRouter: tabsRouter,
+            )),
+      ],
+    );
   }
 }
 

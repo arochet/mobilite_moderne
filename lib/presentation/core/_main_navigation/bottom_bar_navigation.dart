@@ -64,9 +64,13 @@ class BottomBarNavigation extends ConsumerWidget {
                     activeIcon: CircleAvatar(
                       radius: 16,
                       backgroundColor: Theme.of(context).primaryColor,
-                      child: Icon(element["icon"], color: Theme.of(context).textTheme.titleLarge?.color),
+                      child: Icon(element["icon"],
+                          color: Theme.of(context).textTheme.titleLarge?.color, size: 24),
                     ),
-                    icon: Icon(element["icon"]),
+                    icon: Icon(
+                      element["icon"],
+                      size: 24,
+                    ),
                     label: element["title"],
                   ),
                 )

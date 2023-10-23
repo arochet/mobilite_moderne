@@ -52,14 +52,7 @@ class __BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMix
         child: Align(
           child: Container(
             constraints: BoxConstraints(maxWidth: 500),
-            child: PanelCategoryList(ref.watch(
-                currentOnglet)) /* TabBarView(
-              controller: controller,
-              children: ResourceMainCategory.values.map((mode) {
-                return PanelCategoryList(mode);
-              }).toList(),
-            )) */
-            ,
+            child: PanelCategoryList(ref.watch(currentOnglet)),
           ),
         ));
   }

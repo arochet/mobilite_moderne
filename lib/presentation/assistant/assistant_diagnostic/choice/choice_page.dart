@@ -157,7 +157,7 @@ class _TileChoice extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
           onPressed: onTap,
-          child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
+          child: Text(title),
         ),
       ),
     );

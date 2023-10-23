@@ -7,6 +7,29 @@ import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/bottom_bar_n
 import 'package:flutter/material.dart';
 import 'side_bar_navigation.dart';
 
+final listMenu = [
+  {
+    "title": 'Assistant',
+    "icon": MyFlutterApp.assistance,
+    "id": 0,
+  },
+  {
+    "title": 'Ressources',
+    "icon": MyFlutterApp.ressources,
+    "id": 1,
+  },
+  {
+    "title": 'Actualités',
+    "icon": Icons.notifications_active_outlined,
+    "id": 2,
+  },
+  {
+    "title": 'Compte',
+    "icon": Icons.account_circle_outlined,
+    "id": 3,
+  },
+];
+
 /// Page de navigation principale de l'application
 @RoutePage()
 class MainNavigationPage extends StatelessWidget {
@@ -21,28 +44,6 @@ class MainNavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listMenu = [
-      {
-        "title": 'Assistant',
-        "icon": MyFlutterApp.assistance,
-        "id": 0,
-      },
-      {
-        "title": 'Ressources',
-        "icon": MyFlutterApp.ressources,
-        "id": 1,
-      },
-      {
-        "title": 'Actualités',
-        "icon": Icons.notifications_active_outlined,
-        "id": 2,
-      },
-      {
-        "title": 'Compte',
-        "icon": Icons.account_circle_outlined,
-        "id": 3,
-      },
-    ];
     return CheckUserConnected(
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth > 600)

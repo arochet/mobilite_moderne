@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mobilite_moderne/APPLICATION/account/modify_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/auth_notifier.dart';

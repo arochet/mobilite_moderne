@@ -25,7 +25,6 @@ class AppWidget extends StatelessWidget {
           fontFamily: 'Onest',
         ),
         padding: EdgeInsets.symmetric(horizontal: 20),
-        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0)),
             side: BorderSide(color: primaryColor, width: 2.0, style: BorderStyle.solid)));
@@ -42,7 +41,25 @@ class AppWidget extends StatelessWidget {
         fontFamily: 'Onest',
 
         //BUTTONS
-        elevatedButtonTheme: ElevatedButtonThemeData(style: defaultButtonStyle),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: defaultButtonStyle.copyWith(
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (states) {
+              if (states.contains(MaterialState.hovered)) {
+                return Colors.black;
+              }
+              return Colors.white;
+            },
+          ),
+          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (states) {
+              if (states.contains(MaterialState.hovered)) {
+                return Colors.white;
+              }
+              return Colors.black;
+            },
+          ),
+        )),
         textButtonTheme: TextButtonThemeData(
           style: defaultButtonStyle.copyWith(
             textStyle: MaterialStateProperty.all(TextStyle(

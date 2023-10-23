@@ -72,9 +72,6 @@ class _ColumnMenu extends ConsumerWidget {
               context.router.push(AssistantRoute());
             },
             child: Text('Assistant Technique'),
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                ),
           ),
         ),
         SizedBox(height: 5),
@@ -91,9 +88,6 @@ class _ColumnMenu extends ConsumerWidget {
               context.router.push(Resource_menuRoute());
             },
             child: Text('Ressources'),
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                ),
           ),
         ),
         SizedBox(height: 5),
@@ -109,9 +103,6 @@ class _ColumnMenu extends ConsumerWidget {
               context.router.push(NewsListRoute());
             },
             child: Text('Actualités'),
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                ),
           ),
         ),
         SizedBox(height: 5),
