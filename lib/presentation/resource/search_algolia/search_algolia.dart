@@ -10,6 +10,8 @@ import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/component/resource_tile.dart';
 import 'package:mobilite_moderne/providers.dart';
 
+final currentOnglet = StateProvider<ResourceMainCategory>((ref) => ResourceMainCategory.mediatheque);
+
 class SearchAlgolia extends ConsumerStatefulWidget {
   final Widget child;
   final TabController? controller;
@@ -68,6 +70,9 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: TabBar(
+                onTap: (value) {
+                  ref.read(currentOnglet.notifier).state = ResourceMainCategory.values[value];
+                },
                 controller: widget.controller,
                 tabs: ResourceMainCategory.values.map((e) {
                   return Tab(text: e.titleBar);
@@ -75,18 +80,16 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
               ),
             ),
             SpaceH10(),
+
+            // BODY
             if (!_isSearching) Expanded(child: widget.child),
+
+            //RESULTAT DE LA RECHERCHE
             if (_isSearching)
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-                  child: TabBarView(
-                    controller: widget.controller,
-                    children: ResourceMainCategory.values.map((mode) {
-                      return _SearchResults(_searchController.text, mode);
-                    }).toList(),
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                    child: _SearchResults(_searchController.text, ref.watch(currentOnglet))),
               ),
           ],
         ),

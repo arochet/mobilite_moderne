@@ -48,17 +48,19 @@ class __BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return SearchAlgolia(
-      controller: controller,
-      child: Align(
-        child: Container(
+        controller: controller,
+        child: Align(
+          child: Container(
             constraints: BoxConstraints(maxWidth: 500),
-            child: TabBarView(
+            child: PanelCategoryList(ref.watch(
+                currentOnglet)) /* TabBarView(
               controller: controller,
               children: ResourceMainCategory.values.map((mode) {
                 return PanelCategoryList(mode);
               }).toList(),
-            )),
-      ),
-    );
+            )) */
+            ,
+          ),
+        ));
   }
 }

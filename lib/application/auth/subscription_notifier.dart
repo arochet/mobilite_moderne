@@ -139,6 +139,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     final userData = await _authRepository.getUserData();
     final clientSecretAsync = await (userData.fold(() => null, (UserData userData) async {
       if (userData.idStripe == null) {
+        print('idStripe is null');
         return null;
       } else {
         return await _authRepository.subscribeTotalAccess(userData.idStripe!);

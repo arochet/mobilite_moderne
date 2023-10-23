@@ -16,6 +16,7 @@ class PanelFormPayment extends ConsumerWidget {
       children: [
         if (!kIsWeb)
           stripe.CardFormField(
+            style: stripe.CardFormStyle(backgroundColor: Color.fromARGB(255, 119, 119, 119)),
             controller: stripe.CardFormEditController(),
             onCardChanged: (details) =>
                 ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details),
@@ -57,7 +58,6 @@ class __CardFieldState extends ConsumerState<_CardField> {
     return stripe.CardField(
       controller: controller,
       onCardChanged: (details) {
-        print('details : ${details?.toJson()}');
         ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details);
       },
     );
