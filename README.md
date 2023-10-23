@@ -125,62 +125,64 @@ La liste est [ici](documentation/fonctions_utils.md)
 ## Points Clés de l'application
 
 #### Assisant Question / Réponse
-````
-Dans Firebase, on trouve une arborescence qui définit le système de question réponse. Chaque noeuds correspond à ChoiceDTO. Ce ChoiceDTO peut être ensuite convertis en 2 classes différence ChoiceWithQuestion et ChoiceWithAnswer. ChoiceWithQuestion est un choix qui comprends ensuite plusieurs question, donc d'autres ChoiceDTO. ChoiceWithAnswer comprend une liste de Answer. Une Answer à une réponse et des ressources qui lui sont associés. 
-````
+
+Dans Firebase, on trouve une arborescence qui définit le système de question réponse. Chaque noeuds correspond à ChoiceDTO. Ce ChoiceDTO peut être ensuite convertis en 2 classes différence ChoiceWithQuestion et ChoiceWithAnswer. ChoiceWithQuestion est un choix qui comprends ensuite plusieurs question, donc d'autres ChoiceDTO. ChoiceWithAnswer comprend une liste de Answer. Une Answer à une réponse et des ressources qui lui sont associés.
+
 #### Messagerie
-````
+
 Dans Firebase on a la collection Message. Chaque document dans la collection message à un ID qui correspond à l'idUtilisateur de la personne qui souhaite communiquer avec l'admin. Ainsi l'admin à accès à tous les message. 
 Message/idDiscussion/Discussion/ On a la liste des messages. Chaque message est associé à un idUtilisateur. Les message sont trié par date de publication. On a des messages texte ou des message image. 
 Les messages image sont stockés dans Firebase Storage à l'emplacement Message/idDiscussion/NomImage
 On charge les images de manière différente sur mobile et web.
 On pourrais continuer à optimiser le chargement des messages car pour le moment on charge une discussion complète. 
-Chaque discussion stocke des informations : (date Du Dernier Message, Nom de la discussion qui est le nom de l'utilisateur, Si la discussion a été répondu). 
-````
+Chaque discussion stocke des informations : (date Du Dernier Message, Nom de la discussion qui est le nom de l'utilisateur, Si la discussion a été répondu).
+
 #### Visio Assistance
-`````
+
 C'est pour le moment un simple lien vers une page de réservation de d'agenda. 
-`````
+
 #### Ressources
-`````
+
 Une ressource correspond à un fichier PDF ou une vidéo pour expliquer un problème en particulier. Une ressource peut être classé dans une catégorie. Elle possède des mots clés et une description pour qu'on puisse aller la chercher via Algolia. A chaque création d'une ressource, une cloud function viens dupliquer automatiquement les infos firebase de la ressource dans la moteur Algolia. 
 On trouve les ressources dans le chemin Ressource/ de Firebase. 
 Les catégories, les articles d'actualité et les réponses (Answer) dans assistants diagnostique peuvent avoir une liste d'idRessource. Grâce au component dans Prensentation/resource/component/panel_list_resource.dart , on peut afficher la liste des ressources (PDF et vidéo) lié à l'objet. 
-`````
+
 #### Système de catégorie
-`````
+
 On trouve la classe Catégorie qui permet de créer une arborescence pour accéder à des ressources. Une catégorie peut avoir des sous catégories ou bien une liste de ressources. 
-`````
+
 #### Actualité
-`````
+
 Système simple d'article. Il y'a une liste classé par date de publication. Chaque article à une photo, un titre, un contenue, un sous contenue, des mots clés et une liste de ressource associé. 
-`````
+
 #### Stripe
-`````
+
 Stripe permet de gérer l'abonnemnet utilisateur à Dist Atelier. Chaque utilisateur lorsqu'il créer son compte active un nouveau compte Stripe avec une cloud function. Ce compte Stripe à un identifiant idStripe qui est stocké dans UserData (Firebase user/idUser/UserData). On trouve ensuite dans Provider userIsSubscribed qui permet de savoir si l'utilisateur est abonné ou non à Dist'Atelier. 
-`````
+
 #### Algolia
-`````
+
 Dist' Atelier utilise Algolia pour faire de la recherche par mot clé. Chaque ressource à une description et des mots clé pour cette recherche. Lorsque l'on créer une ressource dans Firebase, une fonction Google Cloud est activé pour dupliquer les informations de firebase dans la base de donnée Alglia. Ainsi, lorsque l'on fait une recherche dans l'appli, on vient taper dans la base de donnée Algolia qui retourne un liste de ressources.
-`````
+
 #### Firebase
-`````
+
 Toute la base de donnée est stocké avec Firebase. On utilise Firebase Auth, Firestore, Firebase Storage et Functions. 
 Voir le schéma de base de donnée
-`````
+
 #### Clouds Functions
-`````
+
 Les clouds functions sont codé dans functions/index.js. Elle permettent de gérer les abonnemnent Stripe et de dupliquer automatiquement la base de donnée des ressources dans Algolia. 
-`````
+
 ## Compte 
 
-``````
+
+
 Stripe : devsuptekdigital@gmail.com
 Algolia : devsuptekdigital@gmail.com
 Firebase : mobilitemodernedev@gmail.com
 Apple : devsuptekdigital@gmail.com
 Android : devsuptekdigital@gmail.com
-``````
+
+
 
 ## DONNEES UTILISATEUR
 
