@@ -181,3 +181,8 @@ Firebase : mobilitemodernedev@gmail.com
 Apple : devsuptekdigital@gmail.com
 Android : devsuptekdigital@gmail.com
 ``````
+
+## DONNEES UTILISATEUR
+
+Dans l'application, on stocke uniquement le nom et adresse email des utilisateurs. Une adresse est demandé pour l'abonnement Stripe. Les mots de passe sont cryptés. 
+Lorsqu'un utilisateur supprime son compte. Ses informations ne sont pas conservés en base. 
