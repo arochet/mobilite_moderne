@@ -108,19 +108,19 @@ Vous trouverez toutes les fonctions Utils dans ce dossier :
 lib/PRESENTATION/core/_utils/
 ```
 
-La liste est [ici](DOCUMENTATION/fonctions_utils.md)
+La liste est [ici](documentation/fonctions_utils.md)
 
 ## SCHEMA DE BASE DE DONNÉE
 
-[voir ici](./DOCUMENTATION/schema_bdd.md)
+[voir ici](./documentation/schema_bdd.md)
 
 ## Values Objects
 
-[voir ici](./DOCUMENTATION/value_objects.md)
+[voir ici](./documentation/value_objects.md)
 
 ## Lexiques
 
-[voir ici](./DOCUMENTATION/lexique.md)
+[voir ici](./documentation/lexique.md)
 
 ## Points Clés de l'application
 
