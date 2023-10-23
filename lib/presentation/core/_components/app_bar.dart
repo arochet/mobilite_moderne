@@ -48,8 +48,18 @@ PreferredSizeWidget buildAppBarAssistance(context, sizeHeight) {
             child: Image.asset(AssetsImage.assistance, height: sizeHeight, fit: BoxFit.cover),
           ),
           Center(
+            widthFactor: 1,
+            heightFactor: 3,
+            child: TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
+            ),
+          ),
+          Center(
               widthFactor: 1.3,
-              heightFactor: 7,
+              heightFactor: 9.2,
               child: Text("Dist'Atelier",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
         ],
