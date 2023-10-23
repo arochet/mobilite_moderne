@@ -5,6 +5,8 @@ import 'package:mobilite_moderne/DOMAIN/assistant/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:flutter/material.dart';
@@ -21,84 +23,97 @@ class AssistantPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ShowComponentFile(
       title: 'assistant/assistant_page.dart',
-      child: Align(
-        child: Container(
-          constraints: BoxConstraints(maxWidth: 500),
-          child: Column(
-            children: [
-              //Mon compte
-              Expanded(child: Container()),
-              Text("ASSISTANT", style: Theme.of(context).textTheme.titleLarge),
-              Expanded(child: Container()),
-
-              //Menu
-              Center(
+      child: Column(
+        children: [
+          //IMAGE WEB
+          if (kIsWeb)
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+                child: Image.asset(AssetsImage.assistanceDiagnostic, height: 300, fit: BoxFit.fitWidth),
+              ),
+            ),
+          Expanded(
+            child: Align(
+              child: Container(
+                constraints: BoxConstraints(maxWidth: 500),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // BOUTON ASSISTANT DIAGNOSTIC
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          printDev();
-                          context.router.push(ChoiceRoute(
-                              filAriane: "",
-                              choice: ChoiceWithQuestions(
-                                id: UniqueId.fromUniqueString('votredemandeconcerne'),
-                                nom: Nom("votredemandeconcerne"),
-                                path: 'choice/votredemandeconcerne',
-                                question: Question("votredemandeconcerne"),
-                                choiceQuestion: null,
-                                choiceAnswer: null,
-                              )));
-                        },
-                        child: Text("Assistant Diagnostic"),
-                      ),
-                    ),
-                    SizedBox(height: 10),
+                    //Mon compte
+                    SpaceH20(),
+                    Text("ASSISTANT", style: Theme.of(context).textTheme.titleLarge),
+                    Expanded(child: Container()),
 
-                    // BOUTON MESSAGERIE
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: kIsWeb
-                            ? null
-                            : () async {
+                    //Menu
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // BOUTON ASSISTANT DIAGNOSTIC
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                printDev();
+                                context.router.push(ChoiceRoute(
+                                    filAriane: "",
+                                    choice: ChoiceWithQuestions(
+                                      id: UniqueId.fromUniqueString('votredemandeconcerne'),
+                                      nom: Nom("votredemandeconcerne"),
+                                      path: 'choice/votredemandeconcerne',
+                                      question: Question("votredemandeconcerne"),
+                                      choiceQuestion: null,
+                                      choiceAnswer: null,
+                                    )));
+                              },
+                              child: Text("Assistant Diagnostic"),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+
+                          // BOUTON MESSAGERIE
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: ElevatedButton(
+                              onPressed: () async {
                                 printDev();
                                 context.router.push(MessageListRoute());
                               },
-                        child: Text("Messagerie-Assistance"),
-                      ),
-                    ),
-                    SizedBox(height: 10),
+                              child: Text("Messagerie-Assistance"),
+                            ),
+                          ),
+                          SizedBox(height: 10),
 
-                    // BOUTON VISIO ASSISTANCE
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          printDev();
-                          if (kIsWeb) {
-                            final _url = 'https://www.smartagenda.fr/pro/dist-atelier/rendez-vous/';
-                            if (!await launchUrl(Uri.parse(_url))) {
-                              throw Exception('Could not launch $_url');
-                            }
-                          } else {
-                            context.router.push(Assistant_visioRoute());
-                          }
-                        },
-                        child: Text("Visio Assistance"),
+                          // BOUTON VISIO ASSISTANCE
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                printDev();
+                                if (kIsWeb) {
+                                  final _url = 'https://www.smartagenda.fr/pro/dist-atelier/rendez-vous/';
+                                  if (!await launchUrl(Uri.parse(_url))) {
+                                    throw Exception('Could not launch $_url');
+                                  }
+                                } else {
+                                  context.router.push(Assistant_visioRoute());
+                                }
+                              },
+                              child: Text("Visio Assistance"),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+
+                    Expanded(child: Container()),
                   ],
                 ),
               ),
-
-              Expanded(child: Container()),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -53,7 +53,7 @@ class _WebViewState extends State<_WebView> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://toulon.mobilitemoderne.fr/smart-agenda.html'));
+      ..loadRequest(Uri.parse('https://www.smartagenda.fr/pro/dist-atelier/rendez-vous/'));
   }
 
   @override

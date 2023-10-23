@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_icons.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -30,6 +32,7 @@ class SideBarNavigation extends StatelessWidget {
                       children: [
                         //Titre
                         _Title(tabsRouter: tabsRouter),
+                        SpaceH20(),
                         //Liste des liens
                         ...listMenu.map((element) => NavLink(
                               title: element["title"],
@@ -74,8 +77,10 @@ class _Title extends ConsumerWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(18),
-        child: Center(
-          child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+        child: Icon(
+          MyFlutterApp.logo_noir,
+          size: 60,
+          color: const Color.fromARGB(255, 0, 255, 8),
         ),
       ),
     );

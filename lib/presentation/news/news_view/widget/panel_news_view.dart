@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
@@ -57,19 +58,50 @@ class PanelNewsView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //IMAGE
-                      ImageFromStorage(
-                        url: news.imageUrl,
-                        bytes: news.imageBytes,
-                      ),
-                      SpaceH20(),
+                      LayoutBuilder(builder: (context, BoxConstraints constraints) {
+                        if (constraints.maxWidth < 500)
+                          return Column(
+                            children: [
+                              //IMAGE
+                              ImageFromStorage(
+                                url: news.imageUrl,
+                                bytes: news.imageBytes,
+                              ),
+                              SpaceH20(),
 
-                      //CONTENU
-                      Text("${news.content.replaceAll('\\n', '\n')}",
-                          style: Theme.of(context).textTheme.bodyMedium),
-                      SpaceH10(),
+                              //CONTENU
+                              Text("${news.content.replaceAll('\\n', '\n')}",
+                                  style: Theme.of(context).textTheme.bodyMedium),
+                              SpaceH10(),
+                            ],
+                          );
+                        else
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //IMAGE
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: ImageFromStorage(
+                                  url: news.imageUrl,
+                                  bytes: news.imageBytes,
+                                ),
+                              ),
+                              SpaceW10(),
+
+                              //CONTENU
+                              Expanded(
+                                child: AutoSizeText("${news.content.replaceAll('\\n', '\n')}",
+                                    style: Theme.of(context).textTheme.bodyMedium),
+                              ),
+                              SpaceW10(),
+                            ],
+                          );
+                      }),
 
                       //DIVIDER
+                      SpaceH10(),
                       Divider(color: Colors.black),
                       SpaceH10(),
 

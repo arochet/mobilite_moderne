@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -40,6 +41,11 @@ AppBar? buildAppBar(BuildContext context, WidgetRef ref, String? title,
 
 PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeight,
     [bool isAssitant = false]) {
+  if (kIsWeb)
+    return PreferredSize(
+      preferredSize: Size.fromHeight(0),
+      child: Container(),
+    );
   return PreferredSize(
       preferredSize: Size.fromHeight(sizeHeight), // here the desired height
       child: Stack(

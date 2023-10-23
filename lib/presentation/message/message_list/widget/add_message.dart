@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:another_flushbar/flushbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
@@ -70,17 +71,18 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             SizedBox(width: 5),
 
             //Bouton Photo
-            IconButton(
-              onPressed: () async {
-                final ImagePicker picker = ImagePicker();
-                final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+            if (!kIsWeb)
+              IconButton(
+                onPressed: () async {
+                  final ImagePicker picker = ImagePicker();
+                  final XFile? photo = await picker.pickImage(source: ImageSource.camera);
 
-                if (photo != null) {
-                  ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
-                }
-              },
-              icon: Icon(Icons.photo_camera),
-            ),
+                  if (photo != null) {
+                    ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
+                  }
+                },
+                icon: Icon(Icons.photo_camera),
+              ),
             SizedBox(width: 5),
 
             // Champs image

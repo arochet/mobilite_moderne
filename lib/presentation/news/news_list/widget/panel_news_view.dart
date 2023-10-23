@@ -22,12 +22,7 @@ class PanelNewsView extends StatelessWidget {
       title: 'PanelNewsView',
       child: Card(
         color: colorpanel(900),
-        child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600)
-            return _LargeCard(news: news);
-          else
-            return _CompressedCard(news: news);
-        }),
+        child: _CompressedCard(news: news),
       ),
     );
   }
@@ -44,7 +39,7 @@ class _CompressedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 280,
+      constraints: BoxConstraints(maxWidth: 450, maxHeight: 280, minHeight: 280),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -92,62 +87,6 @@ class _CompressedCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _LargeCard extends StatelessWidget {
-  const _LargeCard({
-    super.key,
-    required this.news,
-  });
-
-  final News news;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-            constraints: BoxConstraints(maxWidth: 350),
-            child: ImageFromStorage(
-              url: news.imageUrl,
-              bytes: news.imageBytes,
-            )),
-        SizedBox(width: 14),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //TITRE
-              Text("${news.title.getOrCrash()}", style: Theme.of(context).textTheme.titleLarge),
-              SpaceH10(),
-
-              //CONTENU
-              AutoSizeText("${news.content}",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 4,
-                  style: Theme.of(context).textTheme.bodyMedium),
-              SpaceH10(),
-
-              //BOUTON VOIR
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: ElevatedButton(
-                  onPressed: () {
-                    context.router.push(NewsViewRoute(id: news.id));
-                  },
-                  child: Text("Voir"),
-                  style: Theme.of(context).extension<AppThemeExtention>()?.buttonLight,
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(width: 14),
-      ],
     );
   }
 }

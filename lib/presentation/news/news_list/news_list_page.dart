@@ -32,9 +32,17 @@ class NewsListPage extends ConsumerWidget {
               ref.watch(allNewsProvider),
               builder: (data) => data!.fold(
                   (error) => AppError(message: error.toString()),
-                  (listNews) => ListView(children: [
-                        ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
-                      ])),
+                  (listNews) => SingleChildScrollView(
+                        child: Align(
+                          child: Wrap(
+                              alignment: WrapAlignment.start,
+                              runAlignment: WrapAlignment.center,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
+                              ]),
+                        ),
+                      )),
             )),
       ),
     );

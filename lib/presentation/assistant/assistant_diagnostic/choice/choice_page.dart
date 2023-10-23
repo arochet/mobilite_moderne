@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
@@ -5,6 +6,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_fi
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
@@ -28,18 +30,16 @@ class ChoicePage extends ConsumerWidget {
     return MainScaffold(
         appBar: buildAppBarAssistance(context, MediaQuery.of(context).size.height * 0.4, true),
         color: colorpanel(800),
-        child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AppAsync(
-              ref.watch(oneChoiceProvider(choice)),
-              builder: (data) => data!.fold(
-                (error) => Center(child: AppError(message: error.toString())),
-                (ChoiceWithQuestions choiceLoaded) => _PanelChoiceView(
-                  choice: choiceLoaded,
-                  filAriane: filAriane,
-                ),
-              ),
-            )));
+        child: AppAsync(
+          ref.watch(oneChoiceProvider(choice)),
+          builder: (data) => data!.fold(
+            (error) => Center(child: AppError(message: error.toString())),
+            (ChoiceWithQuestions choiceLoaded) => _PanelChoiceView(
+              choice: choiceLoaded,
+              filAriane: filAriane,
+            ),
+          ),
+        ));
   }
 }
 
@@ -53,6 +53,15 @@ class _PanelChoiceView extends StatelessWidget {
     return ShowComponentFile(
       child: ListView(
         children: [
+          //IMAGE WEB
+          if (kIsWeb)
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+                child: Image.asset(AssetsImage.assistance, height: 300, fit: BoxFit.fitWidth),
+              ),
+            ),
           SpaceH20(),
 
           //Titre de la question
@@ -144,9 +153,12 @@ class _TileChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onTap,
-        child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: onTap,
+          child: Text(title, style: Theme.of(context).textTheme.bodyMedium),
+        ),
       ),
     );
   }
