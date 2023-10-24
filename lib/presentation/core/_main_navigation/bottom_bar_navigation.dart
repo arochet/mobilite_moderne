@@ -53,10 +53,12 @@ class BottomBarNavigation extends ConsumerWidget {
             selectedLabelStyle: TextStyle(
               fontFamily: Theme.of(context).textTheme.titleLarge?.fontFamily,
               fontWeight: FontWeight.w600,
+              fontSize: 12,
             ),
             unselectedLabelStyle: TextStyle(
               fontFamily: Theme.of(context).textTheme.titleLarge?.fontFamily,
               fontWeight: FontWeight.w600,
+              fontSize: 12,
             ),
             items: listMenu
                 .map(
@@ -67,9 +69,14 @@ class BottomBarNavigation extends ConsumerWidget {
                       child: Icon(element["icon"],
                           color: Theme.of(context).textTheme.titleLarge?.color, size: 24),
                     ),
-                    icon: Icon(
-                      element["icon"],
-                      size: 24,
+                    icon: CircleAvatar(
+                      radius: 16,
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.black,
+                      child: Icon(
+                        element["icon"],
+                        size: 24,
+                      ),
                     ),
                     label: element["title"],
                   ),
