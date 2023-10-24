@@ -59,13 +59,15 @@ class _PanelChoiceView extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-                child: Image.asset(AssetsImage.assistance, height: 300, fit: BoxFit.fitWidth),
+                child: Image.asset(AppAssetsImage.assistance, height: 300, fit: BoxFit.fitWidth),
               ),
             ),
           SpaceH20(),
 
           //Titre de la question
-          Center(child: Text("${choice.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium)),
+          Center(
+              child: Text("${choice.nom.getOrCrash().toUpperCase()}",
+                  style: Theme.of(context).textTheme.titleLarge)),
           SpaceH20(),
 
           //Fil d'ariane
@@ -98,7 +100,9 @@ class _PanelChoiceView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //Question
-                    Text("${choice.question?.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
+                    Text("${choice.question?.getOrCrash()}",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.normal)),
                     SizedBox(height: 20),
 
                     //Réponses menant à d'autres questions

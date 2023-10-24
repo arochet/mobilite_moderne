@@ -57,10 +57,14 @@ class _SearchAlgoliaState extends ConsumerState<SearchAlgolia> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Rechercher',
-                  prefixIcon: Icon(Icons.search),
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: primaryColor,
+                  ),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor, width: 1.0),
-                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: primaryColor, width: 2.0),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),

@@ -62,20 +62,30 @@ class NavLinkRetour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4.0),
-        child: ListTile(
-          leading: Icon(Icons.backspace_rounded),
-          title: Text(AppLocalizations.of(context)!.retour),
-          tileColor: colorpanel(600),
-          hoverColor: colorpanel(700),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4.0),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          printDev();
+          context.router.pop();
+        },
+        label: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Text("Retour"),
+        ),
+        icon: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Icon(Icons.arrow_back_ios),
+        ),
+        style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) return primaryColor;
+              if (states.contains(MaterialState.hovered)) return primaryColor;
+            },
           ),
-          onTap: () {
-            printDev();
-            context.router.pop();
-          },
-        ));
+        ),
+      ),
+    );
   }
 }
 

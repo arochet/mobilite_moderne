@@ -15,7 +15,7 @@ class ListKeywordsChips extends StatelessWidget {
     return Wrap(
       children: news.keywords
           .map((String keyword) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
+                padding: const EdgeInsets.only(right: 8),
                 child: Chip(
                   backgroundColor: primaryColor,
                   padding: EdgeInsets.all(0),

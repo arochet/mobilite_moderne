@@ -67,7 +67,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
       final env = ref.watch(environment.notifier).state.name;
 
       final page = Container(
-        color: colorpanel(800),
+        //color: colorpanel(800),
         child: ListView(
           children: <Widget>[
             SpaceH20(),

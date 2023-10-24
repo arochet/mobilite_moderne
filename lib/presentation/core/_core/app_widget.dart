@@ -13,8 +13,8 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //COLOR
     const Color primaryLightColor = Color.fromARGB(35, 0, 255, 0);
-    const Color titleColor = Color(0xff00214d);
-    const Color paragraphColor = Color(0xff1b2d45);
+    const Color titleColor = Colors.black;
+    const Color paragraphColor = Colors.black;
 
     //BUTTON
     ButtonStyle defaultButtonStyle = ElevatedButton.styleFrom(
@@ -84,7 +84,7 @@ class AppWidget extends StatelessWidget {
 
         //CARD THEME
         cardTheme: CardTheme(
-            color: colorpanel(800),
+            color: colorpanel(900),
             elevation: 0,
             margin: EdgeInsets.all(12),
             shape: RoundedRectangleBorder(
@@ -165,10 +165,10 @@ class AppWidget extends StatelessWidget {
 
         //TAB BAR
         tabBarTheme: TabBarTheme(
-          labelColor: titleColor,
+          labelColor: Colors.white,
           labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-          unselectedLabelColor: paragraphColor,
+          unselectedLabelColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.tab,
           indicator: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

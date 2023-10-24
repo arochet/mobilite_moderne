@@ -34,8 +34,9 @@ class PanelNewsView extends StatelessWidget {
                     child: Column(
                       children: [
                         // MOTS CLES DE LA NEWS
-                        Align(alignment: Alignment.centerLeft, child: ListKeywordsChips(news: news)),
                         SpaceH5(),
+                        Align(alignment: Alignment.centerLeft, child: ListKeywordsChips(news: news)),
+                        SpaceH10(),
 
                         // TITRE DE LA NEWS
                         Row(

@@ -21,9 +21,17 @@ class Resource_menuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShowComponentFile(
       title: 'Resource_menuPage',
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: _Body(),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppAssetsImage.fondMenuWeb),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: _Body(),
+        ),
       ),
     );
   }
@@ -47,13 +55,9 @@ class __BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return SearchAlgolia(
-        controller: controller,
-        child: Align(
-          child: Container(
-            constraints: BoxConstraints(maxWidth: 500),
-            child: PanelCategoryList(ref.watch(currentOnglet)),
-          ),
-        ));
+    return Container(
+      constraints: BoxConstraints(maxWidth: 700),
+      child: SearchAlgolia(controller: controller, child: PanelCategoryList(ref.watch(currentOnglet))),
+    );
   }
 }

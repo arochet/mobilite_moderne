@@ -23,7 +23,7 @@ class NewsListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: colorpanel(800),
+      //color: colorpanel(800),
       child: ShowComponentFile(
         title: 'NewsListPage',
         child: Padding(

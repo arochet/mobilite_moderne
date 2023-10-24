@@ -31,7 +31,7 @@ class AssistantPage extends ConsumerWidget {
               width: MediaQuery.of(context).size.width,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-                child: Image.asset(AssetsImage.assistanceDiagnostic, height: 300, fit: BoxFit.fitWidth),
+                child: Image.asset(AppAssetsImage.assistanceDiagnostic, height: 300, fit: BoxFit.fitWidth),
               ),
             ),
           Expanded(
@@ -42,7 +42,7 @@ class AssistantPage extends ConsumerWidget {
                   children: [
                     //Mon compte
                     SpaceH20(),
-                    Text("ASSISTANT", style: Theme.of(context).textTheme.titleLarge),
+                    Text("ASSISTANCE", style: Theme.of(context).textTheme.titleLarge),
                     Expanded(child: Container()),
 
                     //Menu
@@ -80,7 +80,7 @@ class AssistantPage extends ConsumerWidget {
                                 printDev();
                                 context.router.push(MessageListRoute());
                               },
-                              child: Text("Messagerie-Assistance"),
+                              child: Text("Messagerie-assistance"),
                             ),
                           ),
                           SizedBox(height: 10),
@@ -100,7 +100,7 @@ class AssistantPage extends ConsumerWidget {
                                   context.router.push(Assistant_visioRoute());
                                 }
                               },
-                              child: Text("Visio Assistance"),
+                              child: Text("Visio-assistance"),
                             ),
                           ),
                         ],

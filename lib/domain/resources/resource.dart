@@ -55,7 +55,7 @@ extension ResourceMainCategoryExtension on ResourceMainCategory {
   String get title {
     switch (this) {
       case ResourceMainCategory.mediatheque:
-        return 'Mediatheque';
+        return 'Médiathèque';
       case ResourceMainCategory.notice_constructeur:
         return 'Notice Constructeur';
       case ResourceMainCategory.pieces_fournisseurs:
@@ -66,11 +66,11 @@ extension ResourceMainCategoryExtension on ResourceMainCategory {
   String get titleBar {
     switch (this) {
       case ResourceMainCategory.mediatheque:
-        return 'Mediatheque';
+        return 'Médiathèque';
       case ResourceMainCategory.notice_constructeur:
-        return 'Notice\nConstructeur';
+        return 'Notices\nconstructeur';
       case ResourceMainCategory.pieces_fournisseurs:
-        return 'Pièces\nFournisseurs';
+        return 'Pièces\nfournisseurs';
     }
   }
 

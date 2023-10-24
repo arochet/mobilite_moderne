@@ -9,7 +9,7 @@ import 'side_bar_navigation.dart';
 
 final listMenu = [
   {
-    "title": 'Assistant',
+    "title": 'Assistance',
     "icon": MyFlutterApp.assistance,
     "id": 0,
   },

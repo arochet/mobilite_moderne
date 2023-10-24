@@ -56,36 +56,62 @@ class _CompressedCard extends StatelessWidget {
                       topLeft: Radius.circular(10),
                       topRight: Radius.circular(10),
                     )),
-                Positioned(top: 5, left: 6, child: ListKeywordsChips(news: news)),
+                Positioned(top: 8, left: 6, child: ListKeywordsChips(news: news)),
               ],
             ),
           ),
 
-          InkWell(
-            onTap: () => context.router.push(NewsViewRoute(id: news.id)),
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("${news.title.getOrCrash()}",
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
-                    ),
-                    const SpaceH5(),
-                    Icon(Icons.remove_red_eye, color: Colors.white),
-                    const SpaceH5(),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          _LineBottom(news: news),
         ],
+      ),
+    );
+  }
+}
+
+class _LineBottom extends StatefulWidget {
+  const _LineBottom({
+    super.key,
+    required this.news,
+  });
+
+  final News news;
+
+  @override
+  State<_LineBottom> createState() => _LineBottomState();
+}
+
+class _LineBottomState extends State<_LineBottom> {
+  bool hover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => context.router.push(NewsViewRoute(id: widget.news.id)),
+      onHover: (value) => setState(() => hover = value),
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius:
+                BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              const SpaceW10(),
+              Expanded(
+                child: Text("${widget.news.title.getOrCrash()}",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(color: hover ? primaryColor : Colors.white)),
+              ),
+              const SpaceW10(),
+              Icon(Icons.remove_red_eye, color: hover ? primaryColor : Colors.white),
+              const SpaceW10(),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_icons.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
 import 'package:mobilite_moderne/providers.dart';
@@ -28,6 +30,17 @@ class SideBarNavigation extends StatelessWidget {
                   //MENU LATERAL
                   Container(
                     width: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 4,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
                     child: SideMenu(listMenu: listMenu),
                   ),
                   //PAGE
@@ -59,8 +72,9 @@ class SideMenu extends StatelessWidget {
     return ListView(
       children: [
         //Titre
-        _Title(tabsRouter: tabsRouter),
         SpaceH20(),
+        _Title(tabsRouter: tabsRouter),
+        SpaceH30(),
         //Liste des liens
         ...listMenu.map((element) => NavLink(
               title: element["title"],
@@ -95,8 +109,13 @@ class _Title extends ConsumerWidget {
         child: Icon(
           MyFlutterApp.logo_noir,
           size: 60,
-          color: const Color.fromARGB(255, 0, 255, 8),
+          //color: const Color.fromARGB(255, 0, 255, 8),
         ),
+        /* Image.asset(
+          AppAssetsImage.logo,
+          width: 30,
+          height: 30,
+        ) */
       ),
     );
   }
@@ -115,20 +134,31 @@ class NavLink extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final idCurrentPage = ref.watch(currentPageNavProvider.notifier).state;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4.0),
-      child: ListTile(
-          leading: Icon(icon),
-          title: Text(title),
-          tileColor: idCurrentPage == route ? colorpanel(700) : null,
-          hoverColor: colorpanel(700),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8.0),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          printDev();
+          ref.read(currentPageNavProvider.notifier).state = route;
+          tabsRouter.setActiveIndex(route);
+        },
+        label: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Text(title),
+        ),
+        icon: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Icon(icon),
+        ),
+        style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) return primaryColor;
+              if (states.contains(MaterialState.hovered)) return primaryColor;
+              return idCurrentPage == route ? primaryColor : null;
+            },
           ),
-          onTap: () {
-            printDev();
-            ref.read(currentPageNavProvider.notifier).state = route;
-            tabsRouter.setActiveIndex(route);
-          }),
+        ),
+      ),
     );
   }
 }

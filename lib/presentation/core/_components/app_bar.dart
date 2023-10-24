@@ -52,7 +52,7 @@ PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeigh
         children: [
           ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-            child: Image.asset(isAssitant ? AssetsImage.assistanceDiagnostic : AssetsImage.assistance,
+            child: Image.asset(isAssitant ? AppAssetsImage.assistanceDiagnostic : AppAssetsImage.assistance,
                 height: sizeHeight, fit: BoxFit.cover),
           ),
           Center(
