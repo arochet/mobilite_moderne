@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppAssetsImage.fondMenuWeb),
+            image: AssetImage(AppAssetsImage.veloFuturiste),
             fit: BoxFit.cover,
           ),
         ),

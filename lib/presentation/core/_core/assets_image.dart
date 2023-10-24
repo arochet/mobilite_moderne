@@ -9,4 +9,5 @@ class AppAssetsImage {
   static const String pieceFournisseur = 'assets/background/piece-fournisseur.jpg';
   static const String ressource = 'assets/background/ressource.jpg';
   static const String visioAssistance = 'assets/background/visio-assistance.jpg';
+  static const String veloFuturiste = 'assets/background/velo-futuriste.jpeg';
 }
