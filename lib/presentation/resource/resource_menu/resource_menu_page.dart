@@ -4,6 +4,7 @@ import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -29,7 +30,7 @@ class Resource_menuPage extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.only(top: 10, right: 10, left: 10),
           child: _Body(),
         ),
       ),
@@ -55,9 +56,19 @@ class __BodyState extends ConsumerState<_Body> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: 700),
-      child: SearchAlgolia(controller: controller, child: PanelCategoryList(ref.watch(currentOnglet))),
+    return Column(
+      children: [
+        const SpaceH10(),
+        Text("RESSOURCES",
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 26, color: Colors.white)),
+        const SpaceH20(),
+        Expanded(
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 700),
+            child: SearchAlgolia(controller: controller, child: PanelCategoryList(ref.watch(currentOnglet))),
+          ),
+        ),
+      ],
     );
   }
 }

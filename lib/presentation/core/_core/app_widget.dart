@@ -46,22 +46,20 @@ class AppWidget extends StatelessWidget {
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
             (states) {
               if (states.contains(MaterialState.hovered)) {
-                return Colors.black;
+                return primaryColor;
               }
               return Colors.white;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith<Color?>(
             (states) {
-              if (states.contains(MaterialState.hovered)) {
-                return Colors.white;
-              }
               return Colors.black;
             },
           ),
         )),
         textButtonTheme: TextButtonThemeData(
           style: defaultButtonStyle.copyWith(
+            padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 14)),
             textStyle: MaterialStateProperty.all(TextStyle(
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline,

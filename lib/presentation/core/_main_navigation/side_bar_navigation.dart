@@ -100,9 +100,9 @@ class _Title extends ConsumerWidget {
     return InkWell(
       onTap: () {
         printDev();
-        context.router.replaceAll([AssistantRoute()]);
-        tabsRouter.setActiveIndex(1);
-        ref.read(currentPageNavProvider.notifier).state = 1;
+        context.router.replaceAll([HomeRoute()]);
+        tabsRouter.setActiveIndex(0);
+        ref.read(currentPageNavProvider.notifier).state = 0;
       },
       child: Padding(
         padding: const EdgeInsets.all(18),

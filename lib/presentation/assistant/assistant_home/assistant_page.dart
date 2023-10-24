@@ -41,8 +41,8 @@ class AssistantPage extends ConsumerWidget {
                 child: Column(
                   children: [
                     //Mon compte
-                    SpaceH20(),
-                    Text("ASSISTANCE", style: Theme.of(context).textTheme.titleLarge),
+                    SpaceH30(),
+                    Text("ASSISTANCE", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 26)),
                     Expanded(child: Container()),
 
                     //Menu
@@ -107,6 +107,7 @@ class AssistantPage extends ConsumerWidget {
                       ),
                     ),
 
+                    SpaceH40(),
                     Expanded(child: Container()),
                   ],
                 ),

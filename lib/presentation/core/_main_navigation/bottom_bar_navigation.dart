@@ -18,8 +18,7 @@ class BottomBarNavigation extends ConsumerWidget {
     if (index == 0) {
       return buildAppBarAssistance(context, sizeHeight);
     } else {
-      return buildAppBar(context, ref, 'Dist Atelier',
-          color: index != 3 ? colorpanel(900) : colorpanel(800))!;
+      return buildAppBar(context, ref, 'Dist Atelier', color: colorpanel(900))!;
     }
   }
 
@@ -34,7 +33,7 @@ class BottomBarNavigation extends ConsumerWidget {
       routes: listRoute,
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
-            backgroundColor: tabsRouter.activeIndex != 3 ? colorpanel(900) : colorpanel(800),
+            backgroundColor: colorpanel(900),
             currentIndex: tabsRouter.activeIndex,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Theme.of(context).textTheme.titleLarge?.color,

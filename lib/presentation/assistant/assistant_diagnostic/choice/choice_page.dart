@@ -29,7 +29,6 @@ class ChoicePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MainScaffold(
         appBar: buildAppBarAssistance(context, MediaQuery.of(context).size.height * 0.4, true),
-        color: colorpanel(800),
         child: AppAsync(
           ref.watch(oneChoiceProvider(choice)),
           builder: (data) => data!.fold(
