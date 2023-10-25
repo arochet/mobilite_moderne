@@ -69,6 +69,8 @@ class _PanelRecapState extends ConsumerState<PanelRecap> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text("Abonnement Dist'Atelier : 10€/mois", style: Theme.of(context).textTheme.bodyLarge),
+                  SpaceH5(),
+                  Text("Paiment : mensuel", style: Theme.of(context).textTheme.bodyLarge),
                   SpaceH10(),
                   Align(
                     alignment: Alignment.centerRight,

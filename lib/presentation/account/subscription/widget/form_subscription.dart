@@ -11,13 +11,21 @@ import 'form_step0_panel_new_subscription.dart';
 import 'form_step2_panel_form_adress.dart';
 import 'form_step3_panel_recap.dart';
 
-class FormSubscription extends ConsumerWidget {
-  const FormSubscription({
-    super.key,
-  });
+class FormSubscription extends ConsumerStatefulWidget {
+  const FormSubscription({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _FormSubscriptionState createState() => _FormSubscriptionState();
+}
+
+class _FormSubscriptionState extends ConsumerState<FormSubscription> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ref.watch(subscriptionNotifierProvider);
     final notifier = ref.watch(subscriptionNotifierProvider.notifier);
 

@@ -149,7 +149,7 @@ Les catégories, les articles d'actualité et les réponses (Answer) dans assist
 
 #### Système de catégorie
 
-On trouve la classe Catégorie qui permet de créer une arborescence pour accéder à des ressources. Une catégorie peut avoir des sous catégories ou bien une liste de ressources. 
+On trouve la classe Catégorie qui permet de créer une arborescence pour accéder à des ressources. Une catégorie peut avoir des sous catégories ou bien une liste de ressources.
 
 #### Actualité
 
@@ -196,3 +196,7 @@ firebase deploy --only hosting
 
 Dans l'application, on stocke uniquement le nom et adresse email des utilisateurs. Une adresse est demandé pour l'abonnement Stripe. Les mots de passe sont cryptés. 
 Lorsqu'un utilisateur supprime son compte. Ses informations ne sont pas conservés en base. 
+
+## Modifier les catégories
+
+Pour modifier les catégories, rendez-vous dans Firebase / Firestore. Dans catégory, cliquer sur "ajouter un document". Renseigner l'identifiant du document (sera non visible). Dans champs, rentrer 'nom' et la valeur. Exemple, pour ajouter une catégorie "Trottinette 2022", on mettra comme identifiant 'trottinette2022' et de les champs on mettre 'nom' : String 'Trottinette 2022'. Pour ajouter des ressources dans une catégorie, on créer un champs 'listResource' au format array. Dans chaque élément on peut entrer l'identifiant de la ressource. Pour faire une recherche de ressource on peut aller dans ressource et les trier par nom.

@@ -12,26 +12,35 @@ class PanelFormPayment extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        if (!kIsWeb)
-          stripe.CardFormField(
-            style: stripe.CardFormStyle(backgroundColor: Color.fromARGB(255, 119, 119, 119)),
-            controller: stripe.CardFormEditController(),
-            onCardChanged: (details) =>
-                ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details),
-          ),
-        if (kIsWeb) ...[
-          _CardField(),
-        ],
-        SpaceH10(),
-        ElevatedButton(
-          onPressed: () {
-            ref.read(subscriptionNotifierProvider.notifier).subscribeTotalAccess();
-          },
-          child: Text("Continuer"),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (!kIsWeb)
+              stripe.CardFormField(
+                style: stripe.CardFormStyle(
+                  backgroundColor: Color.fromARGB(255, 185, 184, 184),
+                  textColor: Colors.black,
+                ),
+                controller: stripe.CardFormEditController(),
+                onCardChanged: (details) =>
+                    ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details),
+              ),
+            if (kIsWeb) ...[
+              _CardField(),
+            ],
+            SpaceH10(),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(subscriptionNotifierProvider.notifier).subscribeTotalAccess();
+              },
+              child: Text("Continuer"),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
