@@ -1,3 +1,4 @@
+import 'package:mobilite_moderne/PRESENTATION/core/_components/is_suscribed.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 
@@ -26,24 +27,26 @@ class NewsListPage extends ConsumerWidget {
       //color: colorpanel(800),
       child: ShowComponentFile(
         title: 'NewsListPage',
-        child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AppAsync(
-              ref.watch(allNewsProvider),
-              builder: (data) => data!.fold(
-                  (error) => AppError(message: error.toString()),
-                  (listNews) => SingleChildScrollView(
-                        child: Align(
-                          child: Wrap(
-                              alignment: WrapAlignment.start,
-                              runAlignment: WrapAlignment.center,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              children: [
-                                ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
-                              ]),
-                        ),
-                      )),
-            )),
+        child: IsSuscribed(
+          child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AppAsync(
+                ref.watch(allNewsProvider),
+                builder: (data) => data!.fold(
+                    (error) => AppError(message: error.toString()),
+                    (listNews) => SingleChildScrollView(
+                          child: Align(
+                            child: Wrap(
+                                alignment: WrapAlignment.start,
+                                runAlignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  ...listNews.map<Widget>((newsObj) => PanelNewsView(news: newsObj)).toList()
+                                ]),
+                          ),
+                        )),
+              )),
+        ),
       ),
     );
   }
