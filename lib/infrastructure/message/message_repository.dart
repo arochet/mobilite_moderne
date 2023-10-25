@@ -48,8 +48,13 @@ class MessageRepository implements IMessageRepository {
 
       //S'il y'a une image, on l'ajoute
       if (message.imageSend != null) {
-        final TaskSnapshot result =
-            await _storage.ref().child(pathImage!).putFile(File(message.imageSend!.path));
+        if (!kIsWeb)
+          final TaskSnapshot result =
+              await _storage.ref().child(pathImage!).putFile(File(message.imageSend!.path));
+        else {
+          final data = await message.imageSend!.readAsBytes();
+          await _storage.ref().child(pathImage!).putData(data, SettableMetadata(contentType: 'image/png'));
+        }
       }
 
       //On crée le méchant message

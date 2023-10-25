@@ -71,36 +71,52 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             SizedBox(width: 5),
 
             //Bouton Photo
-            if (!kIsWeb)
-              IconButton(
-                onPressed: () async {
-                  final ImagePicker picker = ImagePicker();
-                  final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+            IconButton(
+              onPressed: () async {
+                final ImagePicker picker = ImagePicker();
+                final XFile? photo =
+                    await picker.pickImage(source: kIsWeb ? ImageSource.gallery : ImageSource.camera);
 
-                  if (photo != null) {
-                    ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
-                  }
-                },
-                icon: Icon(Icons.photo_camera),
-              ),
+                if (photo != null) {
+                  ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
+                }
+              },
+              icon: Icon(Icons.photo_camera),
+            ),
             SizedBox(width: 5),
 
             // Champs image
             if (state.message.imageSend != null) ...[
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: SizedBox.fromSize(
-                    size: Size.fromRadius(48),
-                    child: Image.file(
-                      fit: BoxFit.fitHeight,
-                      File(state.message.imageSend!.path),
-                      width: 120,
-                      height: 120,
+              if (!kIsWeb)
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: SizedBox.fromSize(
+                      size: Size.fromRadius(48),
+                      child: Image.file(
+                        fit: BoxFit.fitHeight,
+                        File(state.message.imageSend!.path),
+                        width: 120,
+                        height: 120,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              if (kIsWeb)
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: SizedBox.fromSize(
+                      size: Size.fromRadius(48),
+                      child: Image.network(
+                        fit: BoxFit.fitHeight,
+                        state.message.imageSend!.path,
+                        width: 120,
+                        height: 120,
+                      ),
+                    ),
+                  ),
+                ),
             ],
 
             // Champs ajout de texte

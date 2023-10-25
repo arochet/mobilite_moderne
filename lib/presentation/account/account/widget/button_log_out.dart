@@ -17,7 +17,7 @@ class ButtonLogOut extends ConsumerWidget {
           printDev();
           ref.read(authNotifierProvider.notifier).signOut();
         },
-        child: Text(AppLocalizations.of(context)!.sedeconnecter),
+        child: Text('Se déconnecter'),
       ),
     );
   }
