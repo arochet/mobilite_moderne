@@ -35,16 +35,13 @@ class PanelList extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           children: [
-                            if (item.icon != null) Icon(item.icon, color: colorpanel(50)),
+                            if (item.icon != null) Icon(item.icon),
                             SizedBox(width: 10),
                             Expanded(
                               child: AutoSizeText(item.title,
                                   maxLines: 1,
                                   overflow: TextOverflow.fade,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(color: colorpanel(50))),
+                                  style: Theme.of(context).textTheme.bodyMedium!),
                             ),
                             if (item.arrow) Icon(Icons.arrow_forward_ios, color: colorpanel(50), size: 15),
                           ],

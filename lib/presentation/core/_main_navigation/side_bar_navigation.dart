@@ -106,16 +106,10 @@ class _Title extends ConsumerWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(18),
-        child: Icon(
-          MyFlutterApp.logo_noir,
-          size: 60,
-          //color: const Color.fromARGB(255, 0, 255, 8),
+        child: Image(
+          image: AssetImage(AppAssetsImage.logo),
+          height: 60,
         ),
-        /* Image.asset(
-          AppAssetsImage.logo,
-          width: 30,
-          height: 30,
-        ) */
       ),
     );
   }

@@ -129,7 +129,7 @@ class AppWidget extends StatelessWidget {
           titleLarge: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
           titleMedium: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
           titleSmall: TextStyle(fontWeight: FontWeight.bold, color: titleColor),
-          bodyLarge: TextStyle(color: paragraphColor),
+          bodyLarge: TextStyle(color: paragraphColor, fontSize: 16),
           bodyMedium: TextStyle(color: paragraphColor),
           bodySmall: TextStyle(color: paragraphColor),
           labelLarge: TextStyle(color: titleColor),

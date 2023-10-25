@@ -15,6 +15,9 @@ abstract class Subscriptions with _$Subscriptions {
     /// Date de début de l'abonnement
     required DateTime? startDate,
 
+    /// Date de prochaine facturation
+    required DateTime? billingCycleAnchor,
+
     /// Correspond au produit de paiement Stripe
     required Map<String, dynamic> items,
 
@@ -32,6 +35,7 @@ abstract class Subscriptions with _$Subscriptions {
         items: [] as Map<String, dynamic>,
         status: false,
         idStripe: null,
+        billingCycleAnchor: null,
         tarif: 0,
       );
 }

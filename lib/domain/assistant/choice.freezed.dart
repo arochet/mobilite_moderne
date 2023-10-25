@@ -17,11 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChoiceWithQuestions {
   UniqueId get id => throw _privateConstructorUsedError;
+
+  /// Titre de la question
   Nom get nom => throw _privateConstructorUsedError;
+
+  /// Question posée à l'utilisateur
   Question get question => throw _privateConstructorUsedError;
+
+  /// Fil d'ariane pour retrouver le choix dans Firebase
   String get path => throw _privateConstructorUsedError;
+
+  /// Liste des choix possibles pour cette question
   List<ChoiceWithQuestions>? get choiceQuestion =>
       throw _privateConstructorUsedError;
+
+  /// Ou bien liste des réponses
   List<ChoiceWithAnswer>? get choiceAnswer =>
       throw _privateConstructorUsedError;
 
@@ -174,13 +184,23 @@ class _$_ChoiceWithQuestions extends _ChoiceWithQuestions {
 
   @override
   final UniqueId id;
+
+  /// Titre de la question
   @override
   final Nom nom;
+
+  /// Question posée à l'utilisateur
   @override
   final Question question;
+
+  /// Fil d'ariane pour retrouver le choix dans Firebase
   @override
   final String path;
+
+  /// Liste des choix possibles pour cette question
   final List<ChoiceWithQuestions>? _choiceQuestion;
+
+  /// Liste des choix possibles pour cette question
   @override
   List<ChoiceWithQuestions>? get choiceQuestion {
     final value = _choiceQuestion;
@@ -190,7 +210,10 @@ class _$_ChoiceWithQuestions extends _ChoiceWithQuestions {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Ou bien liste des réponses
   final List<ChoiceWithAnswer>? _choiceAnswer;
+
+  /// Ou bien liste des réponses
   @override
   List<ChoiceWithAnswer>? get choiceAnswer {
     final value = _choiceAnswer;
@@ -253,14 +276,24 @@ abstract class _ChoiceWithQuestions extends ChoiceWithQuestions {
   @override
   UniqueId get id;
   @override
+
+  /// Titre de la question
   Nom get nom;
   @override
+
+  /// Question posée à l'utilisateur
   Question get question;
   @override
+
+  /// Fil d'ariane pour retrouver le choix dans Firebase
   String get path;
   @override
+
+  /// Liste des choix possibles pour cette question
   List<ChoiceWithQuestions>? get choiceQuestion;
   @override
+
+  /// Ou bien liste des réponses
   List<ChoiceWithAnswer>? get choiceAnswer;
   @override
   @JsonKey(ignore: true)
@@ -275,6 +308,8 @@ mixin _$ChoiceWithAnswer {
 
   /// Chemin du choix dans Firebase
   String get path => throw _privateConstructorUsedError;
+
+  /// Réponse à toutes les questions
   Anwser get answer => throw _privateConstructorUsedError;
 
   /// Liste des ressources qui sont liées à ce choix (PDF ...)
@@ -421,6 +456,8 @@ class _$_ChoiceWithAnswer extends _ChoiceWithAnswer {
   /// Chemin du choix dans Firebase
   @override
   final String path;
+
+  /// Réponse à toutes les questions
   @override
   final Anwser answer;
 
@@ -482,6 +519,8 @@ abstract class _ChoiceWithAnswer extends ChoiceWithAnswer {
   /// Chemin du choix dans Firebase
   String get path;
   @override
+
+  /// Réponse à toutes les questions
   Anwser get answer;
   @override
 

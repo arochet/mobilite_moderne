@@ -2,6 +2,7 @@ import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,19 +52,12 @@ class PanelInit extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("Dist Atelier", style: Theme.of(context).textTheme.titleLarge),
-              SizedBox(height: 20),
-              Image(
-                image: AssetImage("assets/icon/icon.png"),
-                height: 120,
-              ),
-            ],
+            child: Center(
+          child: Image(
+            image: AssetImage(AppAssetsImage.logo),
+            height: 120,
           ),
-        ),
+        )),
         if (!kIsWeb)
           Container(
               constraints: BoxConstraints(maxWidth: 400),

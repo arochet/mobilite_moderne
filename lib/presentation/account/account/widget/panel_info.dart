@@ -24,7 +24,7 @@ class _PanelInfoState extends ConsumerState<PanelInfo> {
     return PanelList(title: 'PanelInfo', list: [
       //Condition Générale d'Utilisation
       ItemPanelList(
-        title: 'Condition Générale d\'Utilisation',
+        title: 'Conditions Générales d\'Utilisation',
         icon: Icons.account_balance,
         onTap: () {
           printDev();

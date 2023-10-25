@@ -1,6 +1,8 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigation_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/side_bar_navigation.dart';
@@ -42,16 +44,10 @@ class MainScaffold extends ConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      /* Padding(
-                        padding: const EdgeInsets.all(18),
-                        child: Center(
-                          child: Text(AppLocalizations.of(context)!.nomprojet,
-                              style: Theme.of(context).textTheme.titleLarge),
-                        ),
-                      ), */
+                      const SpaceH20(),
                       _Title(),
+                      const SpaceH30(),
                       NavLinkRetour(),
-                      //SideMenu(listMenu: listMenu),
                     ],
                   )),
               Expanded(child: child),
@@ -116,7 +112,11 @@ class _Title extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.all(18),
         child: Center(
-          child: Text(AppLocalizations.of(context)!.nomprojet, style: Theme.of(context).textTheme.titleLarge),
+          child: Image.asset(
+            AppAssetsImage.logo,
+            height: 60,
+            //package: 'mobilite_moderne',
+          ),
         ),
       ),
     );

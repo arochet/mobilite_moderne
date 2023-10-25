@@ -17,9 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Subscriptions {
   String get id => throw _privateConstructorUsedError;
+
+  /// Date de début de l'abonnement
   DateTime? get startDate => throw _privateConstructorUsedError;
+
+  /// Date de prochaine facturation
+  DateTime? get billingCycleAnchor => throw _privateConstructorUsedError;
+
+  /// Correspond au produit de paiement Stripe
   Map<String, dynamic> get items => throw _privateConstructorUsedError;
+
+  /// Tarif de l'abonnement
   double get tarif => throw _privateConstructorUsedError;
+
+  /// Statut de l'abonnement : actif ou non
   bool get status => throw _privateConstructorUsedError;
   String? get idStripe => throw _privateConstructorUsedError;
 
@@ -37,6 +48,7 @@ abstract class $SubscriptionsCopyWith<$Res> {
   $Res call(
       {String id,
       DateTime? startDate,
+      DateTime? billingCycleAnchor,
       Map<String, dynamic> items,
       double tarif,
       bool status,
@@ -58,6 +70,7 @@ class _$SubscriptionsCopyWithImpl<$Res, $Val extends Subscriptions>
   $Res call({
     Object? id = null,
     Object? startDate = freezed,
+    Object? billingCycleAnchor = freezed,
     Object? items = null,
     Object? tarif = null,
     Object? status = null,
@@ -71,6 +84,10 @@ class _$SubscriptionsCopyWithImpl<$Res, $Val extends Subscriptions>
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      billingCycleAnchor: freezed == billingCycleAnchor
+          ? _value.billingCycleAnchor
+          : billingCycleAnchor // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       items: null == items
           ? _value.items
@@ -103,6 +120,7 @@ abstract class _$$_SubscriptionsCopyWith<$Res>
   $Res call(
       {String id,
       DateTime? startDate,
+      DateTime? billingCycleAnchor,
       Map<String, dynamic> items,
       double tarif,
       bool status,
@@ -122,6 +140,7 @@ class __$$_SubscriptionsCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? startDate = freezed,
+    Object? billingCycleAnchor = freezed,
     Object? items = null,
     Object? tarif = null,
     Object? status = null,
@@ -135,6 +154,10 @@ class __$$_SubscriptionsCopyWithImpl<$Res>
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      billingCycleAnchor: freezed == billingCycleAnchor
+          ? _value.billingCycleAnchor
+          : billingCycleAnchor // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       items: null == items
           ? _value._items
@@ -162,6 +185,7 @@ class _$_Subscriptions extends _Subscriptions {
   const _$_Subscriptions(
       {required this.id,
       required this.startDate,
+      required this.billingCycleAnchor,
       required final Map<String, dynamic> items,
       required this.tarif,
       required this.status,
@@ -171,9 +195,19 @@ class _$_Subscriptions extends _Subscriptions {
 
   @override
   final String id;
+
+  /// Date de début de l'abonnement
   @override
   final DateTime? startDate;
+
+  /// Date de prochaine facturation
+  @override
+  final DateTime? billingCycleAnchor;
+
+  /// Correspond au produit de paiement Stripe
   final Map<String, dynamic> _items;
+
+  /// Correspond au produit de paiement Stripe
   @override
   Map<String, dynamic> get items {
     if (_items is EqualUnmodifiableMapView) return _items;
@@ -181,8 +215,11 @@ class _$_Subscriptions extends _Subscriptions {
     return EqualUnmodifiableMapView(_items);
   }
 
+  /// Tarif de l'abonnement
   @override
   final double tarif;
+
+  /// Statut de l'abonnement : actif ou non
   @override
   final bool status;
   @override
@@ -190,7 +227,7 @@ class _$_Subscriptions extends _Subscriptions {
 
   @override
   String toString() {
-    return 'Subscriptions(id: $id, startDate: $startDate, items: $items, tarif: $tarif, status: $status, idStripe: $idStripe)';
+    return 'Subscriptions(id: $id, startDate: $startDate, billingCycleAnchor: $billingCycleAnchor, items: $items, tarif: $tarif, status: $status, idStripe: $idStripe)';
   }
 
   @override
@@ -201,6 +238,8 @@ class _$_Subscriptions extends _Subscriptions {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.billingCycleAnchor, billingCycleAnchor) ||
+                other.billingCycleAnchor == billingCycleAnchor) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.tarif, tarif) || other.tarif == tarif) &&
             (identical(other.status, status) || other.status == status) &&
@@ -209,8 +248,15 @@ class _$_Subscriptions extends _Subscriptions {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, startDate,
-      const DeepCollectionEquality().hash(_items), tarif, status, idStripe);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      startDate,
+      billingCycleAnchor,
+      const DeepCollectionEquality().hash(_items),
+      tarif,
+      status,
+      idStripe);
 
   @JsonKey(ignore: true)
   @override
@@ -223,6 +269,7 @@ abstract class _Subscriptions extends Subscriptions {
   const factory _Subscriptions(
       {required final String id,
       required final DateTime? startDate,
+      required final DateTime? billingCycleAnchor,
       required final Map<String, dynamic> items,
       required final double tarif,
       required final bool status,
@@ -232,12 +279,24 @@ abstract class _Subscriptions extends Subscriptions {
   @override
   String get id;
   @override
+
+  /// Date de début de l'abonnement
   DateTime? get startDate;
   @override
+
+  /// Date de prochaine facturation
+  DateTime? get billingCycleAnchor;
+  @override
+
+  /// Correspond au produit de paiement Stripe
   Map<String, dynamic> get items;
   @override
+
+  /// Tarif de l'abonnement
   double get tarif;
   @override
+
+  /// Statut de l'abonnement : actif ou non
   bool get status;
   @override
   String? get idStripe;

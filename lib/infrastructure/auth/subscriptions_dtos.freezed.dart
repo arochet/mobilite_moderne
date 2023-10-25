@@ -23,6 +23,8 @@ mixin _$SubscriptionsDTO {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_date')
   int? get startDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'billing_cycle_anchor')
+  int? get billingCycleAnchor => throw _privateConstructorUsedError;
   Map<String, dynamic> get items => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String? get idStripe => throw _privateConstructorUsedError;
@@ -42,6 +44,7 @@ abstract class $SubscriptionsDTOCopyWith<$Res> {
   $Res call(
       {String? id,
       @JsonKey(name: 'start_date') int? startDate,
+      @JsonKey(name: 'billing_cycle_anchor') int? billingCycleAnchor,
       Map<String, dynamic> items,
       String status,
       String? idStripe});
@@ -62,6 +65,7 @@ class _$SubscriptionsDTOCopyWithImpl<$Res, $Val extends SubscriptionsDTO>
   $Res call({
     Object? id = freezed,
     Object? startDate = freezed,
+    Object? billingCycleAnchor = freezed,
     Object? items = null,
     Object? status = null,
     Object? idStripe = freezed,
@@ -74,6 +78,10 @@ class _$SubscriptionsDTOCopyWithImpl<$Res, $Val extends SubscriptionsDTO>
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      billingCycleAnchor: freezed == billingCycleAnchor
+          ? _value.billingCycleAnchor
+          : billingCycleAnchor // ignore: cast_nullable_to_non_nullable
               as int?,
       items: null == items
           ? _value.items
@@ -102,6 +110,7 @@ abstract class _$$_SubscriptionsDTOCopyWith<$Res>
   $Res call(
       {String? id,
       @JsonKey(name: 'start_date') int? startDate,
+      @JsonKey(name: 'billing_cycle_anchor') int? billingCycleAnchor,
       Map<String, dynamic> items,
       String status,
       String? idStripe});
@@ -120,6 +129,7 @@ class __$$_SubscriptionsDTOCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? startDate = freezed,
+    Object? billingCycleAnchor = freezed,
     Object? items = null,
     Object? status = null,
     Object? idStripe = freezed,
@@ -132,6 +142,10 @@ class __$$_SubscriptionsDTOCopyWithImpl<$Res>
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      billingCycleAnchor: freezed == billingCycleAnchor
+          ? _value.billingCycleAnchor
+          : billingCycleAnchor // ignore: cast_nullable_to_non_nullable
               as int?,
       items: null == items
           ? _value._items
@@ -155,6 +169,7 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
   const _$_SubscriptionsDTO(
       {this.id,
       @JsonKey(name: 'start_date') required this.startDate,
+      @JsonKey(name: 'billing_cycle_anchor') required this.billingCycleAnchor,
       required final Map<String, dynamic> items,
       required this.status,
       this.idStripe})
@@ -169,6 +184,9 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
   @override
   @JsonKey(name: 'start_date')
   final int? startDate;
+  @override
+  @JsonKey(name: 'billing_cycle_anchor')
+  final int? billingCycleAnchor;
   final Map<String, dynamic> _items;
   @override
   Map<String, dynamic> get items {
@@ -184,7 +202,7 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
 
   @override
   String toString() {
-    return 'SubscriptionsDTO(id: $id, startDate: $startDate, items: $items, status: $status, idStripe: $idStripe)';
+    return 'SubscriptionsDTO(id: $id, startDate: $startDate, billingCycleAnchor: $billingCycleAnchor, items: $items, status: $status, idStripe: $idStripe)';
   }
 
   @override
@@ -195,6 +213,8 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.billingCycleAnchor, billingCycleAnchor) ||
+                other.billingCycleAnchor == billingCycleAnchor) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.idStripe, idStripe) ||
@@ -203,8 +223,14 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, startDate,
-      const DeepCollectionEquality().hash(_items), status, idStripe);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      startDate,
+      billingCycleAnchor,
+      const DeepCollectionEquality().hash(_items),
+      status,
+      idStripe);
 
   @JsonKey(ignore: true)
   @override
@@ -224,6 +250,8 @@ abstract class _SubscriptionsDTO extends SubscriptionsDTO {
   const factory _SubscriptionsDTO(
       {final String? id,
       @JsonKey(name: 'start_date') required final int? startDate,
+      @JsonKey(name: 'billing_cycle_anchor')
+      required final int? billingCycleAnchor,
       required final Map<String, dynamic> items,
       required final String status,
       final String? idStripe}) = _$_SubscriptionsDTO;
@@ -237,6 +265,9 @@ abstract class _SubscriptionsDTO extends SubscriptionsDTO {
   @override
   @JsonKey(name: 'start_date')
   int? get startDate;
+  @override
+  @JsonKey(name: 'billing_cycle_anchor')
+  int? get billingCycleAnchor;
   @override
   Map<String, dynamic> get items;
   @override

@@ -57,10 +57,11 @@ class _ColumnMenu extends ConsumerWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
-          MyFlutterApp.logo_blanc,
-          size: 80,
-          color: Colors.white,
+        Image.asset(
+          AppAssetsImage.logoBlanc,
+          width: 150,
+          height: 150,
+          //package: 'mobilite_moderne',
         ),
         SizedBox(height: 70),
         SizedBox(
@@ -76,8 +77,8 @@ class _ColumnMenu extends ConsumerWidget {
         ),
         SizedBox(height: 5),
         Text(
-            "Trouvez ici les solutions à vos problèmes: fiches techniques, vidéos, messagerie ou visio-assistance",
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
+            "Trouvez ici les solutions à vos problèmes : fiches techniques, vidéos, messagerie ou visio-assistance",
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
         SpaceH20(),
         SizedBox(
           width: double.infinity,
@@ -91,8 +92,8 @@ class _ColumnMenu extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 5),
-        Text("Trouvez ici vos listes de fournisseurs par type de pièces et accéssoires",
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
+        Text("Trouvez ici vos listes de fournisseurs par type de pièces et accessoires",
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
         SpaceH20(),
         SizedBox(
           width: double.infinity,
@@ -107,7 +108,7 @@ class _ColumnMenu extends ConsumerWidget {
         ),
         SizedBox(height: 5),
         Text("Les dernières actualités techniques",
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white)),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
       ],
     );
   }

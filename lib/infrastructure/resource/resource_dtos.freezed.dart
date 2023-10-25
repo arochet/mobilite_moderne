@@ -24,12 +24,19 @@ mixin _$ResourceDTO {
   String? get id => throw _privateConstructorUsedError;
   String get nom => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+
+  /// Chemin du document dans Firebase Storage
   String get documentPath => throw _privateConstructorUsedError;
+  @deprecated
   String get idCategory => throw _privateConstructorUsedError;
   List<String> get keyword => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get shortDescription => throw _privateConstructorUsedError;
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   String get mainCategory => throw _privateConstructorUsedError;
+
+  /// Nom du fichier de l'image. On reconstitue le chemin avec le mainCategory
   String get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +56,7 @@ abstract class $ResourceDTOCopyWith<$Res> {
       String nom,
       String type,
       String documentPath,
-      String idCategory,
+      @deprecated String idCategory,
       List<String> keyword,
       String description,
       String shortDescription,
@@ -139,7 +146,7 @@ abstract class _$$_ResourceDTOCopyWith<$Res>
       String nom,
       String type,
       String documentPath,
-      String idCategory,
+      @deprecated String idCategory,
       List<String> keyword,
       String description,
       String shortDescription,
@@ -222,7 +229,7 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
       required this.nom,
       required this.type,
       required this.documentPath,
-      required this.idCategory,
+      @deprecated required this.idCategory,
       required final List<String> keyword,
       required this.description,
       required this.shortDescription,
@@ -241,9 +248,12 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
   final String nom;
   @override
   final String type;
+
+  /// Chemin du document dans Firebase Storage
   @override
   final String documentPath;
   @override
+  @deprecated
   final String idCategory;
   final List<String> _keyword;
   @override
@@ -257,8 +267,12 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
   final String description;
   @override
   final String shortDescription;
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   @override
   final String mainCategory;
+
+  /// Nom du fichier de l'image. On reconstitue le chemin avec le mainCategory
   @override
   final String image;
 
@@ -341,7 +355,7 @@ abstract class _ResourceDTO extends ResourceDTO {
       required final String nom,
       required final String type,
       required final String documentPath,
-      required final String idCategory,
+      @deprecated required final String idCategory,
       required final List<String> keyword,
       required final String description,
       required final String shortDescription,
@@ -360,8 +374,11 @@ abstract class _ResourceDTO extends ResourceDTO {
   @override
   String get type;
   @override
+
+  /// Chemin du document dans Firebase Storage
   String get documentPath;
   @override
+  @deprecated
   String get idCategory;
   @override
   List<String> get keyword;
@@ -370,8 +387,12 @@ abstract class _ResourceDTO extends ResourceDTO {
   @override
   String get shortDescription;
   @override
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   String get mainCategory;
   @override
+
+  /// Nom du fichier de l'image. On reconstitue le chemin avec le mainCategory
   String get image;
   @override
   @JsonKey(ignore: true)

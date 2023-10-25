@@ -24,7 +24,7 @@ class _AuthCheckEmailPageState extends ConsumerState<AuthCheckEmailPage> {
       //Verififie que l'email est bien vérifié
       if (ref.read(authNotifierProvider.notifier).authCheckEmail()) {
         ref.read(currentPageNavProvider.notifier).state = 0;
-        context.router.replaceAll([MainNavigationRoute(/* children: [HomeRoute] */)]);
+        context.router.replaceAll([HomeRoute(/* children: [HomeRoute] */)]);
       }
     });
   }

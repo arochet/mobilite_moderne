@@ -45,6 +45,13 @@ class MySubscription extends ConsumerWidget {
                     Text("Tarif: ${subscription.tarif} € / mois",
                         style: Theme.of(context).textTheme.bodyMedium),
                     SpaceH5(),
+                    Text(
+                        "Paiement : ${subscription.items['data'][0]['plan']['interval'] == 'month' ? 'mensuel' : subscription.items['data'][0]['plan']['interval']} ",
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    SpaceH5(),
+                    Text("Prochaine échéance : ${AppDateUtils.formatDate(subscription.billingCycleAnchor)} ",
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    SpaceH5(),
                     Text("Statut: ${subscription.status ? 'actif' : 'inactif'} ",
                         style: Theme.of(context).textTheme.bodyMedium),
                     SpaceH5(),

@@ -17,13 +17,28 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Resource {
   UniqueId get id => throw _privateConstructorUsedError;
+
+  /// Nom de la ressource affiché dans la page
   Nom get nom => throw _privateConstructorUsedError;
+
+  /// Type de ressource : document, vidéo, lien
   ResourceType get type => throw _privateConstructorUsedError;
+
+  /// Chemin du document dans Firebase Storage
   String get documentPath => throw _privateConstructorUsedError;
+  @deprecated
   UniqueId get idCategory => throw _privateConstructorUsedError;
+
+  /// Liste de mot clé pour la recherche Algolia
   List<String> get keyword => throw _privateConstructorUsedError;
+
+  /// Description de la ressource, sert pour le moteur de recherche Algolia
   String get description => throw _privateConstructorUsedError;
+
+  /// Description pour l'affichage dans la liste des ressources
   String get shortDescription => throw _privateConstructorUsedError;
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   ResourceMainCategory get mainCategory =>
       throw _privateConstructorUsedError; // Nom du fichier de l'image
   String get image => throw _privateConstructorUsedError;
@@ -49,7 +64,7 @@ abstract class $ResourceCopyWith<$Res> {
       Nom nom,
       ResourceType type,
       String documentPath,
-      UniqueId idCategory,
+      @deprecated UniqueId idCategory,
       List<String> keyword,
       String description,
       String shortDescription,
@@ -150,7 +165,7 @@ abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
       Nom nom,
       ResourceType type,
       String documentPath,
-      UniqueId idCategory,
+      @deprecated UniqueId idCategory,
       List<String> keyword,
       String description,
       String shortDescription,
@@ -245,7 +260,7 @@ class _$_Resource extends _Resource {
       required this.nom,
       required this.type,
       required this.documentPath,
-      required this.idCategory,
+      @deprecated required this.idCategory,
       required final List<String> keyword,
       required this.description,
       required this.shortDescription,
@@ -258,15 +273,26 @@ class _$_Resource extends _Resource {
 
   @override
   final UniqueId id;
+
+  /// Nom de la ressource affiché dans la page
   @override
   final Nom nom;
+
+  /// Type de ressource : document, vidéo, lien
   @override
   final ResourceType type;
+
+  /// Chemin du document dans Firebase Storage
   @override
   final String documentPath;
   @override
+  @deprecated
   final UniqueId idCategory;
+
+  /// Liste de mot clé pour la recherche Algolia
   final List<String> _keyword;
+
+  /// Liste de mot clé pour la recherche Algolia
   @override
   List<String> get keyword {
     if (_keyword is EqualUnmodifiableListView) return _keyword;
@@ -274,10 +300,15 @@ class _$_Resource extends _Resource {
     return EqualUnmodifiableListView(_keyword);
   }
 
+  /// Description de la ressource, sert pour le moteur de recherche Algolia
   @override
   final String description;
+
+  /// Description pour l'affichage dans la liste des ressources
   @override
   final String shortDescription;
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   @override
   final ResourceMainCategory mainCategory;
 // Nom du fichier de l'image
@@ -352,7 +383,7 @@ abstract class _Resource extends Resource {
       required final Nom nom,
       required final ResourceType type,
       required final String documentPath,
-      required final UniqueId idCategory,
+      @deprecated required final UniqueId idCategory,
       required final List<String> keyword,
       required final String description,
       required final String shortDescription,
@@ -365,20 +396,35 @@ abstract class _Resource extends Resource {
   @override
   UniqueId get id;
   @override
+
+  /// Nom de la ressource affiché dans la page
   Nom get nom;
   @override
+
+  /// Type de ressource : document, vidéo, lien
   ResourceType get type;
   @override
+
+  /// Chemin du document dans Firebase Storage
   String get documentPath;
   @override
+  @deprecated
   UniqueId get idCategory;
   @override
+
+  /// Liste de mot clé pour la recherche Algolia
   List<String> get keyword;
   @override
+
+  /// Description de la ressource, sert pour le moteur de recherche Algolia
   String get description;
   @override
+
+  /// Description pour l'affichage dans la liste des ressources
   String get shortDescription;
   @override
+
+  /// Nom de la catégorie principale : Médiathèque, Notice Constructeur, Pièces Fournisseurs
   ResourceMainCategory get mainCategory;
   @override // Nom du fichier de l'image
   String get image;

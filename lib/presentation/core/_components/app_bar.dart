@@ -48,28 +48,34 @@ PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeigh
     );
   return PreferredSize(
       preferredSize: Size.fromHeight(sizeHeight), // here the desired height
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-            child: Image.asset(isAssitant ? AppAssetsImage.assistanceDiagnostic : AppAssetsImage.assistance,
-                height: sizeHeight, fit: BoxFit.cover),
-          ),
-          Center(
-            widthFactor: 1,
-            heightFactor: 3,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: sizeHeight,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+          image: DecorationImage(
+              fit: BoxFit.cover,
+              image:
+                  AssetImage(isAssitant ? AppAssetsImage.assistanceDiagnostic : AppAssetsImage.assistance)),
+        ),
+        child: Stack(
+          children: [
+            Center(
+              widthFactor: 1,
+              heightFactor: 3,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
+              ),
             ),
-          ),
-          Center(
-              widthFactor: 1.3,
-              heightFactor: 9.2,
-              child: Text("Dist'Atelier",
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
-        ],
+            Center(
+                widthFactor: 1.3,
+                heightFactor: 9.2,
+                child: Text("Dist'Atelier",
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
+          ],
+        ),
       ));
 }

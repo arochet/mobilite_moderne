@@ -18,6 +18,7 @@ abstract class SubscriptionsDTO implements _$SubscriptionsDTO {
   const factory SubscriptionsDTO({
     String? id,
     @JsonKey(name: 'start_date') required int? startDate,
+    @JsonKey(name: 'billing_cycle_anchor') required int? billingCycleAnchor,
     required Map<String, dynamic> items,
     required String status,
     String? idStripe,
@@ -30,6 +31,7 @@ abstract class SubscriptionsDTO implements _$SubscriptionsDTO {
       items: items,
       status: status == 'active',
       startDate: DateTime.fromMillisecondsSinceEpoch(startDate! * 1000),
+      billingCycleAnchor: DateTime.fromMillisecondsSinceEpoch(billingCycleAnchor! * 1000),
       tarif: items['data'][0]['price']['unit_amount'] / 100,
       idStripe: idStripe,
     );
