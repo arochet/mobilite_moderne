@@ -559,7 +559,7 @@ packages:
     source: hosted
     version: "0.20.2"
   flutter_launcher_icons:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_launcher_icons
       sha256: "526faf84284b86a4cb36d20a5e45147747b7563d921373d4ee0559c54fcdbcea"
@@ -979,7 +979,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.1+6"
+    version: "1.0.6+12"
   nested:
     dependency: transitive
     description:
