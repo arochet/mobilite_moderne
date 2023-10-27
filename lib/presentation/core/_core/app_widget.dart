@@ -106,8 +106,6 @@ class AppWidget extends StatelessWidget {
           labelStyle: TextStyle(color: titleColor),
           helperStyle: TextStyle(color: titleColor),
           floatingLabelStyle: TextStyle(color: titleColor),
-          focusColor: primaryColor,
-          hoverColor: primaryColor,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
