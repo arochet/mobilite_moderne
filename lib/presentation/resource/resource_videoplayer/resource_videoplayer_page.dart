@@ -63,6 +63,7 @@ class _VideoAppState extends State<VideoApp> {
     _chewieController = ChewieController(
       videoPlayerController: _controller,
       autoPlay: true,
+      aspectRatio: 16 / 9,
     );
   }
 
@@ -70,8 +71,10 @@ class _VideoAppState extends State<VideoApp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: Chewie(
-          controller: _chewieController,
+        child: Container(
+          height: MediaQuery.of(context).size.width * 9 / 16,
+          width: MediaQuery.of(context).size.width,
+          child: Chewie(controller: _chewieController),
         ),
       ),
     );
