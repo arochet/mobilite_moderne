@@ -1,4 +1,5 @@
 import 'package:flutter/scheduler.dart';
+import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/date_utils.dart';
@@ -74,6 +75,24 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
             });
 
             return ListView(controller: _controllerListMessage, children: [
+              //Premier message
+              PanelMessageView(
+                  message: Message(
+                      id: UniqueId(),
+                      text: 'Bonjour !\nDécrivez nous la nature de votre problème et ajoutez des photos.',
+                      date: DateTime.now(),
+                      imageSend: null,
+                      imageRead: null,
+                      imagePath: null,
+                      idUser: UniqueId()),
+                  idUser: currentUserAuth.id),
+              Center(
+                  child: Text("Un technicien va vous répondre",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: const Color.fromARGB(255, 81, 81, 81)))),
+
               //Liste des messages
               ...listMessage
                   .map<Widget>((Message messageObj) =>

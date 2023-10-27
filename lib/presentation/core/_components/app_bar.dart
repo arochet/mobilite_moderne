@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
@@ -55,38 +57,40 @@ PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeigh
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
           image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppAssetsImage.assistanceDiagnostic)),
         ),
-        child: Stack(
+        child: Column(
           children: [
-            Center(
-              widthFactor: 1,
-              heightFactor: 3,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
-              ),
+            SpaceH40(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios, size: 30, color: Colors.white),
+                ),
+                Text("Dist'Atelier",
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white)),
+              ],
             ),
-            Center(
-                widthFactor: 1.3,
-                heightFactor: 9.2,
-                child: Text("Dist'Atelier",
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
           ],
         ),
       ));
 }
 
 PreferredSizeWidget buildAppBarEmpty(BuildContext context, [Color? color]) {
-  return PreferredSize(
-    preferredSize: Size.fromHeight(0),
-    child: Container(
-      color: color ?? Colors.black,
-      child: Center(
-          widthFactor: 1.3,
-          heightFactor: 9.2,
-          child: Text("Dist'Atelier",
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
+  final backgroundColor = color ?? Colors.black;
+  return AppBar(
+    elevation: 0,
+    toolbarHeight: 0,
+    backgroundColor: backgroundColor,
+    systemOverlayStyle: SystemUiOverlayStyle(
+      statusBarColor: Colors.black,
+
+      // Status bar brightness (optional)
+      statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+      statusBarBrightness:
+          backgroundColor == Colors.black ? Brightness.dark : Brightness.light, // For iOS (dark icons)
     ),
   );
 }

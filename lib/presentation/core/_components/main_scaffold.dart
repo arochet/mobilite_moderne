@@ -15,11 +15,14 @@ import 'package:mobilite_moderne/providers.dart';
 
 /// Scaffold de base de l'application qui est responsive en fonction de la taille de l'écran
 class MainScaffold extends ConsumerWidget {
-  const MainScaffold({Key? key, required this.child, this.title, this.color, this.appBar}) : super(key: key);
+  const MainScaffold(
+      {Key? key, required this.child, this.title, this.color, this.appBar, this.hasSidebar = true})
+      : super(key: key);
   final Widget child;
   final String? title;
   final Color? color;
   final PreferredSizeWidget? appBar;
+  final bool hasSidebar;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,27 +32,28 @@ class MainScaffold extends ConsumerWidget {
           backgroundColor: color,
           body: Row(
             children: [
-              Container(
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 4,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      const SpaceH20(),
-                      _Title(),
-                      const SpaceH30(),
-                      NavLinkRetour(),
-                    ],
-                  )),
+              if (hasSidebar)
+                Container(
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 4,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        const SpaceH20(),
+                        _Title(),
+                        const SpaceH30(),
+                        NavLinkRetour(),
+                      ],
+                    )),
               Expanded(child: child),
             ],
           ),

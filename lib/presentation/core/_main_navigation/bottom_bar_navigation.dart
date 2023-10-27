@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_bar.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,7 +17,7 @@ class BottomBarNavigation extends ConsumerWidget {
     if (index == 0) {
       return buildAppBarAssistance(context, sizeHeight);
     } else {
-      return buildAppBarEmpty(context);
+      return buildAppBarEmpty(context, index == 3 ? Colors.white : null);
     }
   }
 

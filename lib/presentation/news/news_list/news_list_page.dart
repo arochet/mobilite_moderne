@@ -1,6 +1,7 @@
 import 'package:mobilite_moderne/PRESENTATION/core/_components/is_suscribed.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 
 import 'widget/panel_news_view.dart';
@@ -34,11 +35,20 @@ class NewsListPage extends ConsumerWidget {
               child: Column(
                 children: [
                   const SpaceH10(),
-                  Text("ACTUALTIÉS",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(fontSize: 26, color: Colors.white)),
+                  Row(
+                    children: [
+                      SpaceW10(),
+                      InkWell(
+                          onTap: () => context.router.pop(),
+                          child: Icon(Icons.arrow_back_ios, color: primaryColor, size: 30)),
+                      SpaceW10(),
+                      Text("ACTUALITÉS",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(fontSize: 26, color: Colors.white)),
+                    ],
+                  ),
                   const SpaceH10(),
                   Expanded(
                     child: AppAsync(
