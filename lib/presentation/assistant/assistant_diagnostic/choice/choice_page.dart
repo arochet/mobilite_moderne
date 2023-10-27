@@ -58,15 +58,29 @@ class _PanelChoiceView extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-                child: Image.asset(AppAssetsImage.assistance, height: 300, fit: BoxFit.fitWidth),
+                child: Image.asset(AppAssetsImage.assistanceDiagnostic, height: 300, fit: BoxFit.fitWidth),
               ),
             ),
           SpaceH20(),
 
           //Titre de la question
           Center(
-              child: Text("${choice.nom.getOrCrash().toUpperCase()}",
-                  style: Theme.of(context).textTheme.titleLarge)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 30,
+                      color: primaryColor,
+                    ),
+                    onTap: () => context.router.pop()),
+                SpaceW10(),
+                Text("${choice.nom.getOrCrash().toUpperCase()}",
+                    style: Theme.of(context).textTheme.titleLarge),
+              ],
+            ),
+          ),
           SpaceH20(),
 
           //Fil d'ariane
@@ -126,14 +140,6 @@ class _PanelChoiceView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ),
-          Align(
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Retour"),
             ),
           ),
           SizedBox(height: 80),

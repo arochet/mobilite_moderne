@@ -53,6 +53,8 @@ exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
             expand: ['latest_invoice.payment_intent'],
           });
 
+          console.log(subscription);
+
           res.send({
             subscriptionId: subscription.id,
             clientSecret: subscription.latest_invoice.payment_intent.client_secret,

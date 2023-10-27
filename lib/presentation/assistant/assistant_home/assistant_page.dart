@@ -33,7 +33,7 @@ class AssistantPage extends ConsumerWidget {
                 width: MediaQuery.of(context).size.width,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-                  child: Image.asset(AppAssetsImage.assistanceDiagnostic, height: 300, fit: BoxFit.fitWidth),
+                  child: Image.asset(AppAssetsImage.assistance, height: 300, fit: BoxFit.fitWidth),
                 ),
               ),
             Expanded(

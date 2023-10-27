@@ -73,6 +73,7 @@ dependencies:
   image_picker: ^1.0.4
   flutter_stripe: ^9.4.0
   flutter_stripe_web: ^4.4.0
+  flutter_html: ^3.0.0-beta.2
 
 
 dev_dependencies:
@@ -111,6 +112,8 @@ flutter:
     - assets/icon/logo.png
     - assets/icon/logo-blanc.png
     - assets/background/assistance-diagnostic.jpg
+    - assets/background/accueil.jpg
+    - assets/background/actualite.jpg
     - assets/background/assistance.jpg
     - assets/background/compte.jpg
     - assets/background/fond-menuweb.jpg

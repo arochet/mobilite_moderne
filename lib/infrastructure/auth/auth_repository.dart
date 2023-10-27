@@ -551,6 +551,7 @@ class FirebaseAuthFacade implements AuthRepository {
     try {
       final response = await getCloudFunctions('SubscribeAccesTotal', {'idStripe': idStripe});
       final result = json.decode(response.body);
+      print('$result');
 
       if (response.statusCode == 200) {
         return right(result['clientSecret']);
@@ -570,6 +571,8 @@ class FirebaseAuthFacade implements AuthRepository {
       UserData? userData = await getUserData().then((value) => value.fold(() => null, (user) => user));
 
       if (userData == null) return left(SubscriptionFailure.customerUnfound());
+
+      print('==> PAY SUBSCRIPTION');
 
       final PaymentIntent resultConfirm = await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: paymentIntentClientSecret,

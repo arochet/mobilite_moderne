@@ -46,7 +46,7 @@ class ShowEnvironment extends ConsumerWidget {
                   child: TextButton(
                     onPressed: () {
                       printDev();
-                      context.router.push(MessageListRoute());
+                      context.router.push(Subscription_stripeRoute());
                     },
                     child: Text("Raccourcis"),
                   ),

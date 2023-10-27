@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppAssetsImage.veloFuturiste),
+            image: AssetImage(AppAssetsImage.accueil),
             fit: BoxFit.cover,
           ),
         ),
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                   child: Center(
                       child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    constraints: BoxConstraints(maxWidth: 500),
+                    constraints: BoxConstraints(maxWidth: 600),
                     child: _ColumnMenu(),
                   )),
                 ),
@@ -63,25 +63,30 @@ class _ColumnMenu extends ConsumerWidget {
           height: 150,
           //package: 'mobilite_moderne',
         ),
-        SizedBox(height: 70),
+        SizedBox(height: 20),
+        Text("L’assistance digitale des réparateurs de micro-mobilité",
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+        SizedBox(height: 50),
         SizedBox(
-          width: double.infinity,
+          width: 350,
           child: ElevatedButton(
             onPressed: () {
               printDev();
               ref.read(currentPageNavProvider.notifier).state = 0;
               context.router.push(AssistantRoute());
             },
-            child: Text('Assistant Technique'),
+            child: Text('Assistance technique'),
           ),
         ),
         SizedBox(height: 5),
-        Text(
-            "Trouvez ici les solutions à vos problèmes : fiches techniques, vidéos, messagerie ou visio-assistance",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+        Text("Solutions innovantes pour profiter de l’expertise de nos techniciens.",
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
         SpaceH20(),
         SizedBox(
-          width: double.infinity,
+          width: 350,
           child: ElevatedButton(
             onPressed: () {
               printDev();
@@ -92,11 +97,11 @@ class _ColumnMenu extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 5),
-        Text("Trouvez ici vos listes de fournisseurs par type de pièces et accessoires",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+        Text("La plus grande médiathèque technique à votre disposition 24h/24.",
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
         SpaceH20(),
         SizedBox(
-          width: double.infinity,
+          width: 350,
           child: ElevatedButton(
             onPressed: () {
               printDev();
@@ -107,7 +112,7 @@ class _ColumnMenu extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 5),
-        Text("Les dernières actualités techniques",
+        Text("Nouveautés techniques pour améliorer la rentabilité de votre atelier.",
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
       ],
     );

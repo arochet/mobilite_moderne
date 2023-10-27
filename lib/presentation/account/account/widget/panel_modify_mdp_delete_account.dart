@@ -1,5 +1,6 @@
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/dialogs.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 
@@ -75,6 +76,43 @@ class _PanelModifyMdpDeleteAccountState extends ConsumerState<PanelModifyMdpDele
               },
               child: Text(AppLocalizations.of(context)!.supprimer),
               style: Theme.of(context).extension<AppThemeExtention>()?.buttonDanger,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  deleteAccountBAD() {
+    // ALERT DIALOG
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.attention),
+          content: Text(AppLocalizations.of(context)!.etesvoussurdevouloursupprimervotrecomte),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            //CONTINUE BUTTON
+            ElevatedButton(
+              onPressed: () async {
+                final reauthenticate =
+                    await showDialogPassword(context: context, ref: ref, dissmissable: true);
+                await context.router.pop();
+
+                if (reauthenticate == true)
+                  ref
+                      .read(authNotifierProvider.notifier)
+                      .deleteAccount(widget.typeAccount)
+                      .then((value) => context.router.replaceAll([AuthInitRoute()]));
+              },
+              child: Text('Oui'),
+            ),
+            SpaceW10(),
+            //CANCEL BUTTON
+            ElevatedButton(
+              child: Text('Non'),
+              onPressed: () => context.router.pop(),
             ),
           ],
         );

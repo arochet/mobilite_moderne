@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storage.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
@@ -64,15 +65,11 @@ class PanelNewsView extends StatelessWidget {
                           return Column(
                             children: [
                               //IMAGE
-                              ImageFromStorage(
-                                url: news.imageUrl,
-                                bytes: news.imageBytes,
-                              ),
+                              ImageFromStorage(url: news.imageUrl, bytes: news.imageBytes),
                               SpaceH20(),
 
                               //CONTENU
-                              Text("${news.content.replaceAll('\\n', '\n')}",
-                                  style: Theme.of(context).textTheme.bodyMedium),
+                              Html(data: news.content),
                               SpaceH10(),
                             ],
                           );

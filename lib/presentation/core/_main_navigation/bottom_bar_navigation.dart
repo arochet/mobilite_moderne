@@ -18,7 +18,7 @@ class BottomBarNavigation extends ConsumerWidget {
     if (index == 0) {
       return buildAppBarAssistance(context, sizeHeight);
     } else {
-      return buildAppBar(context, ref, 'Dist Atelier', color: colorpanel(900))!;
+      return buildAppBarEmpty(context);
     }
   }
 

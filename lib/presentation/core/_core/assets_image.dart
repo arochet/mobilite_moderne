@@ -1,6 +1,8 @@
 class AppAssetsImage {
   static const String logo = 'assets/icon/logo.png';
   static const String logoBlanc = 'assets/icon/logo-blanc.png';
+  static const String accueil = 'assets/background/accueil.jpg';
+  static const String actualite = 'assets/background/actualite.jpg';
   static const String assistanceDiagnostic = 'assets/background/assistance-diagnostic.jpg';
   static const String assistance = 'assets/background/assistance.jpg';
   static const String compte = 'assets/background/compte.jpg';

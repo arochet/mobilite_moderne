@@ -53,10 +53,7 @@ PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeigh
         height: sizeHeight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image:
-                  AssetImage(isAssitant ? AppAssetsImage.assistanceDiagnostic : AppAssetsImage.assistance)),
+          image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppAssetsImage.assistanceDiagnostic)),
         ),
         child: Stack(
           children: [
@@ -78,4 +75,18 @@ PreferredSizeWidget buildAppBarAssistance(BuildContext context, double sizeHeigh
           ],
         ),
       ));
+}
+
+PreferredSizeWidget buildAppBarEmpty(BuildContext context, [Color? color]) {
+  return PreferredSize(
+    preferredSize: Size.fromHeight(0),
+    child: Container(
+      color: color ?? Colors.black,
+      child: Center(
+          widthFactor: 1.3,
+          heightFactor: 9.2,
+          child: Text("Dist'Atelier",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))),
+    ),
+  );
 }

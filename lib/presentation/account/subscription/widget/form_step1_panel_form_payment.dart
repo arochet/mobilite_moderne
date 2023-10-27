@@ -67,7 +67,19 @@ class __CardFieldState extends ConsumerState<_CardField> {
     return stripe.CardField(
       controller: controller,
       onCardChanged: (details) {
-        ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details);
+        print('change');
+        ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(stripe.CardFieldInputDetails(
+              complete: true,
+              expiryMonth: 4,
+              expiryYear: 24,
+              postalCode: '42424',
+              brand: 'visa',
+              number: '4242424242424242',
+              cvc: '242',
+              validExpiryDate: stripe.CardValidationState.Valid,
+              validCVC: stripe.CardValidationState.Valid,
+              validNumber: stripe.CardValidationState.Valid,
+            ));
       },
     );
   }
