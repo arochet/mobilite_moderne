@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/widget/flushbar_auth_failure.dart';
 import 'package:mobilite_moderne/APPLICATION/message/add_message_form_notifier.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 
 import 'package:mobilite_moderne/providers.dart';
@@ -144,7 +145,11 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                 FocusScope.of(context).requestFocus(new FocusNode());
                 ref.read(messageFormNotifierProvider.notifier).addMessagePressed();
               },
-              icon: Icon(Icons.send),
+              icon: CircleAvatar(
+                child: Icon(Icons.send_outlined, size: 20),
+                backgroundColor: primaryColor,
+                foregroundColor: Colors.black,
+              ),
             ),
           ],
         ),

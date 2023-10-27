@@ -11,7 +11,7 @@ class DisplayTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
       child: AutoSizeText(title,
-          maxLines: 2, style: Theme.of(context).textTheme.titleLarge!.copyWith(color: colorpanel(50))),
+          maxLines: 2, style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.black)),
     );
   }
 }

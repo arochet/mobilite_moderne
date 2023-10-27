@@ -106,10 +106,21 @@ class AppWidget extends StatelessWidget {
           labelStyle: TextStyle(color: titleColor),
           helperStyle: TextStyle(color: titleColor),
           floatingLabelStyle: TextStyle(color: titleColor),
-          border: UnderlineInputBorder(
+          focusColor: primaryColor,
+          hoverColor: primaryColor,
+          border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none,
+            borderSide: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
           ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
+          ),
+          outlineBorder: BorderSide(color: primaryColor, width: 1.0, style: BorderStyle.solid),
         ),
 
         //TRANSITION DE PAGE
