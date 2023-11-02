@@ -166,7 +166,13 @@ class _ListResults extends ConsumerWidget {
     //Limite à 10 résultats
     listResources = listResources.sublist(0, listResources.length > 10 ? 10 : listResources.length);
 
-    if (listResources.length == 0) return Center(child: Text('Aucun résultat trouvé'));
+    if (listResources.length == 0)
+      return Center(
+          child: Text(
+        'Aucun résultat trouvé',
+        style:
+            Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+      ));
 
     //Affichage des résultats
     return ListView(

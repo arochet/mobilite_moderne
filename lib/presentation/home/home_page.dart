@@ -113,7 +113,7 @@ class _ColumnMenu extends ConsumerWidget {
         ),
         SizedBox(height: 5),
         Text("Nouveautés techniques pour améliorer la rentabilité de votre atelier.",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white)),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:mobilite_moderne/DOMAIN/news/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -69,7 +70,7 @@ class PanelNewsView extends StatelessWidget {
                               SpaceH20(),
 
                               //CONTENU
-                              Html(data: news.content),
+                              HtmlWidget(news.content),
                               SpaceH10(),
                             ],
                           );
@@ -90,8 +91,7 @@ class PanelNewsView extends StatelessWidget {
 
                               //CONTENU
                               Expanded(
-                                child: AutoSizeText("${news.content.replaceAll('\\n', '\n')}",
-                                    style: Theme.of(context).textTheme.bodyMedium),
+                                child: HtmlWidget(news.content),
                               ),
                               SpaceW10(),
                             ],

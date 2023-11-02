@@ -115,7 +115,10 @@ class _Waiting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      color: colorpanel(800),
+      decoration: BoxDecoration(
+        color: colorpanel(800),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
     );
   }
 }
