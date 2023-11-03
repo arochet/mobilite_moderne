@@ -5,7 +5,6 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widg
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_environment_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
-import 'package:mobilite_moderne/PRESENTATION/core/_core/app_icons.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/assets_image.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';

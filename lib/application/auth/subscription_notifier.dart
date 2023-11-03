@@ -12,6 +12,7 @@ enum SubscriptionStatus {
   formAddress,
   recap,
   loading,
+  loadingWEB, // [REVOIR] Avec le web il ne faut pas perdre dans la hiérarchie de widget le panel de paiement
   success,
   successCancelSubscription,
   failure
@@ -26,7 +27,7 @@ class SubscriptionState {
   final String? paymentIntentClientSecret;
 
   const SubscriptionState({
-    this.status = SubscriptionStatus.initial,
+    this.status = SubscriptionStatus.formPayment,
     this.cardFieldInputDetails = const CardFieldInputDetails(complete: false),
     this.msgError,
     this.showErrorMessages = false,
@@ -172,7 +173,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
   }
 
   void paySubscriptionWEB() async {
-    state = (state.copyWith(status: SubscriptionStatus.loading));
+    state = (state.copyWith(status: SubscriptionStatus.loadingWEB));
 
     print(state.cardFieldInputDetails.toJson());
     print('CVC: ${state.cardFieldInputDetails.cvc}');

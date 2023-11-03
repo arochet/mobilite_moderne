@@ -31,7 +31,7 @@ class PanelFormAdress extends ConsumerWidget {
                       ElevatedButton(
                           onPressed: () {
                             ref.read(subscriptionNotifierProvider.notifier).onUpdateAddressField(
-                                  country: "France",
+                                  country: "FR",
                                   city: "Paris",
                                   postalCode: "75000",
                                   line1: "1 rue de la paix",

@@ -91,58 +91,6 @@ exports.ListSubscription = functions.https.onRequest(async (req, res) => {
     }
 });
 
-// Payment
-exports.ConfirmPaymentWEB = functions.https.onRequest(async (req, res) => {
-    const {
-        paymentIntentClientSecret,
-        name,
-        email,
-        city,
-        country,
-        line1,
-        line2,
-        postal_code,
-        state,
-    } = req.body;
-
-    try {
-        const paymentMethod = await stripe.paymentMethods.create({
-            type: 'card',
-            card: {
-              number: '4242424242424242',
-              exp_month: 8,
-              exp_year: 2024,
-              cvc: '314',
-            },
-          });
-
-        const subscription = await stripe.confirmCardPayment(paymentIntentClientSecret, {
-            payment_method: {
-              card: paymentMethod.id,
-              billing_details: {
-                name: name,
-                email: email,
-                address: {
-                    city: city,
-                    country: country,
-                    line1: line1,
-                    line2: line2,
-                    postal_code: postal_code,
-                    state: state,
-                  },
-              },
-            },
-          });
-
-          res.send({
-            subscriptionId: subscription.id,
-            clientSecret: subscription.latest_invoice.payment_intent.client_secret,
-          });
-    } catch (e) {
-        return res.status(400).send({ error: { message: error.message } });
-    }
-});
-
 // Suppression abonnement
 exports.CancelSubscription = functions.https.onRequest(async (req, res) => {
     const { idSubscription } = req.body;

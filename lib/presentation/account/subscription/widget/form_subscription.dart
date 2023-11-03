@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
@@ -28,6 +29,24 @@ class _FormSubscriptionState extends ConsumerState<FormSubscription> {
   Widget build(BuildContext context) {
     ref.watch(subscriptionNotifierProvider);
     final notifier = ref.watch(subscriptionNotifierProvider.notifier);
+    //REVOIR
+    /* return Column(
+      children: [
+        SizedBox(
+          //height: notifier.state.status == SubscriptionStatus.formPayment ? null : 160,
+          child: PanelFormPayment(),
+        ),
+        Expanded(
+            child: SizedBox(
+                //height: notifier.state.status == SubscriptionStatus.formAddress ? null : 60,
+                child: PanelFormAdress())),
+        Expanded(
+            child: SizedBox(
+          //height: notifier.state.status == SubscriptionStatus.recap ? null : 60,
+          child: PanelRecap(),
+        )),
+      ],
+    ); */
 
     if (notifier.state.status == SubscriptionStatus.success) {
       //SUCCES !
@@ -41,18 +60,35 @@ class _FormSubscriptionState extends ConsumerState<FormSubscription> {
     } else if (notifier.state.status == SubscriptionStatus.initial) {
       // PANEL NOUVEL ABONNEMENT
       return PanelNewSubscription();
-    } else if (notifier.state.status == SubscriptionStatus.formPayment) {
-      // PANEL FORMULAIRE DE PAIEMENT
-      return PanelFormPayment();
-    } else if (notifier.state.status == SubscriptionStatus.formAddress) {
-      // PANEL FORMULAIRE ADRESSE
-      return PanelFormAdress();
-    } else if (notifier.state.status == SubscriptionStatus.recap) {
-      // PANEL FILL ACCOUNT INFO
-      return PanelRecap();
-    } else
-      return Center(
-          child: Text("Erreur inconnue (state inconnue)", style: Theme.of(context).textTheme.bodyMedium));
+    } else {
+      if (kIsWeb) {
+        //WEB
+        return Column(
+          children: [
+            SizedBox(
+              height: notifier.state.status == SubscriptionStatus.formPayment ? 200 : 1,
+              child: PanelFormPayment(),
+            ),
+            if (notifier.state.status == SubscriptionStatus.formAddress) Expanded(child: PanelFormAdress()),
+            if (notifier.state.status == SubscriptionStatus.recap) Expanded(child: PanelRecap()),
+          ],
+        );
+      } else {
+        //MOBILE
+        if (notifier.state.status == SubscriptionStatus.formPayment) {
+          // PANEL FORMULAIRE DE PAIEMENT
+          return PanelFormPayment();
+        } else if (notifier.state.status == SubscriptionStatus.formAddress) {
+          // PANEL FORMULAIRE ADRESSE
+          return PanelFormAdress();
+        } else if (notifier.state.status == SubscriptionStatus.recap) {
+          // PANEL FILL ACCOUNT INFO
+          return PanelRecap();
+        } else
+          return Center(
+              child: Text("Erreur inconnue (state inconnue)", style: Theme.of(context).textTheme.bodyMedium));
+      }
+    }
   }
 }
 

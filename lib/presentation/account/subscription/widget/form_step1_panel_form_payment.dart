@@ -64,23 +64,27 @@ class __CardFieldState extends ConsumerState<_CardField> {
 
   @override
   Widget build(BuildContext context) {
-    return stripe.CardField(
-      controller: controller,
-      onCardChanged: (details) {
-        print('change');
-        ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(stripe.CardFieldInputDetails(
-              complete: true,
-              expiryMonth: 4,
-              expiryYear: 24,
-              postalCode: '42424',
-              brand: 'visa',
-              number: '4242424242424242',
-              cvc: '242',
-              validExpiryDate: stripe.CardValidationState.Valid,
-              validCVC: stripe.CardValidationState.Valid,
-              validNumber: stripe.CardValidationState.Valid,
-            ));
-      },
+    return SizedBox(
+      width: 500,
+      height: 60,
+      child: stripe.CardField(
+        controller: controller,
+        onCardChanged: (details) {
+          /* ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(stripe.CardFieldInputDetails(
+                    complete: true,
+                    expiryMonth: 4,
+                    expiryYear: 2024,
+                    postalCode: '42424',
+                    brand: 'visa',
+                    number: '4242424242424242',
+                    cvc: '242',
+                    validExpiryDate: stripe.CardValidationState.Valid,
+                    validCVC: stripe.CardValidationState.Valid,
+                    validNumber: stripe.CardValidationState.Valid,
+                  )); */
+          ref.read(subscriptionNotifierProvider.notifier).onUpdateCardField(details);
+        },
+      ),
     );
   }
 }
