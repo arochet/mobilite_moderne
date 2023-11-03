@@ -64,6 +64,34 @@ exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
     }
 });
 
+// CHECKOUT WEB 
+const YOUR_DOMAIN = 'http://localhost:5000';
+exports.CreateSessionCheckout = functions.https.onRequest(async (req, res) => {
+    const {
+        idStripe,
+    } = req.body;
+    try {
+        const session = await stripe.checkout.sessions.create({
+            line_items: [
+              {
+                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+                quantity: 1,
+              },
+            ],
+            customer: idStripe,
+            mode: 'subscription',
+            success_url: `${YOUR_DOMAIN}/subscription_stripe-route`,
+            cancel_url: `${YOUR_DOMAIN}/subscription_stripe-route`,
+          });
+        
+          //res.redirect(303, session.url);
+          return res.status(200).send({ url: session.url });
+    } catch (e) {
+        return res.status(400).send({ error: { message: e.message } });
+    }
+});
+
 // Liste des abonnements
 exports.ListSubscription = functions.https.onRequest(async (req, res) => {
     const { idStripe } = req.body;

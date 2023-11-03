@@ -172,4 +172,10 @@ class FakeAuthFacade implements AuthRepository {
   Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription) async {
     return right(unit);
   }
+
+  @override
+  Future<Either<SubscriptionFailure, String>> getUrlStripePayement(String id) {
+    // TODO: implement getUrlStripePayement
+    throw UnimplementedError();
+  }
 }

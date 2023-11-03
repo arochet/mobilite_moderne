@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/APPLICATION/auth/subscription_notifier.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/subscriptions.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,12 +29,40 @@ class Subscription_stripePage extends StatelessWidget {
   }
 }
 
-class _IsSubscribe extends ConsumerWidget {
+class _IsSubscribe extends ConsumerStatefulWidget {
   const _IsSubscribe({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => __IsSubscribeState();
+}
+
+class __IsSubscribeState extends ConsumerState<_IsSubscribe> {
+  @override
+  Widget build(BuildContext context) {
     final subscriptionAsync = ref.watch(userIsSubscribed);
+    ref.watch(subscriptionNotifierProvider);
+    final notifier = ref.watch(subscriptionNotifierProvider.notifier);
+
+    if (notifier.state.status == SubscriptionStatus.paymentInProgress) {
+      //LOADING
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("Abonnement en cours de traitement", style: Theme.of(context).textTheme.bodyMedium),
+            SpaceH10(),
+            ElevatedButton(
+              onPressed: () {
+                ref.watch(subscriptionNotifierProvider.notifier).setSubscriptionPage();
+                ref.invalidate(userIsSubscribed);
+                setState(() {});
+              },
+              child: Text("Recharger l'abonnement"),
+            ),
+          ],
+        ),
+      );
+    }
 
     return subscriptionAsync.when(
       data: (Subscriptions? subscription) {

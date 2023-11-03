@@ -72,7 +72,6 @@ dependencies:
   webview_flutter: ^4.2.4
   image_picker: ^1.0.4
   flutter_stripe: ^9.4.0
-  flutter_stripe_web: ^4.4.0
   flutter_html: ^3.0.0-beta.2
   flutter_widget_from_html_core: ^0.14.5
 

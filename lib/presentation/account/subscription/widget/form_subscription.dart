@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
 import 'package:mobilite_moderne/APPLICATION/auth/subscription_notifier.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/subscription/subscription_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/providers.dart';
 
 import 'form_step1_panel_form_payment.dart';
@@ -57,6 +60,17 @@ class _FormSubscriptionState extends ConsumerState<FormSubscription> {
     } else if (notifier.state.status == SubscriptionStatus.loading) {
       //LOADING
       return Center(child: CircularProgressIndicator());
+    } else if (notifier.state.status == SubscriptionStatus.paymentInProgress) {
+      //LOADING
+      return Center(
+        child: ElevatedButton(
+          onPressed: () {
+            context.router.pop();
+            context.router.push(Subscription_stripeRoute());
+          },
+          child: Text("Recharger l'abonnement"),
+        ),
+      );
     } else if (notifier.state.status == SubscriptionStatus.initial) {
       // PANEL NOUVEL ABONNEMENT
       return PanelNewSubscription();

@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -78,21 +80,13 @@ class PanelNewSubscription extends ConsumerWidget {
                 // BOUTON S'ABONNER
                 ElevatedButton(
                   onPressed: () async {
-                    ref.read(subscriptionNotifierProvider.notifier).setFillAccountPage();
-                    /* if (kIsWeb) {
-                      final user = await ref.read(currentUserData.future);
-                      if (user != null) {
-                        print('user.idStripe ${user.idStripe}');
-                        print('user.name ${user.userName?.getOrCrash()}');
-                        final _url =
-                            'https://buy.stripe.com/test_9AQdURdoBbl33MA288?client_reference_id=${user.idStripe}&prefilled_email=${user.email?.getOrCrash()}&prefilled_name=${user.userName?.getOrCrash()}';
-                        if (!await launchUrl(Uri.parse(_url))) {
-                          throw Exception('Could not launch $_url');
-                        }
+                    final url = await ref.read(subscriptionNotifierProvider.notifier).getUrlStripePayement();
+                    if (url != null) {
+                      final theURL = Uri.parse(url);
+                      if (await canLaunchUrl(theURL)) {
+                        await launchUrl(theURL);
                       }
-                    } else {
-                      ref.read(subscriptionNotifierProvider.notifier).setFillAccountPage();
-                    } */
+                    }
                   },
                   child: Text("S'abonner"),
                 ),

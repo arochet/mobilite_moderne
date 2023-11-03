@@ -16,7 +16,7 @@ class SplashPage extends ConsumerWidget {
     if (authState is AuthAuthenticated) {
       Future.delayed(Duration.zero, () async {
         ref.read(currentPageNavProvider.notifier).state = 0;
-        context.router.replaceAll([Subscription_stripeRoute()]);
+        context.router.replaceAll([HomeRoute()]);
       });
     } else if (authState is AuthUnauthenticated) {
       Future.delayed(Duration.zero, () async {

@@ -38,7 +38,8 @@ import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_diagnostic/ans
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_visio/assistant_visio_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/subscription/subscription_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/legal_mention/legal_mention_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/account/legal_mention/legal_mention_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/subscription_succes/subscription_succes_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -189,6 +190,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/legal_mention-route',
           page: Legal_mentionRoute.page,
+        ),
+        AutoRoute(
+          path: '/subscription_succes-route',
+          page: Subscription_succesRoute.page,
         ), //insert-route
       ];
 }

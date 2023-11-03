@@ -12,7 +12,7 @@ enum SubscriptionStatus {
   formAddress,
   recap,
   loading,
-  loadingWEB, // [REVOIR] Avec le web il ne faut pas perdre dans la hiérarchie de widget le panel de paiement
+  paymentInProgress,
   success,
   successCancelSubscription,
   failure
@@ -27,7 +27,7 @@ class SubscriptionState {
   final String? paymentIntentClientSecret;
 
   const SubscriptionState({
-    this.status = SubscriptionStatus.formPayment,
+    this.status = SubscriptionStatus.initial,
     this.cardFieldInputDetails = const CardFieldInputDetails(complete: false),
     this.msgError,
     this.showErrorMessages = false,
@@ -135,6 +135,23 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     );
   }
 
+  Future<String?> getUrlStripePayement() async {
+    state = (state.copyWith(status: SubscriptionStatus.paymentInProgress));
+    final userData = await _authRepository.getUserData();
+    return await (userData.fold(() => null, (UserData userData) async {
+      if (userData.idStripe == null) {
+        return null;
+      } else {
+        final response = await _authRepository.getUrlStripePayement(userData.idStripe!);
+
+        return response.fold((l) => null, (url) {
+          return url;
+        });
+      }
+    }));
+  }
+
+  @deprecated
   void subscribeTotalAccess() async {
     state = (state.copyWith(status: SubscriptionStatus.loading));
     final userData = await _authRepository.getUserData();
@@ -161,6 +178,7 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     );
   }
 
+  @deprecated
   void paySubscription() async {
     state = (state.copyWith(status: SubscriptionStatus.loading));
 
@@ -172,8 +190,9 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     );
   }
 
+  @deprecated
   void paySubscriptionWEB() async {
-    state = (state.copyWith(status: SubscriptionStatus.loadingWEB));
+    state = (state.copyWith(status: SubscriptionStatus.loading));
 
     print(state.cardFieldInputDetails.toJson());
     print('CVC: ${state.cardFieldInputDetails.cvc}');

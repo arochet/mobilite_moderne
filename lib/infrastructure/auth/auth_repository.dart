@@ -60,6 +60,7 @@ abstract class AuthRepository {
   Future<Either<SubscriptionFailure, Unit>> paySubscription(
       String paymentIntentClientSecret, Address address);
   Future<Either<SubscriptionFailure, Unit>> unsubscribeTotalAccess(String idSubscription);
+  Future<Either<SubscriptionFailure, String>> getUrlStripePayement(String idStripe);
 }
 
 @LazySingleton(as: AuthRepository, env: [Environment.dev, Environment.prod])
@@ -547,8 +548,25 @@ class FirebaseAuthFacade implements AuthRepository {
   }
 
   @override
+  Future<Either<SubscriptionFailure, String>> getUrlStripePayement(String idStripe) async {
+    try {
+      final response = await getCloudFunctions('CreateSessionCheckout', {'idStripe': idStripe});
+      return right(json.decode(response.body)['url']);
+    } catch (e) {
+      print('error $e');
+      return left(SubscriptionFailure.serverError());
+    }
+  }
+
+  @override
   Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe) async {
     try {
+      if (kIsWeb) {
+        final response = await getCloudFunctions('CreateSessionCheckout', {});
+
+        return left(SubscriptionFailure.serverError());
+      }
+
       final response = await getCloudFunctions('SubscribeAccesTotal', {'idStripe': idStripe});
       final result = json.decode(response.body);
 
@@ -593,9 +611,6 @@ class FirebaseAuthFacade implements AuthRepository {
           ),
         ),
       );
-
-      print('resultConfirm.status ${resultConfirm.status}');
-
       if (resultConfirm.status == PaymentIntentsStatus.Succeeded) {
         return right(unit);
       } else

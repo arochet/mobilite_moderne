@@ -239,6 +239,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const Subscription_stripePage(),
       );
     },
+    Subscription_succesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Subscription_succesPage(),
+      );
+    },
     Term_of_useRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -921,6 +927,20 @@ class Subscription_stripeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'Subscription_stripeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Subscription_succesPage]
+class Subscription_succesRoute extends PageRouteInfo<void> {
+  const Subscription_succesRoute({List<PageRouteInfo>? children})
+      : super(
+          Subscription_succesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Subscription_succesRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
