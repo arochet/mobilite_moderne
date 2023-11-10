@@ -24,7 +24,7 @@ class AdminRouter extends _$AdminRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(path: '/', page: SplashRoute.page),
-        AutoRoute(path: '*', page: SplashRoute.page),
+        //AutoRoute(path: '*', page: SplashRoute.page),
         AutoRoute(
           path: '/main',
           page: MainNavigationRoute.page,

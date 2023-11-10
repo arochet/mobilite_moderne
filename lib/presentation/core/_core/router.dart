@@ -10,6 +10,7 @@ import 'package:mobilite_moderne/PRESENTATION/account/delete_account/delete_acco
 import 'package:mobilite_moderne/PRESENTATION/account/modify_account/modify_account_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/new_password/new_password_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/reauthenticate/reauthenticate_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/subscription_error/subscription_error_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_home/assistant_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_check_email/auth_check_email_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/auth/auth_connexion/auth_connexion_page.dart';
@@ -28,7 +29,6 @@ import 'package:mobilite_moderne/PRESENTATION/./news/news_list/news_list_page.da
 import 'package:mobilite_moderne/PRESENTATION/./news/news_view/news_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/term_of_use/term_of_use_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/privacy_policy/privacy_policy_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/category_view/category_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_view/resource_view_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/resource_menu_page.dart';
@@ -39,7 +39,7 @@ import 'package:mobilite_moderne/PRESENTATION/assistant/assistant_visio/assistan
 import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_list_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/subscription/subscription_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/legal_mention/legal_mention_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/subscription_succes/subscription_succes_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/account/subscription_succes/subscription_succes_page.dart';
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -47,7 +47,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(path: '/', page: SplashRoute.page),
-        AutoRoute(path: '*', page: SplashRoute.page),
+        //AutoRoute(path: '*', page: SplashRoute.page),
         AutoRoute(
           path: '/home',
           page: HomeRoute.page, //HOMEPAGE
@@ -194,6 +194,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/subscription_succes-route',
           page: Subscription_succesRoute.page,
+        ),
+        AutoRoute(
+          path: '/subscription_error-route',
+          page: Subscription_errorRoute.page,
         ), //insert-route
       ];
 }

@@ -2,11 +2,14 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const algoliasearch = require('algoliasearch');
 const stripe = require('stripe')(functions.config().stripe.testkey); 
-
+const cors = require('cors')({origin: true});
+//const app = express();
  
 const ALGOLIA_APP_ID = 'PTYE9X0MA9';
 const ALGOLIA_ADMIN_KEY = '7a8fcacc9c5c0a94816cb7e23ae416bf';
 const ALGOLIA_INDEX_NAME = 'DistAtelier';
+
+//const corsHandler = cors({origin: true});
 
 admin.initializeApp(functions.config().firebase);
 
@@ -20,6 +23,7 @@ exports.createUser = functions.firestore
 
       //Création du compte Stripe
     const customer = await stripe.customers.create({
+        email: userData.email,
         description: userData.userName,
       });
 
@@ -42,93 +46,108 @@ exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
         idStripe,
     } = req.body;
 
-    try {
-        const subscription = await stripe.subscriptions.create({
-            customer: idStripe,
-            items: [{
-              price: 'price_1O03zgLoHsD8ZYCOOvruig70',
-            }],
-            payment_behavior: 'default_incomplete',
-            payment_settings: { save_default_payment_method: 'on_subscription' },
-            expand: ['latest_invoice.payment_intent'],
-          });
+    cors(req, res, async () => { 
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        try {
+            const subscription = await stripe.subscriptions.create({
+                customer: idStripe,
+                items: [{
+                price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+                }],
+                payment_behavior: 'default_incomplete',
+                payment_settings: { save_default_payment_method: 'on_subscription' },
+                expand: ['latest_invoice.payment_intent'],
+            });
 
-          console.log(subscription);
+            console.log(subscription);
 
-          res.send({
-            subscriptionId: subscription.id,
-            clientSecret: subscription.latest_invoice.payment_intent.client_secret,
-          });
-    } catch (e) {
-        return res.status(400).send({ error: { message: error.message } });
-    }
+            res.send({
+                subscriptionId: subscription.id,
+                clientSecret: subscription.latest_invoice.payment_intent.client_secret,
+            });
+        } catch (e) {
+            return res.status(400).send({ error: { message: error.message } });
+        }
+    });
 });
 
 // CHECKOUT WEB 
-const YOUR_DOMAIN = 'http://localhost:5000';
+const YOUR_DOMAIN = 'https://dist-atelier.web.app/';
 exports.CreateSessionCheckout = functions.https.onRequest(async (req, res) => {
     const {
         idStripe,
     } = req.body;
-    try {
-        const session = await stripe.checkout.sessions.create({
-            line_items: [
-              {
-                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                price: 'price_1O03zgLoHsD8ZYCOOvruig70',
-                quantity: 1,
-              },
-            ],
-            customer: idStripe,
-            mode: 'subscription',
-            success_url: `${YOUR_DOMAIN}/subscription_stripe-route`,
-            cancel_url: `${YOUR_DOMAIN}/subscription_stripe-route`,
-          });
-        
-          //res.redirect(303, session.url);
-          return res.status(200).send({ url: session.url });
-    } catch (e) {
-        return res.status(400).send({ error: { message: e.message } });
-    }
+    cors(req, res, async () => { 
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        try {
+            const session = await stripe.checkout.sessions.create({
+                line_items: [
+                {
+                    // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+                    quantity: 1,
+                },
+                ],
+                customer: idStripe,
+                mode: 'subscription',
+                success_url: `${YOUR_DOMAIN}/#/subscription_succes-route`,
+                cancel_url: `${YOUR_DOMAIN}/#/subscription_error-route`,
+            });
+            
+            //res.redirect(303, session.url);
+            return res.status(200).send({ url: session.url });
+        } catch (e) {
+            return res.status(400).send({ error: { message: e.message } });
+        }
+    });
 });
 
 // Liste des abonnements
 exports.ListSubscription = functions.https.onRequest(async (req, res) => {
     const { idStripe } = req.body;
 
-    try {
-        const listSubscription = await stripe.subscriptions.list({
-            customer: idStripe,
-            limit: 10,
-          });
-
-          //Rercherche de tous les abonnements 
-          listSubscription.data.forEach(function (sub) {
-            sub.items.data.forEach(function (item) {
-                //Code du produit acces_total !
-                if(item.price['product'] == 'prod_OnfKo1VMwQsFOV') {
-                    //Retourne toute la subscription
-                    res.status(200).send(sub);
-                } 
+    cors(req, res, async () => { 
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        try {
+            const listSubscription = await stripe.subscriptions.list({
+                customer: idStripe,
+                limit: 10,
             });
-          });
 
-          res.status(200).send( { message: 'Pas d abonnement trouvé ' + listSubscription.data.length });
-    } catch (e) {
-        return res.status(400).send({ error: { message: error.message } });
-    }
+            //Rercherche de tous les abonnements 
+            listSubscription.data.forEach(function (sub) {
+                sub.items.data.forEach(function (item) {
+                    //Code du produit acces_total !
+                    if(item.price['product'] == 'prod_OnfKo1VMwQsFOV') {
+                        //Retourne toute la subscription
+                        res.status(200).send(sub);
+                    } 
+                });
+            });
+
+            res.status(200).send( { message: 'Pas d abonnement trouvé ' + listSubscription.data.length });
+        } catch (e) {
+            return res.status(400).send({ error: { message: error.message } });
+        }
+    });
 });
 
 // Suppression abonnement
 exports.CancelSubscription = functions.https.onRequest(async (req, res) => {
     const { idSubscription } = req.body;
-
-    try {
-        const deleted = await stripe.subscriptions.cancel(idSubscription);
-          res.status(200).send(deleted);
-    } catch (e) {
-        return res.status(400).send({ error: { message: error.message } });
-    }
+    cors(req, res, async () => { 
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        try {
+            const deleted = await stripe.subscriptions.cancel(idSubscription);
+            res.status(200).send(deleted);
+        } catch (e) {
+            return res.status(400).send({ error: { message: error.message } });
+        }
+    });
 });
 
 //DEPRECATED

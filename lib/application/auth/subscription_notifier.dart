@@ -140,8 +140,10 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     final userData = await _authRepository.getUserData();
     return await (userData.fold(() => null, (UserData userData) async {
       if (userData.idStripe == null) {
+        print('ERROR ID STRIPE IS NULL');
         return null;
       } else {
+        print('id stripe : ${userData.idStripe}');
         final response = await _authRepository.getUrlStripePayement(userData.idStripe!);
 
         return response.fold((l) => null, (url) {

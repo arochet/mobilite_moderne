@@ -81,6 +81,7 @@ class PanelNewSubscription extends ConsumerWidget {
                 ElevatedButton(
                   onPressed: () async {
                     final url = await ref.read(subscriptionNotifierProvider.notifier).getUrlStripePayement();
+                    print('url : $url');
                     if (url != null) {
                       final theURL = Uri.parse(url);
                       if (await canLaunchUrl(theURL)) {

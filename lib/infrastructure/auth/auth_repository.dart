@@ -103,7 +103,7 @@ class FirebaseAuthFacade implements AuthRepository {
       try {
         //Création des datas Firestore
         final userDoc = await _firestore.userDocument();
-        final userDataDTO = UserDataDTO.fromDomain(userData);
+        final userDataDTO = UserDataDTO.fromDomain(userData.copyWith(email: emailAddress));
 
         await userDoc.set(userDataDTO.toJson());
       } on FirebaseException catch (e) {
@@ -553,7 +553,7 @@ class FirebaseAuthFacade implements AuthRepository {
       final response = await getCloudFunctions('CreateSessionCheckout', {'idStripe': idStripe});
       return right(json.decode(response.body)['url']);
     } catch (e) {
-      print('error $e');
+      print('getUrlStripePayement error $e');
       return left(SubscriptionFailure.serverError());
     }
   }
@@ -642,7 +642,10 @@ class FirebaseAuthFacade implements AuthRepository {
         : Uri.parse('https://us-central1-mobilite-moderne.cloudfunctions.net/$function');
     final response = await http.post(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: json.encode(body),
     );
     return response;

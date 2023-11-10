@@ -13,6 +13,8 @@ class SplashPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('shpage page');
+    print('==> ${ModalRoute.of(context)?.settings.name}');
     context.router.replaceAll([MainNavigationRoute()]);
 
     final authState = ref.watch(authNotifierProvider);

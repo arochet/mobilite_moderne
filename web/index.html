@@ -118,7 +118,36 @@
        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
        <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+       <script>
+const app = require("express")()
+const whitelist = ['https://dist-atelier.web.app/', 
+                   'https://admin-distatelier.web.app/', 
+                   'http://localhost', 
+                   'https://us-central1-mobilite-moderne.cloudfunctions.net'] // replace with your domain whitelist
 
+// MIDDLEWARE IF NOT USING cors package 
+app.use(function (req, res, next) {
+  const origin = req.headers.origin?? ""
+
+  if (whitelist.indexOf(origin) !== -1) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*') // Allow all origin, may be removed if all request must be from whitelisted domain
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Headers,Origin, X-Requested-With, Content-Type, Accept, Authorization')
+
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  if (req.method === "OPTIONS") {
+    return res.status(200).json({})
+  }
+  next()
+})
+
+// api
+app.get("/login", playerAuth.login)
+</script>
 
        <script>
         var firebaseConfig = {

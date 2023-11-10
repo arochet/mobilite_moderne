@@ -76,7 +76,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
             //PANEL INFO
             PanelInfo(),
             //PANEL ABONNEMENT
-            if (!kIsWeb) PanelSubscription(),
+            PanelSubscription(),
             //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
             PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
             //PANEL DEVELOPPEMENT
