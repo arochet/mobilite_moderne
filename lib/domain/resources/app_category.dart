@@ -29,12 +29,15 @@ abstract class AppCategory with _$AppCategory {
 
     /// Liste des documents reliés à la catégorie
     List<Resource>? listResource,
+
+    /// Si la catégorie a des sous catégories (peut avoir des sous catégory maus subcategory n'est pas alimenté )
+    required bool hasSubCategory,
   }) = _AppCategory;
 
-  factory AppCategory.empty() =>
-      AppCategory(id: UniqueId(), nom: Nom(''), subcategory: null, path: "", listResource: []);
+  factory AppCategory.empty() => AppCategory(
+      id: UniqueId(), nom: Nom(''), subcategory: null, path: "", listResource: [], hasSubCategory: false);
 
-  bool get hasSubcategory =>
+  bool get hasSubcategoryTest =>
       (listResource == null || listResource?.isEmpty == true) &&
       (subcategory?.fold((l) => null, (r) => r) != null);
 }

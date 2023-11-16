@@ -81,7 +81,9 @@ class _PanelCategoryView extends StatelessWidget {
           printDev();
           //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
           context.router.push(Choice_categoryRoute(
-              idResource: idResource, category: category, canChoiceCategory: !this.category.hasSubcategory));
+              idResource: idResource,
+              category: category,
+              canChoiceCategory: !this.category.hasSubcategoryTest));
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 10),
@@ -90,7 +92,7 @@ class _PanelCategoryView extends StatelessWidget {
               Expanded(
                 child: Text("${category.nom.getOrCrash()}", style: Theme.of(context).textTheme.titleMedium),
               ),
-              Icon(
+              const Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
               ),

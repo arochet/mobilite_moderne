@@ -31,6 +31,9 @@ mixin _$AppCategory {
   /// Liste des documents reliés à la catégorie
   List<Resource>? get listResource => throw _privateConstructorUsedError;
 
+  /// Si la catégorie a des sous catégories (peut avoir des sous catégory maus subcategory n'est pas alimenté )
+  bool get hasSubCategory => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AppCategoryCopyWith<AppCategory> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,7 +50,8 @@ abstract class $AppCategoryCopyWith<$Res> {
       Nom nom,
       Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       String path,
-      List<Resource>? listResource});
+      List<Resource>? listResource,
+      bool hasSubCategory});
 }
 
 /// @nodoc
@@ -68,6 +72,7 @@ class _$AppCategoryCopyWithImpl<$Res, $Val extends AppCategory>
     Object? subcategory = freezed,
     Object? path = null,
     Object? listResource = freezed,
+    Object? hasSubCategory = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -90,6 +95,10 @@ class _$AppCategoryCopyWithImpl<$Res, $Val extends AppCategory>
           ? _value.listResource
           : listResource // ignore: cast_nullable_to_non_nullable
               as List<Resource>?,
+      hasSubCategory: null == hasSubCategory
+          ? _value.hasSubCategory
+          : hasSubCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -107,7 +116,8 @@ abstract class _$$_AppCategoryCopyWith<$Res>
       Nom nom,
       Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       String path,
-      List<Resource>? listResource});
+      List<Resource>? listResource,
+      bool hasSubCategory});
 }
 
 /// @nodoc
@@ -126,6 +136,7 @@ class __$$_AppCategoryCopyWithImpl<$Res>
     Object? subcategory = freezed,
     Object? path = null,
     Object? listResource = freezed,
+    Object? hasSubCategory = null,
   }) {
     return _then(_$_AppCategory(
       id: null == id
@@ -148,6 +159,10 @@ class __$$_AppCategoryCopyWithImpl<$Res>
           ? _value._listResource
           : listResource // ignore: cast_nullable_to_non_nullable
               as List<Resource>?,
+      hasSubCategory: null == hasSubCategory
+          ? _value.hasSubCategory
+          : hasSubCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -160,7 +175,8 @@ class _$_AppCategory extends _AppCategory {
       required this.nom,
       required this.subcategory,
       required this.path,
-      final List<Resource>? listResource})
+      final List<Resource>? listResource,
+      required this.hasSubCategory})
       : _listResource = listResource,
         super._();
 
@@ -192,9 +208,13 @@ class _$_AppCategory extends _AppCategory {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Si la catégorie a des sous catégories (peut avoir des sous catégory maus subcategory n'est pas alimenté )
+  @override
+  final bool hasSubCategory;
+
   @override
   String toString() {
-    return 'AppCategory(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listResource: $listResource)';
+    return 'AppCategory(id: $id, nom: $nom, subcategory: $subcategory, path: $path, listResource: $listResource, hasSubCategory: $hasSubCategory)';
   }
 
   @override
@@ -208,12 +228,14 @@ class _$_AppCategory extends _AppCategory {
                 other.subcategory == subcategory) &&
             (identical(other.path, path) || other.path == path) &&
             const DeepCollectionEquality()
-                .equals(other._listResource, _listResource));
+                .equals(other._listResource, _listResource) &&
+            (identical(other.hasSubCategory, hasSubCategory) ||
+                other.hasSubCategory == hasSubCategory));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, nom, subcategory, path,
-      const DeepCollectionEquality().hash(_listResource));
+      const DeepCollectionEquality().hash(_listResource), hasSubCategory);
 
   @JsonKey(ignore: true)
   @override
@@ -228,7 +250,8 @@ abstract class _AppCategory extends AppCategory {
       required final Nom nom,
       required final Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       required final String path,
-      final List<Resource>? listResource}) = _$_AppCategory;
+      final List<Resource>? listResource,
+      required final bool hasSubCategory}) = _$_AppCategory;
   const _AppCategory._() : super._();
 
   @override
@@ -249,6 +272,10 @@ abstract class _AppCategory extends AppCategory {
 
   /// Liste des documents reliés à la catégorie
   List<Resource>? get listResource;
+  @override
+
+  /// Si la catégorie a des sous catégories (peut avoir des sous catégory maus subcategory n'est pas alimenté )
+  bool get hasSubCategory;
   @override
   @JsonKey(ignore: true)
   _$$_AppCategoryCopyWith<_$_AppCategory> get copyWith =>

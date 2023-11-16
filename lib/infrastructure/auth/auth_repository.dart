@@ -558,12 +558,12 @@ class FirebaseAuthFacade implements AuthRepository {
     }
   }
 
+  @deprecated
   @override
   Future<Either<SubscriptionFailure, String>> subscribeTotalAccess(String idStripe) async {
     try {
       if (kIsWeb) {
-        final response = await getCloudFunctions('CreateSessionCheckout', {});
-
+        await getCloudFunctions('CreateSessionCheckout', {});
         return left(SubscriptionFailure.serverError());
       }
 
@@ -611,6 +611,7 @@ class FirebaseAuthFacade implements AuthRepository {
           ),
         ),
       );
+
       if (resultConfirm.status == PaymentIntentsStatus.Succeeded) {
         return right(unit);
       } else

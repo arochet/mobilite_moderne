@@ -30,8 +30,8 @@ abstract class AppCategoryDTO implements _$AppCategoryDTO {
     );
   }
 
-  AppCategory toDomain(
-      Either<AppCategoryFailure, List<AppCategory>>? subcategory, String path, List<Resource>? listResource) {
+  AppCategory toDomain(Either<AppCategoryFailure, List<AppCategory>>? subcategory, String path,
+      List<Resource>? listResource, bool hasSubCategory) {
     printDev();
     return AppCategory(
       id: UniqueId.fromUniqueString(idCategory!),
@@ -39,6 +39,7 @@ abstract class AppCategoryDTO implements _$AppCategoryDTO {
       subcategory: subcategory,
       path: path,
       listResource: listResource,
+      hasSubCategory: hasSubCategory,
     );
   }
 

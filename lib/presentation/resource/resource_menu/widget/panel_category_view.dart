@@ -56,7 +56,11 @@ class _PanelSubCategoryView extends StatelessWidget {
         onTap: () {
           printDev();
           //On ouvre la catégorie suivante ou bien la liste des ressources associés à la catégorie
-          if (this.category.listResource == null || this.category.listResource == [])
+          print('this.category.listResource : ${this.category.listResource}');
+          print('this.category.subcategory : ${this.category.subcategory}');
+          if (this.category.listResource == null ||
+              this.category.listResource == [] ||
+              this.category.hasSubCategory)
             context.router.push(CategoryViewRoute(category: category));
           else
             context.router.push(Resource_viewRoute(category: category));

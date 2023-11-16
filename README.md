@@ -200,3 +200,7 @@ Lorsqu'un utilisateur supprime son compte. Ses informations ne sont pas conserv�
 ## Modifier les catégories
 
 Pour modifier les catégories, rendez-vous dans Firebase / Firestore. Dans catégory, cliquer sur "ajouter un document". Renseigner l'identifiant du document (sera non visible). Dans champs, rentrer 'nom' et la valeur. Exemple, pour ajouter une catégorie "Trottinette 2022", on mettra comme identifiant 'trottinette2022' et de les champs on mettre 'nom' : String 'Trottinette 2022'. Pour ajouter des ressources dans une catégorie, on créer un champs 'listResource' au format array. Dans chaque élément on peut entrer l'identifiant de la ressource. Pour faire une recherche de ressource on peut aller dans ressource et les trier par nom.
+
+## Modifier les questions / réponses
+
+Pour modifier les questions réponses [Voir ici](./documentation/value_objects.md)

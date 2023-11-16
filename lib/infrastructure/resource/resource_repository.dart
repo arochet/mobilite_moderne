@@ -88,10 +88,12 @@ class ResourceRepository implements IResourceRepository {
       final List<Future<AppCategory>> listFutureAppCategory = subSnap.docs.map((subdoc) async {
         try {
           //Subcategory
+          final subCategory = (await subdoc.reference.collection('sub').get()).size;
           return AppCategoryDTO.fromFirestore(subdoc).toDomain(
             null,
             subdoc.reference.path, // Chemin de la sous catégorie
             await _getResource(subdoc), // Liste des ressources de la sous catégorie
+            subCategory > 0, // Si la sous catégorie a des sous catégories
           );
         } catch (e) {
           print('e $e');
@@ -112,7 +114,9 @@ class ResourceRepository implements IResourceRepository {
     //RESOURCES
     List<Resource>? listResources = await _getResource(doc);
 
-    return AppCategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path, listResources);
+    final bool hasCategory = listCategories.fold((l) => false, (r) => r.length > 0);
+    return AppCategoryDTO.fromFirestore(doc)
+        .toDomain(listCategories, doc.reference.path, listResources, hasCategory);
   }
 
   Future<List<Resource>?> _getResource(QueryDocumentSnapshot<Object?> doc) async {

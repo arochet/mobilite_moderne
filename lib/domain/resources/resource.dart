@@ -96,28 +96,32 @@ extension ResourceMainCategoryExtension on ResourceMainCategory {
             nom: Nom(name),
             subcategory: null,
             path: 'category/mediatheque',
-            listResource: null);
+            listResource: null,
+            hasSubCategory: false);
       case ResourceMainCategory.notice_constructeur:
         return AppCategory(
             id: UniqueId.fromUniqueString('notice_constructeur'),
             nom: Nom(name),
             subcategory: null,
             path: 'category/notice_constructeur',
-            listResource: null);
+            listResource: null,
+            hasSubCategory: false);
       case ResourceMainCategory.pieces_fournisseurs:
         return AppCategory(
             id: UniqueId.fromUniqueString('pieces_et_fournisseurs'),
             nom: Nom(name),
             subcategory: null,
             path: 'category/pieces_et_fournisseurs',
-            listResource: null);
+            listResource: null,
+            hasSubCategory: false);
       default:
         return AppCategory(
             id: UniqueId.fromUniqueString('mediatheque'),
             nom: Nom(name),
             subcategory: null,
             path: 'category/mediatheque',
-            listResource: null);
+            listResource: null,
+            hasSubCategory: false);
     }
   }
 

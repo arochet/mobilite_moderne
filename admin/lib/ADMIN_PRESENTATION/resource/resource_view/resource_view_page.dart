@@ -8,12 +8,8 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 
 import 'widget/panel_resource_view.dart';
 import 'package:auto_route/auto_route.dart';
-import 'widget/panel_resource_view.dart';
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:auto_route/src/router/auto_router_x.dart';
 
 @RoutePage()
 class ResourceViewPage extends ConsumerWidget {

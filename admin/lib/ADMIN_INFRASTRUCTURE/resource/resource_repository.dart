@@ -219,7 +219,7 @@ class ResourceRepository implements IResourceRepository {
               try {
                 //Subcategory
                 return AppCategoryDTO.fromFirestore(subdoc)
-                    .toDomain(null, subdoc.reference.path, _getResource(subdoc));
+                    .toDomain(null, subdoc.reference.path, _getResource(subdoc), false);
               } catch (e) {
                 print('e $e');
               }
@@ -238,7 +238,8 @@ class ResourceRepository implements IResourceRepository {
     //RESOURCES
     List<Resource>? listResources = _getResource(doc);
 
-    return AppCategoryDTO.fromFirestore(doc).toDomain(listCategories, doc.reference.path, listResources);
+    return AppCategoryDTO.fromFirestore(doc)
+        .toDomain(listCategories, doc.reference.path, listResources, false);
   }
 
   List<Resource>? _getResource(QueryDocumentSnapshot<Object?> doc) {

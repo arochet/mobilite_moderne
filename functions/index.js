@@ -124,7 +124,7 @@ exports.ListSubscription = functions.https.onRequest(async (req, res) => {
                     if(item.price['product'] == 'prod_OnfKo1VMwQsFOV') {
                         //Retourne toute la subscription
                         res.status(200).send(sub);
-                    } 
+                    }
                 });
             });
 

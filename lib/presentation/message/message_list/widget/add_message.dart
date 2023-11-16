@@ -77,7 +77,6 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                 final ImagePicker picker = ImagePicker();
                 final XFile? photo =
                     await picker.pickImage(source: kIsWeb ? ImageSource.gallery : ImageSource.camera);
-
                 if (photo != null) {
                   ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
                 }
