@@ -63,7 +63,7 @@ class ImageFromStorage extends StatelessWidget {
               //ERREUR
               return _Erreur(height: height);
             else {
-              if (snapshotUrl.data != null)
+              if (snapshotUrl.data != null) {
                 return Container(
                   width: double.infinity,
                   child: ClipRRect(
@@ -73,7 +73,7 @@ class ImageFromStorage extends StatelessWidget {
                         fit: fit ?? BoxFit.fitHeight,
                       )),
                 );
-              else {
+              } else {
                 return _NoData(height: height);
               }
             }

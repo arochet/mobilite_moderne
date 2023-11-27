@@ -11,8 +11,6 @@ import 'package:mobilite_moderne/INFRASTRUCTURE/resource/resource_dtos.dart';
 import 'package:mobilite_moderne/INFRASTRUCTURE/core/firestore_helpers.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_utils/dev_utils.dart';
-import 'package:mobilite_moderne/PRESENTATION/resource/resource_menu/widget/panel_category_list.dart';
-import '../core/load_image.dart';
 import 'app_category_dtos.dart';
 
 abstract class IResourceRepository {
@@ -135,7 +133,6 @@ class ResourceRepository implements IResourceRepository {
               final resource =
                   await collectionResources.doc(element).get(); //On cherche la resource dans la collection
               if (resource.data() != null) {
-                final hasImg = (resource.data() as Map).containsKey('image') == true;
                 // On charge l'image de la ressource + on ajoute la ressource à la liste
                 listResources.add(ResourceDTO.fromFirestore(resource).toDomain(storageRef));
               } else {
@@ -183,6 +180,7 @@ class ResourceRepository implements IResourceRepository {
 
   @override
   Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id) async {
+    printDev();
     final document = _firestore.resourcesCollection.doc(id.getOrCrash());
     final storageRef = _storage.ref(); //Storage REF
 
