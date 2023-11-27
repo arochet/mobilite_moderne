@@ -42,6 +42,14 @@ class MessageFormNotifier extends StateNotifier<AddMessageFormData> {
     );
   }
 
+  videoChanged(XFile param) {
+    //Le chemin de l'image est mis à jour dans le repository
+    state = state.copyWith(
+      message: state.message.copyWith(videoSend: param),
+      authFailureOrSuccessOption: none(),
+    );
+  }
+
   dateChanged(int param) {
     state = state.copyWith(
         message: state.message.copyWith(date: DateTime.fromMillisecondsSinceEpoch(param)),

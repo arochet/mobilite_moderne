@@ -17,15 +17,17 @@ abstract class MessageDTO implements _$MessageDTO {
     required String? text,
     required int date,
     required String? imagePath,
+    required String? videoPath,
     required String idUser,
   }) = _MessageDTO;
 
-  factory MessageDTO.fromDomain(Message obj, UniqueId? idUser, String? imagePath) {
+  factory MessageDTO.fromDomain(Message obj, UniqueId? idUser, String? imagePath, String? videoPath) {
     return MessageDTO(
       id: obj.id.getOrCrash(),
       text: obj.text,
       date: obj.date.millisecondsSinceEpoch,
       imagePath: imagePath ?? obj.imagePath,
+      videoPath: videoPath ?? obj.videoPath,
       idUser: idUser?.getOrCrash() ?? obj.idUser.getOrCrash(),
     );
   }
@@ -39,7 +41,9 @@ abstract class MessageDTO implements _$MessageDTO {
       imageUrl: imageUrl,
       imageSend: null,
       imagePath: imagePath,
+      videoPath: videoPath,
       idUser: UniqueId.fromUniqueString(idUser),
+      videoSend: null,
     );
   }
 

@@ -83,6 +83,18 @@ class _MessageFormState extends ConsumerState<MessageForm> {
               },
               icon: Icon(Icons.photo_camera),
             ),
+            //Bouton Video
+            if (!kIsWeb)
+              IconButton(
+                onPressed: () async {
+                  final ImagePicker picker = ImagePicker();
+                  final XFile? video = await picker.pickVideo(source: ImageSource.camera);
+                  if (video != null) {
+                    ref.read(messageFormNotifierProvider.notifier).videoChanged(video);
+                  }
+                },
+                icon: Icon(Icons.video_camera_back),
+              ),
             SizedBox(width: 5),
 
             // Champs image
@@ -119,8 +131,21 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                 ),
             ],
 
+            // Champs video
+            if (state.message.videoSend != null) ...[
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: SizedBox.fromSize(
+                    size: Size.fromRadius(48),
+                    child: Icon(Icons.play_circle, size: 30),
+                  ),
+                ),
+              ),
+            ],
+
             // Champs ajout de texte
-            if (state.message.imageSend == null)
+            if (state.message.imageSend == null && state.message.videoSend == null)
               Expanded(
                 child: TextFormField(
                   autocorrect: false,

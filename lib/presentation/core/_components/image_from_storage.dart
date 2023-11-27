@@ -95,7 +95,7 @@ class _NoData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      color: colorpanel(900),
+      //color: colorpanel(900),
       child: Center(
           child: Text("Pas d'image",
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey))),

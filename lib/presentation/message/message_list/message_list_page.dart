@@ -82,9 +82,11 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
                       text: 'Bonjour !\nDécrivez nous la nature de votre problème et ajoutez des photos.',
                       date: DateTime.now(),
                       imageSend: null,
+                      videoPath: null,
                       imageRead: null,
                       imagePath: null,
-                      idUser: UniqueId()),
+                      idUser: UniqueId(),
+                      videoSend: null),
                   idUser: currentUserAuth.id),
               Center(
                   child: Text("Un technicien va vous répondre",

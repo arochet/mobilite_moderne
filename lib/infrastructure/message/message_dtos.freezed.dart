@@ -25,6 +25,7 @@ mixin _$MessageDTO {
   String? get text => throw _privateConstructorUsedError;
   int get date => throw _privateConstructorUsedError;
   String? get imagePath => throw _privateConstructorUsedError;
+  String? get videoPath => throw _privateConstructorUsedError;
   String get idUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $MessageDTOCopyWith<$Res> {
       String? text,
       int date,
       String? imagePath,
+      String? videoPath,
       String idUser});
 }
 
@@ -64,6 +66,7 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
     Object? text = freezed,
     Object? date = null,
     Object? imagePath = freezed,
+    Object? videoPath = freezed,
     Object? idUser = null,
   }) {
     return _then(_value.copyWith(
@@ -82,6 +85,10 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoPath: freezed == videoPath
+          ? _value.videoPath
+          : videoPath // ignore: cast_nullable_to_non_nullable
               as String?,
       idUser: null == idUser
           ? _value.idUser
@@ -104,6 +111,7 @@ abstract class _$$_MessageDTOCopyWith<$Res>
       String? text,
       int date,
       String? imagePath,
+      String? videoPath,
       String idUser});
 }
 
@@ -122,6 +130,7 @@ class __$$_MessageDTOCopyWithImpl<$Res>
     Object? text = freezed,
     Object? date = null,
     Object? imagePath = freezed,
+    Object? videoPath = freezed,
     Object? idUser = null,
   }) {
     return _then(_$_MessageDTO(
@@ -141,6 +150,10 @@ class __$$_MessageDTOCopyWithImpl<$Res>
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      videoPath: freezed == videoPath
+          ? _value.videoPath
+          : videoPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       idUser: null == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
@@ -157,6 +170,7 @@ class _$_MessageDTO extends _MessageDTO {
       required this.text,
       required this.date,
       required this.imagePath,
+      required this.videoPath,
       required this.idUser})
       : super._();
 
@@ -173,11 +187,13 @@ class _$_MessageDTO extends _MessageDTO {
   @override
   final String? imagePath;
   @override
+  final String? videoPath;
+  @override
   final String idUser;
 
   @override
   String toString() {
-    return 'MessageDTO(id: $id, text: $text, date: $date, imagePath: $imagePath, idUser: $idUser)';
+    return 'MessageDTO(id: $id, text: $text, date: $date, imagePath: $imagePath, videoPath: $videoPath, idUser: $idUser)';
   }
 
   @override
@@ -190,13 +206,15 @@ class _$_MessageDTO extends _MessageDTO {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
+            (identical(other.videoPath, videoPath) ||
+                other.videoPath == videoPath) &&
             (identical(other.idUser, idUser) || other.idUser == idUser));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, text, date, imagePath, idUser);
+      Object.hash(runtimeType, id, text, date, imagePath, videoPath, idUser);
 
   @JsonKey(ignore: true)
   @override
@@ -218,6 +236,7 @@ abstract class _MessageDTO extends MessageDTO {
       required final String? text,
       required final int date,
       required final String? imagePath,
+      required final String? videoPath,
       required final String idUser}) = _$_MessageDTO;
   const _MessageDTO._() : super._();
 
@@ -233,6 +252,8 @@ abstract class _MessageDTO extends MessageDTO {
   int get date;
   @override
   String? get imagePath;
+  @override
+  String? get videoPath;
   @override
   String get idUser;
   @override

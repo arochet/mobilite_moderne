@@ -57,8 +57,21 @@ class MessageRepository implements IMessageRepository {
         }
       }
 
+      String? pathVideo = null;
+      if (message.videoSend != null) {
+        pathVideo =
+            message.imageSend != null ? 'message/${idUser.getOrCrash()}/${message.videoSend!.name}' : null;
+        final TaskSnapshot result =
+            await _storage.ref().child(pathImage!).putFile(File(message.videoSend!.path));
+      }
+
       //On crée le méchant message
-      final messageDTO = MessageDTO.fromDomain(message, uidAdmin, pathImage);
+      final messageDTO = MessageDTO.fromDomain(
+        message,
+        uidAdmin,
+        pathImage,
+        pathVideo,
+      );
       await _firestore.messageCollection
           .doc(idUser.getOrCrash())
           .collection('discussion')
@@ -107,7 +120,7 @@ class MessageRepository implements IMessageRepository {
       final uidAdmin = (await _getUidUser());
       if (uidAdmin == null) return left(const MessageFailure.noUserConnected());
 
-      final messageDTO = MessageDTO.fromDomain(message, uidAdmin, null);
+      final messageDTO = MessageDTO.fromDomain(message, uidAdmin, null, null);
       await _firestore.messageCollection.doc(messageDTO.id).update(messageDTO.toJson());
 
       return right(unit);

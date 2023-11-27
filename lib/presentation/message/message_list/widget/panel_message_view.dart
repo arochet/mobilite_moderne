@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/message/message.dart';
@@ -21,12 +22,36 @@ class PanelMessageView extends StatelessWidget {
           margin: EdgeInsets.all(4),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: message.imageRead == null && message.imagePath == null && message.imageUrl == null
-                ? Text(message.text ?? '//', style: Theme.of(context).textTheme.bodyLarge)
-                : ImageFromStorage(
+            child: Builder(
+              builder: (context) {
+                if (message.videoPath != null) {
+                  //VIDEO
+                  return InkWell(
+                    onTap: () => context.router.push(
+                      VideoplayerRoute(message.videoPath!, path: message.videoPath!),
+                    ),
+                    child: Container(
+                      width: 80,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: FittedBox(
+                            child: Icon(Icons.play_arrow_rounded, color: Colors.black),
+                            fit: BoxFit.fitHeight,
+                          )),
+                    ),
+                  );
+                } else if ((message.imagePath != null && message.imagePath != '')) {
+                  //IMAGE
+                  return ImageFromStorage(
                     url: message.imageUrl,
                     bytes: message.imageRead,
-                  ),
+                  );
+                } else {
+                  //TEXTE
+                  return Text(message.text ?? '//', style: Theme.of(context).textTheme.bodyLarge);
+                }
+              },
+            ),
           ),
         ),
       ),

@@ -21,6 +21,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_main_navigation/main_navigat
 import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/message/videoplayer_page/videoplayer_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/resource_videoplayer_page.dart';
 import '../../account/developpement/buttons/buttons.dart';
 import '../../account/developpement/colors/colors.dart';
@@ -182,6 +183,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/message-list-route',
           page: MessageListRoute.page,
+        ),
+        AutoRoute(
+          path: '/videoplayer-route',
+          page: VideoplayerRoute.page,
         ),
         AutoRoute(
           path: '/subscription_stripe-route',

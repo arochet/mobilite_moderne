@@ -23,11 +23,17 @@ mixin _$Message {
   /// Lorsque l'on envoie l'image dans le chat
   XFile? get imageSend => throw _privateConstructorUsedError;
 
+  /// Lorsque l'on envoie l'image dans le chat
+  XFile? get videoSend => throw _privateConstructorUsedError;
+
   /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
   Future<Uint8List?>? get imageRead => throw _privateConstructorUsedError;
 
   /// Chemin de l'image dans Storage
   String? get imagePath => throw _privateConstructorUsedError;
+
+  /// Chemin de la video dans Storage
+  String? get videoPath => throw _privateConstructorUsedError;
   UniqueId get idUser => throw _privateConstructorUsedError;
 
   /// Image URL pour le web
@@ -47,8 +53,10 @@ abstract class $MessageCopyWith<$Res> {
       String? text,
       DateTime date,
       XFile? imageSend,
+      XFile? videoSend,
       Future<Uint8List?>? imageRead,
       String? imagePath,
+      String? videoPath,
       UniqueId idUser,
       Future<String>? imageUrl});
 }
@@ -70,8 +78,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? text = freezed,
     Object? date = null,
     Object? imageSend = freezed,
+    Object? videoSend = freezed,
     Object? imageRead = freezed,
     Object? imagePath = freezed,
+    Object? videoPath = freezed,
     Object? idUser = null,
     Object? imageUrl = freezed,
   }) {
@@ -92,6 +102,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.imageSend
           : imageSend // ignore: cast_nullable_to_non_nullable
               as XFile?,
+      videoSend: freezed == videoSend
+          ? _value.videoSend
+          : videoSend // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       imageRead: freezed == imageRead
           ? _value.imageRead
           : imageRead // ignore: cast_nullable_to_non_nullable
@@ -99,6 +113,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoPath: freezed == videoPath
+          ? _value.videoPath
+          : videoPath // ignore: cast_nullable_to_non_nullable
               as String?,
       idUser: null == idUser
           ? _value.idUser
@@ -124,8 +142,10 @@ abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String? text,
       DateTime date,
       XFile? imageSend,
+      XFile? videoSend,
       Future<Uint8List?>? imageRead,
       String? imagePath,
+      String? videoPath,
       UniqueId idUser,
       Future<String>? imageUrl});
 }
@@ -144,8 +164,10 @@ class __$$_MessageCopyWithImpl<$Res>
     Object? text = freezed,
     Object? date = null,
     Object? imageSend = freezed,
+    Object? videoSend = freezed,
     Object? imageRead = freezed,
     Object? imagePath = freezed,
+    Object? videoPath = freezed,
     Object? idUser = null,
     Object? imageUrl = freezed,
   }) {
@@ -166,6 +188,10 @@ class __$$_MessageCopyWithImpl<$Res>
           ? _value.imageSend
           : imageSend // ignore: cast_nullable_to_non_nullable
               as XFile?,
+      videoSend: freezed == videoSend
+          ? _value.videoSend
+          : videoSend // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       imageRead: freezed == imageRead
           ? _value.imageRead
           : imageRead // ignore: cast_nullable_to_non_nullable
@@ -173,6 +199,10 @@ class __$$_MessageCopyWithImpl<$Res>
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoPath: freezed == videoPath
+          ? _value.videoPath
+          : videoPath // ignore: cast_nullable_to_non_nullable
               as String?,
       idUser: null == idUser
           ? _value.idUser
@@ -194,8 +224,10 @@ class _$_Message extends _Message {
       required this.text,
       required this.date,
       required this.imageSend,
+      required this.videoSend,
       required this.imageRead,
       required this.imagePath,
+      required this.videoPath,
       required this.idUser,
       this.imageUrl})
       : super._();
@@ -211,6 +243,10 @@ class _$_Message extends _Message {
   @override
   final XFile? imageSend;
 
+  /// Lorsque l'on envoie l'image dans le chat
+  @override
+  final XFile? videoSend;
+
   /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
   @override
   final Future<Uint8List?>? imageRead;
@@ -218,6 +254,10 @@ class _$_Message extends _Message {
   /// Chemin de l'image dans Storage
   @override
   final String? imagePath;
+
+  /// Chemin de la video dans Storage
+  @override
+  final String? videoPath;
   @override
   final UniqueId idUser;
 
@@ -227,7 +267,7 @@ class _$_Message extends _Message {
 
   @override
   String toString() {
-    return 'Message(id: $id, text: $text, date: $date, imageSend: $imageSend, imageRead: $imageRead, imagePath: $imagePath, idUser: $idUser, imageUrl: $imageUrl)';
+    return 'Message(id: $id, text: $text, date: $date, imageSend: $imageSend, videoSend: $videoSend, imageRead: $imageRead, imagePath: $imagePath, videoPath: $videoPath, idUser: $idUser, imageUrl: $imageUrl)';
   }
 
   @override
@@ -240,10 +280,14 @@ class _$_Message extends _Message {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.imageSend, imageSend) ||
                 other.imageSend == imageSend) &&
+            (identical(other.videoSend, videoSend) ||
+                other.videoSend == videoSend) &&
             (identical(other.imageRead, imageRead) ||
                 other.imageRead == imageRead) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
+            (identical(other.videoPath, videoPath) ||
+                other.videoPath == videoPath) &&
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
@@ -251,7 +295,7 @@ class _$_Message extends _Message {
 
   @override
   int get hashCode => Object.hash(runtimeType, id, text, date, imageSend,
-      imageRead, imagePath, idUser, imageUrl);
+      videoSend, imageRead, imagePath, videoPath, idUser, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -266,8 +310,10 @@ abstract class _Message extends Message {
       required final String? text,
       required final DateTime date,
       required final XFile? imageSend,
+      required final XFile? videoSend,
       required final Future<Uint8List?>? imageRead,
       required final String? imagePath,
+      required final String? videoPath,
       required final UniqueId idUser,
       final Future<String>? imageUrl}) = _$_Message;
   const _Message._() : super._();
@@ -284,12 +330,20 @@ abstract class _Message extends Message {
   XFile? get imageSend;
   @override
 
+  /// Lorsque l'on envoie l'image dans le chat
+  XFile? get videoSend;
+  @override
+
   /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
   Future<Uint8List?>? get imageRead;
   @override
 
   /// Chemin de l'image dans Storage
   String? get imagePath;
+  @override
+
+  /// Chemin de la video dans Storage
+  String? get videoPath;
   @override
   UniqueId get idUser;
   @override

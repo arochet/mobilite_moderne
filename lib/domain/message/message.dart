@@ -19,11 +19,17 @@ abstract class Message with _$Message {
     /// Lorsque l'on envoie l'image dans le chat
     required XFile? imageSend,
 
+    /// Lorsque l'on envoie l'image dans le chat
+    required XFile? videoSend,
+
     /// Lorsque l'on charge l'image depuis Storage pour l'afficher dans le chat
     required Future<Uint8List?>? imageRead,
 
     /// Chemin de l'image dans Storage
     required String? imagePath,
+
+    /// Chemin de la video dans Storage
+    required String? videoPath,
     required UniqueId idUser,
 
     /// Image URL pour le web
@@ -36,13 +42,17 @@ abstract class Message with _$Message {
         date: DateTime.now(),
         imageRead: null,
         imageSend: null,
+        videoSend: null,
         imagePath: null,
+        videoPath: null,
         idUser: UniqueId(),
       );
   factory Message.error() => Message(
         id: UniqueId(),
         text: 'Error',
         date: DateTime.now(),
+        videoPath: null,
+        videoSend: null,
         imageRead: null,
         imageSend: null,
         imagePath: null,

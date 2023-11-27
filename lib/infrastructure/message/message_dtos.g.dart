@@ -11,6 +11,7 @@ _$_MessageDTO _$$_MessageDTOFromJson(Map<String, dynamic> json) =>
       text: json['text'] as String?,
       date: json['date'] as int,
       imagePath: json['imagePath'] as String?,
+      videoPath: json['videoPath'] as String?,
       idUser: json['idUser'] as String,
     );
 
@@ -19,5 +20,6 @@ Map<String, dynamic> _$$_MessageDTOToJson(_$_MessageDTO instance) =>
       'text': instance.text,
       'date': instance.date,
       'imagePath': instance.imagePath,
+      'videoPath': instance.videoPath,
       'idUser': instance.idUser,
     };

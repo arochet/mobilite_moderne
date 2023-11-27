@@ -44,10 +44,11 @@ class MessageRepository implements IMessageRepository {
       UserData? user = await _getUser();
       final uid = user?.id.getOrCrash();
       if (uid == null) return left(const MessageFailure.noUserConnected());
-      final String? pathImage = message.imageSend != null ? 'message/$uid/${message.imageSend!.name}' : null;
 
       //S'il y'a une image, on l'ajoute
+      String? pathImage;
       if (message.imageSend != null) {
+        pathImage = 'message/$uid/${message.imageSend!.name}';
         if (!kIsWeb)
           final TaskSnapshot result =
               await _storage.ref().child(pathImage!).putFile(File(message.imageSend!.path));
@@ -57,8 +58,16 @@ class MessageRepository implements IMessageRepository {
         }
       }
 
+      //S'il y'a une video, on l'ajoute
+      String? pathVideo;
+      if (message.videoSend != null) {
+        pathVideo = 'message/$uid/${message.videoSend!.name}';
+        final TaskSnapshot result =
+            await _storage.ref().child(pathVideo!).putFile(File(message.videoSend!.path));
+      }
+
       //On crée le méchant message
-      final messageDTO = MessageDTO.fromDomain(message, user?.id, pathImage);
+      final messageDTO = MessageDTO.fromDomain(message, user?.id, pathImage, pathVideo);
       await _firestore.messageCollection
           .doc('$uid')
           .collection('discussion')
@@ -115,8 +124,9 @@ class MessageRepository implements IMessageRepository {
       final uid = (await _getUidUser());
       if (uid == null) return left(const MessageFailure.noUserConnected());
       final String? pathImage = message.imageSend != null ? 'message/$uid/${message.imageSend!.name}' : null;
+      final String? pathVideo = message.videoSend != null ? 'message/$uid/${message.videoSend!.name}' : null;
 
-      final messageDTO = MessageDTO.fromDomain(message, uid, pathImage);
+      final messageDTO = MessageDTO.fromDomain(message, uid, pathImage, pathVideo);
       await _firestore.messageCollection
           .doc('${uid.getOrCrash()}')
           .collection('discussion')
