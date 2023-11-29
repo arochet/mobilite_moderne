@@ -1,3 +1,4 @@
+import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -5,12 +6,15 @@ import 'package:mobilite_moderne/DOMAIN/message/message.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/image_from_storage.dart';
 
-import '../../../core/_core/router.dart';
+import '../../../core/_core/router.dart' as routeMain;
+import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart' as routeAdmin;
 
 class PanelMessageView extends StatelessWidget {
   final UniqueId idUser;
   final Message message;
-  const PanelMessageView({Key? key, required this.message, required this.idUser}) : super(key: key);
+  final bool isAdmin;
+  const PanelMessageView({Key? key, required this.message, required this.idUser, this.isAdmin = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +31,10 @@ class PanelMessageView extends StatelessWidget {
                 if (message.videoPath != null) {
                   //VIDEO
                   return InkWell(
-                    onTap: () => context.router.push(
-                      VideoplayerRoute(message.videoPath!, path: message.videoPath!),
-                    ),
+                    onTap: () {
+                      print('message video path : ${message.videoPath}');
+                      context.router.push(routeMain.VideoplayerRoute(path: message.videoPath!));
+                    },
                     child: Container(
                       width: 80,
                       child: ClipRRect(

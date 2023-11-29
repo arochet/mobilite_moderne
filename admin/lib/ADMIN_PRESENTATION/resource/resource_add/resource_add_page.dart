@@ -4,7 +4,6 @@ import 'widget/resource_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobilite_moderne/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

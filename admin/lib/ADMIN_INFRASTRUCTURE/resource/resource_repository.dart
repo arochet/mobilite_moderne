@@ -35,10 +35,10 @@ abstract class IResourceRepository {
   Future<Either<ResourceFailure, Unit>> delete(Resource resource);
 
   /// Upload un fichier File
-  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path);
+  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path, String? contentType);
 
   /// Upload un fichier avec les bytes
-  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path);
+  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path, String? contentType);
 
   /// Upload une image
   Future<Either<UploadFailure, Unit>> uploadImage(XFile file, ResourceMainCategory category);
@@ -48,6 +48,9 @@ abstract class IResourceRepository {
 
   /// Ajoute une ressource à une catégorie
   Future<Either<AppCategoryFailure, Unit>> addResourceToCategory(AppCategory category, UniqueId idResource);
+
+  ///Get document url
+  Future<Either<ResourceFailure, String>> getDocumentURL(String path);
 }
 
 @LazySingleton(as: IResourceRepository)
@@ -151,9 +154,10 @@ class ResourceRepository implements IResourceRepository {
   }
 
   @override
-  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path) async {
+  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path, String? contentType) async {
     try {
-      final TaskSnapshot result = await _storage.ref().child(path).putFile(file);
+      final TaskSnapshot result =
+          await _storage.ref().child(path).putFile(file, SettableMetadata(contentType: contentType));
       return right(unit);
     } on FirebaseException catch (e) {
       print(e.code);
@@ -171,9 +175,11 @@ class ResourceRepository implements IResourceRepository {
   }
 
   @override
-  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path) async {
+  Future<Either<UploadFailure, Unit>> uploadFileBytes(
+      Uint8List bytes, String path, String? contentType) async {
     try {
-      final TaskSnapshot result = await _storage.ref().child(path).putData(bytes);
+      final TaskSnapshot result =
+          await _storage.ref().child(path).putData(bytes, SettableMetadata(contentType: contentType));
       return right(unit);
     } on FirebaseException catch (e) {
       print(e.code);
@@ -313,6 +319,36 @@ class ResourceRepository implements IResourceRepository {
           return left(UploadFailure.downloadExceed());
         default:
           return left(UploadFailure.unexpected());
+      }
+    }
+  }
+
+  @override
+  Future<Either<ResourceFailure, String>> getDocumentURL(String path) async {
+    printDev();
+
+    //Pour le web !
+
+    try {
+      if (kIsWeb) {
+        //WEB
+        String url =
+            await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getDownloadURL();
+        return right(url);
+      } else {
+        //MOBILE
+
+        final storageRef = _storage.ref(); //Storage REF
+        final value = await storageRef.child(path).getDownloadURL();
+        return right(value);
+      }
+    } on FirebaseException catch (e) {
+      print('WEB error ${e.code}');
+      switch (e.code) {
+        case 'object-not-found':
+          return left(ResourceFailure.notExist());
+        default:
+          return left(ResourceFailure.unexpected());
       }
     }
   }

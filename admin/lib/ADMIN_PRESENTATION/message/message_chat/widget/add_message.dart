@@ -83,7 +83,8 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                   ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
                 }
               },
-              icon: Icon(Icons.photo_camera),
+              //Icon pièce jointe
+              icon: Icon(Icons.attach_file),
             ),
             SizedBox(width: 5),
 

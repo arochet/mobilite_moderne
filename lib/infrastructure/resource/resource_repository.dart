@@ -159,6 +159,7 @@ class ResourceRepository implements IResourceRepository {
         //WEB
         String url =
             await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getDownloadURL();
+
         return right(url);
       } else {
         //MOBILE

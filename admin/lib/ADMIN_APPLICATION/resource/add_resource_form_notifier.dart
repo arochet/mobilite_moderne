@@ -114,13 +114,14 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
 
     // Upload du FICHIER
     if (state.nameFile != null) {
+      final String? contentType = state.nameFile!.endsWith('.pdf') ? 'application/pdf' : null;
       if (kIsWeb) {
         if (state.fileWEB != null) {
-          resultUpload = await _iResourceRepository.uploadFileBytes(state.fileWEB!, pathFile);
+          resultUpload = await _iResourceRepository.uploadFileBytes(state.fileWEB!, pathFile, contentType);
         }
       } else {
         if (state.fileMOBILE != null) {
-          resultUpload = await _iResourceRepository.uploadFile(state.fileMOBILE!, pathFile);
+          resultUpload = await _iResourceRepository.uploadFile(state.fileMOBILE!, pathFile, contentType);
         }
       }
     }

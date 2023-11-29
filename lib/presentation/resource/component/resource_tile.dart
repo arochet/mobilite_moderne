@@ -61,7 +61,8 @@ class _DocumentTile extends ConsumerWidget {
           doc.fold((l) => showSnackBar(context, l.message), (String result) {
             String url = result;
             if (kIsWeb) {
-              _launchUrl(url);
+              //_launchUrl(url);
+              context.router.push(ResourcePdfViewerWebRoute(resource: resource));
             } else {
               context.router.push(ResourcePdfViewerRoute(resource: resource));
             }
@@ -98,11 +99,7 @@ class _VideoTile extends ConsumerWidget {
           final Either<ResourceFailure, String> doc =
               await ref.watch(resourceRepositoryProvider).getDocumentURL(resource.documentPath);
           doc.fold((l) => showSnackBar(context, l.message), (String result) {
-            if (kIsWeb) {
-              _launchUrl(result);
-            } else {
-              context.router.push(Resource_videoplayerRoute(resource: resource));
-            }
+            context.router.push(Resource_videoplayerRoute(resource: resource));
           });
         },
         child: _CardTile(resource: resource),

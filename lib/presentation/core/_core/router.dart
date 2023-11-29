@@ -22,6 +22,7 @@ import 'package:mobilite_moderne/PRESENTATION/core/_splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/PRESENTATION/home/home_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/message/videoplayer_page/videoplayer_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/resource/resource_pdf_viewer_web/pdfviewerweb_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/resource/resource_videoplayer/resource_videoplayer_page.dart';
 import '../../account/developpement/buttons/buttons.dart';
 import '../../account/developpement/colors/colors.dart';
@@ -163,6 +164,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/pdfViewer-route',
           page: ResourcePdfViewerRoute.page,
+        ),
+        AutoRoute(
+          path: '/pdfViewerWeb-route',
+          page: ResourcePdfViewerWebRoute.page,
         ),
         AutoRoute(
           path: '/choice-route',

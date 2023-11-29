@@ -69,8 +69,8 @@ class __ListMessagesState extends ConsumerState<_ListMessages> {
             (listMessage) => ListView(controller: _controllerListMessage, children: [
                   //Liste des messages
                   ...listMessage
-                      .map<Widget>(
-                          (messageObj) => PanelMessageView(message: messageObj, idUser: currentUserAuth.id))
+                      .map<Widget>((messageObj) =>
+                          PanelMessageView(message: messageObj, idUser: currentUserAuth.id, isAdmin: true))
                       .toList(),
 
                   //Heure du dernier message

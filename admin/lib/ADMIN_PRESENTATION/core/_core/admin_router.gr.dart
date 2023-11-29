@@ -109,6 +109,16 @@ abstract class _$AdminRouter extends RootStackRouter {
         child: const UsersPage(),
       );
     },
+    VideoplayerRoute.name: (routeData) {
+      final args = routeData.argsAs<VideoplayerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: VideoplayerPage(
+          args.path,
+          key: args.key,
+        ),
+      );
+    },
   };
 }
 
@@ -389,4 +399,42 @@ class UsersRoute extends PageRouteInfo<void> {
   static const String name = 'UsersRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [VideoplayerPage]
+class VideoplayerRoute extends PageRouteInfo<VideoplayerRouteArgs> {
+  VideoplayerRoute({
+    required String path,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          VideoplayerRoute.name,
+          args: VideoplayerRouteArgs(
+            path: path,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'VideoplayerRoute';
+
+  static const PageInfo<VideoplayerRouteArgs> page =
+      PageInfo<VideoplayerRouteArgs>(name);
+}
+
+class VideoplayerRouteArgs {
+  const VideoplayerRouteArgs({
+    required this.path,
+    this.key,
+  });
+
+  final String path;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VideoplayerRouteArgs{path: $path, key: $key}';
+  }
 }

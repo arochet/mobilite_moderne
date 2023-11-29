@@ -2,6 +2,7 @@ import 'package:admin/ADMIN_PRESENTATION/core/_splash/splash_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/home/home_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/message/conversation_list/conversation_list_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/message/message_chat/message_chat_page.dart';
+import 'package:admin/ADMIN_PRESENTATION/message/videoplayer_page/videoplayer_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_add/news_add_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/news/news_home/news_page.dart';
 import 'package:admin/ADMIN_PRESENTATION/resource/choice_category/choice_category_page.dart';
@@ -14,6 +15,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/app_category.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/router.dart';
 
 import '../_main_navigation/main_navigation_page.dart';
 //insert-import
@@ -79,6 +81,10 @@ class AdminRouter extends _$AdminRouter {
         AutoRoute(
           path: '/message-chat-route',
           page: MessageChatRoute.page,
+        ),
+        AutoRoute(
+          path: '/videoplayer-route',
+          page: VideoplayerRoute.page,
         ),
         //insert-route
       ];

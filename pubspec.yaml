@@ -21,6 +21,8 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
+  admin:
+    path: ./admin
   auto_route: ^7.4.0
 
   #Firebase
@@ -75,6 +77,7 @@ dependencies:
   flutter_stripe_web: ^4.4.0
   flutter_html: ^3.0.0-beta.2
   flutter_widget_from_html_core: ^0.14.5
+  syncfusion_flutter_pdfviewer: ^20.4.54
 
 
 
