@@ -35,7 +35,6 @@ class ResourcePdfViewerWebPage extends ConsumerWidget {
                   eitherUrl?.fold(
                     (l) => showSnackBar(context, l.toString()),
                     (data) {
-                      print('url : $data');
                       //return PDF_View();
                       return Container(
                         width: MediaQuery.of(context).size.width * 0.7,

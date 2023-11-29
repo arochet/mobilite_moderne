@@ -81,7 +81,8 @@ class _MessageFormState extends ConsumerState<MessageForm> {
                   ref.read(messageFormNotifierProvider.notifier).imageChanged(photo);
                 }
               },
-              icon: Icon(Icons.photo_camera),
+              icon:
+                  Icon(kIsWeb ? /* piecejointe */ Icons.attachment : Icons.photo_camera, color: Colors.black),
             ),
             //Bouton Video
             if (!kIsWeb)

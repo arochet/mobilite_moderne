@@ -188,11 +188,8 @@ class ResourceRepository implements IResourceRepository {
 
     try {
       //WEB
-      //final url = await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getData();
-      print('----- 1');
       final url =
           await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getData(104857600);
-      print('----- 2');
 
       return right(url);
     } on FirebaseException catch (e) {

@@ -135,9 +135,7 @@ class _Erreur extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      child: Center(
-        child: Text("Erreur"),
-      ),
+      child: Center(child: Icon(Icons.error, color: Colors.grey)),
     );
   }
 }

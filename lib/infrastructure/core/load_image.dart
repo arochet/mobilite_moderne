@@ -25,10 +25,8 @@ Future<String>? loadImageWeb(Reference storageRef, String? path) {
   try {
     //Chargement de l'image
     if (path != "" && path != null) {
-      /* final qsdf = path;
-      final result = storageRef.child(qsdf).getDownloadURL();
- */
-      return null;
+      final qsdf = path;
+      return storageRef.child(qsdf).getDownloadURL();
     }
     return null;
   } catch (e) {
