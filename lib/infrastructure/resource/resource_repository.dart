@@ -20,6 +20,7 @@ abstract class IResourceRepository {
 
   //Ressource
   Future<Either<ResourceFailure, String>> getDocumentURL(String path);
+  Future<Either<ResourceFailure, Uint8List?>> getDocumentData(String path);
   Future<Either<ResourceFailure, Resource>> getResourceWithId(UniqueId id);
 
   Reference get storageRef;
@@ -176,6 +177,36 @@ class ResourceRepository implements IResourceRepository {
         default:
           return left(ResourceFailure.unexpected());
       }
+    }
+  }
+
+  @override
+  Future<Either<ResourceFailure, Uint8List?>> getDocumentData(String path) async {
+    printDev();
+
+    //Pour le web !
+
+    try {
+      //WEB
+      //final url = await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getData();
+      print('----- 1');
+      final url =
+          await _storage.refFromURL('gs://mobilite-moderne.appspot.com/').child(path).getData(104857600);
+      print('----- 2');
+
+      return right(url);
+    } on FirebaseException catch (e) {
+      print('WEB error ${e.code}');
+      switch (e.code) {
+        case 'object-not-found':
+          return left(ResourceFailure.notExist());
+        default:
+          return left(ResourceFailure.unexpected());
+      }
+    } catch (e, trace) {
+      print('e $e');
+      print('trace $trace');
+      return left(ResourceFailure.unexpected());
     }
   }
 

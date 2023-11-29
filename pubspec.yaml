@@ -64,7 +64,7 @@ dependencies:
   #Autre
   flutter_localizations:
     sdk: flutter
-  package_info_plus: ^4.1.0 #Récupère les numéros de version de l'app (1.0.0-12)
+  package_info_plus: ^5.0.1 #Récupère les numéros de version de l'app (1.0.0-12)
   dartdoc: ^6.3.0
   flutter_cached_pdfview: ^0.4.2
   video_player: ^2.7.2
@@ -78,12 +78,13 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   flutter_widget_from_html_core: ^0.14.5
   syncfusion_flutter_pdfviewer: ^20.4.54
+  internet_file: ^1.2.0
 
 
 
 dev_dependencies:
   build_runner: ^2.4.6 #Génère du code automatiquement
-  connectivity_plus: ^4.0.1 #Test la connexion internet de l'appareil
+  connectivity_plus: ^5.0.2 #Test la connexion internet de l'appareil
   flutter_driver:
     sdk: flutter
   flutter_test:
@@ -96,7 +97,7 @@ dev_dependencies:
   lint: ^2.1.2 #Règles pour un code propre
   test: ^1.21.4
   auto_route_generator: ^7.3.1
-  flutter_lints: ^2.0.2
+  flutter_lints: ^3.0.1
   flutter_native_splash: ^2.3.2
 
 flutter_icons:
