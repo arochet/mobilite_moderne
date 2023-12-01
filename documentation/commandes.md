@@ -57,3 +57,10 @@ Utilisation: trad bonjour
 Entrer la traduction en français
 Entrer la traduction en anglais
 
+## Commande Stripe
+
+```
+firebase functions:config:set \
+    stripe.push="your_push_key" \
+    stripe.key="your_live_or_test_key"
+```

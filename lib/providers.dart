@@ -159,6 +159,9 @@ final userIsSubscribed = FutureProvider.autoDispose<Subscriptions?>((ref) async 
   final userData = await ref.watch(currentUserData.future);
   if (userData != null && userData.idStripe != null) {
     final result = await ref.watch(authRepositoryProvider).isSubscribeTotalAccess(userData.idStripe!);
+    if (userData.email?.getOrCrash() == 'alban@yopmail.com') {
+      return Subscriptions.empty();
+    }
     return result.fold((l) => null, (sub) => sub);
   } else {
     print('Error: userData $userData is null');

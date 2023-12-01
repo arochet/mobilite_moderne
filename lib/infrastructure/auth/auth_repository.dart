@@ -551,6 +551,7 @@ class FirebaseAuthFacade implements AuthRepository {
   Future<Either<SubscriptionFailure, String>> getUrlStripePayement(String idStripe) async {
     try {
       final response = await getCloudFunctions('CreateSessionCheckout', {'idStripe': idStripe});
+      print('hola ${response.body}');
       return right(json.decode(response.body)['url']);
     } catch (e) {
       print('getUrlStripePayement error $e');

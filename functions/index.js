@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const algoliasearch = require('algoliasearch');
-const stripe = require('stripe')(functions.config().stripe.testkey); 
+const stripe = require('stripe')(functions.config().stripe.key); 
 const cors = require('cors')({origin: true});
 //const app = express();
  
@@ -53,7 +53,7 @@ exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
             const subscription = await stripe.subscriptions.create({
                 customer: idStripe,
                 items: [{
-                price: 'price_1OIUjaLoHsD8ZYCOSe7pTmED',
+                price: 'price_1OIUsFLoHsD8ZYCOOGUkTAqP',
                 }],
                 payment_behavior: 'default_incomplete',
                 payment_settings: { save_default_payment_method: 'on_subscription' },
@@ -86,7 +86,7 @@ exports.CreateSessionCheckout = functions.https.onRequest(async (req, res) => {
                 line_items: [
                 {
                     // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    price: 'price_1OIUjaLoHsD8ZYCOSe7pTmED',
+                    price: 'price_1OIUsFLoHsD8ZYCOOGUkTAqP',
                     quantity: 1,
                 },
                 ],

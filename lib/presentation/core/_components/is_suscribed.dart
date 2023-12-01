@@ -23,7 +23,8 @@ class _IsSuscribedState extends ConsumerState<IsSuscribed> {
     return AppAsync(
       isSuscribed,
       builder: (Subscriptions? subscription) {
-        if (subscription != null || true) {
+        print('subscription $subscription');
+        if (subscription != null) {
           return widget.child;
         } else {
           return Center(

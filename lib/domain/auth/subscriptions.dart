@@ -32,7 +32,7 @@ abstract class Subscriptions with _$Subscriptions {
   factory Subscriptions.empty() => Subscriptions(
         id: '',
         startDate: DateTime.now(),
-        items: [] as Map<String, dynamic>,
+        items: Map<String, dynamic>(),
         status: false,
         idStripe: null,
         billingCycleAnchor: null,
