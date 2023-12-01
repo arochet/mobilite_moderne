@@ -94,25 +94,25 @@ class _$ResourceFailureCopyWithImpl<$Res, $Val extends ResourceFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$ResourceFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -122,7 +122,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -211,29 +211,31 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements ResourceFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_InsufficientPermissionCopyWith<$Res> {
-  factory _$$_InsufficientPermissionCopyWith(_$_InsufficientPermission value,
-          $Res Function(_$_InsufficientPermission) then) =
-      __$$_InsufficientPermissionCopyWithImpl<$Res>;
+abstract class _$$InsufficientPermissionImplCopyWith<$Res> {
+  factory _$$InsufficientPermissionImplCopyWith(
+          _$InsufficientPermissionImpl value,
+          $Res Function(_$InsufficientPermissionImpl) then) =
+      __$$InsufficientPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InsufficientPermissionCopyWithImpl<$Res>
-    extends _$ResourceFailureCopyWithImpl<$Res, _$_InsufficientPermission>
-    implements _$$_InsufficientPermissionCopyWith<$Res> {
-  __$$_InsufficientPermissionCopyWithImpl(_$_InsufficientPermission _value,
-      $Res Function(_$_InsufficientPermission) _then)
+class __$$InsufficientPermissionImplCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$InsufficientPermissionImpl>
+    implements _$$InsufficientPermissionImplCopyWith<$Res> {
+  __$$InsufficientPermissionImplCopyWithImpl(
+      _$InsufficientPermissionImpl _value,
+      $Res Function(_$InsufficientPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InsufficientPermission implements _InsufficientPermission {
-  const _$_InsufficientPermission();
+class _$InsufficientPermissionImpl implements _InsufficientPermission {
+  const _$InsufficientPermissionImpl();
 
   @override
   String toString() {
@@ -244,7 +246,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InsufficientPermission);
+            other is _$InsufficientPermissionImpl);
   }
 
   @override
@@ -333,29 +335,29 @@ class _$_InsufficientPermission implements _InsufficientPermission {
 }
 
 abstract class _InsufficientPermission implements ResourceFailure {
-  const factory _InsufficientPermission() = _$_InsufficientPermission;
+  const factory _InsufficientPermission() = _$InsufficientPermissionImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnableToUpdateCopyWith<$Res> {
-  factory _$$_UnableToUpdateCopyWith(
-          _$_UnableToUpdate value, $Res Function(_$_UnableToUpdate) then) =
-      __$$_UnableToUpdateCopyWithImpl<$Res>;
+abstract class _$$UnableToUpdateImplCopyWith<$Res> {
+  factory _$$UnableToUpdateImplCopyWith(_$UnableToUpdateImpl value,
+          $Res Function(_$UnableToUpdateImpl) then) =
+      __$$UnableToUpdateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnableToUpdateCopyWithImpl<$Res>
-    extends _$ResourceFailureCopyWithImpl<$Res, _$_UnableToUpdate>
-    implements _$$_UnableToUpdateCopyWith<$Res> {
-  __$$_UnableToUpdateCopyWithImpl(
-      _$_UnableToUpdate _value, $Res Function(_$_UnableToUpdate) _then)
+class __$$UnableToUpdateImplCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$UnableToUpdateImpl>
+    implements _$$UnableToUpdateImplCopyWith<$Res> {
+  __$$UnableToUpdateImplCopyWithImpl(
+      _$UnableToUpdateImpl _value, $Res Function(_$UnableToUpdateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnableToUpdate implements _UnableToUpdate {
-  const _$_UnableToUpdate();
+class _$UnableToUpdateImpl implements _UnableToUpdate {
+  const _$UnableToUpdateImpl();
 
   @override
   String toString() {
@@ -365,7 +367,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnableToUpdate);
+        (other.runtimeType == runtimeType && other is _$UnableToUpdateImpl);
   }
 
   @override
@@ -454,29 +456,29 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 }
 
 abstract class _UnableToUpdate implements ResourceFailure {
-  const factory _UnableToUpdate() = _$_UnableToUpdate;
+  const factory _UnableToUpdate() = _$UnableToUpdateImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnableToLoadFileCopyWith<$Res> {
-  factory _$$_UnableToLoadFileCopyWith(
-          _$_UnableToLoadFile value, $Res Function(_$_UnableToLoadFile) then) =
-      __$$_UnableToLoadFileCopyWithImpl<$Res>;
+abstract class _$$UnableToLoadFileImplCopyWith<$Res> {
+  factory _$$UnableToLoadFileImplCopyWith(_$UnableToLoadFileImpl value,
+          $Res Function(_$UnableToLoadFileImpl) then) =
+      __$$UnableToLoadFileImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnableToLoadFileCopyWithImpl<$Res>
-    extends _$ResourceFailureCopyWithImpl<$Res, _$_UnableToLoadFile>
-    implements _$$_UnableToLoadFileCopyWith<$Res> {
-  __$$_UnableToLoadFileCopyWithImpl(
-      _$_UnableToLoadFile _value, $Res Function(_$_UnableToLoadFile) _then)
+class __$$UnableToLoadFileImplCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$UnableToLoadFileImpl>
+    implements _$$UnableToLoadFileImplCopyWith<$Res> {
+  __$$UnableToLoadFileImplCopyWithImpl(_$UnableToLoadFileImpl _value,
+      $Res Function(_$UnableToLoadFileImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnableToLoadFile implements _UnableToLoadFile {
-  const _$_UnableToLoadFile();
+class _$UnableToLoadFileImpl implements _UnableToLoadFile {
+  const _$UnableToLoadFileImpl();
 
   @override
   String toString() {
@@ -486,7 +488,7 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnableToLoadFile);
+        (other.runtimeType == runtimeType && other is _$UnableToLoadFileImpl);
   }
 
   @override
@@ -575,29 +577,29 @@ class _$_UnableToLoadFile implements _UnableToLoadFile {
 }
 
 abstract class _UnableToLoadFile implements ResourceFailure {
-  const factory _UnableToLoadFile() = _$_UnableToLoadFile;
+  const factory _UnableToLoadFile() = _$UnableToLoadFileImpl;
 }
 
 /// @nodoc
-abstract class _$$_NotExistCopyWith<$Res> {
-  factory _$$_NotExistCopyWith(
-          _$_NotExist value, $Res Function(_$_NotExist) then) =
-      __$$_NotExistCopyWithImpl<$Res>;
+abstract class _$$NotExistImplCopyWith<$Res> {
+  factory _$$NotExistImplCopyWith(
+          _$NotExistImpl value, $Res Function(_$NotExistImpl) then) =
+      __$$NotExistImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NotExistCopyWithImpl<$Res>
-    extends _$ResourceFailureCopyWithImpl<$Res, _$_NotExist>
-    implements _$$_NotExistCopyWith<$Res> {
-  __$$_NotExistCopyWithImpl(
-      _$_NotExist _value, $Res Function(_$_NotExist) _then)
+class __$$NotExistImplCopyWithImpl<$Res>
+    extends _$ResourceFailureCopyWithImpl<$Res, _$NotExistImpl>
+    implements _$$NotExistImplCopyWith<$Res> {
+  __$$NotExistImplCopyWithImpl(
+      _$NotExistImpl _value, $Res Function(_$NotExistImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NotExist implements _NotExist {
-  const _$_NotExist();
+class _$NotExistImpl implements _NotExist {
+  const _$NotExistImpl();
 
   @override
   String toString() {
@@ -607,7 +609,7 @@ class _$_NotExist implements _NotExist {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NotExist);
+        (other.runtimeType == runtimeType && other is _$NotExistImpl);
   }
 
   @override
@@ -696,5 +698,5 @@ class _$_NotExist implements _NotExist {
 }
 
 abstract class _NotExist implements ResourceFailure {
-  const factory _NotExist() = _$_NotExist;
+  const factory _NotExist() = _$NotExistImpl;
 }

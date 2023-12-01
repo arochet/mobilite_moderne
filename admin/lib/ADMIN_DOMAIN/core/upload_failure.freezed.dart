@@ -82,25 +82,25 @@ class _$UploadFailureCopyWithImpl<$Res, $Val extends UploadFailure>
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+abstract class _$$UnexpectedImplCopyWith<$Res> {
+  factory _$$UnexpectedImplCopyWith(
+          _$UnexpectedImpl value, $Res Function(_$UnexpectedImpl) then) =
+      __$$UnexpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UploadFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+class __$$UnexpectedImplCopyWithImpl<$Res>
+    extends _$UploadFailureCopyWithImpl<$Res, _$UnexpectedImpl>
+    implements _$$UnexpectedImplCopyWith<$Res> {
+  __$$UnexpectedImplCopyWithImpl(
+      _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+class _$UnexpectedImpl implements _Unexpected {
+  const _$UnexpectedImpl();
 
   @override
   String toString() {
@@ -110,7 +110,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType && other is _$UnexpectedImpl);
   }
 
   @override
@@ -187,29 +187,29 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements UploadFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$UnexpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_DownloadExceedCopyWith<$Res> {
-  factory _$$_DownloadExceedCopyWith(
-          _$_DownloadExceed value, $Res Function(_$_DownloadExceed) then) =
-      __$$_DownloadExceedCopyWithImpl<$Res>;
+abstract class _$$DownloadExceedImplCopyWith<$Res> {
+  factory _$$DownloadExceedImplCopyWith(_$DownloadExceedImpl value,
+          $Res Function(_$DownloadExceedImpl) then) =
+      __$$DownloadExceedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DownloadExceedCopyWithImpl<$Res>
-    extends _$UploadFailureCopyWithImpl<$Res, _$_DownloadExceed>
-    implements _$$_DownloadExceedCopyWith<$Res> {
-  __$$_DownloadExceedCopyWithImpl(
-      _$_DownloadExceed _value, $Res Function(_$_DownloadExceed) _then)
+class __$$DownloadExceedImplCopyWithImpl<$Res>
+    extends _$UploadFailureCopyWithImpl<$Res, _$DownloadExceedImpl>
+    implements _$$DownloadExceedImplCopyWith<$Res> {
+  __$$DownloadExceedImplCopyWithImpl(
+      _$DownloadExceedImpl _value, $Res Function(_$DownloadExceedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DownloadExceed implements _DownloadExceed {
-  const _$_DownloadExceed();
+class _$DownloadExceedImpl implements _DownloadExceed {
+  const _$DownloadExceedImpl();
 
   @override
   String toString() {
@@ -219,7 +219,7 @@ class _$_DownloadExceed implements _DownloadExceed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DownloadExceed);
+        (other.runtimeType == runtimeType && other is _$DownloadExceedImpl);
   }
 
   @override
@@ -296,29 +296,31 @@ class _$_DownloadExceed implements _DownloadExceed {
 }
 
 abstract class _DownloadExceed implements UploadFailure {
-  const factory _DownloadExceed() = _$_DownloadExceed;
+  const factory _DownloadExceed() = _$DownloadExceedImpl;
 }
 
 /// @nodoc
-abstract class _$$_InsufficientPermissionCopyWith<$Res> {
-  factory _$$_InsufficientPermissionCopyWith(_$_InsufficientPermission value,
-          $Res Function(_$_InsufficientPermission) then) =
-      __$$_InsufficientPermissionCopyWithImpl<$Res>;
+abstract class _$$InsufficientPermissionImplCopyWith<$Res> {
+  factory _$$InsufficientPermissionImplCopyWith(
+          _$InsufficientPermissionImpl value,
+          $Res Function(_$InsufficientPermissionImpl) then) =
+      __$$InsufficientPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InsufficientPermissionCopyWithImpl<$Res>
-    extends _$UploadFailureCopyWithImpl<$Res, _$_InsufficientPermission>
-    implements _$$_InsufficientPermissionCopyWith<$Res> {
-  __$$_InsufficientPermissionCopyWithImpl(_$_InsufficientPermission _value,
-      $Res Function(_$_InsufficientPermission) _then)
+class __$$InsufficientPermissionImplCopyWithImpl<$Res>
+    extends _$UploadFailureCopyWithImpl<$Res, _$InsufficientPermissionImpl>
+    implements _$$InsufficientPermissionImplCopyWith<$Res> {
+  __$$InsufficientPermissionImplCopyWithImpl(
+      _$InsufficientPermissionImpl _value,
+      $Res Function(_$InsufficientPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InsufficientPermission implements _InsufficientPermission {
-  const _$_InsufficientPermission();
+class _$InsufficientPermissionImpl implements _InsufficientPermission {
+  const _$InsufficientPermissionImpl();
 
   @override
   String toString() {
@@ -329,7 +331,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InsufficientPermission);
+            other is _$InsufficientPermissionImpl);
   }
 
   @override
@@ -406,5 +408,5 @@ class _$_InsufficientPermission implements _InsufficientPermission {
 }
 
 abstract class _InsufficientPermission implements UploadFailure {
-  const factory _InsufficientPermission() = _$_InsufficientPermission;
+  const factory _InsufficientPermission() = _$InsufficientPermissionImpl;
 }

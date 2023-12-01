@@ -53,7 +53,7 @@ exports.SubscribeAccesTotal = functions.https.onRequest(async (req, res) => {
             const subscription = await stripe.subscriptions.create({
                 customer: idStripe,
                 items: [{
-                price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+                price: 'price_1OIUjaLoHsD8ZYCOSe7pTmED',
                 }],
                 payment_behavior: 'default_incomplete',
                 payment_settings: { save_default_payment_method: 'on_subscription' },
@@ -86,7 +86,7 @@ exports.CreateSessionCheckout = functions.https.onRequest(async (req, res) => {
                 line_items: [
                 {
                     // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    price: 'price_1O03zgLoHsD8ZYCOOvruig70',
+                    price: 'price_1OIUjaLoHsD8ZYCOSe7pTmED',
                     quantity: 1,
                 },
                 ],
@@ -121,7 +121,7 @@ exports.ListSubscription = functions.https.onRequest(async (req, res) => {
             listSubscription.data.forEach(function (sub) {
                 sub.items.data.forEach(function (item) {
                     //Code du produit acces_total !
-                    if(item.price['product'] == 'prod_OnfKo1VMwQsFOV') {
+                    if(item.price['product'] == 'prod_OnfKo1VMwQsFOV' || item.price['product'] == 'prod_P6iIGa1GSVJXty') {
                         //Retourne toute la subscription
                         res.status(200).send(sub);
                     }

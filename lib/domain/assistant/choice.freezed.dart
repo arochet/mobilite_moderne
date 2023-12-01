@@ -105,11 +105,11 @@ class _$ChoiceWithQuestionsCopyWithImpl<$Res, $Val extends ChoiceWithQuestions>
 }
 
 /// @nodoc
-abstract class _$$_ChoiceWithQuestionsCopyWith<$Res>
+abstract class _$$ChoiceWithQuestionsImplCopyWith<$Res>
     implements $ChoiceWithQuestionsCopyWith<$Res> {
-  factory _$$_ChoiceWithQuestionsCopyWith(_$_ChoiceWithQuestions value,
-          $Res Function(_$_ChoiceWithQuestions) then) =
-      __$$_ChoiceWithQuestionsCopyWithImpl<$Res>;
+  factory _$$ChoiceWithQuestionsImplCopyWith(_$ChoiceWithQuestionsImpl value,
+          $Res Function(_$ChoiceWithQuestionsImpl) then) =
+      __$$ChoiceWithQuestionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -122,11 +122,11 @@ abstract class _$$_ChoiceWithQuestionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChoiceWithQuestionsCopyWithImpl<$Res>
-    extends _$ChoiceWithQuestionsCopyWithImpl<$Res, _$_ChoiceWithQuestions>
-    implements _$$_ChoiceWithQuestionsCopyWith<$Res> {
-  __$$_ChoiceWithQuestionsCopyWithImpl(_$_ChoiceWithQuestions _value,
-      $Res Function(_$_ChoiceWithQuestions) _then)
+class __$$ChoiceWithQuestionsImplCopyWithImpl<$Res>
+    extends _$ChoiceWithQuestionsCopyWithImpl<$Res, _$ChoiceWithQuestionsImpl>
+    implements _$$ChoiceWithQuestionsImplCopyWith<$Res> {
+  __$$ChoiceWithQuestionsImplCopyWithImpl(_$ChoiceWithQuestionsImpl _value,
+      $Res Function(_$ChoiceWithQuestionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +139,7 @@ class __$$_ChoiceWithQuestionsCopyWithImpl<$Res>
     Object? choiceQuestion = freezed,
     Object? choiceAnswer = freezed,
   }) {
-    return _then(_$_ChoiceWithQuestions(
+    return _then(_$ChoiceWithQuestionsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -170,8 +170,8 @@ class __$$_ChoiceWithQuestionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChoiceWithQuestions extends _ChoiceWithQuestions {
-  const _$_ChoiceWithQuestions(
+class _$ChoiceWithQuestionsImpl extends _ChoiceWithQuestions {
+  const _$ChoiceWithQuestionsImpl(
       {required this.id,
       required this.nom,
       required this.question,
@@ -232,7 +232,7 @@ class _$_ChoiceWithQuestions extends _ChoiceWithQuestions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChoiceWithQuestions &&
+            other is _$ChoiceWithQuestionsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.question, question) ||
@@ -257,8 +257,8 @@ class _$_ChoiceWithQuestions extends _ChoiceWithQuestions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChoiceWithQuestionsCopyWith<_$_ChoiceWithQuestions> get copyWith =>
-      __$$_ChoiceWithQuestionsCopyWithImpl<_$_ChoiceWithQuestions>(
+  _$$ChoiceWithQuestionsImplCopyWith<_$ChoiceWithQuestionsImpl> get copyWith =>
+      __$$ChoiceWithQuestionsImplCopyWithImpl<_$ChoiceWithQuestionsImpl>(
           this, _$identity);
 }
 
@@ -270,7 +270,7 @@ abstract class _ChoiceWithQuestions extends ChoiceWithQuestions {
           required final String path,
           required final List<ChoiceWithQuestions>? choiceQuestion,
           required final List<ChoiceWithAnswer>? choiceAnswer}) =
-      _$_ChoiceWithQuestions;
+      _$ChoiceWithQuestionsImpl;
   const _ChoiceWithQuestions._() : super._();
 
   @override
@@ -297,7 +297,7 @@ abstract class _ChoiceWithQuestions extends ChoiceWithQuestions {
   List<ChoiceWithAnswer>? get choiceAnswer;
   @override
   @JsonKey(ignore: true)
-  _$$_ChoiceWithQuestionsCopyWith<_$_ChoiceWithQuestions> get copyWith =>
+  _$$ChoiceWithQuestionsImplCopyWith<_$ChoiceWithQuestionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -379,11 +379,11 @@ class _$ChoiceWithAnswerCopyWithImpl<$Res, $Val extends ChoiceWithAnswer>
 }
 
 /// @nodoc
-abstract class _$$_ChoiceWithAnswerCopyWith<$Res>
+abstract class _$$ChoiceWithAnswerImplCopyWith<$Res>
     implements $ChoiceWithAnswerCopyWith<$Res> {
-  factory _$$_ChoiceWithAnswerCopyWith(
-          _$_ChoiceWithAnswer value, $Res Function(_$_ChoiceWithAnswer) then) =
-      __$$_ChoiceWithAnswerCopyWithImpl<$Res>;
+  factory _$$ChoiceWithAnswerImplCopyWith(_$ChoiceWithAnswerImpl value,
+          $Res Function(_$ChoiceWithAnswerImpl) then) =
+      __$$ChoiceWithAnswerImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -395,11 +395,11 @@ abstract class _$$_ChoiceWithAnswerCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChoiceWithAnswerCopyWithImpl<$Res>
-    extends _$ChoiceWithAnswerCopyWithImpl<$Res, _$_ChoiceWithAnswer>
-    implements _$$_ChoiceWithAnswerCopyWith<$Res> {
-  __$$_ChoiceWithAnswerCopyWithImpl(
-      _$_ChoiceWithAnswer _value, $Res Function(_$_ChoiceWithAnswer) _then)
+class __$$ChoiceWithAnswerImplCopyWithImpl<$Res>
+    extends _$ChoiceWithAnswerCopyWithImpl<$Res, _$ChoiceWithAnswerImpl>
+    implements _$$ChoiceWithAnswerImplCopyWith<$Res> {
+  __$$ChoiceWithAnswerImplCopyWithImpl(_$ChoiceWithAnswerImpl _value,
+      $Res Function(_$ChoiceWithAnswerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -411,7 +411,7 @@ class __$$_ChoiceWithAnswerCopyWithImpl<$Res>
     Object? answer = null,
     Object? listRessources = null,
   }) {
-    return _then(_$_ChoiceWithAnswer(
+    return _then(_$ChoiceWithAnswerImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -438,8 +438,8 @@ class __$$_ChoiceWithAnswerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChoiceWithAnswer extends _ChoiceWithAnswer {
-  const _$_ChoiceWithAnswer(
+class _$ChoiceWithAnswerImpl extends _ChoiceWithAnswer {
+  const _$ChoiceWithAnswerImpl(
       {required this.id,
       required this.nom,
       required this.path,
@@ -481,7 +481,7 @@ class _$_ChoiceWithAnswer extends _ChoiceWithAnswer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChoiceWithAnswer &&
+            other is _$ChoiceWithAnswerImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.path, path) || other.path == path) &&
@@ -497,8 +497,9 @@ class _$_ChoiceWithAnswer extends _ChoiceWithAnswer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChoiceWithAnswerCopyWith<_$_ChoiceWithAnswer> get copyWith =>
-      __$$_ChoiceWithAnswerCopyWithImpl<_$_ChoiceWithAnswer>(this, _$identity);
+  _$$ChoiceWithAnswerImplCopyWith<_$ChoiceWithAnswerImpl> get copyWith =>
+      __$$ChoiceWithAnswerImplCopyWithImpl<_$ChoiceWithAnswerImpl>(
+          this, _$identity);
 }
 
 abstract class _ChoiceWithAnswer extends ChoiceWithAnswer {
@@ -507,7 +508,7 @@ abstract class _ChoiceWithAnswer extends ChoiceWithAnswer {
       required final Nom nom,
       required final String path,
       required final Anwser answer,
-      required final List<Resource> listRessources}) = _$_ChoiceWithAnswer;
+      required final List<Resource> listRessources}) = _$ChoiceWithAnswerImpl;
   const _ChoiceWithAnswer._() : super._();
 
   @override
@@ -528,6 +529,6 @@ abstract class _ChoiceWithAnswer extends ChoiceWithAnswer {
   List<Resource> get listRessources;
   @override
   @JsonKey(ignore: true)
-  _$$_ChoiceWithAnswerCopyWith<_$_ChoiceWithAnswer> get copyWith =>
+  _$$ChoiceWithAnswerImplCopyWith<_$ChoiceWithAnswerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

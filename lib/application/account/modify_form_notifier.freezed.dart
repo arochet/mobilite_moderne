@@ -80,11 +80,11 @@ class _$ModifyFormDataCopyWithImpl<$Res, $Val extends ModifyFormData>
 }
 
 /// @nodoc
-abstract class _$$_ModifyFormDataCopyWith<$Res>
+abstract class _$$ModifyFormDataImplCopyWith<$Res>
     implements $ModifyFormDataCopyWith<$Res> {
-  factory _$$_ModifyFormDataCopyWith(
-          _$_ModifyFormData value, $Res Function(_$_ModifyFormData) then) =
-      __$$_ModifyFormDataCopyWithImpl<$Res>;
+  factory _$$ModifyFormDataImplCopyWith(_$ModifyFormDataImpl value,
+          $Res Function(_$ModifyFormDataImpl) then) =
+      __$$ModifyFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -95,11 +95,11 @@ abstract class _$$_ModifyFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ModifyFormDataCopyWithImpl<$Res>
-    extends _$ModifyFormDataCopyWithImpl<$Res, _$_ModifyFormData>
-    implements _$$_ModifyFormDataCopyWith<$Res> {
-  __$$_ModifyFormDataCopyWithImpl(
-      _$_ModifyFormData _value, $Res Function(_$_ModifyFormData) _then)
+class __$$ModifyFormDataImplCopyWithImpl<$Res>
+    extends _$ModifyFormDataCopyWithImpl<$Res, _$ModifyFormDataImpl>
+    implements _$$ModifyFormDataImplCopyWith<$Res> {
+  __$$ModifyFormDataImplCopyWithImpl(
+      _$ModifyFormDataImpl _value, $Res Function(_$ModifyFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +110,7 @@ class __$$_ModifyFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_ModifyFormData(
+    return _then(_$ModifyFormDataImpl(
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -133,8 +133,8 @@ class __$$_ModifyFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ModifyFormData implements _ModifyFormData {
-  const _$_ModifyFormData(
+class _$ModifyFormDataImpl implements _ModifyFormData {
+  const _$ModifyFormDataImpl(
       {required this.userName,
       required this.showErrorMessages,
       required this.isSubmitting,
@@ -158,7 +158,7 @@ class _$_ModifyFormData implements _ModifyFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ModifyFormData &&
+            other is _$ModifyFormDataImpl &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
@@ -178,8 +178,9 @@ class _$_ModifyFormData implements _ModifyFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ModifyFormDataCopyWith<_$_ModifyFormData> get copyWith =>
-      __$$_ModifyFormDataCopyWithImpl<_$_ModifyFormData>(this, _$identity);
+  _$$ModifyFormDataImplCopyWith<_$ModifyFormDataImpl> get copyWith =>
+      __$$ModifyFormDataImplCopyWithImpl<_$ModifyFormDataImpl>(
+          this, _$identity);
 }
 
 abstract class _ModifyFormData implements ModifyFormData {
@@ -188,7 +189,7 @@ abstract class _ModifyFormData implements ModifyFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<AuthFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_ModifyFormData;
+          authFailureOrSuccessOption}) = _$ModifyFormDataImpl;
 
   @override
   Nom get userName;
@@ -200,6 +201,6 @@ abstract class _ModifyFormData implements ModifyFormData {
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_ModifyFormDataCopyWith<_$_ModifyFormData> get copyWith =>
+  _$$ModifyFormDataImplCopyWith<_$ModifyFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

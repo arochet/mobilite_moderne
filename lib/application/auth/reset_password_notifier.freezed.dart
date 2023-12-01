@@ -81,11 +81,12 @@ class _$ResetPasswordFormDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ResetPasswordFormDataCopyWith<$Res>
+abstract class _$$ResetPasswordFormDataImplCopyWith<$Res>
     implements $ResetPasswordFormDataCopyWith<$Res> {
-  factory _$$_ResetPasswordFormDataCopyWith(_$_ResetPasswordFormData value,
-          $Res Function(_$_ResetPasswordFormData) then) =
-      __$$_ResetPasswordFormDataCopyWithImpl<$Res>;
+  factory _$$ResetPasswordFormDataImplCopyWith(
+          _$ResetPasswordFormDataImpl value,
+          $Res Function(_$ResetPasswordFormDataImpl) then) =
+      __$$ResetPasswordFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -96,11 +97,12 @@ abstract class _$$_ResetPasswordFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ResetPasswordFormDataCopyWithImpl<$Res>
-    extends _$ResetPasswordFormDataCopyWithImpl<$Res, _$_ResetPasswordFormData>
-    implements _$$_ResetPasswordFormDataCopyWith<$Res> {
-  __$$_ResetPasswordFormDataCopyWithImpl(_$_ResetPasswordFormData _value,
-      $Res Function(_$_ResetPasswordFormData) _then)
+class __$$ResetPasswordFormDataImplCopyWithImpl<$Res>
+    extends _$ResetPasswordFormDataCopyWithImpl<$Res,
+        _$ResetPasswordFormDataImpl>
+    implements _$$ResetPasswordFormDataImplCopyWith<$Res> {
+  __$$ResetPasswordFormDataImplCopyWithImpl(_$ResetPasswordFormDataImpl _value,
+      $Res Function(_$ResetPasswordFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -111,7 +113,7 @@ class __$$_ResetPasswordFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_ResetPasswordFormData(
+    return _then(_$ResetPasswordFormDataImpl(
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -134,8 +136,8 @@ class __$$_ResetPasswordFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ResetPasswordFormData implements _ResetPasswordFormData {
-  const _$_ResetPasswordFormData(
+class _$ResetPasswordFormDataImpl implements _ResetPasswordFormData {
+  const _$ResetPasswordFormDataImpl(
       {required this.emailAddress,
       required this.showErrorMessages,
       required this.isSubmitting,
@@ -159,7 +161,7 @@ class _$_ResetPasswordFormData implements _ResetPasswordFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ResetPasswordFormData &&
+            other is _$ResetPasswordFormDataImpl &&
             (identical(other.emailAddress, emailAddress) ||
                 other.emailAddress == emailAddress) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
@@ -179,9 +181,9 @@ class _$_ResetPasswordFormData implements _ResetPasswordFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResetPasswordFormDataCopyWith<_$_ResetPasswordFormData> get copyWith =>
-      __$$_ResetPasswordFormDataCopyWithImpl<_$_ResetPasswordFormData>(
-          this, _$identity);
+  _$$ResetPasswordFormDataImplCopyWith<_$ResetPasswordFormDataImpl>
+      get copyWith => __$$ResetPasswordFormDataImplCopyWithImpl<
+          _$ResetPasswordFormDataImpl>(this, _$identity);
 }
 
 abstract class _ResetPasswordFormData implements ResetPasswordFormData {
@@ -190,7 +192,7 @@ abstract class _ResetPasswordFormData implements ResetPasswordFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ResetPasswordFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_ResetPasswordFormData;
+          authFailureOrSuccessOption}) = _$ResetPasswordFormDataImpl;
 
   @override
   EmailAddress get emailAddress;
@@ -202,6 +204,6 @@ abstract class _ResetPasswordFormData implements ResetPasswordFormData {
   Option<Either<ResetPasswordFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_ResetPasswordFormDataCopyWith<_$_ResetPasswordFormData> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ResetPasswordFormDataImplCopyWith<_$ResetPasswordFormDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

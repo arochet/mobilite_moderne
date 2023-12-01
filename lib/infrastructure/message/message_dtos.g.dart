@@ -6,8 +6,8 @@ part of 'message_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MessageDTO _$$_MessageDTOFromJson(Map<String, dynamic> json) =>
-    _$_MessageDTO(
+_$MessageDTOImpl _$$MessageDTOImplFromJson(Map<String, dynamic> json) =>
+    _$MessageDTOImpl(
       text: json['text'] as String?,
       date: json['date'] as int,
       imagePath: json['imagePath'] as String?,
@@ -15,7 +15,7 @@ _$_MessageDTO _$$_MessageDTOFromJson(Map<String, dynamic> json) =>
       idUser: json['idUser'] as String,
     );
 
-Map<String, dynamic> _$$_MessageDTOToJson(_$_MessageDTO instance) =>
+Map<String, dynamic> _$$MessageDTOImplToJson(_$MessageDTOImpl instance) =>
     <String, dynamic>{
       'text': instance.text,
       'date': instance.date,

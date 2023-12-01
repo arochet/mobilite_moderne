@@ -115,10 +115,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ComponentsPage(),
       );
     },
-    DeleteAccountRoute.name: (routeData) {
+    Delete_accountRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DeleteAccountPage(),
+        child: const Delete_accountPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -584,15 +584,15 @@ class ComponentsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [DeleteAccountPage]
-class DeleteAccountRoute extends PageRouteInfo<void> {
-  const DeleteAccountRoute({List<PageRouteInfo>? children})
+/// [Delete_accountPage]
+class Delete_accountRoute extends PageRouteInfo<void> {
+  const Delete_accountRoute({List<PageRouteInfo>? children})
       : super(
-          DeleteAccountRoute.name,
+          Delete_accountRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'DeleteAccountRoute';
+  static const String name = 'Delete_accountRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

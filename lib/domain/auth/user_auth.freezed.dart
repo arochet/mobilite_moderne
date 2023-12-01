@@ -56,21 +56,22 @@ class _$UserAuthCopyWithImpl<$Res, $Val extends UserAuth>
 }
 
 /// @nodoc
-abstract class _$$_UserAuthCopyWith<$Res> implements $UserAuthCopyWith<$Res> {
-  factory _$$_UserAuthCopyWith(
-          _$_UserAuth value, $Res Function(_$_UserAuth) then) =
-      __$$_UserAuthCopyWithImpl<$Res>;
+abstract class _$$UserAuthImplCopyWith<$Res>
+    implements $UserAuthCopyWith<$Res> {
+  factory _$$UserAuthImplCopyWith(
+          _$UserAuthImpl value, $Res Function(_$UserAuthImpl) then) =
+      __$$UserAuthImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$$_UserAuthCopyWithImpl<$Res>
-    extends _$UserAuthCopyWithImpl<$Res, _$_UserAuth>
-    implements _$$_UserAuthCopyWith<$Res> {
-  __$$_UserAuthCopyWithImpl(
-      _$_UserAuth _value, $Res Function(_$_UserAuth) _then)
+class __$$UserAuthImplCopyWithImpl<$Res>
+    extends _$UserAuthCopyWithImpl<$Res, _$UserAuthImpl>
+    implements _$$UserAuthImplCopyWith<$Res> {
+  __$$UserAuthImplCopyWithImpl(
+      _$UserAuthImpl _value, $Res Function(_$UserAuthImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_UserAuthCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_UserAuth(
+    return _then(_$UserAuthImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_UserAuthCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserAuth implements _UserAuth {
-  const _$_UserAuth({required this.id});
+class _$UserAuthImpl implements _UserAuth {
+  const _$UserAuthImpl({required this.id});
 
   @override
   final UniqueId id;
@@ -104,7 +105,7 @@ class _$_UserAuth implements _UserAuth {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserAuth &&
+            other is _$UserAuthImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -114,17 +115,17 @@ class _$_UserAuth implements _UserAuth {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserAuthCopyWith<_$_UserAuth> get copyWith =>
-      __$$_UserAuthCopyWithImpl<_$_UserAuth>(this, _$identity);
+  _$$UserAuthImplCopyWith<_$UserAuthImpl> get copyWith =>
+      __$$UserAuthImplCopyWithImpl<_$UserAuthImpl>(this, _$identity);
 }
 
 abstract class _UserAuth implements UserAuth {
-  const factory _UserAuth({required final UniqueId id}) = _$_UserAuth;
+  const factory _UserAuth({required final UniqueId id}) = _$UserAuthImpl;
 
   @override
   UniqueId get id;
   @override
   @JsonKey(ignore: true)
-  _$$_UserAuthCopyWith<_$_UserAuth> get copyWith =>
+  _$$UserAuthImplCopyWith<_$UserAuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

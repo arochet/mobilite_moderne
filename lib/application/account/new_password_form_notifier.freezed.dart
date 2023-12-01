@@ -88,11 +88,11 @@ class _$NewPasswordFormDataCopyWithImpl<$Res, $Val extends NewPasswordFormData>
 }
 
 /// @nodoc
-abstract class _$$_NewPasswordFormDataCopyWith<$Res>
+abstract class _$$NewPasswordFormDataImplCopyWith<$Res>
     implements $NewPasswordFormDataCopyWith<$Res> {
-  factory _$$_NewPasswordFormDataCopyWith(_$_NewPasswordFormData value,
-          $Res Function(_$_NewPasswordFormData) then) =
-      __$$_NewPasswordFormDataCopyWithImpl<$Res>;
+  factory _$$NewPasswordFormDataImplCopyWith(_$NewPasswordFormDataImpl value,
+          $Res Function(_$NewPasswordFormDataImpl) then) =
+      __$$NewPasswordFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,11 +104,11 @@ abstract class _$$_NewPasswordFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NewPasswordFormDataCopyWithImpl<$Res>
-    extends _$NewPasswordFormDataCopyWithImpl<$Res, _$_NewPasswordFormData>
-    implements _$$_NewPasswordFormDataCopyWith<$Res> {
-  __$$_NewPasswordFormDataCopyWithImpl(_$_NewPasswordFormData _value,
-      $Res Function(_$_NewPasswordFormData) _then)
+class __$$NewPasswordFormDataImplCopyWithImpl<$Res>
+    extends _$NewPasswordFormDataCopyWithImpl<$Res, _$NewPasswordFormDataImpl>
+    implements _$$NewPasswordFormDataImplCopyWith<$Res> {
+  __$$NewPasswordFormDataImplCopyWithImpl(_$NewPasswordFormDataImpl _value,
+      $Res Function(_$NewPasswordFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +120,7 @@ class __$$_NewPasswordFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_NewPasswordFormData(
+    return _then(_$NewPasswordFormDataImpl(
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -147,8 +147,8 @@ class __$$_NewPasswordFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewPasswordFormData implements _NewPasswordFormData {
-  const _$_NewPasswordFormData(
+class _$NewPasswordFormDataImpl implements _NewPasswordFormData {
+  const _$NewPasswordFormDataImpl(
       {required this.password,
       required this.passwordConfirmation,
       required this.showErrorMessages,
@@ -175,7 +175,7 @@ class _$_NewPasswordFormData implements _NewPasswordFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewPasswordFormData &&
+            other is _$NewPasswordFormDataImpl &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.passwordConfirmation, passwordConfirmation) ||
@@ -197,8 +197,8 @@ class _$_NewPasswordFormData implements _NewPasswordFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewPasswordFormDataCopyWith<_$_NewPasswordFormData> get copyWith =>
-      __$$_NewPasswordFormDataCopyWithImpl<_$_NewPasswordFormData>(
+  _$$NewPasswordFormDataImplCopyWith<_$NewPasswordFormDataImpl> get copyWith =>
+      __$$NewPasswordFormDataImplCopyWithImpl<_$NewPasswordFormDataImpl>(
           this, _$identity);
 }
 
@@ -209,7 +209,7 @@ abstract class _NewPasswordFormData implements NewPasswordFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<NewPasswordFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_NewPasswordFormData;
+          authFailureOrSuccessOption}) = _$NewPasswordFormDataImpl;
 
   @override
   Password get password;
@@ -223,6 +223,6 @@ abstract class _NewPasswordFormData implements NewPasswordFormData {
   Option<Either<NewPasswordFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_NewPasswordFormDataCopyWith<_$_NewPasswordFormData> get copyWith =>
+  _$$NewPasswordFormDataImplCopyWith<_$NewPasswordFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

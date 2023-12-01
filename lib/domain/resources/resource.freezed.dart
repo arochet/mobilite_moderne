@@ -154,10 +154,11 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
 }
 
 /// @nodoc
-abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
-  factory _$$_ResourceCopyWith(
-          _$_Resource value, $Res Function(_$_Resource) then) =
-      __$$_ResourceCopyWithImpl<$Res>;
+abstract class _$$ResourceImplCopyWith<$Res>
+    implements $ResourceCopyWith<$Res> {
+  factory _$$ResourceImplCopyWith(
+          _$ResourceImpl value, $Res Function(_$ResourceImpl) then) =
+      __$$ResourceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -176,11 +177,11 @@ abstract class _$$_ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ResourceCopyWithImpl<$Res>
-    extends _$ResourceCopyWithImpl<$Res, _$_Resource>
-    implements _$$_ResourceCopyWith<$Res> {
-  __$$_ResourceCopyWithImpl(
-      _$_Resource _value, $Res Function(_$_Resource) _then)
+class __$$ResourceImplCopyWithImpl<$Res>
+    extends _$ResourceCopyWithImpl<$Res, _$ResourceImpl>
+    implements _$$ResourceImplCopyWith<$Res> {
+  __$$ResourceImplCopyWithImpl(
+      _$ResourceImpl _value, $Res Function(_$ResourceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,7 +200,7 @@ class __$$_ResourceCopyWithImpl<$Res>
     Object? imageBytes = freezed,
     Object? imageUrl = freezed,
   }) {
-    return _then(_$_Resource(
+    return _then(_$ResourceImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -254,8 +255,8 @@ class __$$_ResourceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Resource extends _Resource {
-  const _$_Resource(
+class _$ResourceImpl extends _Resource {
+  const _$ResourceImpl(
       {required this.id,
       required this.nom,
       required this.type,
@@ -332,7 +333,7 @@ class _$_Resource extends _Resource {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Resource &&
+            other is _$ResourceImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.type, type) || other.type == type) &&
@@ -373,8 +374,8 @@ class _$_Resource extends _Resource {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResourceCopyWith<_$_Resource> get copyWith =>
-      __$$_ResourceCopyWithImpl<_$_Resource>(this, _$identity);
+  _$$ResourceImplCopyWith<_$ResourceImpl> get copyWith =>
+      __$$ResourceImplCopyWithImpl<_$ResourceImpl>(this, _$identity);
 }
 
 abstract class _Resource extends Resource {
@@ -390,7 +391,7 @@ abstract class _Resource extends Resource {
       required final ResourceMainCategory mainCategory,
       required final String image,
       final Future<Uint8List?>? imageBytes,
-      final Future<String>? imageUrl}) = _$_Resource;
+      final Future<String>? imageUrl}) = _$ResourceImpl;
   const _Resource._() : super._();
 
   @override
@@ -438,6 +439,6 @@ abstract class _Resource extends Resource {
   Future<String>? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_ResourceCopyWith<_$_Resource> get copyWith =>
+  _$$ResourceImplCopyWith<_$ResourceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -110,11 +110,11 @@ class _$SubscriptionsCopyWithImpl<$Res, $Val extends Subscriptions>
 }
 
 /// @nodoc
-abstract class _$$_SubscriptionsCopyWith<$Res>
+abstract class _$$SubscriptionsImplCopyWith<$Res>
     implements $SubscriptionsCopyWith<$Res> {
-  factory _$$_SubscriptionsCopyWith(
-          _$_Subscriptions value, $Res Function(_$_Subscriptions) then) =
-      __$$_SubscriptionsCopyWithImpl<$Res>;
+  factory _$$SubscriptionsImplCopyWith(
+          _$SubscriptionsImpl value, $Res Function(_$SubscriptionsImpl) then) =
+      __$$SubscriptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,11 +128,11 @@ abstract class _$$_SubscriptionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubscriptionsCopyWithImpl<$Res>
-    extends _$SubscriptionsCopyWithImpl<$Res, _$_Subscriptions>
-    implements _$$_SubscriptionsCopyWith<$Res> {
-  __$$_SubscriptionsCopyWithImpl(
-      _$_Subscriptions _value, $Res Function(_$_Subscriptions) _then)
+class __$$SubscriptionsImplCopyWithImpl<$Res>
+    extends _$SubscriptionsCopyWithImpl<$Res, _$SubscriptionsImpl>
+    implements _$$SubscriptionsImplCopyWith<$Res> {
+  __$$SubscriptionsImplCopyWithImpl(
+      _$SubscriptionsImpl _value, $Res Function(_$SubscriptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -146,7 +146,7 @@ class __$$_SubscriptionsCopyWithImpl<$Res>
     Object? status = null,
     Object? idStripe = freezed,
   }) {
-    return _then(_$_Subscriptions(
+    return _then(_$SubscriptionsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -181,8 +181,8 @@ class __$$_SubscriptionsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Subscriptions extends _Subscriptions {
-  const _$_Subscriptions(
+class _$SubscriptionsImpl extends _Subscriptions {
+  const _$SubscriptionsImpl(
       {required this.id,
       required this.startDate,
       required this.billingCycleAnchor,
@@ -234,7 +234,7 @@ class _$_Subscriptions extends _Subscriptions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Subscriptions &&
+            other is _$SubscriptionsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
@@ -261,8 +261,8 @@ class _$_Subscriptions extends _Subscriptions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubscriptionsCopyWith<_$_Subscriptions> get copyWith =>
-      __$$_SubscriptionsCopyWithImpl<_$_Subscriptions>(this, _$identity);
+  _$$SubscriptionsImplCopyWith<_$SubscriptionsImpl> get copyWith =>
+      __$$SubscriptionsImplCopyWithImpl<_$SubscriptionsImpl>(this, _$identity);
 }
 
 abstract class _Subscriptions extends Subscriptions {
@@ -273,7 +273,7 @@ abstract class _Subscriptions extends Subscriptions {
       required final Map<String, dynamic> items,
       required final double tarif,
       required final bool status,
-      final String? idStripe}) = _$_Subscriptions;
+      final String? idStripe}) = _$SubscriptionsImpl;
   const _Subscriptions._() : super._();
 
   @override
@@ -302,6 +302,6 @@ abstract class _Subscriptions extends Subscriptions {
   String? get idStripe;
   @override
   @JsonKey(ignore: true)
-  _$$_SubscriptionsCopyWith<_$_Subscriptions> get copyWith =>
+  _$$SubscriptionsImplCopyWith<_$SubscriptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

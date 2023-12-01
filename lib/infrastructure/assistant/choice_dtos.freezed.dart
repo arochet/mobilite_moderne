@@ -91,10 +91,11 @@ class _$ChoiceDTOCopyWithImpl<$Res, $Val extends ChoiceDTO>
 }
 
 /// @nodoc
-abstract class _$$_ChoiceDTOCopyWith<$Res> implements $ChoiceDTOCopyWith<$Res> {
-  factory _$$_ChoiceDTOCopyWith(
-          _$_ChoiceDTO value, $Res Function(_$_ChoiceDTO) then) =
-      __$$_ChoiceDTOCopyWithImpl<$Res>;
+abstract class _$$ChoiceDTOImplCopyWith<$Res>
+    implements $ChoiceDTOCopyWith<$Res> {
+  factory _$$ChoiceDTOImplCopyWith(
+          _$ChoiceDTOImpl value, $Res Function(_$ChoiceDTOImpl) then) =
+      __$$ChoiceDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -106,11 +107,11 @@ abstract class _$$_ChoiceDTOCopyWith<$Res> implements $ChoiceDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ChoiceDTOCopyWithImpl<$Res>
-    extends _$ChoiceDTOCopyWithImpl<$Res, _$_ChoiceDTO>
-    implements _$$_ChoiceDTOCopyWith<$Res> {
-  __$$_ChoiceDTOCopyWithImpl(
-      _$_ChoiceDTO _value, $Res Function(_$_ChoiceDTO) _then)
+class __$$ChoiceDTOImplCopyWithImpl<$Res>
+    extends _$ChoiceDTOCopyWithImpl<$Res, _$ChoiceDTOImpl>
+    implements _$$ChoiceDTOImplCopyWith<$Res> {
+  __$$ChoiceDTOImplCopyWithImpl(
+      _$ChoiceDTOImpl _value, $Res Function(_$ChoiceDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +123,7 @@ class __$$_ChoiceDTOCopyWithImpl<$Res>
     Object? answer = freezed,
     Object? listRessources = freezed,
   }) {
-    return _then(_$_ChoiceDTO(
+    return _then(_$ChoiceDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -149,8 +150,8 @@ class __$$_ChoiceDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ChoiceDTO extends _ChoiceDTO {
-  const _$_ChoiceDTO(
+class _$ChoiceDTOImpl extends _ChoiceDTO {
+  const _$ChoiceDTOImpl(
       {@JsonKey(ignore: true) this.id,
       required this.nom,
       required this.question,
@@ -159,8 +160,8 @@ class _$_ChoiceDTO extends _ChoiceDTO {
       : _listRessources = listRessources,
         super._();
 
-  factory _$_ChoiceDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ChoiceDTOFromJson(json);
+  factory _$ChoiceDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChoiceDTOImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -190,7 +191,7 @@ class _$_ChoiceDTO extends _ChoiceDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChoiceDTO &&
+            other is _$ChoiceDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.question, question) ||
@@ -208,12 +209,12 @@ class _$_ChoiceDTO extends _ChoiceDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChoiceDTOCopyWith<_$_ChoiceDTO> get copyWith =>
-      __$$_ChoiceDTOCopyWithImpl<_$_ChoiceDTO>(this, _$identity);
+  _$$ChoiceDTOImplCopyWith<_$ChoiceDTOImpl> get copyWith =>
+      __$$ChoiceDTOImplCopyWithImpl<_$ChoiceDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChoiceDTOToJson(
+    return _$$ChoiceDTOImplToJson(
       this,
     );
   }
@@ -225,11 +226,11 @@ abstract class _ChoiceDTO extends ChoiceDTO {
       required final String nom,
       required final String? question,
       required final String? answer,
-      required final List<String>? listRessources}) = _$_ChoiceDTO;
+      required final List<String>? listRessources}) = _$ChoiceDTOImpl;
   const _ChoiceDTO._() : super._();
 
   factory _ChoiceDTO.fromJson(Map<String, dynamic> json) =
-      _$_ChoiceDTO.fromJson;
+      _$ChoiceDTOImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -244,6 +245,6 @@ abstract class _ChoiceDTO extends ChoiceDTO {
   List<String>? get listRessources;
   @override
   @JsonKey(ignore: true)
-  _$$_ChoiceDTOCopyWith<_$_ChoiceDTO> get copyWith =>
+  _$$ChoiceDTOImplCopyWith<_$ChoiceDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,15 +6,16 @@ part of 'app_category_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppCategoryDTO _$$_AppCategoryDTOFromJson(Map<String, dynamic> json) =>
-    _$_AppCategoryDTO(
+_$AppCategoryDTOImpl _$$AppCategoryDTOImplFromJson(Map<String, dynamic> json) =>
+    _$AppCategoryDTOImpl(
       nom: json['nom'] as String,
       listResource: (json['listResource'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
     );
 
-Map<String, dynamic> _$$_AppCategoryDTOToJson(_$_AppCategoryDTO instance) =>
+Map<String, dynamic> _$$AppCategoryDTOImplToJson(
+        _$AppCategoryDTOImpl instance) =>
     <String, dynamic>{
       'nom': instance.nom,
       'listResource': instance.listResource,

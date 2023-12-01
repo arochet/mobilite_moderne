@@ -6,7 +6,8 @@ part of 'news_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NewsDTO _$$_NewsDTOFromJson(Map<String, dynamic> json) => _$_NewsDTO(
+_$NewsDTOImpl _$$NewsDTOImplFromJson(Map<String, dynamic> json) =>
+    _$NewsDTOImpl(
       title: json['title'] as String,
       content: json['content'] as String,
       image: json['image'] as String,
@@ -19,7 +20,7 @@ _$_NewsDTO _$$_NewsDTOFromJson(Map<String, dynamic> json) => _$_NewsDTO(
           .toList(),
     );
 
-Map<String, dynamic> _$$_NewsDTOToJson(_$_NewsDTO instance) =>
+Map<String, dynamic> _$$NewsDTOImplToJson(_$NewsDTOImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'content': instance.content,

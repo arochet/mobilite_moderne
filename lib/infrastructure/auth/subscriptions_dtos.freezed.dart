@@ -100,11 +100,11 @@ class _$SubscriptionsDTOCopyWithImpl<$Res, $Val extends SubscriptionsDTO>
 }
 
 /// @nodoc
-abstract class _$$_SubscriptionsDTOCopyWith<$Res>
+abstract class _$$SubscriptionsDTOImplCopyWith<$Res>
     implements $SubscriptionsDTOCopyWith<$Res> {
-  factory _$$_SubscriptionsDTOCopyWith(
-          _$_SubscriptionsDTO value, $Res Function(_$_SubscriptionsDTO) then) =
-      __$$_SubscriptionsDTOCopyWithImpl<$Res>;
+  factory _$$SubscriptionsDTOImplCopyWith(_$SubscriptionsDTOImpl value,
+          $Res Function(_$SubscriptionsDTOImpl) then) =
+      __$$SubscriptionsDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +117,11 @@ abstract class _$$_SubscriptionsDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubscriptionsDTOCopyWithImpl<$Res>
-    extends _$SubscriptionsDTOCopyWithImpl<$Res, _$_SubscriptionsDTO>
-    implements _$$_SubscriptionsDTOCopyWith<$Res> {
-  __$$_SubscriptionsDTOCopyWithImpl(
-      _$_SubscriptionsDTO _value, $Res Function(_$_SubscriptionsDTO) _then)
+class __$$SubscriptionsDTOImplCopyWithImpl<$Res>
+    extends _$SubscriptionsDTOCopyWithImpl<$Res, _$SubscriptionsDTOImpl>
+    implements _$$SubscriptionsDTOImplCopyWith<$Res> {
+  __$$SubscriptionsDTOImplCopyWithImpl(_$SubscriptionsDTOImpl _value,
+      $Res Function(_$SubscriptionsDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_SubscriptionsDTOCopyWithImpl<$Res>
     Object? status = null,
     Object? idStripe = freezed,
   }) {
-    return _then(_$_SubscriptionsDTO(
+    return _then(_$SubscriptionsDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -165,8 +165,8 @@ class __$$_SubscriptionsDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SubscriptionsDTO extends _SubscriptionsDTO {
-  const _$_SubscriptionsDTO(
+class _$SubscriptionsDTOImpl extends _SubscriptionsDTO {
+  const _$SubscriptionsDTOImpl(
       {this.id,
       @JsonKey(name: 'start_date') required this.startDate,
       @JsonKey(name: 'billing_cycle_anchor') required this.billingCycleAnchor,
@@ -176,8 +176,8 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
       : _items = items,
         super._();
 
-  factory _$_SubscriptionsDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_SubscriptionsDTOFromJson(json);
+  factory _$SubscriptionsDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscriptionsDTOImplFromJson(json);
 
   @override
   final String? id;
@@ -209,7 +209,7 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubscriptionsDTO &&
+            other is _$SubscriptionsDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
@@ -235,12 +235,13 @@ class _$_SubscriptionsDTO extends _SubscriptionsDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubscriptionsDTOCopyWith<_$_SubscriptionsDTO> get copyWith =>
-      __$$_SubscriptionsDTOCopyWithImpl<_$_SubscriptionsDTO>(this, _$identity);
+  _$$SubscriptionsDTOImplCopyWith<_$SubscriptionsDTOImpl> get copyWith =>
+      __$$SubscriptionsDTOImplCopyWithImpl<_$SubscriptionsDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubscriptionsDTOToJson(
+    return _$$SubscriptionsDTOImplToJson(
       this,
     );
   }
@@ -254,11 +255,11 @@ abstract class _SubscriptionsDTO extends SubscriptionsDTO {
       required final int? billingCycleAnchor,
       required final Map<String, dynamic> items,
       required final String status,
-      final String? idStripe}) = _$_SubscriptionsDTO;
+      final String? idStripe}) = _$SubscriptionsDTOImpl;
   const _SubscriptionsDTO._() : super._();
 
   factory _SubscriptionsDTO.fromJson(Map<String, dynamic> json) =
-      _$_SubscriptionsDTO.fromJson;
+      _$SubscriptionsDTOImpl.fromJson;
 
   @override
   String? get id;
@@ -276,6 +277,6 @@ abstract class _SubscriptionsDTO extends SubscriptionsDTO {
   String? get idStripe;
   @override
   @JsonKey(ignore: true)
-  _$$_SubscriptionsDTOCopyWith<_$_SubscriptionsDTO> get copyWith =>
+  _$$SubscriptionsDTOImplCopyWith<_$SubscriptionsDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -99,11 +99,11 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
 }
 
 /// @nodoc
-abstract class _$$_MessageDTOCopyWith<$Res>
+abstract class _$$MessageDTOImplCopyWith<$Res>
     implements $MessageDTOCopyWith<$Res> {
-  factory _$$_MessageDTOCopyWith(
-          _$_MessageDTO value, $Res Function(_$_MessageDTO) then) =
-      __$$_MessageDTOCopyWithImpl<$Res>;
+  factory _$$MessageDTOImplCopyWith(
+          _$MessageDTOImpl value, $Res Function(_$MessageDTOImpl) then) =
+      __$$MessageDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,11 +116,11 @@ abstract class _$$_MessageDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MessageDTOCopyWithImpl<$Res>
-    extends _$MessageDTOCopyWithImpl<$Res, _$_MessageDTO>
-    implements _$$_MessageDTOCopyWith<$Res> {
-  __$$_MessageDTOCopyWithImpl(
-      _$_MessageDTO _value, $Res Function(_$_MessageDTO) _then)
+class __$$MessageDTOImplCopyWithImpl<$Res>
+    extends _$MessageDTOCopyWithImpl<$Res, _$MessageDTOImpl>
+    implements _$$MessageDTOImplCopyWith<$Res> {
+  __$$MessageDTOImplCopyWithImpl(
+      _$MessageDTOImpl _value, $Res Function(_$MessageDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$_MessageDTOCopyWithImpl<$Res>
     Object? videoPath = freezed,
     Object? idUser = null,
   }) {
-    return _then(_$_MessageDTO(
+    return _then(_$MessageDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -164,8 +164,8 @@ class __$$_MessageDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MessageDTO extends _MessageDTO {
-  const _$_MessageDTO(
+class _$MessageDTOImpl extends _MessageDTO {
+  const _$MessageDTOImpl(
       {@JsonKey(ignore: true) this.id,
       required this.text,
       required this.date,
@@ -174,8 +174,8 @@ class _$_MessageDTO extends _MessageDTO {
       required this.idUser})
       : super._();
 
-  factory _$_MessageDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_MessageDTOFromJson(json);
+  factory _$MessageDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageDTOImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -200,7 +200,7 @@ class _$_MessageDTO extends _MessageDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessageDTO &&
+            other is _$MessageDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.date, date) || other.date == date) &&
@@ -219,12 +219,12 @@ class _$_MessageDTO extends _MessageDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageDTOCopyWith<_$_MessageDTO> get copyWith =>
-      __$$_MessageDTOCopyWithImpl<_$_MessageDTO>(this, _$identity);
+  _$$MessageDTOImplCopyWith<_$MessageDTOImpl> get copyWith =>
+      __$$MessageDTOImplCopyWithImpl<_$MessageDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MessageDTOToJson(
+    return _$$MessageDTOImplToJson(
       this,
     );
   }
@@ -237,11 +237,11 @@ abstract class _MessageDTO extends MessageDTO {
       required final int date,
       required final String? imagePath,
       required final String? videoPath,
-      required final String idUser}) = _$_MessageDTO;
+      required final String idUser}) = _$MessageDTOImpl;
   const _MessageDTO._() : super._();
 
   factory _MessageDTO.fromJson(Map<String, dynamic> json) =
-      _$_MessageDTO.fromJson;
+      _$MessageDTOImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -258,6 +258,6 @@ abstract class _MessageDTO extends MessageDTO {
   String get idUser;
   @override
   @JsonKey(ignore: true)
-  _$$_MessageDTOCopyWith<_$_MessageDTO> get copyWith =>
+  _$$MessageDTOImplCopyWith<_$MessageDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

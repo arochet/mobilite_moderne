@@ -93,25 +93,25 @@ class _$SubscriptionFailureCopyWithImpl<$Res, $Val extends SubscriptionFailure>
 }
 
 /// @nodoc
-abstract class _$$ServerErrorCopyWith<$Res> {
-  factory _$$ServerErrorCopyWith(
-          _$ServerError value, $Res Function(_$ServerError) then) =
-      __$$ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ServerErrorCopyWithImpl<$Res>
-    extends _$SubscriptionFailureCopyWithImpl<$Res, _$ServerError>
-    implements _$$ServerErrorCopyWith<$Res> {
-  __$$ServerErrorCopyWithImpl(
-      _$ServerError _value, $Res Function(_$ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$ServerErrorImpl implements ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -121,7 +121,7 @@ class _$ServerError implements ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -209,29 +209,29 @@ class _$ServerError implements ServerError {
 }
 
 abstract class ServerError implements SubscriptionFailure {
-  const factory ServerError() = _$ServerError;
+  const factory ServerError() = _$ServerErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$UserErrorCopyWith<$Res> {
-  factory _$$UserErrorCopyWith(
-          _$UserError value, $Res Function(_$UserError) then) =
-      __$$UserErrorCopyWithImpl<$Res>;
+abstract class _$$UserErrorImplCopyWith<$Res> {
+  factory _$$UserErrorImplCopyWith(
+          _$UserErrorImpl value, $Res Function(_$UserErrorImpl) then) =
+      __$$UserErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UserErrorCopyWithImpl<$Res>
-    extends _$SubscriptionFailureCopyWithImpl<$Res, _$UserError>
-    implements _$$UserErrorCopyWith<$Res> {
-  __$$UserErrorCopyWithImpl(
-      _$UserError _value, $Res Function(_$UserError) _then)
+class __$$UserErrorImplCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$UserErrorImpl>
+    implements _$$UserErrorImplCopyWith<$Res> {
+  __$$UserErrorImplCopyWithImpl(
+      _$UserErrorImpl _value, $Res Function(_$UserErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$UserError implements UserError {
-  const _$UserError();
+class _$UserErrorImpl implements UserError {
+  const _$UserErrorImpl();
 
   @override
   String toString() {
@@ -241,7 +241,7 @@ class _$UserError implements UserError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserError);
+        (other.runtimeType == runtimeType && other is _$UserErrorImpl);
   }
 
   @override
@@ -329,29 +329,29 @@ class _$UserError implements UserError {
 }
 
 abstract class UserError implements SubscriptionFailure {
-  const factory UserError() = _$UserError;
+  const factory UserError() = _$UserErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$NoInternetCopyWith<$Res> {
-  factory _$$NoInternetCopyWith(
-          _$NoInternet value, $Res Function(_$NoInternet) then) =
-      __$$NoInternetCopyWithImpl<$Res>;
+abstract class _$$NoInternetImplCopyWith<$Res> {
+  factory _$$NoInternetImplCopyWith(
+          _$NoInternetImpl value, $Res Function(_$NoInternetImpl) then) =
+      __$$NoInternetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NoInternetCopyWithImpl<$Res>
-    extends _$SubscriptionFailureCopyWithImpl<$Res, _$NoInternet>
-    implements _$$NoInternetCopyWith<$Res> {
-  __$$NoInternetCopyWithImpl(
-      _$NoInternet _value, $Res Function(_$NoInternet) _then)
+class __$$NoInternetImplCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$NoInternetImpl>
+    implements _$$NoInternetImplCopyWith<$Res> {
+  __$$NoInternetImplCopyWithImpl(
+      _$NoInternetImpl _value, $Res Function(_$NoInternetImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NoInternet implements NoInternet {
-  const _$NoInternet();
+class _$NoInternetImpl implements NoInternet {
+  const _$NoInternetImpl();
 
   @override
   String toString() {
@@ -361,7 +361,7 @@ class _$NoInternet implements NoInternet {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NoInternet);
+        (other.runtimeType == runtimeType && other is _$NoInternetImpl);
   }
 
   @override
@@ -449,29 +449,29 @@ class _$NoInternet implements NoInternet {
 }
 
 abstract class NoInternet implements SubscriptionFailure {
-  const factory NoInternet() = _$NoInternet;
+  const factory NoInternet() = _$NoInternetImpl;
 }
 
 /// @nodoc
-abstract class _$$CustomerUnfoundCopyWith<$Res> {
-  factory _$$CustomerUnfoundCopyWith(
-          _$CustomerUnfound value, $Res Function(_$CustomerUnfound) then) =
-      __$$CustomerUnfoundCopyWithImpl<$Res>;
+abstract class _$$CustomerUnfoundImplCopyWith<$Res> {
+  factory _$$CustomerUnfoundImplCopyWith(_$CustomerUnfoundImpl value,
+          $Res Function(_$CustomerUnfoundImpl) then) =
+      __$$CustomerUnfoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CustomerUnfoundCopyWithImpl<$Res>
-    extends _$SubscriptionFailureCopyWithImpl<$Res, _$CustomerUnfound>
-    implements _$$CustomerUnfoundCopyWith<$Res> {
-  __$$CustomerUnfoundCopyWithImpl(
-      _$CustomerUnfound _value, $Res Function(_$CustomerUnfound) _then)
+class __$$CustomerUnfoundImplCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$CustomerUnfoundImpl>
+    implements _$$CustomerUnfoundImplCopyWith<$Res> {
+  __$$CustomerUnfoundImplCopyWithImpl(
+      _$CustomerUnfoundImpl _value, $Res Function(_$CustomerUnfoundImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CustomerUnfound implements CustomerUnfound {
-  const _$CustomerUnfound();
+class _$CustomerUnfoundImpl implements CustomerUnfound {
+  const _$CustomerUnfoundImpl();
 
   @override
   String toString() {
@@ -481,7 +481,7 @@ class _$CustomerUnfound implements CustomerUnfound {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CustomerUnfound);
+        (other.runtimeType == runtimeType && other is _$CustomerUnfoundImpl);
   }
 
   @override
@@ -569,29 +569,29 @@ class _$CustomerUnfound implements CustomerUnfound {
 }
 
 abstract class CustomerUnfound implements SubscriptionFailure {
-  const factory CustomerUnfound() = _$CustomerUnfound;
+  const factory CustomerUnfound() = _$CustomerUnfoundImpl;
 }
 
 /// @nodoc
-abstract class _$$PaymentFailCopyWith<$Res> {
-  factory _$$PaymentFailCopyWith(
-          _$PaymentFail value, $Res Function(_$PaymentFail) then) =
-      __$$PaymentFailCopyWithImpl<$Res>;
+abstract class _$$PaymentFailImplCopyWith<$Res> {
+  factory _$$PaymentFailImplCopyWith(
+          _$PaymentFailImpl value, $Res Function(_$PaymentFailImpl) then) =
+      __$$PaymentFailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PaymentFailCopyWithImpl<$Res>
-    extends _$SubscriptionFailureCopyWithImpl<$Res, _$PaymentFail>
-    implements _$$PaymentFailCopyWith<$Res> {
-  __$$PaymentFailCopyWithImpl(
-      _$PaymentFail _value, $Res Function(_$PaymentFail) _then)
+class __$$PaymentFailImplCopyWithImpl<$Res>
+    extends _$SubscriptionFailureCopyWithImpl<$Res, _$PaymentFailImpl>
+    implements _$$PaymentFailImplCopyWith<$Res> {
+  __$$PaymentFailImplCopyWithImpl(
+      _$PaymentFailImpl _value, $Res Function(_$PaymentFailImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PaymentFail implements PaymentFail {
-  const _$PaymentFail();
+class _$PaymentFailImpl implements PaymentFail {
+  const _$PaymentFailImpl();
 
   @override
   String toString() {
@@ -601,7 +601,7 @@ class _$PaymentFail implements PaymentFail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PaymentFail);
+        (other.runtimeType == runtimeType && other is _$PaymentFailImpl);
   }
 
   @override
@@ -689,5 +689,5 @@ class _$PaymentFail implements PaymentFail {
 }
 
 abstract class PaymentFail implements SubscriptionFailure {
-  const factory PaymentFail() = _$PaymentFail;
+  const factory PaymentFail() = _$PaymentFailImpl;
 }

@@ -85,11 +85,11 @@ class _$ConversationDTOCopyWithImpl<$Res, $Val extends ConversationDTO>
 }
 
 /// @nodoc
-abstract class _$$_ConversationDTOCopyWith<$Res>
+abstract class _$$ConversationDTOImplCopyWith<$Res>
     implements $ConversationDTOCopyWith<$Res> {
-  factory _$$_ConversationDTOCopyWith(
-          _$_ConversationDTO value, $Res Function(_$_ConversationDTO) then) =
-      __$$_ConversationDTOCopyWithImpl<$Res>;
+  factory _$$ConversationDTOImplCopyWith(_$ConversationDTOImpl value,
+          $Res Function(_$ConversationDTOImpl) then) =
+      __$$ConversationDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +100,11 @@ abstract class _$$_ConversationDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConversationDTOCopyWithImpl<$Res>
-    extends _$ConversationDTOCopyWithImpl<$Res, _$_ConversationDTO>
-    implements _$$_ConversationDTOCopyWith<$Res> {
-  __$$_ConversationDTOCopyWithImpl(
-      _$_ConversationDTO _value, $Res Function(_$_ConversationDTO) _then)
+class __$$ConversationDTOImplCopyWithImpl<$Res>
+    extends _$ConversationDTOCopyWithImpl<$Res, _$ConversationDTOImpl>
+    implements _$$ConversationDTOImplCopyWith<$Res> {
+  __$$ConversationDTOImplCopyWithImpl(
+      _$ConversationDTOImpl _value, $Res Function(_$ConversationDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_ConversationDTOCopyWithImpl<$Res>
     Object? dateLastMessage = freezed,
     Object? isRead = freezed,
   }) {
-    return _then(_$_ConversationDTO(
+    return _then(_$ConversationDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -138,16 +138,16 @@ class __$$_ConversationDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConversationDTO extends _ConversationDTO {
-  const _$_ConversationDTO(
+class _$ConversationDTOImpl extends _ConversationDTO {
+  const _$ConversationDTOImpl(
       {@JsonKey(ignore: true) this.id,
       this.name,
       this.dateLastMessage,
       this.isRead})
       : super._();
 
-  factory _$_ConversationDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ConversationDTOFromJson(json);
+  factory _$ConversationDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConversationDTOImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -168,7 +168,7 @@ class _$_ConversationDTO extends _ConversationDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConversationDTO &&
+            other is _$ConversationDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateLastMessage, dateLastMessage) ||
@@ -184,12 +184,13 @@ class _$_ConversationDTO extends _ConversationDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConversationDTOCopyWith<_$_ConversationDTO> get copyWith =>
-      __$$_ConversationDTOCopyWithImpl<_$_ConversationDTO>(this, _$identity);
+  _$$ConversationDTOImplCopyWith<_$ConversationDTOImpl> get copyWith =>
+      __$$ConversationDTOImplCopyWithImpl<_$ConversationDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConversationDTOToJson(
+    return _$$ConversationDTOImplToJson(
       this,
     );
   }
@@ -200,11 +201,11 @@ abstract class _ConversationDTO extends ConversationDTO {
       {@JsonKey(ignore: true) final String? id,
       final String? name,
       final int? dateLastMessage,
-      final bool? isRead}) = _$_ConversationDTO;
+      final bool? isRead}) = _$ConversationDTOImpl;
   const _ConversationDTO._() : super._();
 
   factory _ConversationDTO.fromJson(Map<String, dynamic> json) =
-      _$_ConversationDTO.fromJson;
+      _$ConversationDTOImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -217,6 +218,6 @@ abstract class _ConversationDTO extends ConversationDTO {
   bool? get isRead;
   @override
   @JsonKey(ignore: true)
-  _$$_ConversationDTOCopyWith<_$_ConversationDTO> get copyWith =>
+  _$$ConversationDTOImplCopyWith<_$ConversationDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

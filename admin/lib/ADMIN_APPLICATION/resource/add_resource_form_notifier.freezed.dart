@@ -127,11 +127,11 @@ class _$AddResourceFormDataCopyWithImpl<$Res, $Val extends AddResourceFormData>
 }
 
 /// @nodoc
-abstract class _$$_AddResourceFormDataCopyWith<$Res>
+abstract class _$$AddResourceFormDataImplCopyWith<$Res>
     implements $AddResourceFormDataCopyWith<$Res> {
-  factory _$$_AddResourceFormDataCopyWith(_$_AddResourceFormData value,
-          $Res Function(_$_AddResourceFormData) then) =
-      __$$_AddResourceFormDataCopyWithImpl<$Res>;
+  factory _$$AddResourceFormDataImplCopyWith(_$AddResourceFormDataImpl value,
+          $Res Function(_$AddResourceFormDataImpl) then) =
+      __$$AddResourceFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -150,11 +150,11 @@ abstract class _$$_AddResourceFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddResourceFormDataCopyWithImpl<$Res>
-    extends _$AddResourceFormDataCopyWithImpl<$Res, _$_AddResourceFormData>
-    implements _$$_AddResourceFormDataCopyWith<$Res> {
-  __$$_AddResourceFormDataCopyWithImpl(_$_AddResourceFormData _value,
-      $Res Function(_$_AddResourceFormData) _then)
+class __$$AddResourceFormDataImplCopyWithImpl<$Res>
+    extends _$AddResourceFormDataCopyWithImpl<$Res, _$AddResourceFormDataImpl>
+    implements _$$AddResourceFormDataImplCopyWith<$Res> {
+  __$$AddResourceFormDataImplCopyWithImpl(_$AddResourceFormDataImpl _value,
+      $Res Function(_$AddResourceFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -170,7 +170,7 @@ class __$$_AddResourceFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? failureOrSuccessOption = null,
   }) {
-    return _then(_$_AddResourceFormData(
+    return _then(_$AddResourceFormDataImpl(
       resource: null == resource
           ? _value.resource
           : resource // ignore: cast_nullable_to_non_nullable
@@ -213,10 +213,10 @@ class __$$_AddResourceFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddResourceFormData
+class _$AddResourceFormDataImpl
     with DiagnosticableTreeMixin
     implements _AddResourceFormData {
-  const _$_AddResourceFormData(
+  const _$AddResourceFormDataImpl(
       {required this.resource,
       required this.category,
       required this.fileMOBILE,
@@ -274,7 +274,7 @@ class _$_AddResourceFormData
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddResourceFormData &&
+            other is _$AddResourceFormDataImpl &&
             (identical(other.resource, resource) ||
                 other.resource == resource) &&
             (identical(other.category, category) ||
@@ -309,8 +309,8 @@ class _$_AddResourceFormData
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddResourceFormDataCopyWith<_$_AddResourceFormData> get copyWith =>
-      __$$_AddResourceFormDataCopyWithImpl<_$_AddResourceFormData>(
+  _$$AddResourceFormDataImplCopyWith<_$AddResourceFormDataImpl> get copyWith =>
+      __$$AddResourceFormDataImplCopyWithImpl<_$AddResourceFormDataImpl>(
           this, _$identity);
 }
 
@@ -325,7 +325,7 @@ abstract class _AddResourceFormData implements AddResourceFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ResourceFailure, UniqueId>>
-          failureOrSuccessOption}) = _$_AddResourceFormData;
+          failureOrSuccessOption}) = _$AddResourceFormDataImpl;
 
   @override
   Resource get resource;
@@ -347,6 +347,6 @@ abstract class _AddResourceFormData implements AddResourceFormData {
   Option<Either<ResourceFailure, UniqueId>> get failureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_AddResourceFormDataCopyWith<_$_AddResourceFormData> get copyWith =>
+  _$$AddResourceFormDataImplCopyWith<_$AddResourceFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

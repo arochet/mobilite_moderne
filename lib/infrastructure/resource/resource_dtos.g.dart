@@ -6,8 +6,8 @@ part of 'resource_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ResourceDTO _$$_ResourceDTOFromJson(Map<String, dynamic> json) =>
-    _$_ResourceDTO(
+_$ResourceDTOImpl _$$ResourceDTOImplFromJson(Map<String, dynamic> json) =>
+    _$ResourceDTOImpl(
       nom: json['nom'] as String,
       type: json['type'] as String,
       documentPath: json['documentPath'] as String,
@@ -20,7 +20,7 @@ _$_ResourceDTO _$$_ResourceDTOFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
     );
 
-Map<String, dynamic> _$$_ResourceDTOToJson(_$_ResourceDTO instance) =>
+Map<String, dynamic> _$$ResourceDTOImplToJson(_$ResourceDTOImpl instance) =>
     <String, dynamic>{
       'nom': instance.nom,
       'type': instance.type,

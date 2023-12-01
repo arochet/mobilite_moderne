@@ -6,7 +6,8 @@ part of 'choice_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ChoiceDTO _$$_ChoiceDTOFromJson(Map<String, dynamic> json) => _$_ChoiceDTO(
+_$ChoiceDTOImpl _$$ChoiceDTOImplFromJson(Map<String, dynamic> json) =>
+    _$ChoiceDTOImpl(
       nom: json['nom'] as String,
       question: json['question'] as String?,
       answer: json['answer'] as String?,
@@ -15,7 +16,7 @@ _$_ChoiceDTO _$$_ChoiceDTOFromJson(Map<String, dynamic> json) => _$_ChoiceDTO(
           .toList(),
     );
 
-Map<String, dynamic> _$$_ChoiceDTOToJson(_$_ChoiceDTO instance) =>
+Map<String, dynamic> _$$ChoiceDTOImplToJson(_$ChoiceDTOImpl instance) =>
     <String, dynamic>{
       'nom': instance.nom,
       'question': instance.question,

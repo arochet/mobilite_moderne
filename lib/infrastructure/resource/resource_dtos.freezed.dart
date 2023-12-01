@@ -134,11 +134,11 @@ class _$ResourceDTOCopyWithImpl<$Res, $Val extends ResourceDTO>
 }
 
 /// @nodoc
-abstract class _$$_ResourceDTOCopyWith<$Res>
+abstract class _$$ResourceDTOImplCopyWith<$Res>
     implements $ResourceDTOCopyWith<$Res> {
-  factory _$$_ResourceDTOCopyWith(
-          _$_ResourceDTO value, $Res Function(_$_ResourceDTO) then) =
-      __$$_ResourceDTOCopyWithImpl<$Res>;
+  factory _$$ResourceDTOImplCopyWith(
+          _$ResourceDTOImpl value, $Res Function(_$ResourceDTOImpl) then) =
+      __$$ResourceDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -155,11 +155,11 @@ abstract class _$$_ResourceDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ResourceDTOCopyWithImpl<$Res>
-    extends _$ResourceDTOCopyWithImpl<$Res, _$_ResourceDTO>
-    implements _$$_ResourceDTOCopyWith<$Res> {
-  __$$_ResourceDTOCopyWithImpl(
-      _$_ResourceDTO _value, $Res Function(_$_ResourceDTO) _then)
+class __$$ResourceDTOImplCopyWithImpl<$Res>
+    extends _$ResourceDTOCopyWithImpl<$Res, _$ResourceDTOImpl>
+    implements _$$ResourceDTOImplCopyWith<$Res> {
+  __$$ResourceDTOImplCopyWithImpl(
+      _$ResourceDTOImpl _value, $Res Function(_$ResourceDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,7 +176,7 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
     Object? mainCategory = null,
     Object? image = null,
   }) {
-    return _then(_$_ResourceDTO(
+    return _then(_$ResourceDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -223,8 +223,8 @@ class __$$_ResourceDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
-  const _$_ResourceDTO(
+class _$ResourceDTOImpl extends _ResourceDTO with DiagnosticableTreeMixin {
+  const _$ResourceDTOImpl(
       {@JsonKey(ignore: true) this.id,
       required this.nom,
       required this.type,
@@ -238,8 +238,8 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
       : _keyword = keyword,
         super._();
 
-  factory _$_ResourceDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ResourceDTOFromJson(json);
+  factory _$ResourceDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResourceDTOImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -302,7 +302,7 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ResourceDTO &&
+            other is _$ResourceDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.type, type) || other.type == type) &&
@@ -338,12 +338,12 @@ class _$_ResourceDTO extends _ResourceDTO with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResourceDTOCopyWith<_$_ResourceDTO> get copyWith =>
-      __$$_ResourceDTOCopyWithImpl<_$_ResourceDTO>(this, _$identity);
+  _$$ResourceDTOImplCopyWith<_$ResourceDTOImpl> get copyWith =>
+      __$$ResourceDTOImplCopyWithImpl<_$ResourceDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResourceDTOToJson(
+    return _$$ResourceDTOImplToJson(
       this,
     );
   }
@@ -360,11 +360,11 @@ abstract class _ResourceDTO extends ResourceDTO {
       required final String description,
       required final String shortDescription,
       required final String mainCategory,
-      required final String image}) = _$_ResourceDTO;
+      required final String image}) = _$ResourceDTOImpl;
   const _ResourceDTO._() : super._();
 
   factory _ResourceDTO.fromJson(Map<String, dynamic> json) =
-      _$_ResourceDTO.fromJson;
+      _$ResourceDTOImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -396,6 +396,6 @@ abstract class _ResourceDTO extends ResourceDTO {
   String get image;
   @override
   @JsonKey(ignore: true)
-  _$$_ResourceDTOCopyWith<_$_ResourceDTO> get copyWith =>
+  _$$ResourceDTOImplCopyWith<_$ResourceDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

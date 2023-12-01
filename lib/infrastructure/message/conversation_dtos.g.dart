@@ -6,14 +6,16 @@ part of 'conversation_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConversationDTO _$$_ConversationDTOFromJson(Map<String, dynamic> json) =>
-    _$_ConversationDTO(
+_$ConversationDTOImpl _$$ConversationDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConversationDTOImpl(
       name: json['name'] as String?,
       dateLastMessage: json['dateLastMessage'] as int?,
       isRead: json['isRead'] as bool?,
     );
 
-Map<String, dynamic> _$$_ConversationDTOToJson(_$_ConversationDTO instance) =>
+Map<String, dynamic> _$$ConversationDTOImplToJson(
+        _$ConversationDTOImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'dateLastMessage': instance.dateLastMessage,

@@ -81,11 +81,12 @@ class _$ReauthenticateFormDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ReauthenticateFormDataCopyWith<$Res>
+abstract class _$$ReauthenticateFormDataImplCopyWith<$Res>
     implements $ReauthenticateFormDataCopyWith<$Res> {
-  factory _$$_ReauthenticateFormDataCopyWith(_$_ReauthenticateFormData value,
-          $Res Function(_$_ReauthenticateFormData) then) =
-      __$$_ReauthenticateFormDataCopyWithImpl<$Res>;
+  factory _$$ReauthenticateFormDataImplCopyWith(
+          _$ReauthenticateFormDataImpl value,
+          $Res Function(_$ReauthenticateFormDataImpl) then) =
+      __$$ReauthenticateFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -96,12 +97,13 @@ abstract class _$$_ReauthenticateFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ReauthenticateFormDataCopyWithImpl<$Res>
+class __$$ReauthenticateFormDataImplCopyWithImpl<$Res>
     extends _$ReauthenticateFormDataCopyWithImpl<$Res,
-        _$_ReauthenticateFormData>
-    implements _$$_ReauthenticateFormDataCopyWith<$Res> {
-  __$$_ReauthenticateFormDataCopyWithImpl(_$_ReauthenticateFormData _value,
-      $Res Function(_$_ReauthenticateFormData) _then)
+        _$ReauthenticateFormDataImpl>
+    implements _$$ReauthenticateFormDataImplCopyWith<$Res> {
+  __$$ReauthenticateFormDataImplCopyWithImpl(
+      _$ReauthenticateFormDataImpl _value,
+      $Res Function(_$ReauthenticateFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +114,7 @@ class __$$_ReauthenticateFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_ReauthenticateFormData(
+    return _then(_$ReauthenticateFormDataImpl(
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -135,8 +137,8 @@ class __$$_ReauthenticateFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ReauthenticateFormData implements _ReauthenticateFormData {
-  const _$_ReauthenticateFormData(
+class _$ReauthenticateFormDataImpl implements _ReauthenticateFormData {
+  const _$ReauthenticateFormDataImpl(
       {required this.password,
       required this.showErrorMessages,
       required this.isSubmitting,
@@ -160,7 +162,7 @@ class _$_ReauthenticateFormData implements _ReauthenticateFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReauthenticateFormData &&
+            other is _$ReauthenticateFormDataImpl &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
@@ -180,9 +182,9 @@ class _$_ReauthenticateFormData implements _ReauthenticateFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReauthenticateFormDataCopyWith<_$_ReauthenticateFormData> get copyWith =>
-      __$$_ReauthenticateFormDataCopyWithImpl<_$_ReauthenticateFormData>(
-          this, _$identity);
+  _$$ReauthenticateFormDataImplCopyWith<_$ReauthenticateFormDataImpl>
+      get copyWith => __$$ReauthenticateFormDataImplCopyWithImpl<
+          _$ReauthenticateFormDataImpl>(this, _$identity);
 }
 
 abstract class _ReauthenticateFormData implements ReauthenticateFormData {
@@ -191,7 +193,7 @@ abstract class _ReauthenticateFormData implements ReauthenticateFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<ReauthenticateFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_ReauthenticateFormData;
+          authFailureOrSuccessOption}) = _$ReauthenticateFormDataImpl;
 
   @override
   Password get password;
@@ -203,6 +205,6 @@ abstract class _ReauthenticateFormData implements ReauthenticateFormData {
   Option<Either<ReauthenticateFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_ReauthenticateFormDataCopyWith<_$_ReauthenticateFormData> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ReauthenticateFormDataImplCopyWith<_$ReauthenticateFormDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

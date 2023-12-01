@@ -1259,14 +1259,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
-  read_pdf_text:
-    dependency: transitive
-    description:
-      name: read_pdf_text
-      sha256: "7e55a7ad033eae659204c7ba019030041bbad9435e33d7eb45a40410f82d6a64"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.1"
   recase:
     dependency: transitive
     description:
@@ -1428,10 +1420,10 @@ packages:
     dependency: transitive
     description:
       name: stripe_android
-      sha256: ae1f300baf4a97a0668e3d0cbefd1d28f96436061d2dfc4b8d64b4b19cd3952f
+      sha256: "1de36b35c50f33e538c8e4bd6173f0ab8d7d8e6b9e05388488775e439c29b7d2"
       url: "https://pub.dev"
     source: hosted
-    version: "9.6.0"
+    version: "9.6.0+2"
   stripe_ios:
     dependency: transitive
     description:

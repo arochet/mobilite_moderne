@@ -104,11 +104,11 @@ class _$AppCategoryCopyWithImpl<$Res, $Val extends AppCategory>
 }
 
 /// @nodoc
-abstract class _$$_AppCategoryCopyWith<$Res>
+abstract class _$$AppCategoryImplCopyWith<$Res>
     implements $AppCategoryCopyWith<$Res> {
-  factory _$$_AppCategoryCopyWith(
-          _$_AppCategory value, $Res Function(_$_AppCategory) then) =
-      __$$_AppCategoryCopyWithImpl<$Res>;
+  factory _$$AppCategoryImplCopyWith(
+          _$AppCategoryImpl value, $Res Function(_$AppCategoryImpl) then) =
+      __$$AppCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_AppCategoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppCategoryCopyWithImpl<$Res>
-    extends _$AppCategoryCopyWithImpl<$Res, _$_AppCategory>
-    implements _$$_AppCategoryCopyWith<$Res> {
-  __$$_AppCategoryCopyWithImpl(
-      _$_AppCategory _value, $Res Function(_$_AppCategory) _then)
+class __$$AppCategoryImplCopyWithImpl<$Res>
+    extends _$AppCategoryCopyWithImpl<$Res, _$AppCategoryImpl>
+    implements _$$AppCategoryImplCopyWith<$Res> {
+  __$$AppCategoryImplCopyWithImpl(
+      _$AppCategoryImpl _value, $Res Function(_$AppCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_AppCategoryCopyWithImpl<$Res>
     Object? listResource = freezed,
     Object? hasSubCategory = null,
   }) {
-    return _then(_$_AppCategory(
+    return _then(_$AppCategoryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_AppCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppCategory extends _AppCategory {
-  const _$_AppCategory(
+class _$AppCategoryImpl extends _AppCategory {
+  const _$AppCategoryImpl(
       {required this.id,
       required this.nom,
       required this.subcategory,
@@ -221,7 +221,7 @@ class _$_AppCategory extends _AppCategory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppCategory &&
+            other is _$AppCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nom, nom) || other.nom == nom) &&
             (identical(other.subcategory, subcategory) ||
@@ -240,8 +240,8 @@ class _$_AppCategory extends _AppCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppCategoryCopyWith<_$_AppCategory> get copyWith =>
-      __$$_AppCategoryCopyWithImpl<_$_AppCategory>(this, _$identity);
+  _$$AppCategoryImplCopyWith<_$AppCategoryImpl> get copyWith =>
+      __$$AppCategoryImplCopyWithImpl<_$AppCategoryImpl>(this, _$identity);
 }
 
 abstract class _AppCategory extends AppCategory {
@@ -251,7 +251,7 @@ abstract class _AppCategory extends AppCategory {
       required final Either<AppCategoryFailure, List<AppCategory>>? subcategory,
       required final String path,
       final List<Resource>? listResource,
-      required final bool hasSubCategory}) = _$_AppCategory;
+      required final bool hasSubCategory}) = _$AppCategoryImpl;
   const _AppCategory._() : super._();
 
   @override
@@ -278,6 +278,6 @@ abstract class _AppCategory extends AppCategory {
   bool get hasSubCategory;
   @override
   @JsonKey(ignore: true)
-  _$$_AppCategoryCopyWith<_$_AppCategory> get copyWith =>
+  _$$AppCategoryImplCopyWith<_$AppCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

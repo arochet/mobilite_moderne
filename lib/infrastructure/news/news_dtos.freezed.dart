@@ -111,10 +111,10 @@ class _$NewsDTOCopyWithImpl<$Res, $Val extends NewsDTO>
 }
 
 /// @nodoc
-abstract class _$$_NewsDTOCopyWith<$Res> implements $NewsDTOCopyWith<$Res> {
-  factory _$$_NewsDTOCopyWith(
-          _$_NewsDTO value, $Res Function(_$_NewsDTO) then) =
-      __$$_NewsDTOCopyWithImpl<$Res>;
+abstract class _$$NewsDTOImplCopyWith<$Res> implements $NewsDTOCopyWith<$Res> {
+  factory _$$NewsDTOImplCopyWith(
+          _$NewsDTOImpl value, $Res Function(_$NewsDTOImpl) then) =
+      __$$NewsDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -129,10 +129,11 @@ abstract class _$$_NewsDTOCopyWith<$Res> implements $NewsDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NewsDTOCopyWithImpl<$Res>
-    extends _$NewsDTOCopyWithImpl<$Res, _$_NewsDTO>
-    implements _$$_NewsDTOCopyWith<$Res> {
-  __$$_NewsDTOCopyWithImpl(_$_NewsDTO _value, $Res Function(_$_NewsDTO) _then)
+class __$$NewsDTOImplCopyWithImpl<$Res>
+    extends _$NewsDTOCopyWithImpl<$Res, _$NewsDTOImpl>
+    implements _$$NewsDTOImplCopyWith<$Res> {
+  __$$NewsDTOImplCopyWithImpl(
+      _$NewsDTOImpl _value, $Res Function(_$NewsDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,7 +148,7 @@ class __$$_NewsDTOCopyWithImpl<$Res>
     Object? datePublished = null,
     Object? listRessources = freezed,
   }) {
-    return _then(_$_NewsDTO(
+    return _then(_$NewsDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -186,8 +187,8 @@ class __$$_NewsDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NewsDTO extends _NewsDTO {
-  const _$_NewsDTO(
+class _$NewsDTOImpl extends _NewsDTO {
+  const _$NewsDTOImpl(
       {@JsonKey(ignore: true) this.id,
       required this.title,
       required this.content,
@@ -200,8 +201,8 @@ class _$_NewsDTO extends _NewsDTO {
         _listRessources = listRessources,
         super._();
 
-  factory _$_NewsDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_NewsDTOFromJson(json);
+  factory _$NewsDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewsDTOImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -243,7 +244,7 @@ class _$_NewsDTO extends _NewsDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewsDTO &&
+            other is _$NewsDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
@@ -273,12 +274,12 @@ class _$_NewsDTO extends _NewsDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsDTOCopyWith<_$_NewsDTO> get copyWith =>
-      __$$_NewsDTOCopyWithImpl<_$_NewsDTO>(this, _$identity);
+  _$$NewsDTOImplCopyWith<_$NewsDTOImpl> get copyWith =>
+      __$$NewsDTOImplCopyWithImpl<_$NewsDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NewsDTOToJson(
+    return _$$NewsDTOImplToJson(
       this,
     );
   }
@@ -293,10 +294,10 @@ abstract class _NewsDTO extends NewsDTO {
       required final String subcontent,
       required final List<String> keywords,
       required final int datePublished,
-      required final List<String>? listRessources}) = _$_NewsDTO;
+      required final List<String>? listRessources}) = _$NewsDTOImpl;
   const _NewsDTO._() : super._();
 
-  factory _NewsDTO.fromJson(Map<String, dynamic> json) = _$_NewsDTO.fromJson;
+  factory _NewsDTO.fromJson(Map<String, dynamic> json) = _$NewsDTOImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -317,6 +318,6 @@ abstract class _NewsDTO extends NewsDTO {
   List<String>? get listRessources;
   @override
   @JsonKey(ignore: true)
-  _$$_NewsDTOCopyWith<_$_NewsDTO> get copyWith =>
+  _$$NewsDTOImplCopyWith<_$NewsDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

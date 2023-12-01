@@ -97,11 +97,11 @@ class _$AddNewsFormDataCopyWithImpl<$Res, $Val extends AddNewsFormData>
 }
 
 /// @nodoc
-abstract class _$$_AddNewsFormDataCopyWith<$Res>
+abstract class _$$AddNewsFormDataImplCopyWith<$Res>
     implements $AddNewsFormDataCopyWith<$Res> {
-  factory _$$_AddNewsFormDataCopyWith(
-          _$_AddNewsFormData value, $Res Function(_$_AddNewsFormData) then) =
-      __$$_AddNewsFormDataCopyWithImpl<$Res>;
+  factory _$$AddNewsFormDataImplCopyWith(_$AddNewsFormDataImpl value,
+          $Res Function(_$AddNewsFormDataImpl) then) =
+      __$$AddNewsFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,11 +116,11 @@ abstract class _$$_AddNewsFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddNewsFormDataCopyWithImpl<$Res>
-    extends _$AddNewsFormDataCopyWithImpl<$Res, _$_AddNewsFormData>
-    implements _$$_AddNewsFormDataCopyWith<$Res> {
-  __$$_AddNewsFormDataCopyWithImpl(
-      _$_AddNewsFormData _value, $Res Function(_$_AddNewsFormData) _then)
+class __$$AddNewsFormDataImplCopyWithImpl<$Res>
+    extends _$AddNewsFormDataCopyWithImpl<$Res, _$AddNewsFormDataImpl>
+    implements _$$AddNewsFormDataImplCopyWith<$Res> {
+  __$$AddNewsFormDataImplCopyWithImpl(
+      _$AddNewsFormDataImpl _value, $Res Function(_$AddNewsFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_AddNewsFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_AddNewsFormData(
+    return _then(_$AddNewsFormDataImpl(
       news: null == news
           ? _value.news
           : news // ignore: cast_nullable_to_non_nullable
@@ -159,8 +159,8 @@ class __$$_AddNewsFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddNewsFormData implements _AddNewsFormData {
-  const _$_AddNewsFormData(
+class _$AddNewsFormDataImpl implements _AddNewsFormData {
+  const _$AddNewsFormDataImpl(
       {required this.news,
       required this.image,
       required this.showErrorMessages,
@@ -187,7 +187,7 @@ class _$_AddNewsFormData implements _AddNewsFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddNewsFormData &&
+            other is _$AddNewsFormDataImpl &&
             (identical(other.news, news) || other.news == news) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
@@ -207,8 +207,9 @@ class _$_AddNewsFormData implements _AddNewsFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddNewsFormDataCopyWith<_$_AddNewsFormData> get copyWith =>
-      __$$_AddNewsFormDataCopyWithImpl<_$_AddNewsFormData>(this, _$identity);
+  _$$AddNewsFormDataImplCopyWith<_$AddNewsFormDataImpl> get copyWith =>
+      __$$AddNewsFormDataImplCopyWithImpl<_$AddNewsFormDataImpl>(
+          this, _$identity);
 }
 
 abstract class _AddNewsFormData implements AddNewsFormData {
@@ -218,7 +219,7 @@ abstract class _AddNewsFormData implements AddNewsFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<NewsFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_AddNewsFormData;
+          authFailureOrSuccessOption}) = _$AddNewsFormDataImpl;
 
   @override
   News get news;
@@ -232,6 +233,6 @@ abstract class _AddNewsFormData implements AddNewsFormData {
   Option<Either<NewsFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_AddNewsFormDataCopyWith<_$_AddNewsFormData> get copyWith =>
+  _$$AddNewsFormDataImplCopyWith<_$AddNewsFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

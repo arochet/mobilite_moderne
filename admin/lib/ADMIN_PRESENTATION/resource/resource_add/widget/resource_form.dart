@@ -18,7 +18,6 @@ import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 
 class ResourceFormProvider extends ConsumerWidget {
   const ResourceFormProvider({
@@ -315,7 +314,8 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
   Future<String> getPDFtext(String path) async {
     String text = "";
     try {
-      text = await ReadPdfText.getPDFtext(path);
+      //text = await ReadPdfText.getPDFtext(path);
+      return text;
     } on PlatformException {
       print('Failed to get PDF text.');
     }

@@ -81,25 +81,25 @@ class _$DeleteFailureCopyWithImpl<$Res, $Val extends DeleteFailure>
 }
 
 /// @nodoc
-abstract class _$$CancelledByUserCopyWith<$Res> {
-  factory _$$CancelledByUserCopyWith(
-          _$CancelledByUser value, $Res Function(_$CancelledByUser) then) =
-      __$$CancelledByUserCopyWithImpl<$Res>;
+abstract class _$$CancelledByUserImplCopyWith<$Res> {
+  factory _$$CancelledByUserImplCopyWith(_$CancelledByUserImpl value,
+          $Res Function(_$CancelledByUserImpl) then) =
+      __$$CancelledByUserImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CancelledByUserCopyWithImpl<$Res>
-    extends _$DeleteFailureCopyWithImpl<$Res, _$CancelledByUser>
-    implements _$$CancelledByUserCopyWith<$Res> {
-  __$$CancelledByUserCopyWithImpl(
-      _$CancelledByUser _value, $Res Function(_$CancelledByUser) _then)
+class __$$CancelledByUserImplCopyWithImpl<$Res>
+    extends _$DeleteFailureCopyWithImpl<$Res, _$CancelledByUserImpl>
+    implements _$$CancelledByUserImplCopyWith<$Res> {
+  __$$CancelledByUserImplCopyWithImpl(
+      _$CancelledByUserImpl _value, $Res Function(_$CancelledByUserImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CancelledByUser implements CancelledByUser {
-  const _$CancelledByUser();
+class _$CancelledByUserImpl implements CancelledByUser {
+  const _$CancelledByUserImpl();
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ class _$CancelledByUser implements CancelledByUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CancelledByUser);
+        (other.runtimeType == runtimeType && other is _$CancelledByUserImpl);
   }
 
   @override
@@ -185,29 +185,29 @@ class _$CancelledByUser implements CancelledByUser {
 }
 
 abstract class CancelledByUser implements DeleteFailure {
-  const factory CancelledByUser() = _$CancelledByUser;
+  const factory CancelledByUser() = _$CancelledByUserImpl;
 }
 
 /// @nodoc
-abstract class _$$ServerErrorCopyWith<$Res> {
-  factory _$$ServerErrorCopyWith(
-          _$ServerError value, $Res Function(_$ServerError) then) =
-      __$$ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ServerErrorCopyWithImpl<$Res>
-    extends _$DeleteFailureCopyWithImpl<$Res, _$ServerError>
-    implements _$$ServerErrorCopyWith<$Res> {
-  __$$ServerErrorCopyWithImpl(
-      _$ServerError _value, $Res Function(_$ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$DeleteFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$ServerErrorImpl implements ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -217,7 +217,7 @@ class _$ServerError implements ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -293,29 +293,29 @@ class _$ServerError implements ServerError {
 }
 
 abstract class ServerError implements DeleteFailure {
-  const factory ServerError() = _$ServerError;
+  const factory ServerError() = _$ServerErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$RequiresRecentLoginCopyWith<$Res> {
-  factory _$$RequiresRecentLoginCopyWith(_$RequiresRecentLogin value,
-          $Res Function(_$RequiresRecentLogin) then) =
-      __$$RequiresRecentLoginCopyWithImpl<$Res>;
+abstract class _$$RequiresRecentLoginImplCopyWith<$Res> {
+  factory _$$RequiresRecentLoginImplCopyWith(_$RequiresRecentLoginImpl value,
+          $Res Function(_$RequiresRecentLoginImpl) then) =
+      __$$RequiresRecentLoginImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RequiresRecentLoginCopyWithImpl<$Res>
-    extends _$DeleteFailureCopyWithImpl<$Res, _$RequiresRecentLogin>
-    implements _$$RequiresRecentLoginCopyWith<$Res> {
-  __$$RequiresRecentLoginCopyWithImpl(
-      _$RequiresRecentLogin _value, $Res Function(_$RequiresRecentLogin) _then)
+class __$$RequiresRecentLoginImplCopyWithImpl<$Res>
+    extends _$DeleteFailureCopyWithImpl<$Res, _$RequiresRecentLoginImpl>
+    implements _$$RequiresRecentLoginImplCopyWith<$Res> {
+  __$$RequiresRecentLoginImplCopyWithImpl(_$RequiresRecentLoginImpl _value,
+      $Res Function(_$RequiresRecentLoginImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RequiresRecentLogin implements RequiresRecentLogin {
-  const _$RequiresRecentLogin();
+class _$RequiresRecentLoginImpl implements RequiresRecentLogin {
+  const _$RequiresRecentLoginImpl();
 
   @override
   String toString() {
@@ -325,7 +325,8 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RequiresRecentLogin);
+        (other.runtimeType == runtimeType &&
+            other is _$RequiresRecentLoginImpl);
   }
 
   @override
@@ -401,5 +402,5 @@ class _$RequiresRecentLogin implements RequiresRecentLogin {
 }
 
 abstract class RequiresRecentLogin implements DeleteFailure {
-  const factory RequiresRecentLogin() = _$RequiresRecentLogin;
+  const factory RequiresRecentLogin() = _$RequiresRecentLoginImpl;
 }

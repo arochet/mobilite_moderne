@@ -1,7 +1,6 @@
 import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 

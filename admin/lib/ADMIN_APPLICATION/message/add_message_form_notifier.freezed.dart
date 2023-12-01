@@ -90,11 +90,11 @@ class _$AddMessageFormDataCopyWithImpl<$Res, $Val extends AddMessageFormData>
 }
 
 /// @nodoc
-abstract class _$$_AddMessageFormDataCopyWith<$Res>
+abstract class _$$AddMessageFormDataImplCopyWith<$Res>
     implements $AddMessageFormDataCopyWith<$Res> {
-  factory _$$_AddMessageFormDataCopyWith(_$_AddMessageFormData value,
-          $Res Function(_$_AddMessageFormData) then) =
-      __$$_AddMessageFormDataCopyWithImpl<$Res>;
+  factory _$$AddMessageFormDataImplCopyWith(_$AddMessageFormDataImpl value,
+          $Res Function(_$AddMessageFormDataImpl) then) =
+      __$$AddMessageFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +108,11 @@ abstract class _$$_AddMessageFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddMessageFormDataCopyWithImpl<$Res>
-    extends _$AddMessageFormDataCopyWithImpl<$Res, _$_AddMessageFormData>
-    implements _$$_AddMessageFormDataCopyWith<$Res> {
-  __$$_AddMessageFormDataCopyWithImpl(
-      _$_AddMessageFormData _value, $Res Function(_$_AddMessageFormData) _then)
+class __$$AddMessageFormDataImplCopyWithImpl<$Res>
+    extends _$AddMessageFormDataCopyWithImpl<$Res, _$AddMessageFormDataImpl>
+    implements _$$AddMessageFormDataImplCopyWith<$Res> {
+  __$$AddMessageFormDataImplCopyWithImpl(_$AddMessageFormDataImpl _value,
+      $Res Function(_$AddMessageFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_AddMessageFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_AddMessageFormData(
+    return _then(_$AddMessageFormDataImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ class __$$_AddMessageFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddMessageFormData implements _AddMessageFormData {
-  const _$_AddMessageFormData(
+class _$AddMessageFormDataImpl implements _AddMessageFormData {
+  const _$AddMessageFormDataImpl(
       {required this.message,
       required this.showErrorMessages,
       required this.isSubmitting,
@@ -171,7 +171,7 @@ class _$_AddMessageFormData implements _AddMessageFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddMessageFormData &&
+            other is _$AddMessageFormDataImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
@@ -190,8 +190,8 @@ class _$_AddMessageFormData implements _AddMessageFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddMessageFormDataCopyWith<_$_AddMessageFormData> get copyWith =>
-      __$$_AddMessageFormDataCopyWithImpl<_$_AddMessageFormData>(
+  _$$AddMessageFormDataImplCopyWith<_$AddMessageFormDataImpl> get copyWith =>
+      __$$AddMessageFormDataImplCopyWithImpl<_$AddMessageFormDataImpl>(
           this, _$identity);
 }
 
@@ -201,7 +201,7 @@ abstract class _AddMessageFormData implements AddMessageFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<MessageFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_AddMessageFormData;
+          authFailureOrSuccessOption}) = _$AddMessageFormDataImpl;
 
   @override
   Message get message;
@@ -213,6 +213,6 @@ abstract class _AddMessageFormData implements AddMessageFormData {
   Option<Either<MessageFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_AddMessageFormDataCopyWith<_$_AddMessageFormData> get copyWith =>
+  _$$AddMessageFormDataImplCopyWith<_$AddMessageFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

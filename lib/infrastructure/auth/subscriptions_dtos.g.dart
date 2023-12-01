@@ -6,8 +6,9 @@ part of 'subscriptions_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SubscriptionsDTO _$$_SubscriptionsDTOFromJson(Map<String, dynamic> json) =>
-    _$_SubscriptionsDTO(
+_$SubscriptionsDTOImpl _$$SubscriptionsDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SubscriptionsDTOImpl(
       id: json['id'] as String?,
       startDate: json['start_date'] as int?,
       billingCycleAnchor: json['billing_cycle_anchor'] as int?,
@@ -16,7 +17,8 @@ _$_SubscriptionsDTO _$$_SubscriptionsDTOFromJson(Map<String, dynamic> json) =>
       idStripe: json['idStripe'] as String?,
     );
 
-Map<String, dynamic> _$$_SubscriptionsDTOToJson(_$_SubscriptionsDTO instance) =>
+Map<String, dynamic> _$$SubscriptionsDTOImplToJson(
+        _$SubscriptionsDTOImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'start_date': instance.startDate,

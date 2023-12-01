@@ -102,11 +102,11 @@ class _$RegisterFormDataCopyWithImpl<$Res, $Val extends RegisterFormData>
 }
 
 /// @nodoc
-abstract class _$$_RegisterFormDataCopyWith<$Res>
+abstract class _$$RegisterFormDataImplCopyWith<$Res>
     implements $RegisterFormDataCopyWith<$Res> {
-  factory _$$_RegisterFormDataCopyWith(
-          _$_RegisterFormData value, $Res Function(_$_RegisterFormData) then) =
-      __$$_RegisterFormDataCopyWithImpl<$Res>;
+  factory _$$RegisterFormDataImplCopyWith(_$RegisterFormDataImpl value,
+          $Res Function(_$RegisterFormDataImpl) then) =
+      __$$RegisterFormDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,11 +120,11 @@ abstract class _$$_RegisterFormDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RegisterFormDataCopyWithImpl<$Res>
-    extends _$RegisterFormDataCopyWithImpl<$Res, _$_RegisterFormData>
-    implements _$$_RegisterFormDataCopyWith<$Res> {
-  __$$_RegisterFormDataCopyWithImpl(
-      _$_RegisterFormData _value, $Res Function(_$_RegisterFormData) _then)
+class __$$RegisterFormDataImplCopyWithImpl<$Res>
+    extends _$RegisterFormDataCopyWithImpl<$Res, _$RegisterFormDataImpl>
+    implements _$$RegisterFormDataImplCopyWith<$Res> {
+  __$$RegisterFormDataImplCopyWithImpl(_$RegisterFormDataImpl _value,
+      $Res Function(_$RegisterFormDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_RegisterFormDataCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? authFailureOrSuccessOption = null,
   }) {
-    return _then(_$_RegisterFormData(
+    return _then(_$RegisterFormDataImpl(
       nomUtilisateur: null == nomUtilisateur
           ? _value.nomUtilisateur
           : nomUtilisateur // ignore: cast_nullable_to_non_nullable
@@ -173,8 +173,8 @@ class __$$_RegisterFormDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterFormData implements _RegisterFormData {
-  const _$_RegisterFormData(
+class _$RegisterFormDataImpl implements _RegisterFormData {
+  const _$RegisterFormDataImpl(
       {required this.nomUtilisateur,
       required this.emailAddress,
       required this.password,
@@ -207,7 +207,7 @@ class _$_RegisterFormData implements _RegisterFormData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegisterFormData &&
+            other is _$RegisterFormDataImpl &&
             (identical(other.nomUtilisateur, nomUtilisateur) ||
                 other.nomUtilisateur == nomUtilisateur) &&
             (identical(other.emailAddress, emailAddress) ||
@@ -240,8 +240,9 @@ class _$_RegisterFormData implements _RegisterFormData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegisterFormDataCopyWith<_$_RegisterFormData> get copyWith =>
-      __$$_RegisterFormDataCopyWithImpl<_$_RegisterFormData>(this, _$identity);
+  _$$RegisterFormDataImplCopyWith<_$RegisterFormDataImpl> get copyWith =>
+      __$$RegisterFormDataImplCopyWithImpl<_$RegisterFormDataImpl>(
+          this, _$identity);
 }
 
 abstract class _RegisterFormData implements RegisterFormData {
@@ -253,7 +254,7 @@ abstract class _RegisterFormData implements RegisterFormData {
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<AuthFailure, Unit>>
-          authFailureOrSuccessOption}) = _$_RegisterFormData;
+          authFailureOrSuccessOption}) = _$RegisterFormDataImpl;
 
   @override
   Nom get nomUtilisateur;
@@ -271,6 +272,6 @@ abstract class _RegisterFormData implements RegisterFormData {
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
-  _$$_RegisterFormDataCopyWith<_$_RegisterFormData> get copyWith =>
+  _$$RegisterFormDataImplCopyWith<_$RegisterFormDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

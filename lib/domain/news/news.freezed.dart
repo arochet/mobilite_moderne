@@ -127,9 +127,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
 }
 
 /// @nodoc
-abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
-  factory _$$_NewsCopyWith(_$_News value, $Res Function(_$_News) then) =
-      __$$_NewsCopyWithImpl<$Res>;
+abstract class _$$NewsImplCopyWith<$Res> implements $NewsCopyWith<$Res> {
+  factory _$$NewsImplCopyWith(
+          _$NewsImpl value, $Res Function(_$NewsImpl) then) =
+      __$$NewsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -146,9 +147,10 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
-    implements _$$_NewsCopyWith<$Res> {
-  __$$_NewsCopyWithImpl(_$_News _value, $Res Function(_$_News) _then)
+class __$$NewsImplCopyWithImpl<$Res>
+    extends _$NewsCopyWithImpl<$Res, _$NewsImpl>
+    implements _$$NewsImplCopyWith<$Res> {
+  __$$NewsImplCopyWithImpl(_$NewsImpl _value, $Res Function(_$NewsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -165,7 +167,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
     Object? imageUrl = freezed,
     Object? listRessources = null,
   }) {
-    return _then(_$_News(
+    return _then(_$NewsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -212,8 +214,8 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res, _$_News>
 
 /// @nodoc
 
-class _$_News extends _News {
-  const _$_News(
+class _$NewsImpl extends _News {
+  const _$NewsImpl(
       {required this.id,
       required this.title,
       required this.content,
@@ -278,7 +280,7 @@ class _$_News extends _News {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_News &&
+            other is _$NewsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
@@ -313,8 +315,8 @@ class _$_News extends _News {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewsCopyWith<_$_News> get copyWith =>
-      __$$_NewsCopyWithImpl<_$_News>(this, _$identity);
+  _$$NewsImplCopyWith<_$NewsImpl> get copyWith =>
+      __$$NewsImplCopyWithImpl<_$NewsImpl>(this, _$identity);
 }
 
 abstract class _News extends News {
@@ -328,7 +330,7 @@ abstract class _News extends News {
       required final DateTime datePublished,
       final Future<Uint8List?>? imageBytes,
       final Future<String>? imageUrl,
-      required final List<Resource> listRessources}) = _$_News;
+      required final List<Resource> listRessources}) = _$NewsImpl;
   const _News._() : super._();
 
   @override
@@ -361,5 +363,6 @@ abstract class _News extends News {
   List<Resource> get listRessources;
   @override
   @JsonKey(ignore: true)
-  _$$_NewsCopyWith<_$_News> get copyWith => throw _privateConstructorUsedError;
+  _$$NewsImplCopyWith<_$NewsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

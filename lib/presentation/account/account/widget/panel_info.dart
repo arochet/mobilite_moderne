@@ -51,6 +51,16 @@ class _PanelInfoState extends ConsumerState<PanelInfo> {
           context.router.push(Legal_mentionRoute());
         },
       ),
+      //Mention légale
+      ItemPanelList(
+        title: 'Données utilisateurs',
+        icon: Icons.account_box,
+        onTap: () {
+          printDev();
+
+          context.router.push(Delete_accountRoute());
+        },
+      ),
     ]);
   }
 }

@@ -75,22 +75,22 @@ class _$ConversationCopyWithImpl<$Res, $Val extends Conversation>
 }
 
 /// @nodoc
-abstract class _$$_ConversationCopyWith<$Res>
+abstract class _$$ConversationImplCopyWith<$Res>
     implements $ConversationCopyWith<$Res> {
-  factory _$$_ConversationCopyWith(
-          _$_Conversation value, $Res Function(_$_Conversation) then) =
-      __$$_ConversationCopyWithImpl<$Res>;
+  factory _$$ConversationImplCopyWith(
+          _$ConversationImpl value, $Res Function(_$ConversationImpl) then) =
+      __$$ConversationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UniqueId id, Nom name, DateTime? dateLastMessage, bool? isRead});
 }
 
 /// @nodoc
-class __$$_ConversationCopyWithImpl<$Res>
-    extends _$ConversationCopyWithImpl<$Res, _$_Conversation>
-    implements _$$_ConversationCopyWith<$Res> {
-  __$$_ConversationCopyWithImpl(
-      _$_Conversation _value, $Res Function(_$_Conversation) _then)
+class __$$ConversationImplCopyWithImpl<$Res>
+    extends _$ConversationCopyWithImpl<$Res, _$ConversationImpl>
+    implements _$$ConversationImplCopyWith<$Res> {
+  __$$ConversationImplCopyWithImpl(
+      _$ConversationImpl _value, $Res Function(_$ConversationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_ConversationCopyWithImpl<$Res>
     Object? dateLastMessage = freezed,
     Object? isRead = freezed,
   }) {
-    return _then(_$_Conversation(
+    return _then(_$ConversationImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_ConversationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Conversation extends _Conversation {
-  const _$_Conversation(
+class _$ConversationImpl extends _Conversation {
+  const _$ConversationImpl(
       {required this.id,
       required this.name,
       required this.dateLastMessage,
@@ -150,7 +150,7 @@ class _$_Conversation extends _Conversation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Conversation &&
+            other is _$ConversationImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateLastMessage, dateLastMessage) ||
@@ -165,8 +165,8 @@ class _$_Conversation extends _Conversation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConversationCopyWith<_$_Conversation> get copyWith =>
-      __$$_ConversationCopyWithImpl<_$_Conversation>(this, _$identity);
+  _$$ConversationImplCopyWith<_$ConversationImpl> get copyWith =>
+      __$$ConversationImplCopyWithImpl<_$ConversationImpl>(this, _$identity);
 }
 
 abstract class _Conversation extends Conversation {
@@ -174,7 +174,7 @@ abstract class _Conversation extends Conversation {
       {required final UniqueId id,
       required final Nom name,
       required final DateTime? dateLastMessage,
-      required final bool? isRead}) = _$_Conversation;
+      required final bool? isRead}) = _$ConversationImpl;
   const _Conversation._() : super._();
 
   @override
@@ -187,6 +187,6 @@ abstract class _Conversation extends Conversation {
   bool? get isRead;
   @override
   @JsonKey(ignore: true)
-  _$$_ConversationCopyWith<_$_Conversation> get copyWith =>
+  _$$ConversationImplCopyWith<_$ConversationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
