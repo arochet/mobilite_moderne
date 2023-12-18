@@ -112,10 +112,7 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
               iconEnabledColor: Colors.white,
               items: ResourceType.values
                   .where((element) => element != ResourceType.link)
-                  .map((ResourceType e) => DropdownMenuItem(
-                        child: Text(e.name),
-                        value: e,
-                      ))
+                  .map((ResourceType e) => DropdownMenuItem(child: Text(e.name), value: e))
                   .toList(),
               onChanged: (ResourceType? value) {
                 if (resourceFormData.nameFile != null) {

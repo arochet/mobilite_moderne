@@ -68,7 +68,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera Library Access Warning</string>
+	<string>Send your video to the assistance</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone  Library Access Warning</string>
 	<key>NSPhotoLibraryUsageDescription</key>
