@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant/choice.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_async.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/app_error.dart';
@@ -74,7 +75,8 @@ class _Body extends StatelessWidget {
             margin: EdgeInsets.all(0),
             child: Padding(
               padding: const EdgeInsets.all(14.0),
-              child: Text("${choice.answer.getOrCrash()}", style: Theme.of(context).textTheme.bodyMedium),
+              child: HtmlWidget("${choice.answer.getOrCrash()}",
+                  textStyle: Theme.of(context).textTheme.bodyMedium),
             ),
           ),
           SpaceH30(),
