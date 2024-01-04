@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/DOMAIN/assistant/choice.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
@@ -76,8 +77,10 @@ class _PanelChoiceView extends StatelessWidget {
                     ),
                     onTap: () => context.router.pop()),
                 SpaceW10(),
-                Text("${choice.nom.getOrCrash().toUpperCase()}",
-                    style: Theme.of(context).textTheme.titleLarge),
+                Expanded(
+                  child: AutoSizeText("${choice.nom.getOrCrash().toUpperCase()}",
+                      style: Theme.of(context).textTheme.titleLarge),
+                ),
               ],
             ),
           ),
