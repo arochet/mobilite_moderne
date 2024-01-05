@@ -12,7 +12,7 @@ class Nom extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory Nom(String input) {
-    return Nom._(validateMaxStringLengthAndNoNull(input, 50));
+    return Nom._(validateMaxStringLengthAndNoNull(input, 100));
   }
 
   const Nom._(this.value);

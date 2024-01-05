@@ -27,8 +27,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Send your video to the assistance</string>
-	<key>NSMicrophoneUsageDescription</key>
 	<string>Send your audio to the assistance</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Send your picture to the assistance</string>

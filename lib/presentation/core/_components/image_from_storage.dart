@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_core/app_icons.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_core/app_widget.dart';
 
 class ImageFromStorage extends StatelessWidget {
@@ -97,8 +98,10 @@ class _NoData extends StatelessWidget {
       height: height,
       //color: colorpanel(900),
       child: Center(
-          child: Text("Pas d'image",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey))),
+          child: Icon(
+        MyFlutterApp.logo_noir,
+        color: Colors.grey,
+      )),
     );
   }
 }

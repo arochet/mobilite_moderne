@@ -65,24 +65,24 @@ class _PanelChoiceView extends StatelessWidget {
           SpaceH20(),
 
           //Titre de la question
-          Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 30,
-                      color: primaryColor,
-                    ),
-                    onTap: () => context.router.pop()),
-                SpaceW10(),
-                Expanded(
-                  child: AutoSizeText("${choice.nom.getOrCrash().toUpperCase()}",
-                      style: Theme.of(context).textTheme.titleLarge),
-                ),
-              ],
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SpaceW20(),
+              InkWell(
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                    color: primaryColor,
+                  ),
+                  onTap: () => context.router.pop()),
+              SpaceW10(),
+              Expanded(
+                child: AutoSizeText("${choice.nom.getOrCrash().toUpperCase()}",
+                    style: Theme.of(context).textTheme.titleLarge),
+              ),
+              SpaceW10(),
+            ],
           ),
           SpaceH20(),
 

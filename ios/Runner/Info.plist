@@ -70,9 +70,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Send your video to the assistance</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Microphone  Library Access Warning</string>
+	<string>Send your audio to the assistance</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Access Warning</string>
+	<string>Send your photo to the assistance</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

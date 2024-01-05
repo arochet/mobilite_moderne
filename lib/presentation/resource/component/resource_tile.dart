@@ -145,7 +145,7 @@ class _CardTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SpaceH10(),
-                  AutoSizeText(resource.mainCategory.name,
+                  AutoSizeText(resource.mainCategory.title,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(color: primaryColor)),
                   SpaceH5(),
                   AutoSizeText(
