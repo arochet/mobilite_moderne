@@ -533,6 +533,7 @@ class FirebaseAuthFacade implements AuthRepository {
   @override
   Future<Either<SubscriptionFailure, Subscriptions?>> isSubscribeTotalAccess(String idStripe) async {
     try {
+      print('idStripe ${idStripe}');
       final response = await getCloudFunctions('ListSubscription', {'idStripe': idStripe});
       final result = json.decode(response.body);
 
@@ -542,7 +543,7 @@ class FirebaseAuthFacade implements AuthRepository {
         return right(null);
       }
     } catch (e) {
-      print('error $e');
+      print('isSubscribeTotalAccess Error $e');
       return left(SubscriptionFailure.serverError());
     }
   }

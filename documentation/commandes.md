@@ -64,3 +64,8 @@ firebase functions:config:set \
     stripe.push="your_push_key" \
     stripe.key="your_live_or_test_key"
 ```
+
+Deployer la fonction CreateSessionCheckout
+```
+firebase deploy --only functions:CreateSessionCheckout
+```

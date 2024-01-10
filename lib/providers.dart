@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobilite_moderne/APPLICATION/account/modify_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/auth_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/account/new_password_form_notifier.dart';
@@ -8,6 +11,7 @@ import 'package:mobilite_moderne/APPLICATION/auth/register_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/reset_password_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/sign_in_form_notifier.dart';
 import 'package:mobilite_moderne/APPLICATION/message/add_message_form_notifier.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_auth.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -155,17 +159,42 @@ final subscriptionNotifierProvider =
   (ref) => SubscriptionNotifier(ref.watch(authRepositoryProvider)),
 );
 
-final userIsSubscribed = FutureProvider.autoDispose<Subscriptions?>((ref) async {
-  final userData = await ref.watch(currentUserData.future);
+final userIsSubscribed = FutureProvider.autoDispose<Either<SubscriptionFailure, Subscriptions?>>((ref) async {
+  final UserData? userData = await ref.watch(currentUserData.future);
+  print('hola $userData');
+
   if (userData != null && userData.idStripe != null) {
     final result = await ref.watch(authRepositoryProvider).isSubscribeTotalAccess(userData.idStripe!);
+    print('result $result');
     if (userData.email?.getOrCrash() == 'alban@yopmail.com') {
-      return Subscriptions.empty();
+      return right(Subscriptions.empty());
     }
-    return result.fold((l) => null, (sub) => sub);
+
+    return result.fold((l) {
+      return left(l);
+    }, (Subscriptions? sub) {
+      //On est gratuit pour le moment avec iOS sauf s'il est bloqué sur iOS
+      print('sub $sub');
+
+      if (kIsWeb) return right(sub);
+
+      if (sub != null) {
+        if (sub.status == true) {
+          return right(sub);
+        } else if (defaultTargetPlatform == TargetPlatform.iOS && userData.isBlockedIOS != true) {
+          return right(Subscriptions.ok());
+        }
+        return right(sub);
+      } else {
+        if (Platform.isIOS) {
+          if (userData.isBlockedIOS != true) return right(Subscriptions.ok());
+        }
+        return right(null);
+      }
+    });
   } else {
     print('Error: userData $userData is null');
-    return null;
+    return left(SubscriptionFailure.userError());
   }
 });
 

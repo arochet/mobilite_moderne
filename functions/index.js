@@ -78,6 +78,7 @@ exports.CreateSessionCheckout = functions.https.onRequest(async (req, res) => {
     const {
         idStripe,
     } = req.body;
+    console.log('CreateSessionCheckout => est ce que la fonction se lance ??');
     cors(req, res, async () => { 
         res.set('Access-Control-Allow-Origin', '*');
         res.set("Access-Control-Allow-Headers", "Content-Type");

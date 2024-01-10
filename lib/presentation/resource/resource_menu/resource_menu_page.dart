@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/is_suscribed.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
@@ -31,9 +32,12 @@ class Resource_menuPage extends StatelessWidget {
           ),
         ),
         child: IsSuscribed(
-          child: Padding(
-            padding: EdgeInsets.only(top: 10, right: 10, left: 10),
-            child: _Body(),
+          child: IsConnected(
+            colorMsg: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, right: 10, left: 10),
+              child: _Body(),
+            ),
           ),
         ),
       ),

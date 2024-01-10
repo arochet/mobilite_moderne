@@ -23,6 +23,9 @@ mixin _$UserData {
   TypeAccount get typeAccount => throw _privateConstructorUsedError;
   String? get idStripe => throw _privateConstructorUsedError;
 
+  ///Sur iOS, on ne fait pas pour le moment de souscription, on peut bloquer l'accès à l'app manuellement en BDD
+  bool? get isBlockedIOS => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $UserDataCopyWith<UserData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,7 +42,8 @@ abstract class $UserDataCopyWith<$Res> {
       EmailAddress? email,
       bool passwordCrypted,
       TypeAccount typeAccount,
-      String? idStripe});
+      String? idStripe,
+      bool? isBlockedIOS});
 }
 
 /// @nodoc
@@ -61,6 +65,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? passwordCrypted = null,
     Object? typeAccount = null,
     Object? idStripe = freezed,
+    Object? isBlockedIOS = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,6 +92,10 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.idStripe
           : idStripe // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBlockedIOS: freezed == isBlockedIOS
+          ? _value.isBlockedIOS
+          : isBlockedIOS // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -105,7 +114,8 @@ abstract class _$$UserDataImplCopyWith<$Res>
       EmailAddress? email,
       bool passwordCrypted,
       TypeAccount typeAccount,
-      String? idStripe});
+      String? idStripe,
+      bool? isBlockedIOS});
 }
 
 /// @nodoc
@@ -125,6 +135,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? passwordCrypted = null,
     Object? typeAccount = null,
     Object? idStripe = freezed,
+    Object? isBlockedIOS = freezed,
   }) {
     return _then(_$UserDataImpl(
       id: null == id
@@ -151,6 +162,10 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.idStripe
           : idStripe // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBlockedIOS: freezed == isBlockedIOS
+          ? _value.isBlockedIOS
+          : isBlockedIOS // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -164,7 +179,8 @@ class _$UserDataImpl extends _UserData {
       required this.email,
       required this.passwordCrypted,
       required this.typeAccount,
-      this.idStripe})
+      this.idStripe,
+      this.isBlockedIOS})
       : super._();
 
   @override
@@ -180,9 +196,13 @@ class _$UserDataImpl extends _UserData {
   @override
   final String? idStripe;
 
+  ///Sur iOS, on ne fait pas pour le moment de souscription, on peut bloquer l'accès à l'app manuellement en BDD
+  @override
+  final bool? isBlockedIOS;
+
   @override
   String toString() {
-    return 'UserData(id: $id, userName: $userName, email: $email, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe)';
+    return 'UserData(id: $id, userName: $userName, email: $email, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe, isBlockedIOS: $isBlockedIOS)';
   }
 
   @override
@@ -199,12 +219,14 @@ class _$UserDataImpl extends _UserData {
             (identical(other.typeAccount, typeAccount) ||
                 other.typeAccount == typeAccount) &&
             (identical(other.idStripe, idStripe) ||
-                other.idStripe == idStripe));
+                other.idStripe == idStripe) &&
+            (identical(other.isBlockedIOS, isBlockedIOS) ||
+                other.isBlockedIOS == isBlockedIOS));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, userName, email, passwordCrypted, typeAccount, idStripe);
+  int get hashCode => Object.hash(runtimeType, id, userName, email,
+      passwordCrypted, typeAccount, idStripe, isBlockedIOS);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +242,8 @@ abstract class _UserData extends UserData {
       required final EmailAddress? email,
       required final bool passwordCrypted,
       required final TypeAccount typeAccount,
-      final String? idStripe}) = _$UserDataImpl;
+      final String? idStripe,
+      final bool? isBlockedIOS}) = _$UserDataImpl;
   const _UserData._() : super._();
 
   @override
@@ -235,6 +258,10 @@ abstract class _UserData extends UserData {
   TypeAccount get typeAccount;
   @override
   String? get idStripe;
+  @override
+
+  ///Sur iOS, on ne fait pas pour le moment de souscription, on peut bloquer l'accès à l'app manuellement en BDD
+  bool? get isBlockedIOS;
   @override
   @JsonKey(ignore: true)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>

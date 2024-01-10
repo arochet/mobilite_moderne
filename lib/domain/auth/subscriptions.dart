@@ -38,4 +38,14 @@ abstract class Subscriptions with _$Subscriptions {
         billingCycleAnchor: null,
         tarif: 0,
       );
+
+  factory Subscriptions.ok() => Subscriptions(
+        id: '',
+        startDate: DateTime.now(),
+        items: Map<String, dynamic>(),
+        status: true,
+        idStripe: null,
+        billingCycleAnchor: null,
+        tarif: 10,
+      );
 }

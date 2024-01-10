@@ -28,6 +28,7 @@ mixin _$UserDataDTO {
   bool get passwordCrypted => throw _privateConstructorUsedError;
   String get typeAccount => throw _privateConstructorUsedError;
   String? get idStripe => throw _privateConstructorUsedError;
+  bool? get isBlockedIOS => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,8 @@ abstract class $UserDataDTOCopyWith<$Res> {
       String? userNameLowerCase,
       bool passwordCrypted,
       String typeAccount,
-      String? idStripe});
+      String? idStripe,
+      bool? isBlockedIOS});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$UserDataDTOCopyWithImpl<$Res, $Val extends UserDataDTO>
     Object? passwordCrypted = null,
     Object? typeAccount = null,
     Object? idStripe = freezed,
+    Object? isBlockedIOS = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -101,6 +104,10 @@ class _$UserDataDTOCopyWithImpl<$Res, $Val extends UserDataDTO>
           ? _value.idStripe
           : idStripe // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBlockedIOS: freezed == isBlockedIOS
+          ? _value.isBlockedIOS
+          : isBlockedIOS // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -120,7 +127,8 @@ abstract class _$$UserDataDTOImplCopyWith<$Res>
       String? userNameLowerCase,
       bool passwordCrypted,
       String typeAccount,
-      String? idStripe});
+      String? idStripe,
+      bool? isBlockedIOS});
 }
 
 /// @nodoc
@@ -141,6 +149,7 @@ class __$$UserDataDTOImplCopyWithImpl<$Res>
     Object? passwordCrypted = null,
     Object? typeAccount = null,
     Object? idStripe = freezed,
+    Object? isBlockedIOS = freezed,
   }) {
     return _then(_$UserDataDTOImpl(
       id: freezed == id
@@ -171,6 +180,10 @@ class __$$UserDataDTOImplCopyWithImpl<$Res>
           ? _value.idStripe
           : idStripe // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBlockedIOS: freezed == isBlockedIOS
+          ? _value.isBlockedIOS
+          : isBlockedIOS // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -185,7 +198,8 @@ class _$UserDataDTOImpl extends _UserDataDTO {
       required this.userNameLowerCase,
       required this.passwordCrypted,
       required this.typeAccount,
-      this.idStripe})
+      this.idStripe,
+      this.isBlockedIOS})
       : super._();
 
   factory _$UserDataDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -206,10 +220,12 @@ class _$UserDataDTOImpl extends _UserDataDTO {
   final String typeAccount;
   @override
   final String? idStripe;
+  @override
+  final bool? isBlockedIOS;
 
   @override
   String toString() {
-    return 'UserDataDTO(id: $id, userName: $userName, email: $email, userNameLowerCase: $userNameLowerCase, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe)';
+    return 'UserDataDTO(id: $id, userName: $userName, email: $email, userNameLowerCase: $userNameLowerCase, passwordCrypted: $passwordCrypted, typeAccount: $typeAccount, idStripe: $idStripe, isBlockedIOS: $isBlockedIOS)';
   }
 
   @override
@@ -228,13 +244,15 @@ class _$UserDataDTOImpl extends _UserDataDTO {
             (identical(other.typeAccount, typeAccount) ||
                 other.typeAccount == typeAccount) &&
             (identical(other.idStripe, idStripe) ||
-                other.idStripe == idStripe));
+                other.idStripe == idStripe) &&
+            (identical(other.isBlockedIOS, isBlockedIOS) ||
+                other.isBlockedIOS == isBlockedIOS));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, userName, email,
-      userNameLowerCase, passwordCrypted, typeAccount, idStripe);
+      userNameLowerCase, passwordCrypted, typeAccount, idStripe, isBlockedIOS);
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +276,8 @@ abstract class _UserDataDTO extends UserDataDTO {
       required final String? userNameLowerCase,
       required final bool passwordCrypted,
       required final String typeAccount,
-      final String? idStripe}) = _$UserDataDTOImpl;
+      final String? idStripe,
+      final bool? isBlockedIOS}) = _$UserDataDTOImpl;
   const _UserDataDTO._() : super._();
 
   factory _UserDataDTO.fromJson(Map<String, dynamic> json) =
@@ -279,6 +298,8 @@ abstract class _UserDataDTO extends UserDataDTO {
   String get typeAccount;
   @override
   String? get idStripe;
+  @override
+  bool? get isBlockedIOS;
   @override
   @JsonKey(ignore: true)
   _$$UserDataDTOImplCopyWith<_$UserDataDTOImpl> get copyWith =>

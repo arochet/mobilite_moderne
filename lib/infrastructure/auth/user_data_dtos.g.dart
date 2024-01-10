@@ -14,6 +14,7 @@ _$UserDataDTOImpl _$$UserDataDTOImplFromJson(Map<String, dynamic> json) =>
       passwordCrypted: json['passwordCrypted'] as bool,
       typeAccount: json['typeAccount'] as String,
       idStripe: json['idStripe'] as String?,
+      isBlockedIOS: json['isBlockedIOS'] as bool?,
     );
 
 Map<String, dynamic> _$$UserDataDTOImplToJson(_$UserDataDTOImpl instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$UserDataDTOImplToJson(_$UserDataDTOImpl instance) =>
       'passwordCrypted': instance.passwordCrypted,
       'typeAccount': instance.typeAccount,
       'idStripe': instance.idStripe,
+      'isBlockedIOS': instance.isBlockedIOS,
     };

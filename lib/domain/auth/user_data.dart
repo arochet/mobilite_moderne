@@ -16,6 +16,9 @@ abstract class UserData with _$UserData {
     required bool passwordCrypted,
     required TypeAccount typeAccount,
     String? idStripe,
+
+    ///Sur iOS, on ne fait pas pour le moment de souscription, on peut bloquer l'accès à l'app manuellement en BDD
+    bool? isBlockedIOS,
   }) = _UserData;
 
   factory UserData.empty() => UserData(
@@ -25,5 +28,6 @@ abstract class UserData with _$UserData {
         passwordCrypted: true,
         typeAccount: TypeAccount(TypeAccountState.email),
         idStripe: null,
+        isBlockedIOS: false,
       );
 }

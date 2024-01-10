@@ -22,6 +22,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
     required bool passwordCrypted,
     required String typeAccount,
     String? idStripe,
+    bool? isBlockedIOS,
   }) = _UserDataDTO;
 
   /// Convertit UserData en UserDataDTO<br>
@@ -33,6 +34,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
       passwordCrypted: user.passwordCrypted,
       typeAccount: user.typeAccount.getOrCrash().toShortString(),
       idStripe: user.idStripe,
+      isBlockedIOS: user.isBlockedIOS,
     );
   }
 
@@ -45,6 +47,7 @@ abstract class UserDataDTO implements _$UserDataDTO {
       passwordCrypted: passwordCrypted,
       typeAccount: TypeAccount.fromString(typeAccount),
       idStripe: idStripe,
+      isBlockedIOS: isBlockedIOS,
     );
   }
 

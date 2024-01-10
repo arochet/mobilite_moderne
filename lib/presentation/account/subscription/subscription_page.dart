@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilite_moderne/APPLICATION/auth/subscription_notifier.dart';
+import 'package:mobilite_moderne/DOMAIN/auth/failure/subscription_failure.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/subscriptions.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
@@ -65,12 +67,26 @@ class __IsSubscribeState extends ConsumerState<_IsSubscribe> {
     }
 
     return subscriptionAsync.when(
-      data: (Subscriptions? subscription) {
-        if (subscription != null) {
-          return MySubscription(subscription);
-        } else {
-          return FormSubscription();
-        }
+      data: (Either<SubscriptionFailure, Subscriptions?> subscriptionEither) {
+        return subscriptionEither.fold(
+          (error) {
+            return Center(
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Erreur : $error", style: Theme.of(context).textTheme.bodyMedium),
+                ),
+              ),
+            );
+          },
+          (subscription) {
+            if (subscription != null) {
+              return MySubscription(subscription);
+            } else {
+              return FormSubscription();
+            }
+          },
+        );
       },
       loading: () => Center(child: CircularProgressIndicator()),
       error: (err, stack) => Text(err.toString()),

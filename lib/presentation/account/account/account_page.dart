@@ -4,6 +4,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/user_data.dart';
 import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/widget/panel_developper.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/account/widget/panel_modify_mdp_delete_account.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/main_scaffold.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
@@ -44,6 +45,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
       //Récupère les données utilisateurs (Informations personnelles)
       String nameUser = "";
       String? email;
+      bool? isBlockedIOS;
       TypeAccountState typeAccount = TypeAccountState.fail;
       user.when(
         data: (data) {
@@ -51,6 +53,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
             nameUser = data.userName.getOrCrash();
             email = data.email?.getOrCrash();
             typeAccount = data.typeAccount.getOrCrash();
+            isBlockedIOS = data.isBlockedIOS;
           }
         },
         loading: () {
@@ -68,25 +71,29 @@ class _AccountPageState extends ConsumerState<AccountPage> {
 
       final page = Container(
         //color: colorpanel(800),
-        child: ListView(
-          children: <Widget>[
-            SpaceH20(),
-            //PANEL DONNEES PERSONNELES
-            PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
-            //PANEL INFO
-            PanelInfo(),
-            //PANEL ABONNEMENT
-            PanelSubscription(),
-            //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
-            PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
-            //PANEL DEVELOPPEMENT
-            if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
-            SpaceH10(),
-            //BOUTON SE DECONNECTER
-            ButtonLogOut(),
-            SpaceH10(),
-            VersionNumber(),
-          ],
+        child: IsConnected(
+          child: ListView(
+            children: <Widget>[
+              SpaceH20(),
+              //PANEL DONNEES PERSONNELES
+              PanelPersonnelData(nameUser: nameUser, email: email, typeAccount: typeAccount),
+              //PANEL INFO
+              PanelInfo(),
+              //PANEL ABONNEMENT
+              if (defaultTargetPlatform != TargetPlatform.iOS ||
+                  (isBlockedIOS == true && email != 'alban@yopmail.com'))
+                PanelSubscription(),
+              //PANEL MODIFIER MOT DE PASSE / SUPPRIMER COMPTE
+              PanelModifyMdpDeleteAccount(typeAccount: typeAccount),
+              //PANEL DEVELOPPEMENT
+              if (env == Environment.dev) ...[DisplayTitle(title: 'Developpement'), PanelDevelopper()],
+              SpaceH10(),
+              //BOUTON SE DECONNECTER
+              ButtonLogOut(),
+              SpaceH10(),
+              VersionNumber(),
+            ],
+          ),
         ),
       );
 

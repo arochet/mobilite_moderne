@@ -1,3 +1,4 @@
+import 'package:mobilite_moderne/PRESENTATION/core/_components/is_connected_widget.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/is_suscribed.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/show_component_file.dart';
 import 'package:mobilite_moderne/PRESENTATION/core/_components/spacing.dart';
@@ -29,49 +30,52 @@ class NewsListPage extends ConsumerWidget {
       ),
       child: ShowComponentFile(
         title: 'NewsListPage',
-        child: IsSuscribed(
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const SpaceH10(),
-                  Row(
-                    children: [
-                      SpaceW10(),
-                      InkWell(
-                          onTap: () => context.router.pop(),
-                          child: Icon(Icons.arrow_back_ios, color: primaryColor, size: 30)),
-                      SpaceW10(),
-                      Text("ACTUALITÉS",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(fontSize: 26, color: Colors.white)),
-                    ],
-                  ),
-                  const SpaceH10(),
-                  Expanded(
-                    child: AppAsync(
-                      ref.watch(allNewsProvider),
-                      builder: (data) => data!.fold(
-                          (error) => AppError(message: error.toString()),
-                          (listNews) => SingleChildScrollView(
-                                child: Align(
-                                  child: Wrap(
-                                      alignment: WrapAlignment.start,
-                                      runAlignment: WrapAlignment.center,
-                                      crossAxisAlignment: WrapCrossAlignment.center,
-                                      children: [
-                                        ...listNews
-                                            .map<Widget>((newsObj) => PanelNewsView(news: newsObj))
-                                            .toList()
-                                      ]),
-                                ),
-                              )),
+        child: IsConnected(
+          colorMsg: Colors.white,
+          child: IsSuscribed(
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const SpaceH10(),
+                    Row(
+                      children: [
+                        SpaceW10(),
+                        InkWell(
+                            onTap: () => context.router.pop(),
+                            child: Icon(Icons.arrow_back_ios, color: primaryColor, size: 30)),
+                        SpaceW10(),
+                        Text("ACTUALITÉS",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(fontSize: 26, color: Colors.white)),
+                      ],
                     ),
-                  ),
-                ],
-              )),
+                    const SpaceH10(),
+                    Expanded(
+                      child: AppAsync(
+                        ref.watch(allNewsProvider),
+                        builder: (data) => data!.fold(
+                            (error) => AppError(message: error.toString()),
+                            (listNews) => SingleChildScrollView(
+                                  child: Align(
+                                    child: Wrap(
+                                        alignment: WrapAlignment.start,
+                                        runAlignment: WrapAlignment.center,
+                                        crossAxisAlignment: WrapCrossAlignment.center,
+                                        children: [
+                                          ...listNews
+                                              .map<Widget>((newsObj) => PanelNewsView(news: newsObj))
+                                              .toList()
+                                        ]),
+                                  ),
+                                )),
+                      ),
+                    ),
+                  ],
+                )),
+          ),
         ),
       ),
     );

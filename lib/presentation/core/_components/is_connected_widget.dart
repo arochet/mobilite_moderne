@@ -6,7 +6,8 @@ import 'package:flutter/services.dart';
 /// Affiche un bandeau en haut de l'écran si pas de connexion internet
 class IsConnected extends StatefulWidget {
   final Widget child;
-  const IsConnected({Key? key, required this.child}) : super(key: key);
+  final Color colorMsg;
+  const IsConnected({Key? key, required this.child, this.colorMsg = Colors.black}) : super(key: key);
 
   @override
   State<IsConnected> createState() => _IsConnectedState();
@@ -60,7 +61,8 @@ class _IsConnectedState extends State<IsConnected> {
           Container(
             height: 40,
             child: Center(
-              child: Text("Pas de connexion internet", style: Theme.of(context).textTheme.titleSmall),
+              child: Text("Pas de connexion internet",
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(color: widget.colorMsg)),
             ),
           ),
         Expanded(child: widget.child),
