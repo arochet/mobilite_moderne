@@ -57,7 +57,7 @@ class _TileNewsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: Text(news.title.getOrCrash()),
+      title: Text(news.title.getOrCrash(), style: Theme.of(context).textTheme.titleSmall),
       trailing: IconButton(
         icon: const Icon(Icons.delete, color: Colors.white),
         onPressed: () async {

@@ -5,6 +5,7 @@ import 'package:admin/ADMIN_PRESENTATION/core/_core/admin_router.dart';
 import 'package:admin/providers.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -299,6 +300,10 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
             ),
           ),
           const SizedBox(height: 12),
+          if (ref.watch(resourceFormNotifierProvider).uploadFileProgression != null) ...[
+            const SizedBox(height: 8),
+            TextProgression(stream: ref.watch(resourceFormNotifierProvider).uploadFileProgression),
+          ],
           if (ref.read(resourceFormNotifierProvider).isSubmitting) ...[
             const SizedBox(height: 8),
             const LinearProgressIndicator(value: null)
@@ -324,5 +329,34 @@ class _ResourceFormState extends ConsumerState<ResourceForm> {
     // TODO: implement dispose
     super.dispose();
     _descriptionController.dispose();
+  }
+}
+
+class TextProgression extends ConsumerStatefulWidget {
+  final Stream<TaskSnapshot>? stream;
+  const TextProgression({super.key, required this.stream});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _TextProgressionState();
+}
+
+class _TextProgressionState extends ConsumerState<TextProgression> {
+  double _progression = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.stream?.listen((event) {
+      print(event.bytesTransferred);
+      print(event.totalBytes);
+      setState(() {
+        _progression = event.bytesTransferred / event.totalBytes;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("${(_progression * 100).toStringAsFixed(1)}%", style: Theme.of(context).textTheme.bodyMedium);
   }
 }

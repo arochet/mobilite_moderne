@@ -149,7 +149,7 @@ class _MessageFormState extends ConsumerState<MessageForm> {
             if (state.message.imageSend == null && state.message.videoSend == null)
               Expanded(
                 child: TextFormField(
-                  autocorrect: false,
+                  autocorrect: true,
                   controller: _textEditingController,
                   textInputAction: TextInputAction.next,
                   maxLines: null,

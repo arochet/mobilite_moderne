@@ -23,6 +23,8 @@ mixin _$AddResourceFormData {
   Uint8List? get fileWEB =>
       throw _privateConstructorUsedError; // Fichier à upload WEB
   String? get nameFile => throw _privateConstructorUsedError;
+  Stream<TaskSnapshot>? get uploadFileProgression =>
+      throw _privateConstructorUsedError;
   XFile? get image => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ abstract class $AddResourceFormDataCopyWith<$Res> {
       File? fileMOBILE,
       Uint8List? fileWEB,
       String? nameFile,
+      Stream<TaskSnapshot>? uploadFileProgression,
       XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
@@ -72,6 +75,7 @@ class _$AddResourceFormDataCopyWithImpl<$Res, $Val extends AddResourceFormData>
     Object? fileMOBILE = freezed,
     Object? fileWEB = freezed,
     Object? nameFile = freezed,
+    Object? uploadFileProgression = freezed,
     Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
@@ -98,6 +102,10 @@ class _$AddResourceFormDataCopyWithImpl<$Res, $Val extends AddResourceFormData>
           ? _value.nameFile
           : nameFile // ignore: cast_nullable_to_non_nullable
               as String?,
+      uploadFileProgression: freezed == uploadFileProgression
+          ? _value.uploadFileProgression
+          : uploadFileProgression // ignore: cast_nullable_to_non_nullable
+              as Stream<TaskSnapshot>?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -140,6 +148,7 @@ abstract class _$$AddResourceFormDataImplCopyWith<$Res>
       File? fileMOBILE,
       Uint8List? fileWEB,
       String? nameFile,
+      Stream<TaskSnapshot>? uploadFileProgression,
       XFile? image,
       bool showErrorMessages,
       bool isSubmitting,
@@ -165,6 +174,7 @@ class __$$AddResourceFormDataImplCopyWithImpl<$Res>
     Object? fileMOBILE = freezed,
     Object? fileWEB = freezed,
     Object? nameFile = freezed,
+    Object? uploadFileProgression = freezed,
     Object? image = freezed,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
@@ -191,6 +201,10 @@ class __$$AddResourceFormDataImplCopyWithImpl<$Res>
           ? _value.nameFile
           : nameFile // ignore: cast_nullable_to_non_nullable
               as String?,
+      uploadFileProgression: freezed == uploadFileProgression
+          ? _value.uploadFileProgression
+          : uploadFileProgression // ignore: cast_nullable_to_non_nullable
+              as Stream<TaskSnapshot>?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -222,6 +236,7 @@ class _$AddResourceFormDataImpl
       required this.fileMOBILE,
       required this.fileWEB,
       required this.nameFile,
+      required this.uploadFileProgression,
       required this.image,
       required this.showErrorMessages,
       required this.isSubmitting,
@@ -240,6 +255,8 @@ class _$AddResourceFormDataImpl
   @override
   final String? nameFile;
   @override
+  final Stream<TaskSnapshot>? uploadFileProgression;
+  @override
   final XFile? image;
   @override
   final bool showErrorMessages;
@@ -250,7 +267,7 @@ class _$AddResourceFormDataImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddResourceFormData(resource: $resource, category: $category, fileMOBILE: $fileMOBILE, fileWEB: $fileWEB, nameFile: $nameFile, image: $image, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'AddResourceFormData(resource: $resource, category: $category, fileMOBILE: $fileMOBILE, fileWEB: $fileWEB, nameFile: $nameFile, uploadFileProgression: $uploadFileProgression, image: $image, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -263,6 +280,7 @@ class _$AddResourceFormDataImpl
       ..add(DiagnosticsProperty('fileMOBILE', fileMOBILE))
       ..add(DiagnosticsProperty('fileWEB', fileWEB))
       ..add(DiagnosticsProperty('nameFile', nameFile))
+      ..add(DiagnosticsProperty('uploadFileProgression', uploadFileProgression))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
       ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
@@ -284,6 +302,8 @@ class _$AddResourceFormDataImpl
             const DeepCollectionEquality().equals(other.fileWEB, fileWEB) &&
             (identical(other.nameFile, nameFile) ||
                 other.nameFile == nameFile) &&
+            (identical(other.uploadFileProgression, uploadFileProgression) ||
+                other.uploadFileProgression == uploadFileProgression) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
@@ -301,6 +321,7 @@ class _$AddResourceFormDataImpl
       fileMOBILE,
       const DeepCollectionEquality().hash(fileWEB),
       nameFile,
+      uploadFileProgression,
       image,
       showErrorMessages,
       isSubmitting,
@@ -321,6 +342,7 @@ abstract class _AddResourceFormData implements AddResourceFormData {
       required final File? fileMOBILE,
       required final Uint8List? fileWEB,
       required final String? nameFile,
+      required final Stream<TaskSnapshot>? uploadFileProgression,
       required final XFile? image,
       required final bool showErrorMessages,
       required final bool isSubmitting,
@@ -337,6 +359,8 @@ abstract class _AddResourceFormData implements AddResourceFormData {
   Uint8List? get fileWEB;
   @override // Fichier à upload WEB
   String? get nameFile;
+  @override
+  Stream<TaskSnapshot>? get uploadFileProgression;
   @override
   XFile? get image;
   @override

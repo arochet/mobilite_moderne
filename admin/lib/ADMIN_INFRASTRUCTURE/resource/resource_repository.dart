@@ -35,10 +35,11 @@ abstract class IResourceRepository {
   Future<Either<ResourceFailure, Unit>> delete(Resource resource);
 
   /// Upload un fichier File
-  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path, String? contentType);
+  Either<UploadFailure, Stream<TaskSnapshot>> uploadFile(File file, String path, String? contentType);
 
   /// Upload un fichier avec les bytes
-  Future<Either<UploadFailure, Unit>> uploadFileBytes(Uint8List bytes, String path, String? contentType);
+  Either<UploadFailure, Stream<TaskSnapshot>> uploadFileBytes(
+      Uint8List bytes, String path, String? contentType);
 
   /// Upload une image
   Future<Either<UploadFailure, Unit>> uploadImage(XFile file, ResourceMainCategory category);
@@ -99,6 +100,9 @@ class ResourceRepository implements IResourceRepository {
       } else {
         return left(const ResourceFailure.unexpected());
       }
+    } catch (e) {
+      print('e $e');
+      return left(const ResourceFailure.unexpected());
     }
   }
 
@@ -154,11 +158,10 @@ class ResourceRepository implements IResourceRepository {
   }
 
   @override
-  Future<Either<UploadFailure, Unit>> uploadFile(File file, String path, String? contentType) async {
+  Either<UploadFailure, Stream<TaskSnapshot>> uploadFile(File file, String path, String? contentType) {
     try {
-      final TaskSnapshot result =
-          await _storage.ref().child(path).putFile(file, SettableMetadata(contentType: contentType));
-      return right(unit);
+      final result = _storage.ref().child(path).putFile(file, SettableMetadata(contentType: contentType));
+      return right(result.snapshotEvents);
     } on FirebaseException catch (e) {
       print(e.code);
       print(e.message);
@@ -175,12 +178,12 @@ class ResourceRepository implements IResourceRepository {
   }
 
   @override
-  Future<Either<UploadFailure, Unit>> uploadFileBytes(
-      Uint8List bytes, String path, String? contentType) async {
+  Either<UploadFailure, Stream<TaskSnapshot>> uploadFileBytes(
+      Uint8List bytes, String path, String? contentType) {
     try {
-      final TaskSnapshot result =
-          await _storage.ref().child(path).putData(bytes, SettableMetadata(contentType: contentType));
-      return right(unit);
+      final UploadTask result =
+          _storage.ref().child(path).putData(bytes, SettableMetadata(contentType: contentType));
+      return right(result.snapshotEvents);
     } on FirebaseException catch (e) {
       print(e.code);
       print(e.message);

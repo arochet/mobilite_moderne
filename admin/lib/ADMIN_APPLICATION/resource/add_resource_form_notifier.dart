@@ -5,6 +5,7 @@ import 'package:admin/ADMIN_DOMAIN/core/upload_failure.dart';
 import 'package:admin/ADMIN_INFRASTRUCTURE/resource/resource_repository.dart';
 import 'package:admin/ADMIN_PRESENTATION/resource/resource_add/widget/resource_form.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,6 +14,7 @@ import 'package:mobilite_moderne/DOMAIN/auth/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/core/value_objects.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource.dart';
 import 'package:mobilite_moderne/DOMAIN/resources/resource_failure.dart';
+import 'package:mobilite_moderne/PRESENTATION/core/_utils/object_utils.dart';
 part 'add_resource_form_notifier.freezed.dart';
 
 @freezed
@@ -23,6 +25,7 @@ class AddResourceFormData with _$AddResourceFormData {
     required File? fileMOBILE, // Fichier à upload Mobile
     required Uint8List? fileWEB, // Fichier à upload WEB
     required String? nameFile,
+    required Stream<TaskSnapshot>? uploadFileProgression,
     required XFile? image,
     required bool showErrorMessages,
     required bool isSubmitting,
@@ -37,6 +40,7 @@ class AddResourceFormData with _$AddResourceFormData {
       nameFile: null,
       image: null,
       showErrorMessages: false,
+      uploadFileProgression: null,
       isSubmitting: false,
       failureOrSuccessOption: none());
 }
@@ -95,7 +99,6 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
   }
 
   fileWEBchanged(Uint8List file, String nameFile) {
-    print('file $file');
     state = state.copyWith(fileWEB: file, nameFile: nameFile, failureOrSuccessOption: none());
   }
   //insert-changed
@@ -104,7 +107,7 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
     Either<ResourceFailure, UniqueId>? failureOrSuccess;
 
     state = state.copyWith(isSubmitting: true, failureOrSuccessOption: none());
-    Either<UploadFailure, Unit>? resultUpload;
+    Either<UploadFailure, Stream<TaskSnapshot>>? resultUpload;
 
     // Chemin du fichier
     String pathFile = '${state.category.nameFile}/${state.nameFile!}';
@@ -117,13 +120,15 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
       final String? contentType = state.nameFile!.endsWith('.pdf') ? 'application/pdf' : null;
       if (kIsWeb) {
         if (state.fileWEB != null) {
-          resultUpload = await _iResourceRepository.uploadFileBytes(state.fileWEB!, pathFile, contentType);
+          resultUpload = _iResourceRepository.uploadFileBytes(state.fileWEB!, pathFile, contentType);
         }
       } else {
         if (state.fileMOBILE != null) {
-          resultUpload = await _iResourceRepository.uploadFile(state.fileMOBILE!, pathFile, contentType);
+          resultUpload = _iResourceRepository.uploadFile(state.fileMOBILE!, pathFile, contentType);
         }
       }
+
+      resultUpload?.fold((l) => null, (stream) => state = state.copyWith(uploadFileProgression: stream));
     }
 
     // Upload de l'IMAGE
@@ -143,11 +148,18 @@ class ResourceFormNotifier extends StateNotifier<AddResourceFormData> {
       failureOrSuccess = left(const ResourceFailure.unableToLoadFile());
     }
 
-    state = state.copyWith(
-        isSubmitting: false,
-        showErrorMessages: true,
-        failureOrSuccessOption: failureOrSuccess != null
-            ? some(failureOrSuccess)
-            : none()); //optionOf -> value != null ? some(value) : none();     | optionOf ne fonctionne pas
+    //Calcul le chargment du fichier lourd, lorsqu'il est terminé, on met à jour le state
+    resultUpload?.fold((l) => null, (stream) {
+      stream.listen((event) {
+        if ((event.bytesTransferred / event.totalBytes).asDouble > 0.99) {
+          state = state.copyWith(
+              isSubmitting: false,
+              showErrorMessages: true,
+              failureOrSuccessOption: failureOrSuccess != null
+                  ? some(failureOrSuccess)
+                  : none()); //optionOf -> value != null ? some(value) : none();     | optionOf ne fonctionne pas
+        }
+      });
+    });
   }
 }
