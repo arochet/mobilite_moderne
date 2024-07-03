@@ -32,6 +32,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ApptestRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ApptestPage(),
+      );
+    },
     AssistantRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -346,6 +352,20 @@ class AnswerRouteArgs {
   String toString() {
     return 'AnswerRouteArgs{key: $key, choice: $choice, filAriane: $filAriane}';
   }
+}
+
+/// generated route for
+/// [ApptestPage]
+class ApptestRoute extends PageRouteInfo<void> {
+  const ApptestRoute({List<PageRouteInfo>? children})
+      : super(
+          ApptestRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ApptestRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

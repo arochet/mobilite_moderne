@@ -42,7 +42,8 @@ import 'package:mobilite_moderne/PRESENTATION/./message/message_list/message_lis
 import 'package:mobilite_moderne/PRESENTATION/account/subscription/subscription_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/legal_mention/legal_mention_page.dart';
 import 'package:mobilite_moderne/PRESENTATION/account/subscription_succes/subscription_succes_page.dart';
-import 'package:mobilite_moderne/PRESENTATION/account/delete_account/delete_account_page.dart'; //insert-import
+import 'package:mobilite_moderne/PRESENTATION/account/delete_account/delete_account_page.dart';
+import 'package:mobilite_moderne/PRESENTATION/account/apptest/apptest_page.dart'; //insert-import
 part 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
@@ -213,6 +214,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           path: '/delete_account-route',
           page: Delete_accountRoute.page,
+        ),
+        AutoRoute(
+          path: '/apptest-route',
+          page: ApptestRoute.page,
         ), //insert-route
       ];
 }
